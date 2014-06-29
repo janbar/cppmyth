@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bindobject',['BindObject',['../namespaceMythJSON.html#a83a9c394c6fac8b6163264bfe1077b3f',1,'MythJSON']]]
+  ['disablerecordschedule',['DisableRecordSchedule',['../classMyth_1_1WSAPI.html#a1c237f23bf4a2442f69153d4e292d3ac',1,'Myth::WSAPI']]]
 ];

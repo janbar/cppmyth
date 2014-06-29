@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['disablerecordschedule',['DisableRecordSchedule',['../classMyth_1_1WSAPI.html#a1c237f23bf4a2442f69153d4e292d3ac',1,'Myth::WSAPI']]]
+  ['enablerecordschedule',['EnableRecordSchedule',['../classMyth_1_1WSAPI.html#ae1748adea376b42a1fc6689ffc9c864c',1,'Myth::WSAPI']]]
 ];
