@@ -161,18 +161,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">return</span> ProtoMonitor::QuerySGFile(hostname, sgname, filename);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  };</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHCONTROL_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> mythtypes.h:267</div></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#a5d32f307a6b2e400062701530ee62cdf">   81</a></span>&#160;    MarkListPtr <a class="code" href="classMyth_1_1Control.html#a5d32f307a6b2e400062701530ee62cdf">GetCutList</a>(<a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program, <span class="keywordtype">int</span> unit = 0)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">return</span> ProtoMonitor::GetCutList(program, unit);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#a6b82c645402f0f0820479cce25484691">   91</a></span>&#160;    MarkListPtr <a class="code" href="classMyth_1_1Control.html#a6b82c645402f0f0820479cce25484691">GetCommBreakList</a>(<a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program, <span class="keywordtype">int</span> unit = 0)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keywordflow">return</span> ProtoMonitor::GetCommBreakList(program, unit);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  };</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHCONTROL_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classMyth_1_1Control_html_a5d32f307a6b2e400062701530ee62cdf"><div class="ttname"><a href="classMyth_1_1Control.html#a5d32f307a6b2e400062701530ee62cdf">Myth::Control::GetCutList</a></div><div class="ttdeci">MarkListPtr GetCutList(Program &amp;program, int unit=0)</div><div class="ttdoc">Request a set of cut list marks for a recording. </div><div class="ttdef"><b>Definition:</b> mythcontrol.h:81</div></div>
+<div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> mythtypes.h:271</div></div>
 <div class="ttc" id="classMyth_1_1ProtoMonitor_html"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html">Myth::ProtoMonitor</a></div><div class="ttdef"><b>Definition:</b> mythprotomonitor.h:33</div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a6b82c645402f0f0820479cce25484691"><div class="ttname"><a href="classMyth_1_1Control.html#a6b82c645402f0f0820479cce25484691">Myth::Control::GetCommBreakList</a></div><div class="ttdeci">MarkListPtr GetCommBreakList(Program &amp;program, int unit=0)</div><div class="ttdoc">Request a set of commercial break marks for a recording. </div><div class="ttdef"><b>Definition:</b> mythcontrol.h:91</div></div>
 <div class="ttc" id="classMyth_1_1Control_html"><div class="ttname"><a href="classMyth_1_1Control.html">Myth::Control</a></div><div class="ttdef"><b>Definition:</b> mythcontrol.h:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 30 2014 00:41:21 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 5 2014 17:45:35 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
