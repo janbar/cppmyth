@@ -137,7 +137,7 @@ int main(int argc, char** argv)
       pb.OpenTransfer((*pl)[n]);
       char buf[64000];
       int l = 64000;
-      for (int i = 0; i < 30 && l == 64000; ++i)
+      for (int i = 0; i < 30 && l > 0; ++i)
       {
         l = pb.Read(buf, 64000);
       }
