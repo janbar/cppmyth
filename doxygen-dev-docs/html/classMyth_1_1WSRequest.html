@@ -88,6 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1WSRequest-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::WSRequest Class Reference</div>  </div>
@@ -126,15 +128,57 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Ge
 <tr class="memitem:a04a6ff9203678950ece326454f1388d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04a6ff9203678950ece326454f1388d1"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</b> () const </td></tr>
 <tr class="separator:a04a6ff9203678950ece326454f1388d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5e2866e4769fb4212064dfbbd7b9c2cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e2866e4769fb4212064dfbbd7b9c2cb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeMessageGET</b> (std::string &amp;msg) const </td></tr>
+<tr class="separator:a5e2866e4769fb4212064dfbbd7b9c2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a068a9262119d6d8cb5ff51c95131d71e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a068a9262119d6d8cb5ff51c95131d71e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeMessagePOST</b> (std::string &amp;msg) const </td></tr>
+<tr class="separator:a068a9262119d6d8cb5ff51c95131d71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ba8df53214e9b42dae087d158301688"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ba8df53214e9b42dae087d158301688"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeMessageHEAD</b> (std::string &amp;msg) const </td></tr>
+<tr class="separator:a6ba8df53214e9b42dae087d158301688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a442ff45882b466f393fc4580c3769a28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a442ff45882b466f393fc4580c3769a28"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></td></tr>
+<tr class="separator:a442ff45882b466f393fc4580c3769a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa92839587aa11d4ea2cbda4af818daf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa92839587aa11d4ea2cbda4af818daf4"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_port</b></td></tr>
+<tr class="separator:aa92839587aa11d4ea2cbda4af818daf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afea902944c5051bfbfbd76a66b6e3f81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afea902944c5051bfbfbd76a66b6e3f81"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_service_url</b></td></tr>
+<tr class="separator:afea902944c5051bfbfbd76a66b6e3f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ba5fd04107845f2397e12621a54d9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77ba5fd04107845f2397e12621a54d9c"></a>
+HRM_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_service_method</b></td></tr>
+<tr class="separator:a77ba5fd04107845f2397e12621a54d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab6c3cfe5faefecec9c507539656978"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ab6c3cfe5faefecec9c507539656978"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_charset</b></td></tr>
+<tr class="separator:a3ab6c3cfe5faefecec9c507539656978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1425e817cd87f90c24d215225c8178e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1425e817cd87f90c24d215225c8178e"></a>
+CT_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_accept</b></td></tr>
+<tr class="separator:ac1425e817cd87f90c24d215225c8178e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9170c803fe5928b5745d5e12b2bb7c28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9170c803fe5928b5745d5e12b2bb7c28"></a>
+CT_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_contentType</b></td></tr>
+<tr class="separator:a9170c803fe5928b5745d5e12b2bb7c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6240612335e4960ea9735fcdde630d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f6240612335e4960ea9735fcdde630d"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_contentData</b></td></tr>
+<tr class="separator:a9f6240612335e4960ea9735fcdde630d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythwsrequest_8h_source.html#l00043">43</a> of file <a class="el" href="mythwsrequest_8h_source.html">mythwsrequest.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythwsrequest_8h_source.html">mythwsrequest.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/mythwsrequest.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythwsrequest_8cpp_source.html">mythwsrequest.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

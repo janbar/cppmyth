@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1ProtoTransfer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::ProtoTransfer Class Reference</div>  </div>
@@ -97,24 +99,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Myth::ProtoTransfer:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classMyth_1_1ProtoTransfer.png" usemap="#Myth::ProtoTransfer_map" alt=""/>
-  <map id="Myth::ProtoTransfer_map" name="Myth::ProtoTransfer_map">
-<area href="classMyth_1_1ProtoBase.html" alt="Myth::ProtoBase" shape="rect" coords="0,0,124,24"/>
-</map>
- </div></div>
+<div class="center"><img src="classMyth_1_1ProtoTransfer__inherit__graph.png" border="0" usemap="#Myth_1_1ProtoTransfer_inherit__map" alt="Inheritance graph"/></div>
+<map name="Myth_1_1ProtoTransfer_inherit__map" id="Myth_1_1ProtoTransfer_inherit__map">
+<area shape="rect" id="node2" href="classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="15,5,135,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0694c2b4ef912062848d92aca5a28eee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0694c2b4ef912062848d92aca5a28eee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProtoTransfer</b> (const std::string &amp;server, unsigned port)</td></tr>
-<tr class="separator:a0694c2b4ef912062848d92aca5a28eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c7e0d8f10e705088fcfaa7432e484d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39c7e0d8f10e705088fcfaa7432e484d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ProtoTransfer</b> (const std::string &amp;server, unsigned port, const std::string &amp;pathname, const std::string &amp;sgname)</td></tr>
+<tr class="separator:a39c7e0d8f10e705088fcfaa7432e484d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15bb4daf14440bc19242b83ea700235a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15bb4daf14440bc19242b83ea700235a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
 <tr class="separator:a15bb4daf14440bc19242b83ea700235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d48bf0a3fd9c2ee3cacdb3af9f8bad5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d48bf0a3fd9c2ee3cacdb3af9f8bad5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> (const std::string &amp;pathname, const std::string &amp;sgname)</td></tr>
-<tr class="separator:a7d48bf0a3fd9c2ee3cacdb3af9f8bad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac90d49c22420084da675990401e39670"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac90d49c22420084da675990401e39670"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
+<tr class="separator:ac90d49c22420084da675990401e39670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b00615943944962a1b35d8714478c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24b00615943944962a1b35d8714478c8"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetFileId</b> () const </td></tr>
 <tr class="separator:a24b00615943944962a1b35d8714478c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,9 +124,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetPathName</b
 <tr class="memitem:aec6ee7333e440954905330ce5b467750"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec6ee7333e440954905330ce5b467750"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetStorageGroupName</b> () const </td></tr>
 <tr class="separator:aec6ee7333e440954905330ce5b467750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ed6048b8813637c693a0a76a6bf0afc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ed6048b8813637c693a0a76a6bf0afc"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ReadData</b> (void *buffer, size_t n)</td></tr>
-<tr class="separator:a9ed6048b8813637c693a0a76a6bf0afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
 <tr class="memitem:a3d12738e883c3a4a4f2d363a9a75fd4c inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d12738e883c3a4a4f2d363a9a75fd4c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoBase</b> (const std::string &amp;server, unsigned port)</td></tr>
@@ -146,6 +143,9 @@ virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</
 <tr class="memitem:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dec195b18b391e74d383c6ad4be9df"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo</b> () const </td></tr>
 <tr class="separator:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -155,6 +155,27 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>fileSize</b></td><
 <tr class="memitem:a4253b77c7577dd885c27d55be08d65f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4253b77c7577dd885c27d55be08d65f5"></a>
 int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>filePosition</b></td></tr>
 <tr class="separator:a4253b77c7577dd885c27d55be08d65f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a444d686b30aee6e0bebdc50ef32ec38f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a444d686b30aee6e0bebdc50ef32ec38f"></a>
+int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>fileRequest</b></td></tr>
+<tr class="separator:a444d686b30aee6e0bebdc50ef32ec38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a35465c09371035f7f2b43afcd44838ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35465c09371035f7f2b43afcd44838ac"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Announce75</b> ()</td></tr>
+<tr class="separator:a35465c09371035f7f2b43afcd44838ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:affa6899781f5404ba93f657084e01c76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affa6899781f5404ba93f657084e01c76"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_fileId</b></td></tr>
+<tr class="separator:affa6899781f5404ba93f657084e01c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee77ffb76d20a24b5e24eef2d38b2186"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee77ffb76d20a24b5e24eef2d38b2186"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_pathName</b></td></tr>
+<tr class="separator:aee77ffb76d20a24b5e24eef2d38b2186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27d4e98240307a7f0db3455570ca4394"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27d4e98240307a7f0db3455570ca4394"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_storageGroupName</b></td></tr>
+<tr class="separator:a27d4e98240307a7f0db3455570ca4394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -217,14 +238,17 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgLength</b></td
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></td></tr>
 <tr class="separator:a612de3d126c437a78f58e4cc416c0b2a inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythprototransfer_8h_source.html#l00035">35</a> of file <a class="el" href="mythprototransfer_8h_source.html">mythprototransfer.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprototransfer_8h_source.html">mythprototransfer.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/mythprototransfer.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprototransfer_8cpp_source.html">mythprototransfer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

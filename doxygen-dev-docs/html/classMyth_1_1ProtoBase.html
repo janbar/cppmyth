@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classMyth_1_1ProtoBase-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::ProtoBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -98,20 +99,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Myth::ProtoBase:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classMyth_1_1ProtoBase.png" usemap="#Myth::ProtoBase_map" alt=""/>
-  <map id="Myth::ProtoBase_map" name="Myth::ProtoBase_map">
-<area href="classMyth_1_1ProtoEvent.html" alt="Myth::ProtoEvent" shape="rect" coords="0,56,156,80"/>
-<area href="classMyth_1_1ProtoMonitor.html" alt="Myth::ProtoMonitor" shape="rect" coords="166,56,322,80"/>
-<area href="classMyth_1_1ProtoPlayback.html" alt="Myth::ProtoPlayback" shape="rect" coords="581,56,737,80"/>
-<area href="classMyth_1_1ProtoTransfer.html" alt="Myth::ProtoTransfer" shape="rect" coords="747,56,903,80"/>
-<area href="classMyth_1_1Control.html" alt="Myth::Control" shape="rect" coords="83,112,239,136"/>
-<area href="classMyth_1_1LiveTVPlayback.html" alt="Myth::LiveTVPlayback" shape="rect" coords="249,112,405,136"/>
-<area href="classMyth_1_1FilePlayback.html" alt="Myth::FilePlayback" shape="rect" coords="415,112,571,136"/>
-<area href="classMyth_1_1ProtoRecorder.html" alt="Myth::ProtoRecorder" shape="rect" coords="581,112,737,136"/>
-<area href="classMyth_1_1RecordingPlayback.html" alt="Myth::RecordingPlayback" shape="rect" coords="747,112,903,136"/>
-</map>
- </div></div>
+<div class="center"><img src="classMyth_1_1ProtoBase__inherit__graph.png" border="0" usemap="#Myth_1_1ProtoBase_inherit__map" alt="Inheritance graph"/></div>
+<map name="Myth_1_1ProtoBase_inherit__map" id="Myth_1_1ProtoBase_inherit__map">
+<area shape="rect" id="node2" href="classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="183,5,307,32"/><area shape="rect" id="node3" href="classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="179,56,312,83"/><area shape="rect" id="node6" href="classMyth_1_1ProtoPlayback.html" title="Myth::ProtoPlayback" alt="" coords="173,107,317,133"/><area shape="rect" id="node10" href="classMyth_1_1ProtoTransfer.html" title="Myth::ProtoTransfer" alt="" coords="176,157,315,184"/><area shape="rect" id="node4" href="classMyth_1_1Control.html" title="Myth::Control" alt="" coords="401,5,503,32"/><area shape="rect" id="node5" href="classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="375,56,529,83"/><area shape="rect" id="node7" href="classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="385,107,519,133"/><area shape="rect" id="node8" href="classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="381,157,523,184"/><area shape="rect" id="node9" href="classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="366,208,538,235"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -139,6 +130,9 @@ virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</
 <tr class="memitem:a17dec195b18b391e74d383c6ad4be9df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dec195b18b391e74d383c6ad4be9df"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo</b> () const </td></tr>
 <tr class="separator:a17dec195b18b391e74d383c6ad4be9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -201,8 +195,76 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgLength</b></td
 <tr class="memitem:a612de3d126c437a78f58e4cc416c0b2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a612de3d126c437a78f58e4cc416c0b2a"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></td></tr>
 <tr class="separator:a612de3d126c437a78f58e4cc416c0b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1cc04397dc559f4bca7e254aaf71ac61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61">RcvVersion</a> (unsigned *version)</td></tr>
+<tr class="separator:a1cc04397dc559f4bca7e254aaf71ac61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53339814a5103e9ca5d680c860487dc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53339814a5103e9ca5d680c860487dc4"></a>
+ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo75</b> ()</td></tr>
+<tr class="separator:a53339814a5103e9ca5d680c860487dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82652e4c5e94bd7597be42bbbbe7b3b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82652e4c5e94bd7597be42bbbbe7b3b9"></a>
+ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo76</b> ()</td></tr>
+<tr class="separator:a82652e4c5e94bd7597be42bbbbe7b3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae894fb18519791f6ac1dfc7b56a5889c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae894fb18519791f6ac1dfc7b56a5889c"></a>
+ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo79</b> ()</td></tr>
+<tr class="separator:ae894fb18519791f6ac1dfc7b56a5889c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b04ccfddb2cf211d9ca1e501947b9c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b04ccfddb2cf211d9ca1e501947b9c0"></a>
+ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo82</b> ()</td></tr>
+<tr class="separator:a5b04ccfddb2cf211d9ca1e501947b9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f41d47c73519129ad532547c3d5a8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11f41d47c73519129ad532547c3d5a8f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:a11f41d47c73519129ad532547c3d5a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02cd61520d6071079633ba9b9240b8de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02cd61520d6071079633ba9b9240b8de"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo76</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:a02cd61520d6071079633ba9b9240b8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18557948745898efa14f7b940efd5ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab18557948745898efa14f7b940efd5ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo79</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:ab18557948745898efa14f7b940efd5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d47050c5077d6a6b08b59f92a8578c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0d47050c5077d6a6b08b59f92a8578c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo82</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:ac0d47050c5077d6a6b08b59f92a8578c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythprotobase_8h_source.html#l00044">44</a> of file <a class="el" href="mythprotobase_8h_source.html">mythprotobase.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1cc04397dc559f4bca7e254aaf71ac61"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ProtoBase::RcvVersion </td>
+          <td>(</td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>version</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parse feedback of command MYTH_PROTO_VERSION and return protocol version of backend </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">version</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true : false </dd></dl>
+
+<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00237">237</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
+
+<p>References <a class="el" href="mythprotobase_8cpp_source.html#l00118">ReadField()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a35c5d200bb8c30b4e19d978654d6cf09"></a>
 <div class="memitem">
 <div class="memproto">
@@ -233,16 +295,20 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true : false </dd></dl>
 
+<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00118">118</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="mythprotoevent_8cpp_source.html#l00124">Myth::ProtoEvent::RcvBackendMessage()</a>, and <a class="el" href="mythprotobase_8cpp_source.html#l00237">RcvVersion()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8h_source.html">mythprotobase.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/mythprotobase.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

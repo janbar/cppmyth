@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classMyth_1_1ProtoMonitor-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::ProtoMonitor Class Reference</div>  </div>
@@ -97,14 +98,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Myth::ProtoMonitor:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classMyth_1_1ProtoMonitor.png" usemap="#Myth::ProtoMonitor_map" alt=""/>
-  <map id="Myth::ProtoMonitor_map" name="Myth::ProtoMonitor_map">
-<area href="classMyth_1_1ProtoBase.html" alt="Myth::ProtoBase" shape="rect" coords="74,0,212,24"/>
-<area href="classMyth_1_1Control.html" alt="Myth::Control" shape="rect" coords="0,112,138,136"/>
-<area href="classMyth_1_1LiveTVPlayback.html" alt="Myth::LiveTVPlayback" shape="rect" coords="148,112,286,136"/>
-</map>
- </div></div>
+<div class="center"><img src="classMyth_1_1ProtoMonitor__inherit__graph.png" border="0" usemap="#Myth_1_1ProtoMonitor_inherit__map" alt="Inheritance graph"/></div>
+<map name="Myth_1_1ProtoMonitor_inherit__map" id="Myth_1_1ProtoMonitor_inherit__map">
+<area shape="rect" id="node3" href="classMyth_1_1Control.html" title="Myth::Control" alt="" coords="5,155,107,181"/><area shape="rect" id="node4" href="classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="131,155,284,181"/><area shape="rect" id="node2" href="classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="72,5,192,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -136,6 +133,9 @@ virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</
 <tr class="memitem:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dec195b18b391e74d383c6ad4be9df"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo</b> () const </td></tr>
 <tr class="separator:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -209,6 +209,57 @@ ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo<
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
 <tr class="separator:a3dcb6d25fbcf388ebe3966694936c566 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af87eb746f5297c772dcd7c79739a226b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af87eb746f5297c772dcd7c79739a226b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Announce75</b> ()</td></tr>
+<tr class="separator:af87eb746f5297c772dcd7c79739a226b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04474afcf855f9d01af14af4f2d3e077"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04474afcf855f9d01af14af4f2d3e077"></a>
+ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetNextFreeRecorder75</b> (int rnum)</td></tr>
+<tr class="separator:a04474afcf855f9d01af14af4f2d3e077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345fabca07fa06c9b39a0697a3b4af91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a345fabca07fa06c9b39a0697a3b4af91"></a>
+ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetRecorderFromNum75</b> (int rnum)</td></tr>
+<tr class="separator:a345fabca07fa06c9b39a0697a3b4af91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca4133967e4933016afae0adedfdb0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abca4133967e4933016afae0adedfdb0f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>QueryFreeSpaceSummary75</b> (int64_t *total, int64_t *used)</td></tr>
+<tr class="separator:abca4133967e4933016afae0adedfdb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1e223afed60aef3469095020908b4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c1e223afed60aef3469095020908b4e"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetSetting75</b> (const std::string &amp;hostname, const std::string &amp;setting)</td></tr>
+<tr class="separator:a6c1e223afed60aef3469095020908b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1064f7a9713567ef02f935299f51d403"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1064f7a9713567ef02f935299f51d403"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetSetting75</b> (const std::string &amp;hostname, const std::string &amp;setting, const std::string &amp;value)</td></tr>
+<tr class="separator:a1064f7a9713567ef02f935299f51d403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9bfeec5a2b12e1cb80d3a5cdc58e4b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9bfeec5a2b12e1cb80d3a5cdc58e4b7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>QueryGenpixmap75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program)</td></tr>
+<tr class="separator:af9bfeec5a2b12e1cb80d3a5cdc58e4b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa896aedeec903e603248d24b79f3a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fa896aedeec903e603248d24b79f3a9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteRecording75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, bool force, bool forget)</td></tr>
+<tr class="separator:a1fa896aedeec903e603248d24b79f3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8e33fdac11016c598e78ab75cc3d84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d8e33fdac11016c598e78ab75cc3d84"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>UndeleteRecording75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program)</td></tr>
+<tr class="separator:a0d8e33fdac11016c598e78ab75cc3d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ed70be01c3be1b6e5ba8bead8c1506a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ed70be01c3be1b6e5ba8bead8c1506a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>StopRecording75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program)</td></tr>
+<tr class="separator:a1ed70be01c3be1b6e5ba8bead8c1506a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb1cec911a5a1fb9b9d215514104af8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb1cec911a5a1fb9b9d215514104af8a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>CancelNextRecording75</b> (int rnum, bool cancel)</td></tr>
+<tr class="separator:adb1cec911a5a1fb9b9d215514104af8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a089e630c2ab3155c1f97ec4ed4a7373b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a089e630c2ab3155c1f97ec4ed4a7373b"></a>
+StorageGroupFilePtr&#160;</td><td class="memItemRight" valign="bottom"><b>QuerySGFile75</b> (const std::string &amp;hostname, const std::string &amp;sgname, const std::string &amp;filename)</td></tr>
+<tr class="separator:a089e630c2ab3155c1f97ec4ed4a7373b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed751d31260c6f31a271646da6aed02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ed751d31260c6f31a271646da6aed02"></a>
+MarkListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCutList75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, int unit)</td></tr>
+<tr class="separator:a9ed751d31260c6f31a271646da6aed02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007a40111ba164c0320d499310449636"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a007a40111ba164c0320d499310449636"></a>
+MarkListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCutListXX</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, int unit)</td></tr>
+<tr class="separator:a007a40111ba164c0320d499310449636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e7bb84832001989792315a02ec538f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e7bb84832001989792315a02ec538f2"></a>
+MarkListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCommBreakList75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, int unit)</td></tr>
+<tr class="separator:a1e7bb84832001989792315a02ec538f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb714e6cdc819af2a762021c41968b91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb714e6cdc819af2a762021c41968b91"></a>
+MarkListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetCommBreakListXX</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, int unit)</td></tr>
+<tr class="separator:acb714e6cdc819af2a762021c41968b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
@@ -240,14 +291,17 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgLength</b></td
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></td></tr>
 <tr class="separator:a612de3d126c437a78f58e4cc416c0b2a inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythprotomonitor_8h_source.html#l00033">33</a> of file <a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/mythprotomonitor.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotomonitor_8cpp_source.html">mythprotomonitor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

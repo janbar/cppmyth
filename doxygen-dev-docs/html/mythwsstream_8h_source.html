@@ -124,30 +124,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classMyth_1_1WSStream.html">   35</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classMyth_1_1WSStream.html">WSStream</a> : <span class="keyword">public</span> <a class="code" href="classMyth_1_1Stream.html">Stream</a></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classMyth_1_1WSStream.html">WSStream</a>(<a class="code" href="classMyth_1_1WSResponse.html">WSResponse</a> *response);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~<a class="code" href="classMyth_1_1WSStream.html">WSStream</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> EndOfStream();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> Read(<span class="keywordtype">void</span>* buffer, <span class="keywordtype">unsigned</span> n);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    int64_t GetSize() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    int64_t GetPosition() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    int64_t Seek(int64_t offset, WHENCE_t whence);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classMyth_1_1WSResponse.html">WSResponse</a> *m_response;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  };</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHWSSTREAM_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
-<div class="ttc" id="classMyth_1_1WSResponse_html"><div class="ttname"><a href="classMyth_1_1WSResponse.html">Myth::WSResponse</a></div><div class="ttdef"><b>Definition:</b> mythwsresponse.h:36</div></div>
-<div class="ttc" id="classMyth_1_1Stream_html"><div class="ttname"><a href="classMyth_1_1Stream.html">Myth::Stream</a></div><div class="ttdef"><b>Definition:</b> mythstream.h:29</div></div>
-<div class="ttc" id="classMyth_1_1WSStream_html"><div class="ttname"><a href="classMyth_1_1WSStream.html">Myth::WSStream</a></div><div class="ttdef"><b>Definition:</b> mythwsstream.h:35</div></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classMyth_1_1WSStream.html">WSStream</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classMyth_1_1WSStream.html">WSStream</a>(<a class="code" href="classMyth_1_1WSResponse.html">WSResponse</a> *response);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ~<a class="code" href="classMyth_1_1WSStream.html">WSStream</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> EndOfStream();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> Read(<span class="keywordtype">void</span>* buffer, <span class="keywordtype">unsigned</span> n);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    int64_t GetSize() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    int64_t GetPosition() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    int64_t Seek(int64_t offset, WHENCE_t whence);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classMyth_1_1WSResponse.html">WSResponse</a> *m_response;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  };</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHWSSTREAM_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
+<div class="ttc" id="classMyth_1_1WSResponse_html"><div class="ttname"><a href="classMyth_1_1WSResponse.html">Myth::WSResponse</a></div><div class="ttdef"><b>Definition:</b> <a href="mythwsresponse_8h_source.html#l00036">mythwsresponse.h:36</a></div></div>
+<div class="ttc" id="classMyth_1_1Stream_html"><div class="ttname"><a href="classMyth_1_1Stream.html">Myth::Stream</a></div><div class="ttdef"><b>Definition:</b> <a href="mythstream_8h_source.html#l00029">mythstream.h:29</a></div></div>
+<div class="ttc" id="classMyth_1_1WSStream_html"><div class="ttname"><a href="classMyth_1_1WSStream.html">Myth::WSStream</a></div><div class="ttdef"><b>Definition:</b> <a href="mythwsstream_8h_source.html#l00035">mythwsstream.h:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:35 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

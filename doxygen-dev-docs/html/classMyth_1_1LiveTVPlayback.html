@@ -88,6 +88,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1LiveTVPlayback-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::LiveTVPlayback Class Reference</div>  </div>
@@ -96,15 +99,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Myth::LiveTVPlayback:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classMyth_1_1LiveTVPlayback.png" usemap="#Myth::LiveTVPlayback_map" alt=""/>
-  <map id="Myth::LiveTVPlayback_map" name="Myth::LiveTVPlayback_map">
-<area href="classMyth_1_1ProtoMonitor.html" alt="Myth::ProtoMonitor" shape="rect" coords="0,56,140,80"/>
-<area href="classMyth_1_1Stream.html" alt="Myth::Stream" shape="rect" coords="150,56,290,80"/>
-<area href="classMyth_1_1EventSubscriber.html" alt="Myth::EventSubscriber" shape="rect" coords="300,56,440,80"/>
-<area href="classMyth_1_1ProtoBase.html" alt="Myth::ProtoBase" shape="rect" coords="0,0,140,24"/>
-</map>
- </div></div>
+<div class="center"><img src="classMyth_1_1LiveTVPlayback__inherit__graph.png" border="0" usemap="#Myth_1_1LiveTVPlayback_inherit__map" alt="Inheritance graph"/></div>
+<map name="Myth_1_1LiveTVPlayback_inherit__map" id="Myth_1_1LiveTVPlayback_inherit__map">
+<area shape="rect" id="node2" href="classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="5,80,139,107"/><area shape="rect" id="node3" href="classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="12,5,132,32"/><area shape="rect" id="node4" href="classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="163,80,264,107"/><area shape="rect" id="node5" href="classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="288,80,441,107"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -194,6 +192,83 @@ virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</
 <tr class="memitem:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dec195b18b391e74d383c6ad4be9df"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo</b> () const </td></tr>
 <tr class="separator:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:aef990cf409392fcbcca7d7013a7f45e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef990cf409392fcbcca7d7013a7f45e6"></a>
+typedef std::vector&lt; std::pair<br class="typebreak"/>
+&lt; ProtoTransferPtr, ProgramPtr &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>chained_t</b></td></tr>
+<tr class="separator:aef990cf409392fcbcca7d7013a7f45e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a028447b336ecf0b1014793ffcd803a0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a028447b336ecf0b1014793ffcd803a0e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InitChain</b> ()</td></tr>
+<tr class="separator:a028447b336ecf0b1014793ffcd803a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a7bb3bad8a5d47e20dbcf858a1d4cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2a7bb3bad8a5d47e20dbcf858a1d4cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearChain</b> ()</td></tr>
+<tr class="separator:ac2a7bb3bad8a5d47e20dbcf858a1d4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45b0a643a5147d4ffdd158d3055ac13b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45b0a643a5147d4ffdd158d3055ac13b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetRecorderNum</b> ()</td></tr>
+<tr class="separator:a45b0a643a5147d4ffdd158d3055ac13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74314df4b9b972d81941b3a6f901c28a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74314df4b9b972d81941b3a6f901c28a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsChained</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program)</td></tr>
+<tr class="separator:a74314df4b9b972d81941b3a6f901c28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a5a3965ecd515017d2791e4f91e316"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1a5a3965ecd515017d2791e4f91e316"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>HandleChainUpdate</b> (<a class="el" href="classMyth_1_1ProtoRecorder.html">ProtoRecorder</a> &amp;recorder)</td></tr>
+<tr class="separator:aa1a5a3965ecd515017d2791e4f91e316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab7390328e80b604924c514a5a3927f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ab7390328e80b604924c514a5a3927f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchChain</b> (unsigned sequence)</td></tr>
+<tr class="separator:a0ab7390328e80b604924c514a5a3927f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57440f0aa3757482f3188c8aa06d2bf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57440f0aa3757482f3188c8aa06d2bf4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchChainLast</b> ()</td></tr>
+<tr class="separator:a57440f0aa3757482f3188c8aa06d2bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af7547a43834e6a912d333a4d82a0ffb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7547a43834e6a912d333a4d82a0ffb7"></a>
+<a class="el" href="classMyth_1_1EventHandler.html">EventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_eventHandler</b></td></tr>
+<tr class="separator:af7547a43834e6a912d333a4d82a0ffb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8b447c567589bb9f0f8f57cea9c476b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8b447c567589bb9f0f8f57cea9c476b"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_eventSubscriberId</b></td></tr>
+<tr class="separator:aa8b447c567589bb9f0f8f57cea9c476b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aa7327838f68f0f250bf47c0927bc05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6aa7327838f68f0f250bf47c0927bc05"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_tuneDelay</b></td></tr>
+<tr class="separator:a6aa7327838f68f0f250bf47c0927bc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6aff1f5bcebb2efce9c204f280c343"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd6aff1f5bcebb2efce9c204f280c343"></a>
+ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>m_recorder</b></td></tr>
+<tr class="separator:afd6aff1f5bcebb2efce9c204f280c343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996599408369930c4eb1c6e463085367"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a996599408369930c4eb1c6e463085367"></a>
+SignalStatusPtr&#160;</td><td class="memItemRight" valign="bottom"><b>m_signal</b></td></tr>
+<tr class="separator:a996599408369930c4eb1c6e463085367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136834b70220f58539a7c766d12a35dc"><td class="memItemLeft" ><a class="anchor" id="a136834b70220f58539a7c766d12a35dc"></a>
+struct {</td></tr>
+<tr class="memitem:a8563ecb8b769529f08e0419635491ae3"><td class="memItemLeft" ><a class="anchor" id="a2087cf5750dbb7d35882f1bda12dcb1c"></a>
+&#160;&#160;&#160;std::string&#160;&#160;&#160;<b>UID</b></td></tr>
+<tr class="separator:a8563ecb8b769529f08e0419635491ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67cd33c35e5c0c79a6f933370ff3e7d7"><td class="memItemLeft" ><a class="anchor" id="ae2c922fa52a7fe61caf472e6173be948"></a>
+&#160;&#160;&#160;chained_t&#160;&#160;&#160;<b>chained</b></td></tr>
+<tr class="separator:a67cd33c35e5c0c79a6f933370ff3e7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2aa454c47e70d8161e8eba526475550"><td class="memItemLeft" ><a class="anchor" id="a662ff3763a1533af5b9ab4d108b66a15"></a>
+&#160;&#160;&#160;ProtoTransferPtr&#160;&#160;&#160;<b>currentTransfer</b></td></tr>
+<tr class="separator:ae2aa454c47e70d8161e8eba526475550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83ae1d96b06aded76afb308efb048643"><td class="memItemLeft" ><a class="anchor" id="a974b59c4f8698e7f38a304daf3e1566a"></a>
+&#160;&#160;&#160;volatile unsigned&#160;&#160;&#160;<b>currentSequence</b></td></tr>
+<tr class="separator:a83ae1d96b06aded76afb308efb048643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a794e3ca16b6e2c01604d62a8de19c453"><td class="memItemLeft" ><a class="anchor" id="aa6db174ebd82b581be5fee9e022c3ee5"></a>
+&#160;&#160;&#160;volatile unsigned&#160;&#160;&#160;<b>lastSequence</b></td></tr>
+<tr class="separator:a794e3ca16b6e2c01604d62a8de19c453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c388e3d943785c8a1fae9a699975cc0"><td class="memItemLeft" ><a class="anchor" id="a0d0ea5b9e487c53b5be0199e9871a6d6"></a>
+&#160;&#160;&#160;volatile bool&#160;&#160;&#160;<b>watch</b></td></tr>
+<tr class="separator:a4c388e3d943785c8a1fae9a699975cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba38b05498e749465a613f8d9f09a178"><td class="memItemLeft" ><a class="anchor" id="a93a683ba821aa68c366af62b71ab30c7"></a>
+&#160;&#160;&#160;volatile bool&#160;&#160;&#160;<b>switchOnCreate</b></td></tr>
+<tr class="separator:aba38b05498e749465a613f8d9f09a178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136834b70220f58539a7c766d12a35dc"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>m_chain</b></td></tr>
+<tr class="separator:a136834b70220f58539a7c766d12a35dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -296,14 +371,17 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgLength</b></td
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></td></tr>
 <tr class="separator:a612de3d126c437a78f58e4cc416c0b2a inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythlivetvplayback_8h_source.html#l00037">37</a> of file <a class="el" href="mythlivetvplayback_8h_source.html">mythlivetvplayback.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/<a class="el" href="mythlivetvplayback_8h_source.html">mythlivetvplayback.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/mythlivetvplayback.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/<a class="el" href="mythlivetvplayback_8cpp_source.html">mythlivetvplayback.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

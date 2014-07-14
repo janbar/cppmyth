@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLATFORM_1_1CEvent-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PLATFORM::CEvent Class Reference</div>  </div>
@@ -118,14 +120,47 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae99684f8eb41755d4a1199ab94fd059d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae99684f8eb41755d4a1199ab94fd059d"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Sleep</b> (uint32_t iTimeout)</td></tr>
 <tr class="separator:ae99684f8eb41755d4a1199ab94fd059d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a8da546d1001bf2ca096e8665e4955780"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8da546d1001bf2ca096e8665e4955780"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Set</b> (bool bBroadcast=false)</td></tr>
+<tr class="separator:a8da546d1001bf2ca096e8665e4955780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af030ff2552a1e8e971d4e5107e3dd331"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af030ff2552a1e8e971d4e5107e3dd331"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ResetAndReturn</b> (void)</td></tr>
+<tr class="separator:af030ff2552a1e8e971d4e5107e3dd331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5a4dc091582896a4775180068889be04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a4dc091582896a4775180068889be04"></a>
+volatile bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_bSignaled</b></td></tr>
+<tr class="separator:a5a4dc091582896a4775180068889be04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a8835cbdfde5269a8360ff0f3ebd3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88a8835cbdfde5269a8360ff0f3ebd3c"></a>
+<a class="el" href="classPLATFORM_1_1CCondition.html">CCondition</a>&lt; volatile bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_condition</b></td></tr>
+<tr class="separator:a88a8835cbdfde5269a8360ff0f3ebd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d55063089015203f5354e8dbd536bee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d55063089015203f5354e8dbd536bee"></a>
+<a class="el" href="classPLATFORM_1_1CMutex.html">CMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_mutex</b></td></tr>
+<tr class="separator:a5d55063089015203f5354e8dbd536bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7c0260039e51276d828dc57b09b537"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d7c0260039e51276d828dc57b09b537"></a>
+volatile bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_bBroadcast</b></td></tr>
+<tr class="separator:a9d7c0260039e51276d828dc57b09b537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a341ce638441fe86876fac210b0d1f505"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a341ce638441fe86876fac210b0d1f505"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>m_iWaitingThreads</b></td></tr>
+<tr class="separator:a341ce638441fe86876fac210b0d1f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945a68d92b664350bf266086f20a0bdb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a945a68d92b664350bf266086f20a0bdb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_bAutoReset</b></td></tr>
+<tr class="separator:a945a68d92b664350bf266086f20a0bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mutex_8h_source.html#l00282">282</a> of file <a class="el" href="mutex_8h_source.html">mutex.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/platform/threads/<a class="el" href="mutex_8h_source.html">mutex.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

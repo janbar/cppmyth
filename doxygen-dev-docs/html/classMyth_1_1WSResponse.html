@@ -88,6 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1WSResponse-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::WSResponse Class Reference</div>  </div>
@@ -111,15 +113,60 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ReadContent</b> (ch
 <tr class="memitem:a11bb439180c8533a52e5dacf5dc717ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11bb439180c8533a52e5dacf5dc717ae"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetConsumed</b> () const </td></tr>
 <tr class="separator:a11bb439180c8533a52e5dacf5dc717ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ad22f20ca850f080902db0ed72dad1ae3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad22f20ca850f080902db0ed72dad1ae3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>WSResponse</b> (const <a class="el" href="classMyth_1_1WSResponse.html">WSResponse</a> &amp;)</td></tr>
+<tr class="separator:ad22f20ca850f080902db0ed72dad1ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64973e448fe3078df4bda56564087e94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64973e448fe3078df4bda56564087e94"></a>
+<a class="el" href="classMyth_1_1WSResponse.html">WSResponse</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMyth_1_1WSResponse.html">WSResponse</a> &amp;)</td></tr>
+<tr class="separator:a64973e448fe3078df4bda56564087e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5342a00748ec44b81e721d8a2fda61c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5342a00748ec44b81e721d8a2fda61c7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SendRequest</b> (const <a class="el" href="classMyth_1_1WSRequest.html">WSRequest</a> &amp;request)</td></tr>
+<tr class="separator:a5342a00748ec44b81e721d8a2fda61c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc9ae9a3cd68b7f9e743f1bcfae58a56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc9ae9a3cd68b7f9e743f1bcfae58a56"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetResponse</b> ()</td></tr>
+<tr class="separator:afc9ae9a3cd68b7f9e743f1bcfae58a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a11881bdf8e240d414b227848622968be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11881bdf8e240d414b227848622968be"></a>
+<a class="el" href="classMyth_1_1TcpSocket.html">TcpSocket</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_socket</b></td></tr>
+<tr class="separator:a11881bdf8e240d414b227848622968be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaec22969333bd42a10cfaa47f4d577c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaec22969333bd42a10cfaa47f4d577c6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isValid</b></td></tr>
+<tr class="separator:aaec22969333bd42a10cfaa47f4d577c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa627106742a0f462599eff7b4d1dadb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa627106742a0f462599eff7b4d1dadb4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_statusCode</b></td></tr>
+<tr class="separator:aa627106742a0f462599eff7b4d1dadb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1404ee1d43e3592fcfcad8207f3284"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a1404ee1d43e3592fcfcad8207f3284"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverInfo</b></td></tr>
+<tr class="separator:a7a1404ee1d43e3592fcfcad8207f3284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6050cb46071927917a1664edbdc826"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb6050cb46071927917a1664edbdc826"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_etag</b></td></tr>
+<tr class="separator:aeb6050cb46071927917a1664edbdc826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea6983e077131470df67026b6cc66f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abea6983e077131470df67026b6cc66f5"></a>
+CT_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_contentType</b></td></tr>
+<tr class="separator:abea6983e077131470df67026b6cc66f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9220db1479c5e08323c24f3d3607f7ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9220db1479c5e08323c24f3d3607f7ce"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_contentLength</b></td></tr>
+<tr class="separator:a9220db1479c5e08323c24f3d3607f7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb30f5a77aca1eab8d2cd11e018bbced"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb30f5a77aca1eab8d2cd11e018bbced"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_consumed</b></td></tr>
+<tr class="separator:aeb30f5a77aca1eab8d2cd11e018bbced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythwsresponse_8h_source.html#l00036">36</a> of file <a class="el" href="mythwsresponse_8h_source.html">mythwsresponse.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythwsresponse_8h_source.html">mythwsresponse.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/mythwsresponse.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythwsresponse_8cpp_source.html">mythwsresponse.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

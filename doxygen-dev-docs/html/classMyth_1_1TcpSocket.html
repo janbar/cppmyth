@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1TcpSocket-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::TcpSocket Class Reference</div>  </div>
@@ -118,21 +120,48 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsConnected</b> () co
 <tr class="memitem:adff22526afe9be29714fd236b0739785"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adff22526afe9be29714fd236b0739785"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Listen</b> (timeval *timeout)</td></tr>
 <tr class="separator:adff22526afe9be29714fd236b0739785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5247a47336d36322a1f3d91fc92e67dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5247a47336d36322a1f3d91fc92e67dc"></a>
+tcp_socket_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a5247a47336d36322a1f3d91fc92e67dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a348f2f522042ad26d6f4129b4c040232"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a348f2f522042ad26d6f4129b4c040232"></a>
 static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>GetMyHostName</b> ()</td></tr>
 <tr class="separator:a348f2f522042ad26d6f4129b4c040232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a0065f37987d6985d48951a76765178f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0065f37987d6985d48951a76765178f8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TcpSocket</b> (const <a class="el" href="classMyth_1_1TcpSocket.html">TcpSocket</a> &amp;)</td></tr>
+<tr class="separator:a0065f37987d6985d48951a76765178f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ab61662331494819e5b17600c87da3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69ab61662331494819e5b17600c87da3"></a>
+<a class="el" href="classMyth_1_1TcpSocket.html">TcpSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMyth_1_1TcpSocket.html">TcpSocket</a> &amp;)</td></tr>
+<tr class="separator:a69ab61662331494819e5b17600c87da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aab681b936c020d104efdd5d21b60500f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab681b936c020d104efdd5d21b60500f"></a>
+tcp_socket_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_socket</b></td></tr>
+<tr class="separator:aab681b936c020d104efdd5d21b60500f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0c6873b203d228e9b6e7ad8514e011"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc0c6873b203d228e9b6e7ad8514e011"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_rcvbuf</b></td></tr>
+<tr class="separator:abc0c6873b203d228e9b6e7ad8514e011"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48dca9c1d56fdb78d01e81891f51ad56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48dca9c1d56fdb78d01e81891f51ad56"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_errno</b></td></tr>
+<tr class="separator:a48dca9c1d56fdb78d01e81891f51ad56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="mythsocket_8h_source.html#l00035">35</a> of file <a class="el" href="mythsocket_8h_source.html">mythsocket.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythsocket_8h_source.html">mythsocket.h</a></li>
-<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/mythsocket.cpp</li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/private/<a class="el" href="mythsocket_8cpp_source.html">mythsocket.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

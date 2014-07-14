@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classMyth_1_1ProtoPlayback-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::ProtoPlayback Class Reference</div>  </div>
@@ -96,15 +97,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Myth::ProtoPlayback:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classMyth_1_1ProtoPlayback.png" usemap="#Myth::ProtoPlayback_map" alt=""/>
-  <map id="Myth::ProtoPlayback_map" name="Myth::ProtoPlayback_map">
-<area href="classMyth_1_1ProtoBase.html" alt="Myth::ProtoBase" shape="rect" coords="166,0,322,24"/>
-<area href="classMyth_1_1FilePlayback.html" alt="Myth::FilePlayback" shape="rect" coords="0,112,156,136"/>
-<area href="classMyth_1_1ProtoRecorder.html" alt="Myth::ProtoRecorder" shape="rect" coords="166,112,322,136"/>
-<area href="classMyth_1_1RecordingPlayback.html" alt="Myth::RecordingPlayback" shape="rect" coords="332,112,488,136"/>
-</map>
- </div></div>
+<div class="center"><img src="classMyth_1_1ProtoPlayback__inherit__graph.png" border="0" usemap="#Myth_1_1ProtoPlayback_inherit__map" alt="Inheritance graph"/></div>
+<map name="Myth_1_1ProtoPlayback_inherit__map" id="Myth_1_1ProtoPlayback_inherit__map">
+<area shape="rect" id="node3" href="classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="5,155,139,181"/><area shape="rect" id="node4" href="classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="163,155,305,181"/><area shape="rect" id="node5" href="classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="330,155,501,181"/><area shape="rect" id="node2" href="classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="175,5,295,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -136,6 +132,9 @@ virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</
 <tr class="memitem:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dec195b18b391e74d383c6ad4be9df"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo</b> () const </td></tr>
 <tr class="separator:a17dec195b18b391e74d383c6ad4be9df inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
+<tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -145,9 +144,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>TransferDone</b> (<a 
 <tr class="memitem:a0ed12526c98da5c1b898e75ae671d578"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ed12526c98da5c1b898e75ae671d578"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>TransferIsOpen</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer)</td></tr>
 <tr class="separator:a0ed12526c98da5c1b898e75ae671d578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a7d109da1f9755cc30b356e5c3bc577"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a7d109da1f9755cc30b356e5c3bc577"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>TransferRequestBlock</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer, unsigned n)</td></tr>
-<tr class="separator:a1a7d109da1f9755cc30b356e5c3bc577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7b3f0d282877a637b08a05a8cfc624"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed7b3f0d282877a637b08a05a8cfc624"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>TransferRequestBlock</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer, void *buffer, unsigned n)</td></tr>
+<tr class="separator:aed7b3f0d282877a637b08a05a8cfc624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a963b5946c32a3d30cfed05b32c02edda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a963b5946c32a3d30cfed05b32c02edda"></a>
 int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>TransferSeek</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer, int64_t offset, WHENCE_t whence)</td></tr>
 <tr class="separator:a963b5946c32a3d30cfed05b32c02edda"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,6 +180,24 @@ ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo<
 <tr class="memitem:a3dcb6d25fbcf388ebe3966694936c566 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dcb6d25fbcf388ebe3966694936c566"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
 <tr class="separator:a3dcb6d25fbcf388ebe3966694936c566 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a0a72300f9960a542af48e930943e17b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a72300f9960a542af48e930943e17b7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Announce75</b> ()</td></tr>
+<tr class="separator:a0a72300f9960a542af48e930943e17b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ce81851c46b264cd0d5e13d82dee77"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46ce81851c46b264cd0d5e13d82dee77"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>TransferDone75</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer)</td></tr>
+<tr class="separator:a46ce81851c46b264cd0d5e13d82dee77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc60922dd6584f9f16d7656419cc7dc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc60922dd6584f9f16d7656419cc7dc8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>TransferIsOpen75</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer)</td></tr>
+<tr class="separator:adc60922dd6584f9f16d7656419cc7dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c8cd0dafc4466750e44c5fa56fff88f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c8cd0dafc4466750e44c5fa56fff88f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>TransferRequestBlock75</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer, unsigned n)</td></tr>
+<tr class="separator:a0c8cd0dafc4466750e44c5fa56fff88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a400e2b6b25c9bc894d1f3bd4d1cd85d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a400e2b6b25c9bc894d1f3bd4d1cd85d1"></a>
+int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>TransferSeek75</b> (<a class="el" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a> &amp;transfer, int64_t offset, WHENCE_t whence)</td></tr>
+<tr class="separator:a400e2b6b25c9bc894d1f3bd4d1cd85d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -220,7 +237,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:45 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:25 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

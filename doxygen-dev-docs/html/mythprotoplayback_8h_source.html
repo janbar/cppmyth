@@ -135,33 +135,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordflow">return</span> TransferIsOpen75(transfer);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> TransferRequestBlock(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, <span class="keywordtype">unsigned</span> n)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordflow">return</span> TransferRequestBlock75(transfer, n);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    int64_t TransferSeek(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, int64_t offset, WHENCE_t whence)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">return</span> TransferSeek75(transfer, offset, whence);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> Announce75();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> TransferDone75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> TransferIsOpen75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> TransferRequestBlock75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, <span class="keywordtype">unsigned</span> n);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    int64_t TransferSeek75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, int64_t offset, WHENCE_t whence);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  };</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTOPLAYBACK_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:35</div></div>
-<div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> mythprotobase.h:44</div></div>
-<div class="ttc" id="classMyth_1_1ProtoPlayback_html"><div class="ttname"><a href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></div><div class="ttdef"><b>Definition:</b> mythprotoplayback.h:33</div></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> TransferRequestBlock(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, <span class="keywordtype">void</span> *buffer, <span class="keywordtype">unsigned</span> n);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    int64_t TransferSeek(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, int64_t offset, WHENCE_t whence)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">return</span> TransferSeek75(transfer, offset, whence);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> Announce75();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> TransferDone75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> TransferIsOpen75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> TransferRequestBlock75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, <span class="keywordtype">unsigned</span> n);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    int64_t TransferSeek75(<a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>&amp; transfer, int64_t offset, WHENCE_t whence);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  };</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTOPLAYBACK_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00035">mythprototransfer.h:35</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoPlayback_html"><div class="ttname"><a href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotoplayback_8h_source.html#l00033">mythprotoplayback.h:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 5 2014 17:45:36 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 14 2014 13:47:19 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
