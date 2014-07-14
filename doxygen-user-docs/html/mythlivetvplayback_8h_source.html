@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -176,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> ClearChain();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> GetRecorderNum();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> IsChained(<span class="keyword">const</span> <a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> HandleChainUpdate(<a class="code" href="classMyth_1_1ProtoRecorder.html">ProtoRecorder</a>&amp; recorder);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> HandleChainUpdate();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">bool</span> SwitchChain(<span class="keywordtype">unsigned</span> sequence);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">bool</span> SwitchChainLast();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  };</div>
@@ -191,13 +191,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classMyth_1_1ProtoMonitor_html"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html">Myth::ProtoMonitor</a></div><div class="ttdef"><b>Definition:</b> mythprotomonitor.h:33</div></div>
 <div class="ttc" id="classMyth_1_1Stream_html"><div class="ttname"><a href="classMyth_1_1Stream.html">Myth::Stream</a></div><div class="ttdef"><b>Definition:</b> mythstream.h:29</div></div>
 <div class="ttc" id="classMyth_1_1LiveTVPlayback_html"><div class="ttname"><a href="classMyth_1_1LiveTVPlayback.html">Myth::LiveTVPlayback</a></div><div class="ttdef"><b>Definition:</b> mythlivetvplayback.h:37</div></div>
-<div class="ttc" id="classMyth_1_1ProtoRecorder_html"><div class="ttname"><a href="classMyth_1_1ProtoRecorder.html">Myth::ProtoRecorder</a></div><div class="ttdef"><b>Definition:</b> mythprotorecorder.h:33</div></div>
 <div class="ttc" id="structMyth_1_1Channel_html"><div class="ttname"><a href="structMyth_1_1Channel.html">Myth::Channel</a></div><div class="ttdef"><b>Definition:</b> mythtypes.h:230</div></div>
 <div class="ttc" id="classMyth_1_1EventSubscriber_html"><div class="ttname"><a href="classMyth_1_1EventSubscriber.html">Myth::EventSubscriber</a></div><div class="ttdef"><b>Definition:</b> mytheventhandler.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 14 2014 13:47:24 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 15 2014 01:41:30 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

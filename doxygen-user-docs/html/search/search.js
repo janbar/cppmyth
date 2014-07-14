@@ -9,14 +9,16 @@ var indexSectionsWithContent =
 {
   0: "acdefgilmprsuvw",
   1: "acefilmprsvw",
-  2: "adegpru"
+  2: "adegpru",
+  3: "f"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions"
+  2: "functions",
+  3: "variables"
 };
 
 function convertToId(search)
