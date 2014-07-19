@@ -49,7 +49,7 @@ namespace Myth
 
     virtual bool Open() = 0;
     virtual void Close();
-    virtual bool IsOpen() const;
+    virtual bool IsOpen() { return m_isOpen; }
     virtual unsigned GetProtoVersion() const;
     virtual std::string GetServer() const;
     virtual unsigned GetPort() const;
@@ -60,7 +60,6 @@ namespace Myth
     PLATFORM::CMutex *m_mutex;
     TcpSocket *m_socket;
     unsigned m_protoVersion;
-    bool m_isOpen;
     std::string m_server;
     unsigned m_port;
     bool m_hang;
@@ -84,7 +83,7 @@ namespace Myth
       return RcvProgramInfo75();
     }
 
-    void MakeProgramInfo(Program& program, std::string& msg)
+    void MakeProgramInfo(const Program& program, std::string& msg)
     {
       if (m_protoVersion >= 82) MakeProgramInfo82(program, msg);
       else if (m_protoVersion >= 79) MakeProgramInfo79(program, msg);
@@ -93,16 +92,18 @@ namespace Myth
     }
 
   private:
+    bool m_isOpen;
+
     bool RcvVersion(unsigned *version);
 
     ProgramPtr RcvProgramInfo75();
     ProgramPtr RcvProgramInfo76();
     ProgramPtr RcvProgramInfo79();
     ProgramPtr RcvProgramInfo82();
-    void MakeProgramInfo75(Program& program, std::string& msg);
-    void MakeProgramInfo76(Program& program, std::string& msg);
-    void MakeProgramInfo79(Program& program, std::string& msg);
-    void MakeProgramInfo82(Program& program, std::string& msg);
+    void MakeProgramInfo75(const Program& program, std::string& msg);
+    void MakeProgramInfo76(const Program& program, std::string& msg);
+    void MakeProgramInfo79(const Program& program, std::string& msg);
+    void MakeProgramInfo82(const Program& program, std::string& msg);
 
   };
 

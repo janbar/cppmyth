@@ -52,12 +52,12 @@ ProtoBase::ProtoBase(const std::string& server, unsigned port)
 : m_mutex(new PLATFORM::CMutex)
 , m_socket(new TcpSocket())
 , m_protoVersion(0)
-, m_isOpen(false)
 , m_server(server)
 , m_port(port)
 , m_hang(false)
 , m_msgLength(0)
 , m_msgConsumed(0)
+, m_isOpen(false)
 {
 }
 
@@ -279,7 +279,7 @@ bool ProtoBase::OpenConnection(int rcvbuf)
   else
     tmp_ver = my_version;
 
-  if (IsOpen())
+  if (m_isOpen)
     this->Close();
   do
   {
@@ -356,11 +356,6 @@ void ProtoBase::Close()
   }
   m_isOpen = false;
   m_msgLength = m_msgConsumed = 0;
-}
-
-bool ProtoBase::IsOpen() const
-{
-  return m_isOpen;
 }
 
 unsigned ProtoBase::GetProtoVersion() const
@@ -1032,7 +1027,7 @@ out:
   return program;
 }
 
-void ProtoBase::MakeProgramInfo75(Program& program, std::string& msg)
+void ProtoBase::MakeProgramInfo75(const Program& program, std::string& msg)
 {
   char buf[32];
   msg.clear();
@@ -1105,7 +1100,7 @@ void ProtoBase::MakeProgramInfo75(Program& program, std::string& msg)
   msg.append("0"); // year
 }
 
-void ProtoBase::MakeProgramInfo76(Program& program, std::string& msg)
+void ProtoBase::MakeProgramInfo76(const Program& program, std::string& msg)
 {
   char buf[32];
   msg.clear();
@@ -1181,7 +1176,7 @@ void ProtoBase::MakeProgramInfo76(Program& program, std::string& msg)
   msg.append("0"); // part total
 }
 
-void ProtoBase::MakeProgramInfo79(Program& program, std::string& msg)
+void ProtoBase::MakeProgramInfo79(const Program& program, std::string& msg)
 {
   char buf[32];
   msg.clear();
@@ -1260,7 +1255,7 @@ void ProtoBase::MakeProgramInfo79(Program& program, std::string& msg)
   msg.append(buf);
 }
 
-void ProtoBase::MakeProgramInfo82(Program& program, std::string& msg)
+void ProtoBase::MakeProgramInfo82(const Program& program, std::string& msg)
 {
   char buf[32];
   msg.clear();
