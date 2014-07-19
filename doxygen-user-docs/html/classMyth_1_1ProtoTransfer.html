@@ -108,12 +108,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a39c7e0d8f10e705088fcfaa7432e484d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39c7e0d8f10e705088fcfaa7432e484d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoTransfer</b> (const std::string &amp;server, unsigned port, const std::string &amp;pathname, const std::string &amp;sgname)</td></tr>
 <tr class="separator:a39c7e0d8f10e705088fcfaa7432e484d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15bb4daf14440bc19242b83ea700235a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15bb4daf14440bc19242b83ea700235a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
-<tr class="separator:a15bb4daf14440bc19242b83ea700235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac90d49c22420084da675990401e39670"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac90d49c22420084da675990401e39670"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
 <tr class="separator:ac90d49c22420084da675990401e39670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15bb4daf14440bc19242b83ea700235a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15bb4daf14440bc19242b83ea700235a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
+<tr class="separator:a15bb4daf14440bc19242b83ea700235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b00615943944962a1b35d8714478c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24b00615943944962a1b35d8714478c8"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetFileId</b> () const </td></tr>
 <tr class="separator:a24b00615943944962a1b35d8714478c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,9 +127,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetStorageGrou
 <tr class="memitem:a3d12738e883c3a4a4f2d363a9a75fd4c inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d12738e883c3a4a4f2d363a9a75fd4c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoBase</b> (const std::string &amp;server, unsigned port)</td></tr>
 <tr class="separator:a3d12738e883c3a4a4f2d363a9a75fd4c inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9319482405a76a4ec81e2868b99c7e07 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9319482405a76a4ec81e2868b99c7e07"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> () const </td></tr>
-<tr class="separator:a9319482405a76a4ec81e2868b99c7e07 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8a407214c48de826ddc3c27ab12785 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa8a407214c48de826ddc3c27ab12785"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></tr>
+<tr class="separator:afa8a407214c48de826ddc3c27ab12785 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade68cb0edb804c12b08fcfe9631a2c40 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade68cb0edb804c12b08fcfe9631a2c40"></a>
 virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetProtoVersion</b> () const </td></tr>
 <tr class="separator:ade68cb0edb804c12b08fcfe9631a2c40 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,9 +208,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>RcvMessageLength</b> 
 <tr class="memitem:a1938a6f1b0d25e37a576fa8cde7c2147 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1938a6f1b0d25e37a576fa8cde7c2147"></a>
 ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo</b> ()</td></tr>
 <tr class="separator:a1938a6f1b0d25e37a576fa8cde7c2147 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dcb6d25fbcf388ebe3966694936c566 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dcb6d25fbcf388ebe3966694936c566"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:a3dcb6d25fbcf388ebe3966694936c566 inherit pro_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19aeede09979ee0116a66f5a8d628e1e inherit pro_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19aeede09979ee0116a66f5a8d628e1e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:a19aeede09979ee0116a66f5a8d628e1e inherit pro_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
 <tr class="memitem:ad957c1b4bdf0287b077ebb8556365cd5 inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad957c1b4bdf0287b077ebb8556365cd5"></a>
 PLATFORM::CMutex *&#160;</td><td class="memItemRight" valign="bottom"><b>m_mutex</b></td></tr>
@@ -221,9 +221,6 @@ TcpSocket *&#160;</td><td class="memItemRight" valign="bottom"><b>m_socket</b></
 <tr class="memitem:ae5b5ed44dab340da43ff0668c1e330a9 inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5b5ed44dab340da43ff0668c1e330a9"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_protoVersion</b></td></tr>
 <tr class="separator:ae5b5ed44dab340da43ff0668c1e330a9 inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f50f0f4f586f9a86015c4fc82056b46 inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f50f0f4f586f9a86015c4fc82056b46"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr>
-<tr class="separator:a8f50f0f4f586f9a86015c4fc82056b46 inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af593690d0d2d398fb87da0928bfedeea inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af593690d0d2d398fb87da0928bfedeea"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></td></tr>
 <tr class="separator:af593690d0d2d398fb87da0928bfedeea inherit pro_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -247,7 +244,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 01:41:30 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 19 2014 20:03:45 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

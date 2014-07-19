@@ -125,36 +125,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classMyth_1_1ProtoTransfer.html">ProtoTransfer</a>(<span class="keyword">const</span> std::string&amp; server, <span class="keywordtype">unsigned</span> port, <span class="keyword">const</span> std::string&amp; pathname, <span class="keyword">const</span> std::string&amp; sgname);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> Close();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> Open();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint32_t GetFileId() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::string GetPathName() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::string GetStorageGroupName() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">   46</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">fileSize</a>;                 </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">   47</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a>;             </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">   48</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a>;              </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    uint32_t m_fileId;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::string m_pathName;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::string m_storageGroupName;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> Announce75();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  };</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTOTRANSFER_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">bool</span> Open();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> Close();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    uint32_t GetFileId() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::string GetPathName() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::string GetStorageGroupName() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">   47</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">fileSize</a>;                 </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">   48</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a>;             </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">   49</a></span>&#160;    int64_t <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a>;              </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    uint32_t m_fileId;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::string m_pathName;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::string m_storageGroupName;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> Announce75();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  };</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTOTRANSFER_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:35</div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:48</div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:46</div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:49</div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:47</div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> mythprotobase.h:44</div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:47</div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> mythprototransfer.h:48</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 01:41:30 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 19 2014 20:03:45 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

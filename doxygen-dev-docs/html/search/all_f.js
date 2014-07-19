@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['updaterecordedwatchedstatus',['UpdateRecordedWatchedStatus',['../classMyth_1_1WSAPI.html#a53f363eef1ad7aaf3287cdd2a77b812e',1,'Myth::WSAPI']]],
-  ['updaterecordschedule',['UpdateRecordSchedule',['../classMyth_1_1WSAPI.html#acedec88afeb36600591ebcf848feba86',1,'Myth::WSAPI']]]
+  ['tcpsocket',['TcpSocket',['../classMyth_1_1TcpSocket.html',1,'Myth']]],
+  ['type',['type',['../structattr__bind__t.html#acd26373e98940bc3723f1b07ea52157b',1,'attr_bind_t']]]
 ];

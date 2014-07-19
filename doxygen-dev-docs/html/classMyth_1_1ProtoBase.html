@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMyth_1_1ProtoBase-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Myth::ProtoBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -101,7 +102,7 @@ Inheritance diagram for Myth::ProtoBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMyth_1_1ProtoBase__inherit__graph.png" border="0" usemap="#Myth_1_1ProtoBase_inherit__map" alt="Inheritance graph"/></div>
 <map name="Myth_1_1ProtoBase_inherit__map" id="Myth_1_1ProtoBase_inherit__map">
-<area shape="rect" id="node2" href="classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="183,5,307,32"/><area shape="rect" id="node3" href="classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="179,56,312,83"/><area shape="rect" id="node6" href="classMyth_1_1ProtoPlayback.html" title="Myth::ProtoPlayback" alt="" coords="173,107,317,133"/><area shape="rect" id="node10" href="classMyth_1_1ProtoTransfer.html" title="Myth::ProtoTransfer" alt="" coords="176,157,315,184"/><area shape="rect" id="node4" href="classMyth_1_1Control.html" title="Myth::Control" alt="" coords="401,5,503,32"/><area shape="rect" id="node5" href="classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="375,56,529,83"/><area shape="rect" id="node7" href="classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="385,107,519,133"/><area shape="rect" id="node8" href="classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="381,157,523,184"/><area shape="rect" id="node9" href="classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="366,208,538,235"/></map>
+<area shape="rect" id="node2" href="classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="5,80,128,107"/><area shape="rect" id="node3" href="classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="153,80,287,107"/><area shape="rect" id="node5" href="classMyth_1_1ProtoPlayback.html" title="Myth::ProtoPlayback" alt="" coords="311,80,455,107"/><area shape="rect" id="node9" href="classMyth_1_1ProtoTransfer.html" title="Myth::ProtoTransfer" alt="" coords="479,80,617,107"/><area shape="rect" id="node4" href="classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="55,155,208,181"/><area shape="rect" id="node6" href="classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="234,155,368,181"/><area shape="rect" id="node7" href="classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="393,155,535,181"/><area shape="rect" id="node8" href="classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="559,155,731,181"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -115,9 +116,9 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()=0
 <tr class="memitem:a5c9ad4c7ed1577a6fb3f4fa5c8378dd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c9ad4c7ed1577a6fb3f4fa5c8378dd4"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
 <tr class="separator:a5c9ad4c7ed1577a6fb3f4fa5c8378dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9319482405a76a4ec81e2868b99c7e07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9319482405a76a4ec81e2868b99c7e07"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> () const </td></tr>
-<tr class="separator:a9319482405a76a4ec81e2868b99c7e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8a407214c48de826ddc3c27ab12785"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa8a407214c48de826ddc3c27ab12785"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></tr>
+<tr class="separator:afa8a407214c48de826ddc3c27ab12785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade68cb0edb804c12b08fcfe9631a2c40"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade68cb0edb804c12b08fcfe9631a2c40"></a>
 virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetProtoVersion</b> () const </td></tr>
 <tr class="separator:ade68cb0edb804c12b08fcfe9631a2c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,9 +163,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>RcvMessageLength</b> 
 <tr class="memitem:a1938a6f1b0d25e37a576fa8cde7c2147"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1938a6f1b0d25e37a576fa8cde7c2147"></a>
 ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo</b> ()</td></tr>
 <tr class="separator:a1938a6f1b0d25e37a576fa8cde7c2147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dcb6d25fbcf388ebe3966694936c566"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dcb6d25fbcf388ebe3966694936c566"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:a3dcb6d25fbcf388ebe3966694936c566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19aeede09979ee0116a66f5a8d628e1e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19aeede09979ee0116a66f5a8d628e1e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:a19aeede09979ee0116a66f5a8d628e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -177,9 +178,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ae5b5ed44dab340da43ff0668c1e330a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5b5ed44dab340da43ff0668c1e330a9"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_protoVersion</b></td></tr>
 <tr class="separator:ae5b5ed44dab340da43ff0668c1e330a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f50f0f4f586f9a86015c4fc82056b46"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr>
-<tr class="separator:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af593690d0d2d398fb87da0928bfedeea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af593690d0d2d398fb87da0928bfedeea"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></td></tr>
 <tr class="separator:af593690d0d2d398fb87da0928bfedeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,18 +210,24 @@ ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo7
 <tr class="memitem:a5b04ccfddb2cf211d9ca1e501947b9c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b04ccfddb2cf211d9ca1e501947b9c0"></a>
 ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><b>RcvProgramInfo82</b> ()</td></tr>
 <tr class="separator:a5b04ccfddb2cf211d9ca1e501947b9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11f41d47c73519129ad532547c3d5a8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11f41d47c73519129ad532547c3d5a8f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo75</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:a11f41d47c73519129ad532547c3d5a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02cd61520d6071079633ba9b9240b8de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02cd61520d6071079633ba9b9240b8de"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo76</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:a02cd61520d6071079633ba9b9240b8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab18557948745898efa14f7b940efd5ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab18557948745898efa14f7b940efd5ca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo79</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:ab18557948745898efa14f7b940efd5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0d47050c5077d6a6b08b59f92a8578c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0d47050c5077d6a6b08b59f92a8578c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo82</b> (<a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
-<tr class="separator:ac0d47050c5077d6a6b08b59f92a8578c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb80a406186dda3b64e31f12675907d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb80a406186dda3b64e31f12675907d4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo75</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:abb80a406186dda3b64e31f12675907d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e4f5154e43cbe60f8e3d2f755c332f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e4f5154e43cbe60f8e3d2f755c332f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo76</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:af7e4f5154e43cbe60f8e3d2f755c332f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324dc145c84ffddfcc1a6c4ae4687c8e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a324dc145c84ffddfcc1a6c4ae4687c8e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo79</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:a324dc145c84ffddfcc1a6c4ae4687c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bd61cd85f48743d81cee53958cf005"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8bd61cd85f48743d81cee53958cf005"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo82</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, std::string &amp;msg)</td></tr>
+<tr class="separator:ac8bd61cd85f48743d81cee53958cf005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f50f0f4f586f9a86015c4fc82056b46"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr>
+<tr class="separator:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -308,7 +312,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo82</b>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 01:41:26 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 19 2014 20:03:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

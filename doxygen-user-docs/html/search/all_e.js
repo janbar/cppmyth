@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['wsapi',['WSAPI',['../classMyth_1_1WSAPI.html',1,'Myth']]],
-  ['wsstream',['WSStream',['../classMyth_1_1WSStream.html',1,'Myth']]]
+  ['version',['Version',['../structMyth_1_1Version.html',1,'Myth']]],
+  ['videosource',['VideoSource',['../structMyth_1_1VideoSource.html',1,'Myth']]]
 ];

@@ -131,33 +131,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Close()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Open()</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  ProtoBase::Close();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = 0;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  m_fileId = 0;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Open()</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">if</span> (IsOpen())</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">if</span> (!OpenConnection(PROTO_TRANSFER_RCVBUF))</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (m_protoVersion &gt;= 75)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ok = Announce75();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span> (!ok)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Close without notice</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    m_hang = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    this-&gt;Close();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">if</span> (IsOpen())</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!OpenConnection(PROTO_TRANSFER_RCVBUF))</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span> (m_protoVersion &gt;= 75)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    ok = Announce75();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">if</span> (!ok)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Close without notice</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    m_hang = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Close();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Close()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  ProtoBase::Close();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  m_fileId = 0;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Announce75()</div>
@@ -200,16 +200,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">return</span> m_storageGroupName;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00048">mythprototransfer.h:48</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00046">mythprototransfer.h:46</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00049">mythprototransfer.h:49</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00047">mythprototransfer.h:47</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00118">mythprotobase.cpp:118</a></div></div>
 <div class="ttc" id="classPLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00128">mutex.h:128</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00047">mythprototransfer.h:47</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00048">mythprototransfer.h:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 01:41:26 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 19 2014 20:03:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

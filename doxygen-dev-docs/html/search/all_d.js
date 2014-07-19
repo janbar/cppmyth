@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['set',['set',['../structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1',1,'attr_bind_t']]],
-  ['setting',['Setting',['../structMyth_1_1Setting.html',1,'Myth']]],
-  ['shared_5fptr',['shared_ptr',['../classMyth_1_1shared__ptr.html',1,'Myth']]],
-  ['signalstatus',['SignalStatus',['../structMyth_1_1SignalStatus.html',1,'Myth']]],
-  ['stopthread',['StopThread',['../classPLATFORM_1_1CThread.html#a20caf70d201be98097cebab424c57fcd',1,'PLATFORM::CThread']]],
-  ['storagegroupfile',['StorageGroupFile',['../structMyth_1_1StorageGroupFile.html',1,'Myth']]],
-  ['stream',['Stream',['../classMyth_1_1Stream.html',1,'Myth']]]
+  ['rcvbackendmessage',['RcvBackendMessage',['../classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562',1,'Myth::ProtoEvent']]],
+  ['rcvversion',['RcvVersion',['../classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61',1,'Myth::ProtoBase']]],
+  ['readfield',['ReadField',['../classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09',1,'Myth::ProtoBase']]],
+  ['recording',['Recording',['../structMyth_1_1Recording.html',1,'Myth']]],
+  ['recordingplayback',['RecordingPlayback',['../classMyth_1_1RecordingPlayback.html',1,'Myth']]],
+  ['recordschedule',['RecordSchedule',['../structMyth_1_1RecordSchedule.html',1,'Myth']]],
+  ['removerecorded',['RemoveRecorded',['../classMyth_1_1WSAPI.html#ac3924f5c0390989f47af6539caa4cb14',1,'Myth::WSAPI']]],
+  ['removerecordschedule',['RemoveRecordSchedule',['../classMyth_1_1Control.html#aa8e5817a061fa1ea05dbe164ba03d734',1,'Myth::Control::RemoveRecordSchedule()'],['../classMyth_1_1WSAPI.html#acc8d1b160a40aae1bb8304c0e7a5967d',1,'Myth::WSAPI::RemoveRecordSchedule()']]]
 ];

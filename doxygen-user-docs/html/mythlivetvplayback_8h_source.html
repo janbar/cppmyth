@@ -122,69 +122,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>Myth</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classMyth_1_1LiveTVPlayback.html">   37</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a> : <span class="keyword">public</span> <a class="code" href="classMyth_1_1ProtoMonitor.html">ProtoMonitor</a>, <span class="keyword">public</span> <a class="code" href="classMyth_1_1Stream.html">Stream</a>, <span class="keyword">private</span> <a class="code" href="classMyth_1_1EventSubscriber.html">EventSubscriber</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classMyth_1_1LiveTVPlayback.html">   37</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a> : <span class="keyword">private</span> <a class="code" href="classMyth_1_1ProtoMonitor.html">ProtoMonitor</a>, <span class="keyword">public</span> <a class="code" href="classMyth_1_1Stream.html">Stream</a>, <span class="keyword">private</span> <a class="code" href="classMyth_1_1EventSubscriber.html">EventSubscriber</a></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a>(<a class="code" href="classMyth_1_1EventHandler.html">EventHandler</a>&amp; handler);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a>(<span class="keyword">const</span> std::string&amp; server, <span class="keywordtype">unsigned</span> port);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    ~<a class="code" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> Close();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> SetTuneDelay(<span class="keywordtype">unsigned</span> delay);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> SpawnLiveTV(<span class="keyword">const</span> <a class="code" href="structMyth_1_1Channel.html">Channel</a>&amp; channel, uint32_t prefcardid = 0);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> StopLiveTV();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Implement Stream</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    int64_t GetSize() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> Read(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">unsigned</span> n);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    int64_t Seek(int64_t offset, WHENCE_t whence);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    int64_t GetPosition() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> IsPlaying() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> IsLiveRecording() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> KeepLiveRecording(<span class="keywordtype">bool</span> keep);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    ProgramPtr GetPlayedProgram() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    time_t GetLiveTimeStart() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">unsigned</span> GetChainedCount() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ProgramPtr GetChainedProgram(<span class="keywordtype">unsigned</span> sequence) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint32_t GetCardId() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    SignalStatusPtr GetSignal() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Implement EventSubscriber</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> HandleBackendMessage(<span class="keyword">const</span> <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classMyth_1_1EventHandler.html">EventHandler</a> m_eventHandler;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">unsigned</span> m_eventSubscriberId;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">unsigned</span> m_tuneDelay;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    ProtoRecorderPtr m_recorder;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    SignalStatusPtr m_signal;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">typedef</span> std::vector&lt;std::pair&lt;ProtoTransferPtr, ProgramPtr&gt; &gt; chained_t;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      std::string UID;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      chained_t chained;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      ProtoTransferPtr currentTransfer;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> currentSequence;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> lastSequence;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">bool</span> watch;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">bool</span> switchOnCreate;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    } m_chain;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> InitChain();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> ClearChain();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> GetRecorderNum();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> IsChained(<span class="keyword">const</span> <a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> HandleChainUpdate();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">bool</span> SwitchChain(<span class="keywordtype">unsigned</span> sequence);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">bool</span> SwitchChainLast();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  };</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">bool</span> Open();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> Close();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> IsOpen() { <span class="keywordflow">return</span> ProtoMonitor::IsOpen(); }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> SetTuneDelay(<span class="keywordtype">unsigned</span> delay);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> SpawnLiveTV(<span class="keyword">const</span> <a class="code" href="structMyth_1_1Channel.html">Channel</a>&amp; channel, uint32_t prefcardid = 0);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> StopLiveTV();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Implement Stream</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    int64_t GetSize() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> Read(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">unsigned</span> n);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    int64_t Seek(int64_t offset, WHENCE_t whence);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    int64_t GetPosition() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> IsPlaying() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> IsLiveRecording() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> KeepLiveRecording(<span class="keywordtype">bool</span> keep);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ProgramPtr GetPlayedProgram() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    time_t GetLiveTimeStart() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">unsigned</span> GetChainedCount() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ProgramPtr GetChainedProgram(<span class="keywordtype">unsigned</span> sequence) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    uint32_t GetCardId() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    SignalStatusPtr GetSignal() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Implement EventSubscriber</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> HandleBackendMessage(<span class="keyword">const</span> <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classMyth_1_1EventHandler.html">EventHandler</a> m_eventHandler;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">unsigned</span> m_eventSubscriberId;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">unsigned</span> m_tuneDelay;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    ProtoRecorderPtr m_recorder;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    SignalStatusPtr m_signal;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">typedef</span> std::vector&lt;std::pair&lt;ProtoTransferPtr, ProgramPtr&gt; &gt; chained_t;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      std::string UID;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      chained_t chained;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      ProtoTransferPtr currentTransfer;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> currentSequence;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> lastSequence;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">bool</span> watch;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keyword">volatile</span> <span class="keywordtype">bool</span> switchOnCreate;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    } m_chain;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> InitChain();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> ClearChain();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">int</span> GetRecorderNum();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">bool</span> IsChained(<span class="keyword">const</span> <a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> HandleChainUpdate();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> SwitchChain(<span class="keywordtype">unsigned</span> sequence);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span> SwitchChainLast();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  };</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHLIVETVPLAYBACK_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHLIVETVPLAYBACK_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span></div>
 <div class="ttc" id="classMyth_1_1EventHandler_html"><div class="ttname"><a href="classMyth_1_1EventHandler.html">Myth::EventHandler</a></div><div class="ttdef"><b>Definition:</b> mytheventhandler.h:45</div></div>
 <div class="ttc" id="structMyth_1_1EventMessage_html"><div class="ttname"><a href="structMyth_1_1EventMessage.html">Myth::EventMessage</a></div><div class="ttdef"><b>Definition:</b> mythtypes.h:407</div></div>
 <div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> mythtypes.h:271</div></div>
@@ -196,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 15 2014 01:41:30 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 19 2014 20:03:45 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,31 +1,4 @@
 var searchData=
 [
-  ['getartworkbindarray',['getArtworkBindArray',['../namespaceMythDTO.html#ada1fc36bcf9b765c1ad6b19774f15b5b',1,'MythDTO']]],
-  ['getcapturecardbindarray',['getCaptureCardBindArray',['../namespaceMythDTO.html#a336c56325824db6d9b1def8236404005',1,'MythDTO']]],
-  ['getcapturecardlist',['GetCaptureCardList',['../classMyth_1_1WSAPI.html#a96c24c573400e684bb0cbf8baf382ca5',1,'Myth::WSAPI']]],
-  ['getchannelbindarray',['getChannelBindArray',['../namespaceMythDTO.html#a1addf42d58f4d809386bc1773330f991',1,'MythDTO']]],
-  ['getchannelicon',['GetChannelIcon',['../classMyth_1_1WSAPI.html#a5e564af3a1f94fbebfd3efcdc991f214',1,'Myth::WSAPI']]],
-  ['getchannellist',['GetChannelList',['../classMyth_1_1WSAPI.html#a3226dff67da02cc2bb8e875d7ff4840f',1,'Myth::WSAPI']]],
-  ['getcommbreaklist',['GetCommBreakList',['../classMyth_1_1Control.html#a6b82c645402f0f0820479cce25484691',1,'Myth::Control']]],
-  ['getconflictlist',['GetConflictList',['../classMyth_1_1WSAPI.html#a5e99d1158fb5d392a04d1c7cba06de92',1,'Myth::WSAPI']]],
-  ['getcutlist',['GetCutList',['../classMyth_1_1Control.html#a5d32f307a6b2e400062701530ee62cdf',1,'Myth::Control']]],
-  ['getexpiringlist',['GetExpiringList',['../classMyth_1_1WSAPI.html#aeee22d63aeeeb8699260a4ab8c9755e4',1,'Myth::WSAPI']]],
-  ['getfile',['GetFile',['../classMyth_1_1WSAPI.html#a29a5e81190e53b3d18216d35ed2fe64b',1,'Myth::WSAPI']]],
-  ['getlistbindarray',['getListBindArray',['../namespaceMythDTO.html#ab8a6edafeedf16e59f985764e994eab6',1,'MythDTO']]],
-  ['getpreviewimage',['GetPreviewImage',['../classMyth_1_1WSAPI.html#ac9032a564fc360fa6286d68cbb31773d',1,'Myth::WSAPI']]],
-  ['getprogrambindarray',['getProgramBindArray',['../namespaceMythDTO.html#afe103b3e4b402f4938069525aef4f384',1,'MythDTO']]],
-  ['getprogramguide',['GetProgramGuide',['../classMyth_1_1WSAPI.html#a07174aa6d31e6a2392e225d65b4b4551',1,'Myth::WSAPI']]],
-  ['getrecorded',['GetRecorded',['../classMyth_1_1WSAPI.html#af0883c4af38b9b025b37b81677527070',1,'Myth::WSAPI']]],
-  ['getrecordedlist',['GetRecordedList',['../classMyth_1_1WSAPI.html#add96038f4a1b0262cbb1fd9d156e92ca',1,'Myth::WSAPI']]],
-  ['getrecordingartwork',['GetRecordingArtwork',['../classMyth_1_1WSAPI.html#ace16e355055cbd822f017a74af030dc9',1,'Myth::WSAPI']]],
-  ['getrecordingbindarray',['getRecordingBindArray',['../namespaceMythDTO.html#a44335bd2354a996e167fa22649ee9875',1,'MythDTO']]],
-  ['getrecordschedule',['GetRecordSchedule',['../classMyth_1_1WSAPI.html#a90adbddc358908588f1986a490c6269a',1,'Myth::WSAPI']]],
-  ['getrecordschedulebindarray',['getRecordScheduleBindArray',['../namespaceMythDTO.html#a2b1648a44812946af194671fb3a96f7a',1,'MythDTO']]],
-  ['getrecordschedulelist',['GetRecordScheduleList',['../classMyth_1_1WSAPI.html#abf0a17f9a11f0e1fb4017a68a5b1e629',1,'Myth::WSAPI']]],
-  ['getsetting',['GetSetting',['../classMyth_1_1WSAPI.html#a2c76a7b20ae766c42239f104b8ad33ec',1,'Myth::WSAPI']]],
-  ['getsettings',['GetSettings',['../classMyth_1_1WSAPI.html#a6ca4e7646b0570eab55e5cf32d5b6bbe',1,'Myth::WSAPI']]],
-  ['getupcominglist',['GetUpcomingList',['../classMyth_1_1WSAPI.html#a8eeadfc8dd229718b48f9a9ebc819ad3',1,'Myth::WSAPI']]],
-  ['getversionbindarray',['getVersionBindArray',['../namespaceMythDTO.html#a0cfd607c262d2400325caf0f6b4d040e',1,'MythDTO']]],
-  ['getvideosourcebindarray',['getVideoSourceBindArray',['../namespaceMythDTO.html#a1d7108a531a4b65d661c862c4d5861cc',1,'MythDTO']]],
-  ['getvideosourcelist',['GetVideoSourceList',['../classMyth_1_1WSAPI.html#a255e467caca87d49fe7b899a2b8c807d',1,'Myth::WSAPI']]]
+  ['enablerecordschedule',['EnableRecordSchedule',['../classMyth_1_1Control.html#a6259de7971f9ec08daf943830dc18524',1,'Myth::Control::EnableRecordSchedule()'],['../classMyth_1_1WSAPI.html#ae1748adea376b42a1fc6689ffc9c864c',1,'Myth::WSAPI::EnableRecordSchedule()']]]
 ];
