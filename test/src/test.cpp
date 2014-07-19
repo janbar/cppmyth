@@ -144,7 +144,7 @@ int main(int argc, char** argv)
       pb.CloseTransfer();
 
       fprintf(stderr, "\n***\n*** Testing protocol command queryGenpixmap\n***\n");
-      Myth::Control monitor(backendIP, 6543);
+      Myth::Control monitor(backendIP, 6543, 6544);
       monitor.QueryGenPixmap(*(*pl)[n]);
     }
 
