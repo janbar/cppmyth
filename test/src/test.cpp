@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 
   {
     Myth::DBGLevel(MYTH_DBG_WARN);
-    Myth::WSAPI ws(backendIP, 6544);
+    Myth::Control control(backendIP, 6543, 6544);
 
     fprintf(stderr, "\n***\n*** Testing web service GetSetting\n***\n");
-    Myth::SettingPtr set = ws.GetSetting("LiveTVPriority", true);
+    Myth::SettingPtr set = control.GetSetting("LiveTVPriority", true);
     if (set)
       fprintf(stderr,"setting: [%s] = %s\n", set->key.c_str(), set->value.c_str());
 
     fprintf(stderr, "\n***\n*** Testing web service GetSettings\n***\n");
-    Myth::SettingMapPtr sets = ws.GetSettings(true);
+    Myth::SettingMapPtr sets = control.GetSettings(true);
     for (Myth::SettingMap::iterator it = sets->begin(); it != sets->end(); ++it)
       fprintf(stderr,"setting: [%s] = %s\n", it->second->key.c_str(), it->second->value.c_str());
 
     fprintf(stderr, "\n***\n*** Testing web service GetRecordedList\n***\n");
-    Myth::ProgramListPtr pl = ws.GetRecordedList();
+    Myth::ProgramListPtr pl = control.GetRecordedList();
     for (Myth::ProgramList::const_iterator it = pl->begin(); it != pl->end(); ++it)
     {
       fprintf(stderr, "%s | %ld | %s | %s |", (*it)->fileName.c_str(), (long)(*it)->fileSize, (*it)->category.c_str(), (*it)->title.c_str());
@@ -62,20 +62,20 @@ int main(int argc, char** argv)
     {
       fprintf(stderr, "\n***\n*** Testing web service GetRecorded\n***\n");
 
-      Myth::ProgramPtr prog = ws.GetRecorded((*pl)[0]->channel.chanId, (*pl)[0]->recording.startTs);
+      Myth::ProgramPtr prog = control.GetRecorded((*pl)[0]->channel.chanId, (*pl)[0]->recording.startTs);
       if (prog)
         fprintf(stderr, "%s | %lu | %s\n", prog->fileName.c_str(), prog->recording.startTs, prog->title.c_str());
     }
 
     fprintf(stderr, "\n***\n*** Testing web service GetCaptureCard\n***\n");
 
-    Myth::CaptureCardListPtr card = ws.GetCaptureCardList();
+    Myth::CaptureCardListPtr card = control.GetCaptureCardList();
     for (Myth::CaptureCardList::const_iterator it2 = card->begin(); it2 != card->end(); ++it2)
       fprintf(stderr, "Card: %u | %s\n", (*it2)->cardId, (*it2)->cardType.c_str());
 
     fprintf(stderr, "\n***\n*** Testing web service GetVideoSource\n***\n");
 
-    Myth::VideoSourceListPtr source = ws.GetVideoSourceList();
+    Myth::VideoSourceListPtr source = control.GetVideoSourceList();
     for (Myth::VideoSourceList::const_iterator it3 = source->begin(); it3 != source->end(); ++it3)
       fprintf(stderr, "Source: %u | %s\n", (*it3)->sourceId, (*it3)->sourceName.c_str());
 
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
     if (!source->empty())
     {
-      Myth::ChannelListPtr channel = ws.GetChannelList((*source)[0]->sourceId);
+      Myth::ChannelListPtr channel = control.GetChannelList((*source)[0]->sourceId);
       for (Myth::ChannelList::const_iterator it4 = channel->begin(); it4 != channel->end(); ++it4)
         fprintf(stderr, "Channel: %u | %u | %s | %s | %s\n", (*it4)->sourceId, (*it4)->chanId,
                 (*it4)->channelName.c_str(), (*it4)->chanNum.c_str(), (*it4)->iconURL.c_str());
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
       Myth::DBGNone();
       for (unsigned ci = 0; ci < channel->size(); ++ci)
       {
-        Myth::ProgramMapPtr epg = ws.GetProgramGuide((*channel)[ci]->chanId, now, now);
+        Myth::ProgramMapPtr epg = control.GetProgramGuide((*channel)[ci]->chanId, now, now);
         for (Myth::ProgramMap::const_iterator it5 = epg->begin(); it5 != epg->end(); ++it5)
         {
           fprintf(stderr, "Guide ChanId: %u : %lu ", (*channel)[ci]->chanId, it5->first);
@@ -108,7 +108,7 @@ int main(int argc, char** argv)
       {
         chantest = (*channel)[0];
 
-        Myth::CaptureCardListPtr clist = ws.GetCaptureCardList();
+        Myth::CaptureCardListPtr clist = control.GetCaptureCardList();
         Myth::DBGLevel(MYTH_DBG_DEBUG);
         for (unsigned i = 0; i < clist->size(); ++i)
         {
@@ -144,8 +144,7 @@ int main(int argc, char** argv)
       pb.CloseTransfer();
 
       fprintf(stderr, "\n***\n*** Testing protocol command queryGenpixmap\n***\n");
-      Myth::Control monitor(backendIP, 6543, 6544);
-      monitor.QueryGenPixmap(*(*pl)[n]);
+      control.QueryGenPixmap(*(*pl)[n]);
     }
 
     Myth::DBGLevel(MYTH_DBG_DEBUG);
@@ -184,8 +183,8 @@ int main(int argc, char** argv)
     Myth::DBGLevel(MYTH_DBG_ERROR);
 
     fprintf(stderr, "\n***\n*** Testing web services RecordSchedule\n***\n");
-    unsigned proto = ws.CheckService();
-    Myth::RecordScheduleListPtr rl = ws.GetRecordScheduleList();
+    unsigned proto = control.CheckService();
+    Myth::RecordScheduleListPtr rl = control.GetRecordScheduleList();
     for (unsigned i = 0; i < rl->size(); ++i)
     {
       fprintf(stderr,"List existing record: rec %u | %s | %s | %d | %d | %d | %d\n",
@@ -211,27 +210,27 @@ int main(int argc, char** argv)
       rec.findDay = 0;
       rec.findTime = "00:00:00";
 
-      ws.AddRecordSchedule(rec);
+      control.AddRecordSchedule(rec);
 
-      Myth::RecordSchedulePtr rc = ws.GetRecordSchedule(rec.recordId);
+      Myth::RecordSchedulePtr rc = control.GetRecordSchedule(rec.recordId);
       if (rc)
       {
         fprintf(stderr,"New record: rec %u | %s \n", rc->recordId, rc->title.c_str());
         Myth::DBGLevel(MYTH_DBG_DEBUG);
-        fprintf(stderr,"Removing record %u returns %d\n", rc->recordId, ws.RemoveRecordSchedule(rc->recordId));
+        fprintf(stderr,"Removing record %u returns %d\n", rc->recordId, control.RemoveRecordSchedule(rc->recordId));
         Myth::DBGLevel(MYTH_DBG_WARN);
       }
     }
 
     {
-      Myth::ProgramListPtr ll = ws.GetUpcomingList();
+      Myth::ProgramListPtr ll = control.GetUpcomingList();
       for (unsigned i = 0; i < ll->size(); ++i)
       {
         fprintf(stderr,"List up comming: %s | rec %u | type %u\n", (*ll)[i]->title.c_str(), (*ll)[i]->recording.recordId, (*ll)[i]->recording.recType);
       }
     }
     {
-      Myth::ProgramListPtr ll = ws.GetConflictList();
+      Myth::ProgramListPtr ll = control.GetConflictList();
       for (unsigned i = 0; i < ll->size(); ++i)
       {
         fprintf(stderr,"List conflict: %s |rec %u | type %u\n", (*ll)[i]->title.c_str(), (*ll)[i]->recording.recordId, (*ll)[i]->recording.recType);
@@ -239,7 +238,7 @@ int main(int argc, char** argv)
     }
 
     {
-      Myth::ProgramListPtr ll = ws.GetExpiringList();
+      Myth::ProgramListPtr ll = control.GetExpiringList();
       for (unsigned i = 0; i < ll->size(); ++i)
       {
         fprintf(stderr,"List expiring: %s | rec %u | type %u\n", (*ll)[i]->title.c_str(), (*ll)[i]->recording.recordId, (*ll)[i]->recording.recType);
