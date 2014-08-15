@@ -189,7 +189,7 @@ bool TcpSocket::SendMessage(const char *msg, size_t size)
     size_t s = send(m_socket, msg, size, 0);
     if (s != size)
     {
-      m_errno = ECOMM;
+      m_errno = LASTERROR;
       return false;
     }
     m_errno = 0;
