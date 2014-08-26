@@ -115,6 +115,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
 <tr class="memitem:a15bb4daf14440bc19242b83ea700235a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15bb4daf14440bc19242b83ea700235a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
 <tr class="separator:a15bb4daf14440bc19242b83ea700235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe888d6a3faaee6c78a3609d1863f45c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe888d6a3faaee6c78a3609d1863f45c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Lock</b> ()</td></tr>
+<tr class="separator:abe888d6a3faaee6c78a3609d1863f45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a671149c18431c042ccb3feb4499073bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a671149c18431c042ccb3feb4499073bc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Unlock</b> ()</td></tr>
+<tr class="separator:a671149c18431c042ccb3feb4499073bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fbc154acc4b85cc28307bf67cb959e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fbc154acc4b85cc28307bf67cb959e6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>TryLock</b> ()</td></tr>
+<tr class="separator:a0fbc154acc4b85cc28307bf67cb959e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf431d28885c0620a5483971b7e0baf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Flush</a> ()</td></tr>
+<tr class="memdesc:aecf431d28885c0620a5483971b7e0baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushing unread data previously requested.  <a href="#aecf431d28885c0620a5483971b7e0baf">More...</a><br/></td></tr>
+<tr class="separator:aecf431d28885c0620a5483971b7e0baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b00615943944962a1b35d8714478c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24b00615943944962a1b35d8714478c8"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetFileId</b> () const </td></tr>
 <tr class="separator:a24b00615943944962a1b35d8714478c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,14 +253,37 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="mythprototransfer_8h_source.html#l00035">35</a> of file <a class="el" href="mythprototransfer_8h_source.html">mythprototransfer.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aecf431d28885c0620a5483971b7e0baf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProtoTransfer::Flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushing unread data previously requested. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="mythprototransfer_8cpp_source.html#l00093">93</a> of file <a class="el" href="mythprototransfer_8cpp_source.html">mythprototransfer.cpp</a>.</p>
+
+<p>References <a class="el" href="mythprototransfer_8h_source.html#l00057">filePosition</a>, and <a class="el" href="mythprototransfer_8h_source.html#l00058">fileRequest</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprototransfer_8h_source.html">mythprototransfer.h</a></li>
 <li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprototransfer_8cpp_source.html">mythprototransfer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 19 2014 20:03:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 09:02:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

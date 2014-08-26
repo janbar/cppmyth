@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['queryfreespacesummary',['QueryFreeSpaceSummary',['../classMyth_1_1Control.html#a6942a6b6dab62634e0536b89930d519e',1,'Myth::Control']]],
-  ['querygenpixmap',['QueryGenPixmap',['../classMyth_1_1Control.html#a63b3f779877f0c87e4ead0b31f8d26a7',1,'Myth::Control']]]
+  ['putsetting',['PutSetting',['../classMyth_1_1Control.html#a1a6ec494869a7d30784d726519ebabec',1,'Myth::Control::PutSetting()'],['../classMyth_1_1WSAPI.html#af44a129b1372f015549c3b1b53e64ffc',1,'Myth::WSAPI::PutSetting()']]]
 ];

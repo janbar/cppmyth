@@ -280,7 +280,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      tv.tv_usec = 0;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    r = select (nfds+1, &amp;fds, NULL, NULL, &amp;tv);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    r = select (nfds + 1, &amp;fds, NULL, NULL, &amp;tv);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">if</span> (r &lt; 0)</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      DBG(MYTH_DBG_ERROR, <span class="stringliteral">&quot;%s: select error (%d)\n&quot;</span>, __FUNCTION__, r);</div>
@@ -429,20 +429,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      FlushMessage();</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  transfer.<a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = transfer.<a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = position;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">return</span> position;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="comment">// Reset transfer</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  transfer.Lock();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  transfer.<a class="code" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Flush</a>();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  transfer.<a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = transfer.<a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = position;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  transfer.Unlock();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordflow">return</span> position;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00035">mythprototransfer.h:35</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00049">mythprototransfer.h:49</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00047">mythprototransfer.h:47</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00058">mythprototransfer.h:58</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_aecf431d28885c0620a5483971b7e0baf"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Myth::ProtoTransfer::Flush</a></div><div class="ttdeci">void Flush()</div><div class="ttdoc">Flushing unread data previously requested. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8cpp_source.html#l00093">mythprototransfer.cpp:93</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00056">mythprototransfer.h:56</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00118">mythprotobase.cpp:118</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00120">mythprotobase.cpp:120</a></div></div>
 <div class="ttc" id="classPLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00128">mutex.h:128</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00048">mythprototransfer.h:48</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00057">mythprototransfer.h:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 19 2014 20:03:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 09:02:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

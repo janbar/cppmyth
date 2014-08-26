@@ -113,6 +113,14 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServerHostN
 <tr class="memitem:a5edab37a349a6c29d66ed2cc0760724c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5edab37a349a6c29d66ed2cc0760724c"></a>
 VersionPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetVersion</b> ()</td></tr>
 <tr class="separator:a5edab37a349a6c29d66ed2cc0760724c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1325bfd13344b38b4c842826adcf2c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1325bfd13344b38b4c842826adcf2c3"></a>
+SettingPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#ae1325bfd13344b38b4c842826adcf2c3">GetSetting</a> (const std::string &amp;key, const std::string hostname)</td></tr>
+<tr class="memdesc:ae1325bfd13344b38b4c842826adcf2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Myth/GetSetting. <br/></td></tr>
+<tr class="separator:ae1325bfd13344b38b4c842826adcf2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09eb4205c160d9bcfa57ec4a0c93f6ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09eb4205c160d9bcfa57ec4a0c93f6ce"></a>
+SettingMapPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a09eb4205c160d9bcfa57ec4a0c93f6ce">GetSettings</a> (const std::string hostname)</td></tr>
+<tr class="memdesc:a09eb4205c160d9bcfa57ec4a0c93f6ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Myth/GetSetting. <br/></td></tr>
+<tr class="separator:a09eb4205c160d9bcfa57ec4a0c93f6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c76a7b20ae766c42239f104b8ad33ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c76a7b20ae766c42239f104b8ad33ec"></a>
 SettingPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a2c76a7b20ae766c42239f104b8ad33ec">GetSetting</a> (const std::string &amp;key, bool myhost)</td></tr>
 <tr class="memdesc:a2c76a7b20ae766c42239f104b8ad33ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Myth/GetSetting. <br/></td></tr>
@@ -137,10 +145,14 @@ ProgramPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a53f363eef1ad7aaf3287cdd2a77b812e">UpdateRecordedWatchedStatus</a> (uint32_t chanid, time_t recstartts, bool watched)</td></tr>
 <tr class="memdesc:a53f363eef1ad7aaf3287cdd2a77b812e"><td class="mdescLeft">&#160;</td><td class="mdescRight">POST Dvr/UpdateRecordedWatchedStatus. <br/></td></tr>
 <tr class="separator:a53f363eef1ad7aaf3287cdd2a77b812e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3924f5c0390989f47af6539caa4cb14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3924f5c0390989f47af6539caa4cb14"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#ac3924f5c0390989f47af6539caa4cb14">RemoveRecorded</a> (uint32_t chanid, time_t recstartts, bool forceDelete=false, bool allowRerecord=false)</td></tr>
-<tr class="memdesc:ac3924f5c0390989f47af6539caa4cb14"><td class="mdescLeft">&#160;</td><td class="mdescRight">POST Dvr/RemoveRecorded. <br/></td></tr>
-<tr class="separator:ac3924f5c0390989f47af6539caa4cb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b031d93d5077c0b5d24bfe0b41b18a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b031d93d5077c0b5d24bfe0b41b18a6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a3b031d93d5077c0b5d24bfe0b41b18a6">DeleteRecording</a> (uint32_t chanid, time_t recstartts, bool forceDelete=false, bool allowRerecord=false)</td></tr>
+<tr class="memdesc:a3b031d93d5077c0b5d24bfe0b41b18a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">POST Dvr/DeleteRecording. <br/></td></tr>
+<tr class="separator:a3b031d93d5077c0b5d24bfe0b41b18a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbec0266d42bf58e2ff607db1d2884c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbec0266d42bf58e2ff607db1d2884c6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#abbec0266d42bf58e2ff607db1d2884c6">UnDeleteRecording</a> (uint32_t chanid, time_t recstartts)</td></tr>
+<tr class="memdesc:abbec0266d42bf58e2ff607db1d2884c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">POST Dvr/UnDeleteRecording. <br/></td></tr>
+<tr class="separator:abbec0266d42bf58e2ff607db1d2884c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96c24c573400e684bb0cbf8baf382ca5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96c24c573400e684bb0cbf8baf382ca5"></a>
 CaptureCardListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a96c24c573400e684bb0cbf8baf382ca5">GetCaptureCardList</a> ()</td></tr>
 <tr class="memdesc:a96c24c573400e684bb0cbf8baf382ca5"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Capture/GetCaptureCardList. <br/></td></tr>
@@ -213,6 +225,10 @@ WSStreamPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 WSStreamPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#ace16e355055cbd822f017a74af030dc9">GetRecordingArtwork</a> (const std::string &amp;type, const std::string &amp;inetref, uint16_t season, unsigned width=0, unsigned height=0)</td></tr>
 <tr class="memdesc:ace16e355055cbd822f017a74af030dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Content/GetRecordingArtwork. <br/></td></tr>
 <tr class="separator:ace16e355055cbd822f017a74af030dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f3c8af20f7d1a1cba1221bfc1a2bb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92f3c8af20f7d1a1cba1221bfc1a2bb5"></a>
+ArtworkListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a92f3c8af20f7d1a1cba1221bfc1a2bb5">GetRecordingArtworkList</a> (uint32_t chanid, time_t recstartts)</td></tr>
+<tr class="memdesc:a92f3c8af20f7d1a1cba1221bfc1a2bb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Content/GetRecordingArtworkList. <br/></td></tr>
+<tr class="separator:a92f3c8af20f7d1a1cba1221bfc1a2bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -273,9 +289,12 @@ ProgramListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetUpcoming
 <tr class="memitem:aee796ce8f8b1c3624ea8b3bd7339de3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee796ce8f8b1c3624ea8b3bd7339de3a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateRecordedWatchedStatus79</b> (uint32_t chanid, time_t recstartts, bool watched)</td></tr>
 <tr class="separator:aee796ce8f8b1c3624ea8b3bd7339de3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae48be1bf2e2b275d27053ada52eca396"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae48be1bf2e2b275d27053ada52eca396"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveRecorded82</b> (uint32_t chanid, time_t recstartts, bool forceDelete, bool allowRerecord)</td></tr>
-<tr class="separator:ae48be1bf2e2b275d27053ada52eca396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cbb22d0cf32abc0f9fd0b7fcf1afa9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cbb22d0cf32abc0f9fd0b7fcf1afa9f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteRecording82</b> (uint32_t chanid, time_t recstartts, bool forceDelete, bool allowRerecord)</td></tr>
+<tr class="separator:a4cbb22d0cf32abc0f9fd0b7fcf1afa9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3468de0a168b56c3889581c1f7b2a880"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3468de0a168b56c3889581c1f7b2a880"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>UnDeleteRecording82</b> (uint32_t chanid, time_t recstartts)</td></tr>
+<tr class="separator:a3468de0a168b56c3889581c1f7b2a880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -287,7 +306,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveRecorded82</b> 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 19 2014 20:03:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 09:02:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

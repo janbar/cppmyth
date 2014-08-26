@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['rcvbackendmessage',['RcvBackendMessage',['../classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562',1,'Myth::ProtoEvent']]],
-  ['rcvversion',['RcvVersion',['../classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61',1,'Myth::ProtoBase']]],
-  ['readfield',['ReadField',['../classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09',1,'Myth::ProtoBase']]],
-  ['removerecorded',['RemoveRecorded',['../classMyth_1_1WSAPI.html#ac3924f5c0390989f47af6539caa4cb14',1,'Myth::WSAPI']]],
-  ['removerecordschedule',['RemoveRecordSchedule',['../classMyth_1_1Control.html#aa8e5817a061fa1ea05dbe164ba03d734',1,'Myth::Control::RemoveRecordSchedule()'],['../classMyth_1_1WSAPI.html#acc8d1b160a40aae1bb8304c0e7a5967d',1,'Myth::WSAPI::RemoveRecordSchedule()']]]
+  ['queryfreespacesummary',['QueryFreeSpaceSummary',['../classMyth_1_1Control.html#a6942a6b6dab62634e0536b89930d519e',1,'Myth::Control']]],
+  ['querygenpixmap',['QueryGenPixmap',['../classMyth_1_1Control.html#a63b3f779877f0c87e4ead0b31f8d26a7',1,'Myth::Control']]]
 ];

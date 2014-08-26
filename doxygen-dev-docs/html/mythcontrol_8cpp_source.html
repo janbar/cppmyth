@@ -135,10 +135,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  m_monitor.Close();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31">   50</a></span>&#160;std::string <a class="code" href="classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31">Control::GetBackendServerIP</a>(<span class="keyword">const</span> std::string&amp; hostName)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::string backend_addr;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Query backend server IP</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP&quot;</span>, hostName);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (settingAddr &amp;&amp; !settingAddr-&gt;value.empty())</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    backend_addr = settingAddr-&gt;value;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">return</span> backend_addr;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6">   60</a></span>&#160;std::string <a class="code" href="classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6">Control::GetBackendServerIP6</a>(<span class="keyword">const</span> std::string&amp; hostName)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  std::string backend_addr;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// Query backend server IP6</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP6&quot;</span>, hostName);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (settingAddr &amp;&amp; !settingAddr-&gt;value.empty() &amp;&amp; settingAddr-&gt;value != <span class="stringliteral">&quot;::1&quot;</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    backend_addr = settingAddr-&gt;value;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">return</span> backend_addr;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#a0d03a9a771d0bc805373582a7d17c127">   70</a></span>&#160;<span class="keywordtype">unsigned</span> <a class="code" href="classMyth_1_1Control.html#a0d03a9a771d0bc805373582a7d17c127">Control::GetBackendServerPort</a>(<span class="keyword">const</span> std::string&amp; hostName)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">int</span> backend_port;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">// Query backend server port</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Myth::SettingPtr settingPort = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerPort&quot;</span>, hostName);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (settingPort &amp;&amp; !settingPort-&gt;value.empty() &amp;&amp; (backend_port = Myth::StringToInt(settingPort-&gt;value)) &gt; 0)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> backend_port;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb">   80</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb">Control::RefreshRecordedArtwork</a>(<a class="code" href="structMyth_1_1Program.html">Program</a>&amp; program)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  program.artwork.clear();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">if</span> (program.inetref.empty())</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  ArtworkListPtr artworks(<a class="code" href="classMyth_1_1Control.html#a11c9a825cbc734a61ee47b1f5780daae">GetRecordingArtworkList</a>(program.channel.chanId, program.recording.startTs));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  program.artwork.reserve(artworks-&gt;size());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">for</span> (ArtworkList::const_iterator it = artworks-&gt;begin(); it &lt; artworks-&gt;end(); ++it)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    program.artwork.push_back(*(it-&gt;get()));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">return</span> (program.artwork.empty() ? <span class="keyword">false</span> : <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00271">mythtypes.h:271</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a229c5905d4496b312a5e2396a0b51956"><div class="ttname"><a href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">Myth::Control::GetSetting</a></div><div class="ttdeci">SettingPtr GetSetting(const std::string &amp;key, const std::string hostname)</div><div class="ttdoc">Query setting by its key. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8h_source.html#l00107">mythcontrol.h:107</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a57bde8e429926ba7d28713b803a845eb"><div class="ttname"><a href="classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb">Myth::Control::RefreshRecordedArtwork</a></div><div class="ttdeci">bool RefreshRecordedArtwork(Program &amp;program)</div><div class="ttdoc">Refresh artwork available for a recording. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00080">mythcontrol.cpp:80</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a0b09a8032bb4587addf68895dc3beb31"><div class="ttname"><a href="classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31">Myth::Control::GetBackendServerIP</a></div><div class="ttdeci">std::string GetBackendServerIP(const std::string &amp;hostName)</div><div class="ttdoc">Query backend server IP. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00050">mythcontrol.cpp:50</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_ac0340c8b775fe668e925a168d751c3b6"><div class="ttname"><a href="classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6">Myth::Control::GetBackendServerIP6</a></div><div class="ttdeci">std::string GetBackendServerIP6(const std::string &amp;hostName)</div><div class="ttdoc">Query backend server IP6. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00060">mythcontrol.cpp:60</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a11c9a825cbc734a61ee47b1f5780daae"><div class="ttname"><a href="classMyth_1_1Control.html#a11c9a825cbc734a61ee47b1f5780daae">Myth::Control::GetRecordingArtworkList</a></div><div class="ttdeci">ArtworkListPtr GetRecordingArtworkList(uint32_t chanid, time_t recstartts)</div><div class="ttdoc">Get a list of artwork available for a recording by start time and channel id. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8h_source.html#l00428">mythcontrol.h:428</a></div></div>
+<div class="ttc" id="classMyth_1_1Control_html_a0d03a9a771d0bc805373582a7d17c127"><div class="ttname"><a href="classMyth_1_1Control.html#a0d03a9a771d0bc805373582a7d17c127">Myth::Control::GetBackendServerPort</a></div><div class="ttdeci">unsigned GetBackendServerPort(const std::string &amp;hostName)</div><div class="ttdoc">Query backend server port for protocol commands. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00070">mythcontrol.cpp:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 19 2014 20:03:38 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 09:02:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
