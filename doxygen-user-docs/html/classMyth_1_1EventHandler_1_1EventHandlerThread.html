@@ -107,12 +107,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a86bad242dcbb9a9af7fa7671ad8ef42c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86bad242dcbb9a9af7fa7671ad8ef42c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>EventHandlerThread</b> (const std::string &amp;server, unsigned port)</td></tr>
 <tr class="separator:a86bad242dcbb9a9af7fa7671ad8ef42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5031bd00245a7f3e6d4a0603c57a6fc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5031bd00245a7f3e6d4a0603c57a6fc5"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServer</b> () const =0</td></tr>
-<tr class="separator:a5031bd00245a7f3e6d4a0603c57a6fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a716e1dbeaa2781c6dc30ddff6f3b1d32"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a716e1dbeaa2781c6dc30ddff6f3b1d32"></a>
-virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</b> () const =0</td></tr>
-<tr class="separator:a716e1dbeaa2781c6dc30ddff6f3b1d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ac1c85286ecefe0bbf263f4b95fec0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41ac1c85286ecefe0bbf263f4b95fec0"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServer</b> () const </td></tr>
+<tr class="separator:a41ac1c85286ecefe0bbf263f4b95fec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81d1905dee567a06314b672778c26cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac81d1905dee567a06314b672778c26cd"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</b> () const </td></tr>
+<tr class="separator:ac81d1905dee567a06314b672778c26cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451b9b0279bd617c928c4a868f50091b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a451b9b0279bd617c928c4a868f50091b"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()=0</td></tr>
 <tr class="separator:a451b9b0279bd617c928c4a868f50091b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,9 +137,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>RevokeSubscri
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:acc885dda4b364d2884fb370d54401cfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc885dda4b364d2884fb370d54401cfe"></a>
-<a class="el" href="classMyth_1_1ProtoEvent.html">ProtoEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_event</b></td></tr>
-<tr class="separator:acc885dda4b364d2884fb370d54401cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a4ed9d98685850bb91702c0f537c1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7a4ed9d98685850bb91702c0f537c1a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></td></tr>
+<tr class="separator:ad7a4ed9d98685850bb91702c0f537c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad833d6eb2c877cdc1dc473727d655390"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad833d6eb2c877cdc1dc473727d655390"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_port</b></td></tr>
+<tr class="separator:ad833d6eb2c877cdc1dc473727d655390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -154,7 +157,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventHandler</b></td
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 26 2014 09:02:48 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 29 2014 01:13:34 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

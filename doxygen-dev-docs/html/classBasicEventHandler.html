@@ -105,12 +105,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a71552a1ddc636f7f042fa13cb2cec97b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71552a1ddc636f7f042fa13cb2cec97b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BasicEventHandler</b> (const std::string &amp;server, unsigned port)</td></tr>
 <tr class="separator:a71552a1ddc636f7f042fa13cb2cec97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8d99c28eacc3cfde463e5b3ee3ef19a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8d99c28eacc3cfde463e5b3ee3ef19a"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServer</b> () const </td></tr>
-<tr class="separator:ab8d99c28eacc3cfde463e5b3ee3ef19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a486d3867014b2f544c087e1abe063362"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a486d3867014b2f544c087e1abe063362"></a>
-virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</b> () const </td></tr>
-<tr class="separator:a486d3867014b2f544c087e1abe063362"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7fb3fdbd96d09b561b32fe7aff9f449"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7fb3fdbd96d09b561b32fe7aff9f449"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
 <tr class="separator:af7fb3fdbd96d09b561b32fe7aff9f449"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +130,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>RevokeSubscri
 <tr class="memitem:a86bad242dcbb9a9af7fa7671ad8ef42c inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86bad242dcbb9a9af7fa7671ad8ef42c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>EventHandlerThread</b> (const std::string &amp;server, unsigned port)</td></tr>
 <tr class="separator:a86bad242dcbb9a9af7fa7671ad8ef42c inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ac1c85286ecefe0bbf263f4b95fec0 inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41ac1c85286ecefe0bbf263f4b95fec0"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServer</b> () const </td></tr>
+<tr class="separator:a41ac1c85286ecefe0bbf263f4b95fec0 inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81d1905dee567a06314b672778c26cd inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac81d1905dee567a06314b672778c26cd"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>GetPort</b> () const </td></tr>
+<tr class="separator:ac81d1905dee567a06314b672778c26cd inherit pub_methods_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -187,9 +187,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a4395f7a8eab32ab2b3f22b883f108c22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4395f7a8eab32ab2b3f22b883f108c22"></a>
 <a class="el" href="classPLATFORM_1_1CMutex.html">PLATFORM::CMutex</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_mutex</b></td></tr>
 <tr class="separator:a4395f7a8eab32ab2b3f22b883f108c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f7cc8423b753e4de06c9d97f8abd75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86f7cc8423b753e4de06c9d97f8abd75"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_timeout</b></td></tr>
-<tr class="separator:a86f7cc8423b753e4de06c9d97f8abd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0db4a30a02b6538430146ffe534782cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0db4a30a02b6538430146ffe534782cd"></a>
+<a class="el" href="classMyth_1_1ProtoEvent.html">ProtoEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_event</b></td></tr>
+<tr class="separator:a0db4a30a02b6538430146ffe534782cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a5f0bab28c447e5a8528281565febb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84a5f0bab28c447e5a8528281565febb"></a>
 subscriptionsByEvent_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_subscriptionsByEvent</b></td></tr>
 <tr class="separator:a84a5f0bab28c447e5a8528281565febb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,9 +200,12 @@ subscriptions_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_subscrip
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classMyth_1_1EventHandler_1_1EventHandlerThread.html">Myth::EventHandler::EventHandlerThread</a></td></tr>
-<tr class="memitem:acc885dda4b364d2884fb370d54401cfe inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc885dda4b364d2884fb370d54401cfe"></a>
-<a class="el" href="classMyth_1_1ProtoEvent.html">ProtoEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_event</b></td></tr>
-<tr class="separator:acc885dda4b364d2884fb370d54401cfe inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a4ed9d98685850bb91702c0f537c1a inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7a4ed9d98685850bb91702c0f537c1a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></td></tr>
+<tr class="separator:ad7a4ed9d98685850bb91702c0f537c1a inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad833d6eb2c877cdc1dc473727d655390 inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad833d6eb2c877cdc1dc473727d655390"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_port</b></td></tr>
+<tr class="separator:ad833d6eb2c877cdc1dc473727d655390 inherit pro_attribs_classMyth_1_1EventHandler_1_1EventHandlerThread"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classPLATFORM_1_1CThread"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classPLATFORM_1_1CThread')"><img src="closed.png" alt="-"/>&#160;Static Private Member Functions inherited from <a class="el" href="classPLATFORM_1_1CThread.html">PLATFORM::CThread</a></td></tr>
 <tr class="memitem:a9e430c53b6562a5ab6b1d5c90764f503 inherit pub_static_methods_classPLATFORM_1_1CThread"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e430c53b6562a5ab6b1d5c90764f503"></a>
 static void *&#160;</td><td class="memItemRight" valign="bottom"><b>ThreadHandler</b> (<a class="el" href="classPLATFORM_1_1CThread.html">CThread</a> *thread)</td></tr>
@@ -217,7 +220,7 @@ static void *&#160;</td><td class="memItemRight" valign="bottom"><b>ThreadHandle
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 26 2014 09:02:39 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 29 2014 01:13:24 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
