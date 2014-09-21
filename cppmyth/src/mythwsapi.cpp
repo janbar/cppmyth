@@ -159,7 +159,7 @@ VersionPtr WSAPI::GetVersion()
 ////  Service operations
 ////
 
-SettingPtr WSAPI::GetSetting(const std::string& key, const std::string hostname)
+SettingPtr WSAPI::GetSetting(const std::string& key, const std::string& hostname)
 {
   SettingPtr ret;
   unsigned proto;
@@ -216,7 +216,7 @@ SettingPtr WSAPI::GetSetting(const std::string& key, bool myhost)
   return GetSetting(key, hostname);
 }
 
-SettingMapPtr WSAPI::GetSettings(const std::string hostname)
+SettingMapPtr WSAPI::GetSettings(const std::string& hostname)
 {
   SettingMapPtr ret(new SettingMap);
   unsigned proto;
