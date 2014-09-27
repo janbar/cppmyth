@@ -15,6 +15,7 @@
 #include <mythwsapi.h>
 
 #include <cstdio>
+#include <unistd.h>
 
 int main(int argc, char** argv)
 {
@@ -159,7 +160,7 @@ int main(int argc, char** argv)
         FILE* file = fopen("TMP.mpg", "wb");
         char buf[64000];
         int l = 100000, r;
-        for (int i = 0; i < 1000; ++i)
+        for (int i = 0; i < 200; ++i)
         {
           r = lp.Read(buf, 64000);
           if (r < 64000)
@@ -210,6 +211,7 @@ int main(int argc, char** argv)
       rec.findDay = 0;
       rec.findTime = "00:00:00";
 
+      Myth::DBGLevel(MYTH_DBG_DEBUG);
       control.AddRecordSchedule(rec);
 
       Myth::RecordSchedulePtr rc = control.GetRecordSchedule(rec.recordId);
