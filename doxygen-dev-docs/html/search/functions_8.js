@@ -4,5 +4,5 @@ var searchData=
   ['rcvversion',['RcvVersion',['../classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61',1,'Myth::ProtoBase']]],
   ['readfield',['ReadField',['../classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09',1,'Myth::ProtoBase']]],
   ['refreshrecordedartwork',['RefreshRecordedArtwork',['../classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb',1,'Myth::Control']]],
-  ['removerecordschedule',['RemoveRecordSchedule',['../classMyth_1_1Control.html#aa8e5817a061fa1ea05dbe164ba03d734',1,'Myth::Control::RemoveRecordSchedule()'],['../classMyth_1_1WSAPI.html#acc8d1b160a40aae1bb8304c0e7a5967d',1,'Myth::WSAPI::RemoveRecordSchedule()']]]
+  ['removerecordschedule',['RemoveRecordSchedule',['../classMyth_1_1Control.html#aa8e5817a061fa1ea05dbe164ba03d734',1,'Myth::Control::RemoveRecordSchedule()'],['../classMyth_1_1WSAPI.html#a3ed241980cfe8e41bc67bfb7d611a8b4',1,'Myth::WSAPI::RemoveRecordSchedule()']]]
 ];
