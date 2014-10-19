@@ -116,6 +116,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetServerHostN
 <tr class="memitem:a5edab37a349a6c29d66ed2cc0760724c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5edab37a349a6c29d66ed2cc0760724c"></a>
 VersionPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetVersion</b> ()</td></tr>
 <tr class="separator:a5edab37a349a6c29d66ed2cc0760724c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9fb516972d28656b1a78fc20326c63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d9fb516972d28656b1a78fc20326c63"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>ResolveHostName</b> (const std::string &amp;hostname)</td></tr>
+<tr class="separator:a2d9fb516972d28656b1a78fc20326c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50b524f70d643de7d2b239a172fca2c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a50b524f70d643de7d2b239a172fca2c8"></a>
 SettingPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1WSAPI.html#a50b524f70d643de7d2b239a172fca2c8">GetSetting</a> (const std::string &amp;key, const std::string &amp;hostname)</td></tr>
 <tr class="memdesc:a50b524f70d643de7d2b239a172fca2c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">GET Myth/GetSetting. <br/></td></tr>
@@ -235,6 +238,12 @@ ArtworkListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ac653defefd1a51ef230c6912965ce67d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac653defefd1a51ef230c6912965ce67d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>WSAPI</b> (const <a class="el" href="classMyth_1_1WSAPI.html">WSAPI</a> &amp;)</td></tr>
+<tr class="separator:ac653defefd1a51ef230c6912965ce67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d66df98b117f2d008843a286925305"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25d66df98b117f2d008843a286925305"></a>
+<a class="el" href="classMyth_1_1WSAPI.html">WSAPI</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMyth_1_1WSAPI.html">WSAPI</a> &amp;)</td></tr>
+<tr class="separator:a25d66df98b117f2d008843a286925305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e63a8db81f6845262c4bb94971a8a69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e63a8db81f6845262c4bb94971a8a69"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>InitWSAPI</b> ()</td></tr>
 <tr class="separator:a7e63a8db81f6845262c4bb94971a8a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -360,6 +369,10 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverHostNa
 <tr class="memitem:ac0955c92ac923f24dabaf57d5e34e953"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0955c92ac923f24dabaf57d5e34e953"></a>
 <a class="el" href="structMyth_1_1WSServiceVersion__t.html">WSServiceVersion_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_serviceVersion</b> [WS_INVALID+1]</td></tr>
 <tr class="separator:ac0955c92ac923f24dabaf57d5e34e953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd5fb3d0713304a0f837fd133a273d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bd5fb3d0713304a0f837fd133a273d5"></a>
+std::map&lt; std::string, <br class="typebreak"/>
+std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_namedCache</b></td></tr>
+<tr class="separator:a5bd5fb3d0713304a0f837fd133a273d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -404,7 +417,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverHostNa
 <p>&lt; WS_Dvr</p>
 <p>&lt; WS_INVALID </p>
 
-<p>Definition at line <a class="el" href="mythwsapi_8cpp_source.html#l00096">96</a> of file <a class="el" href="mythwsapi_8cpp_source.html">mythwsapi.cpp</a>.</p>
+<p>Definition at line <a class="el" href="mythwsapi_8cpp_source.html#l00097">97</a> of file <a class="el" href="mythwsapi_8cpp_source.html">mythwsapi.cpp</a>.</p>
 
 </div>
 </div>
@@ -415,7 +428,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverHostNa
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 27 2014 14:45:53 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 19 2014 13:23:12 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

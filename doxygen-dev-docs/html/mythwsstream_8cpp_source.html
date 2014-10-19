@@ -126,43 +126,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;WSStream::~WSStream()</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">if</span> (m_response != NULL)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    SAFE_DELETE(m_response);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">bool</span> WSStream::EndOfStream()</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (m_response != NULL)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> (m_response-&gt;GetConsumed() == m_response-&gt;GetContentLength());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">int</span> WSStream::Read(<span class="keywordtype">void</span>* buffer, <span class="keywordtype">unsigned</span> n)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? (<span class="keywordtype">int</span>)m_response-&gt;ReadContent((<span class="keywordtype">char</span> *)buffer, n) : 0);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;int64_t WSStream::GetSize()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? (int64_t)m_response-&gt;GetContentLength() : 0);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;int64_t WSStream::GetPosition()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? m_response-&gt;GetConsumed() : 0);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;int64_t WSStream::Seek(int64_t offset, WHENCE_t whence)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  (void)offset;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  (void)whence;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">return</span> GetPosition();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  SAFE_DELETE(m_response);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">bool</span> WSStream::EndOfStream()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (m_response != NULL)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> (m_response-&gt;GetConsumed() &gt;= m_response-&gt;GetContentLength());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">int</span> WSStream::Read(<span class="keywordtype">void</span>* buffer, <span class="keywordtype">unsigned</span> n)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? (<span class="keywordtype">int</span>)m_response-&gt;ReadContent((<span class="keywordtype">char</span> *)buffer, n) : 0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;int64_t WSStream::GetSize()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? (int64_t)m_response-&gt;GetContentLength() : 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;int64_t WSStream::GetPosition()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> (m_response != NULL ? m_response-&gt;GetConsumed() : 0);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;int64_t WSStream::Seek(int64_t offset, WHENCE_t whence)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  (void)offset;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  (void)whence;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">return</span> GetPosition();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
 <div class="ttc" id="classMyth_1_1WSResponse_html"><div class="ttname"><a href="classMyth_1_1WSResponse.html">Myth::WSResponse</a></div><div class="ttdef"><b>Definition:</b> <a href="mythwsresponse_8h_source.html#l00036">mythwsresponse.h:36</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 27 2014 14:45:52 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 19 2014 13:23:12 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -139,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> RequestAccept(CT_t contentType);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> SetContentParam(<span class="keyword">const</span> std::string&amp; param, <span class="keyword">const</span> std::string&amp; value);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> SetContentCustom(CT_t contentType, <span class="keyword">const</span> <span class="keywordtype">char</span> *content);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">const</span> std::string&amp; GetContent() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">const</span> std::string&amp; GetContent()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_contentData; }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> ClearContent();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> MakeMessage(std::string&amp; msg)<span class="keyword"> const</span></div>
@@ -149,8 +149,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (m_service_method == HRM_HEAD) MakeMessageHEAD(msg);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">const</span> std::string&amp; GetServer() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">unsigned</span> GetPort() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">const</span> std::string&amp; GetServer()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_server; }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">unsigned</span> GetPort()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_port; }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::string m_server;</div>
@@ -174,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 27 2014 14:45:52 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 19 2014 13:23:12 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

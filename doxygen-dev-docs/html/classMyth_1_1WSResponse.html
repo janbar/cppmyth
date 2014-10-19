@@ -101,18 +101,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf6cd91eb62a7c6562711e6e0d81c011"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf6cd91eb62a7c6562711e6e0d81c011"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>WSResponse</b> (const <a class="el" href="classMyth_1_1WSRequest.html">WSRequest</a> &amp;request)</td></tr>
 <tr class="separator:adf6cd91eb62a7c6562711e6e0d81c011"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa21057cd9c7d30677b3be533462a7343"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa21057cd9c7d30677b3be533462a7343"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsValid</b> ()</td></tr>
-<tr class="separator:aa21057cd9c7d30677b3be533462a7343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae19722f87367b73eda32a19a418b363e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae19722f87367b73eda32a19a418b363e"></a>
+<tr class="memitem:afaff3e47c7d470d537fe684b6e3886f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaff3e47c7d470d537fe684b6e3886f7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsSuccessful</b> () const </td></tr>
+<tr class="separator:afaff3e47c7d470d537fe684b6e3886f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b7038bdf1aebfada53993f249b8495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20b7038bdf1aebfada53993f249b8495"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetContentLength</b> () const </td></tr>
-<tr class="separator:ae19722f87367b73eda32a19a418b363e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a20b7038bdf1aebfada53993f249b8495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2592f6a2f16ff13a5a7efca6a2c15249"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2592f6a2f16ff13a5a7efca6a2c15249"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ReadContent</b> (char *buf, size_t buflen)</td></tr>
 <tr class="separator:a2592f6a2f16ff13a5a7efca6a2c15249"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11bb439180c8533a52e5dacf5dc717ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11bb439180c8533a52e5dacf5dc717ae"></a>
+<tr class="memitem:a9897cb7a9422e9c025d98bc5be4e7301"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9897cb7a9422e9c025d98bc5be4e7301"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetConsumed</b> () const </td></tr>
-<tr class="separator:a11bb439180c8533a52e5dacf5dc717ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a9897cb7a9422e9c025d98bc5be4e7301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a673182ef18ed43397361ae59d1ccdccc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a673182ef18ed43397361ae59d1ccdccc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetStatusCode</b> () const </td></tr>
+<tr class="separator:a673182ef18ed43397361ae59d1ccdccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19554861125163102de031690cc0a2f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19554861125163102de031690cc0a2f6"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Redirection</b> () const </td></tr>
+<tr class="separator:a19554861125163102de031690cc0a2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -134,9 +140,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a11881bdf8e240d414b227848622968be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11881bdf8e240d414b227848622968be"></a>
 <a class="el" href="classMyth_1_1TcpSocket.html">TcpSocket</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_socket</b></td></tr>
 <tr class="separator:a11881bdf8e240d414b227848622968be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec22969333bd42a10cfaa47f4d577c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaec22969333bd42a10cfaa47f4d577c6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isValid</b></td></tr>
-<tr class="separator:aaec22969333bd42a10cfaa47f4d577c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2f1ea3ad492443929d19d6d9528b904"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2f1ea3ad492443929d19d6d9528b904"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_successful</b></td></tr>
+<tr class="separator:ae2f1ea3ad492443929d19d6d9528b904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa627106742a0f462599eff7b4d1dadb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa627106742a0f462599eff7b4d1dadb4"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>m_statusCode</b></td></tr>
 <tr class="separator:aa627106742a0f462599eff7b4d1dadb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +152,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_serverInfo</
 <tr class="memitem:aeb6050cb46071927917a1664edbdc826"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb6050cb46071927917a1664edbdc826"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_etag</b></td></tr>
 <tr class="separator:aeb6050cb46071927917a1664edbdc826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f94468f20affdf97889e633081d1a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34f94468f20affdf97889e633081d1a4"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_location</b></td></tr>
+<tr class="separator:a34f94468f20affdf97889e633081d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea6983e077131470df67026b6cc66f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abea6983e077131470df67026b6cc66f5"></a>
 CT_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_contentType</b></td></tr>
 <tr class="separator:abea6983e077131470df67026b6cc66f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,7 +175,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_consumed</b></td>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 27 2014 14:45:53 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 19 2014 13:23:12 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
