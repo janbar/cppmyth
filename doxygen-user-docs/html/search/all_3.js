@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['enablerecordschedule',['EnableRecordSchedule',['../classMyth_1_1Control.html#a6259de7971f9ec08daf943830dc18524',1,'Myth::Control::EnableRecordSchedule()'],['../classMyth_1_1WSAPI.html#acafc22ed519809a593c33071ba49c442',1,'Myth::WSAPI::EnableRecordSchedule()']]],
-  ['eventhandler',['EventHandler',['../classMyth_1_1EventHandler.html',1,'Myth']]],
-  ['eventhandlerthread',['EventHandlerThread',['../classMyth_1_1EventHandler_1_1EventHandlerThread.html',1,'Myth::EventHandler']]],
-  ['eventmessage',['EventMessage',['../structMyth_1_1EventMessage.html',1,'Myth']]],
-  ['eventsubscriber',['EventSubscriber',['../classMyth_1_1EventSubscriber.html',1,'Myth']]]
+  ['deleterecording',['DeleteRecording',['../classMyth_1_1Control.html#a7d19d668b88983fe08b5f20cc582e62d',1,'Myth::Control::DeleteRecording()'],['../classMyth_1_1WSAPI.html#a3b031d93d5077c0b5d24bfe0b41b18a6',1,'Myth::WSAPI::DeleteRecording()']]],
+  ['disablerecordschedule',['DisableRecordSchedule',['../classMyth_1_1Control.html#a8568eb5b74d0202f76a2464faedb0f62',1,'Myth::Control::DisableRecordSchedule()'],['../classMyth_1_1WSAPI.html#aba17c17695ffe093b02e909e767b2449',1,'Myth::WSAPI::DisableRecordSchedule()']]]
 ];

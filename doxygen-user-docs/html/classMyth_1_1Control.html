@@ -99,6 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adb57b3d072bb5f77d2ec4b1b1d33f4f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb57b3d072bb5f77d2ec4b1b1d33f4f7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Control</b> (const std::string &amp;server, unsigned protoPort, unsigned wsapiPort)</td></tr>
 <tr class="separator:adb57b3d072bb5f77d2ec4b1b1d33f4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07bddcc1fd3cb794ad9b749d0c0e4447"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07bddcc1fd3cb794ad9b749d0c0e4447"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Control</b> (const std::string &amp;server, unsigned protoPort, unsigned wsapiPort, bool blockShutdown)</td></tr>
+<tr class="separator:a07bddcc1fd3cb794ad9b749d0c0e4447"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8edd3552ca41bc8db843fcfd0b2dd216"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8edd3552ca41bc8db843fcfd0b2dd216"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
 <tr class="separator:a8edd3552ca41bc8db843fcfd0b2dd216"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +111,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr
 <tr class="memitem:a6e25ce6491dc9b0f84e7cc9f9a90100d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e25ce6491dc9b0f84e7cc9f9a90100d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></tr>
 <tr class="separator:a6e25ce6491dc9b0f84e7cc9f9a90100d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f9ae62a503f6161732f25f777162e56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f9ae62a503f6161732f25f777162e56"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>HasHanging</b> () const </td></tr>
+<tr class="separator:a0f9ae62a503f6161732f25f777162e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae443ffdfc66636c8df3ab42dc4987111"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae443ffdfc66636c8df3ab42dc4987111"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CleanHanging</b> ()</td></tr>
+<tr class="separator:ae443ffdfc66636c8df3ab42dc4987111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2232d76074da2b49b4870c02ecca206e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#a2232d76074da2b49b4870c02ecca206e">CheckService</a> ()</td></tr>
 <tr class="memdesc:a2232d76074da2b49b4870c02ecca206e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check availability of API services.  <a href="#a2232d76074da2b49b4870c02ecca206e">More...</a><br/></td></tr>
 <tr class="separator:a2232d76074da2b49b4870c02ecca206e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,6 +243,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>StopRecording</b> (co
 <tr class="memitem:ac763630194afe8c3fa4853146c79ff59"><td class="memItemLeft" align="right" valign="top">MarkListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#ac763630194afe8c3fa4853146c79ff59">GetCommBreakList</a> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program, int unit=0)</td></tr>
 <tr class="memdesc:ac763630194afe8c3fa4853146c79ff59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request a set of commercial break marks for a recording.  <a href="#ac763630194afe8c3fa4853146c79ff59">More...</a><br/></td></tr>
 <tr class="separator:ac763630194afe8c3fa4853146c79ff59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afff9ebf8d3a32fc8506bffa5895e88f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#afff9ebf8d3a32fc8506bffa5895e88f5">BlockShutdown</a> ()</td></tr>
+<tr class="memdesc:afff9ebf8d3a32fc8506bffa5895e88f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevents backend from shutting down until a the next call to <a class="el" href="classMyth_1_1Control.html#a444e5c12f95c292c8617e5a58a25d76b" title="Allows backend to shut down again after a previous call to BlockShutdown(). ">AllowShutdown()</a>.  <a href="#afff9ebf8d3a32fc8506bffa5895e88f5">More...</a><br/></td></tr>
+<tr class="separator:afff9ebf8d3a32fc8506bffa5895e88f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a444e5c12f95c292c8617e5a58a25d76b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#a444e5c12f95c292c8617e5a58a25d76b">AllowShutdown</a> ()</td></tr>
+<tr class="memdesc:a444e5c12f95c292c8617e5a58a25d76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows backend to shut down again after a previous call to <a class="el" href="classMyth_1_1Control.html#afff9ebf8d3a32fc8506bffa5895e88f5" title="Prevents backend from shutting down until a the next call to AllowShutdown(). ">BlockShutdown()</a>.  <a href="#a444e5c12f95c292c8617e5a58a25d76b">More...</a><br/></td></tr>
+<tr class="separator:a444e5c12f95c292c8617e5a58a25d76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -277,6 +292,58 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>status. On success Id is updated with the new. </dd></dl>
 
 <p>References <a class="el" href="classMyth_1_1WSAPI.html#aaefaa6b9579078ad05626464b1b01779">Myth::WSAPI::AddRecordSchedule()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a444e5c12f95c292c8617e5a58a25d76b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Myth::Control::AllowShutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allows backend to shut down again after a previous call to <a class="el" href="classMyth_1_1Control.html#afff9ebf8d3a32fc8506bffa5895e88f5" title="Prevents backend from shutting down until a the next call to AllowShutdown(). ">BlockShutdown()</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afff9ebf8d3a32fc8506bffa5895e88f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Myth::Control::BlockShutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prevents backend from shutting down until a the next call to <a class="el" href="classMyth_1_1Control.html#a444e5c12f95c292c8617e5a58a25d76b" title="Allows backend to shut down again after a previous call to BlockShutdown(). ">AllowShutdown()</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
 </div>
 </div>
@@ -1792,7 +1859,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 19 2014 13:23:20 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 30 2014 20:27:58 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

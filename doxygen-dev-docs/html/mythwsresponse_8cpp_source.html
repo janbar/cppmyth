@@ -315,37 +315,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">case</span> 8:</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          <span class="keywordflow">if</span> (val &amp;&amp; memcmp(token, <span class="stringliteral">&quot;LOCATION&quot;</span>, token_len) == 0)</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            m_location.append(val);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">case</span> 12:</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;          <span class="keywordflow">if</span> (val &amp;&amp; memcmp(token, <span class="stringliteral">&quot;CONTENT-TYPE&quot;</span>, token_len) == 0)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            m_contentType = ContentTypeFromMime(val);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">case</span> 14:</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;          <span class="keywordflow">if</span> (val &amp;&amp; memcmp(token, <span class="stringliteral">&quot;CONTENT-LENGTH&quot;</span>, token_len) == 0)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            m_contentLength = atol(val);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;          <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;          <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keywordtype">size_t</span> WSResponse::ReadContent(<span class="keywordtype">char</span>* buf, <span class="keywordtype">size_t</span> buflen)</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;{</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordflow">if</span> (!m_socket-&gt;IsConnected())</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordtype">size_t</span> s = m_socket-&gt;ReadResponse(buf, buflen);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  m_consumed += s;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">case</span> 12:</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;          <span class="keywordflow">if</span> (val &amp;&amp; memcmp(token, <span class="stringliteral">&quot;CONTENT-TYPE&quot;</span>, token_len) == 0)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            m_contentType = ContentTypeFromMime(val);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">case</span> 14:</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          <span class="keywordflow">if</span> (val &amp;&amp; memcmp(token, <span class="stringliteral">&quot;CONTENT-LENGTH&quot;</span>, token_len) == 0)</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            m_contentLength = atol(val);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">size_t</span> WSResponse::ReadContent(<span class="keywordtype">char</span>* buf, <span class="keywordtype">size_t</span> buflen)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordflow">if</span> (!m_socket-&gt;IsConnected())</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordtype">size_t</span> s = m_socket-&gt;ReadResponse(buf, buflen);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  m_consumed += s;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
 <div class="ttc" id="classMyth_1_1WSRequest_html"><div class="ttname"><a href="classMyth_1_1WSRequest.html">Myth::WSRequest</a></div><div class="ttdef"><b>Definition:</b> <a href="mythwsrequest_8h_source.html#l00043">mythwsrequest.h:43</a></div></div>
 <div class="ttc" id="classMyth_1_1TcpSocket_html"><div class="ttname"><a href="classMyth_1_1TcpSocket.html">Myth::TcpSocket</a></div><div class="ttdef"><b>Definition:</b> <a href="mythsocket_8h_source.html#l00038">mythsocket.h:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 19 2014 13:23:12 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 30 2014 20:27:20 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

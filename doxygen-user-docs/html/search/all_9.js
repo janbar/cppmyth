@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['program',['Program',['../structMyth_1_1Program.html',1,'Myth']]],
-  ['protobase',['ProtoBase',['../classMyth_1_1ProtoBase.html',1,'Myth']]],
-  ['protoevent',['ProtoEvent',['../classMyth_1_1ProtoEvent.html',1,'Myth']]],
-  ['protomonitor',['ProtoMonitor',['../classMyth_1_1ProtoMonitor.html',1,'Myth']]],
-  ['protoplayback',['ProtoPlayback',['../classMyth_1_1ProtoPlayback.html',1,'Myth']]],
-  ['protorecorder',['ProtoRecorder',['../classMyth_1_1ProtoRecorder.html',1,'Myth']]],
-  ['prototransfer',['ProtoTransfer',['../classMyth_1_1ProtoTransfer.html',1,'Myth']]],
-  ['putsetting',['PutSetting',['../classMyth_1_1Control.html#a1a6ec494869a7d30784d726519ebabec',1,'Myth::Control::PutSetting()'],['../classMyth_1_1WSAPI.html#a0144c42b50ebe049dde486a03c094931',1,'Myth::WSAPI::PutSetting()']]]
+  ['m_5fhang',['m_hang',['../classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23',1,'Myth::ProtoBase']]],
+  ['m_5ftainted',['m_tainted',['../classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5',1,'Myth::ProtoBase']]],
+  ['mark',['Mark',['../structMyth_1_1Mark.html',1,'Myth']]]
 ];

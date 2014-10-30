@@ -177,8 +177,13 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_server</b></
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>m_port</b></td></tr>
 <tr class="separator:a76783b30e3d26240e7389f8982b151ae inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac267c5693ff6661385476b09ea11ff23 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac267c5693ff6661385476b09ea11ff23"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_hang</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">m_hang</a></td></tr>
+<tr class="memdesc:ac267c5693ff6661385476b09ea11ff23 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection hang: while true allow retry. <br/></td></tr>
 <tr class="separator:ac267c5693ff6661385476b09ea11ff23 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f71e11ebbe7e85b1755d48ed7724ec5 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f71e11ebbe7e85b1755d48ed7724ec5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">m_tainted</a></td></tr>
+<tr class="memdesc:a0f71e11ebbe7e85b1755d48ed7724ec5 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection has hung since last reset. <br/></td></tr>
+<tr class="separator:a0f71e11ebbe7e85b1755d48ed7724ec5 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31741ac8bf7ef00ad9274296057562a6 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31741ac8bf7ef00ad9274296057562a6"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgLength</b></td></tr>
 <tr class="separator:a31741ac8bf7ef00ad9274296057562a6 inherit pub_attribs_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,6 +200,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a811918ac9fe9ad1f2001fb702c9338fc inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a811918ac9fe9ad1f2001fb702c9338fc"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Open</b> ()</td></tr>
 <tr class="separator:a811918ac9fe9ad1f2001fb702c9338fc inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ca9116be7e11659e483eb72e6a9993 inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24ca9116be7e11659e483eb72e6a9993"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
+<tr class="separator:a24ca9116be7e11659e483eb72e6a9993 inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59c91370d3f1f894ec65cdf86dd0282b inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59c91370d3f1f894ec65cdf86dd0282b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></tr>
 <tr class="separator:a59c91370d3f1f894ec65cdf86dd0282b inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,6 +237,12 @@ virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocketErrNo
 <tr class="memitem:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b14bb426d0cf240ffb9513e25b84a54"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSocket</b> () const </td></tr>
 <tr class="separator:a6b14bb426d0cf240ffb9513e25b84a54 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2499b0d10328adcdefcddb638f18df5a inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2499b0d10328adcdefcddb638f18df5a"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>HasHanging</b> () const </td></tr>
+<tr class="separator:a2499b0d10328adcdefcddb638f18df5a inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a543c83e0fb4b626d178da96d4e8f3926 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a543c83e0fb4b626d178da96d4e8f3926"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>CleanHanging</b> ()</td></tr>
+<tr class="separator:a543c83e0fb4b626d178da96d4e8f3926 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5810c14024df285f403f81150861411 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5810c14024df285f403f81150861411"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>OpenConnection</b> (int rcvbuf)</td></tr>
 <tr class="separator:ad5810c14024df285f403f81150861411 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,7 +280,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 19 2014 13:23:20 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 30 2014 20:27:58 for CppMyth (user) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
