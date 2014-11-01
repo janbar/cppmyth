@@ -31,36 +31,61 @@
       </header>
       <section>
         <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a name="welcome-to-cppmyth-pages" class="anchor" href="#welcome-to-cppmyth-pages"><span class="octicon octicon-link"></span></a>Welcome to CppMyth Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>You can check out the project and build it</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>$ git clone https://github.com/janbar/cppmyth.git cppmyth
+$ mkdir build
+$ cd build
+$ cmake ../cppmyth
+$ make
+&#133;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Finally trying the "livetvdemo" on your MythTV backend host</p>
+
+<pre><code>$ ./demo/livetvdemo &#60;backendip&#62; &#60;chanid&#62; &#124; mplayer &#45;
+&#133;
+</code></pre>
+
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="making-your-demo" class="anchor" href="#making-your-demo"><span class="octicon octicon-link"></span></a>Making your demo ...</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>You can easily edit the source file demo.cpp . After writing your demo, rebuild the project typing again command 'make'.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<pre><code>$ nano ../cppmyth/demo/src/demo.cpp</code></pre>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+  <a name="writing-your-client" class="anchor" href="#writing-your-client"><span class="octicon octicon-link"></span></a>Writing your MythTV client ...</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>You can easily write your MythTV client. All structures provided by the library are wrapped within shared or smart pointer. Just use them ...</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<pre><code>Myth::Control <font color="DarkBlue">clientMonitor</font>(server, 6543, 6544);
+if (!<font color="DarkBlue">clientMonitor</font>.<font color="grey">IsOpen</font>())
+  return;
+<font color="green">//Types ...Ptr are shared pointer.
+//You can copy or forget without care.</font>
+<b>Myth::ProgramListPtr</b> <font color="DarkBlue">progs</font> = <font color="DarkBlue">clientMonitor</font>.<font color="grey">GetRecordedList</font>();
+DoSomething(<font color="DarkBlue">progs</font>);
+m_recordings = <font color="DarkBlue">progs</font>;
+&#133;
+<font color="green">//Container pointer and its element pointers are always allocated.
+//Only checking its size.</font>
+for (size_t <font color="DarkBlue">i</font> = 0; <font color="DarkBlue">i</font> &#60; <font color="DarkBlue">progs</font>-&#62;<font color="grey">size</font>(); ++i) {
+  <b>Myth::ProgramPtr</b> <font color="DarkBlue">prog</font> = (*<font color="DarkBlue">progs</font>)[i];
+  if (<font color="DarkBlue">prog</font>-&#62;<font color="grey">recording.recGroup</font> == "LiveTV") {
+    m_liveRecordings.<font color="grey">push_back</font>(<font color="DarkBlue">prog</font>);
+    &#133;
+<b>Myth::ProgramPtr</b> <font color="DarkBlue">prog</font> = clientMonitor.<font color="grey">GetRecorded</font>(chanid, startts);
+<font color="green">//Standalone element pointer could be null_ptr.
+//You have to check before deref.</font>
+if (prog) {
+  m_title = <font color="DarkBlue">prog</font>-><font color="grey">title</font>;
+  &#133;
+</code></pre>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/janbar">janbar</a></p>
