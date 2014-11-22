@@ -22,7 +22,7 @@ channelMap_t channelMap;
 // Load visible channels into the channelMap
 bool loadChannels(const char * server)
 {
-  Myth::WSAPI wsapi(server, 6544);
+  Myth::WSAPI wsapi(server, 6544, "");
   if (wsapi.CheckService())
   {
     // Print the version of our backend

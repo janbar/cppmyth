@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 
   {
     Myth::DBGLevel(MYTH_DBG_WARN);
-    Myth::Control control(backendIP, 6543, 6544);
+    Myth::Control control(backendIP, 6543, 6544, "");
 
     fprintf(stderr, "\n***\n*** Testing web service GetSetting\n***\n");
     Myth::SettingPtr set = control.GetSetting("LiveTVPriority", true);
