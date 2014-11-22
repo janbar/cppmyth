@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 cmake_policy(VERSION 2.6)
 
 project(livetvdemo)
-include(GNUInstallDirs)
+#include(GNUInstallDirs)
 
 if (MSVC)
   # This option must match the settings used in your program, in particular if you
@@ -56,5 +56,9 @@ endif(MSVC)
 
 ###############################################################################
 # install targets
+if(NOT DEFINED CMAKE_INSTALL_BINDIR)
+  set(CMAKE_INSTALL_BINDIR bin)
+endif()
+
 install(TARGETS livetvdemo
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
