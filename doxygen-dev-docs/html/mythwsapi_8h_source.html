@@ -146,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classMyth_1_1WSAPI.html">   57</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>(<span class="keyword">const</span> std::string&amp; server, <span class="keywordtype">unsigned</span> port);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>(<span class="keyword">const</span> std::string&amp; server, <span class="keywordtype">unsigned</span> port, <span class="keyword">const</span> std::string&amp; securityPin);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ~<a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">unsigned</span> CheckService();</div>
@@ -356,63 +356,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <a class="code" href="classPLATFORM_1_1CMutex.html">PLATFORM::CMutex</a> *m_mutex;</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    std::string m_server;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordtype">unsigned</span> m_port;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordtype">bool</span> m_checked;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <a class="code" href="structMyth_1_1Version.html">Version</a> m_version;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    std::string m_serverHostName;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <a class="code" href="structMyth_1_1WSServiceVersion__t.html">WSServiceVersion_t</a> m_serviceVersion[WS_INVALID + 1];</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    std::map&lt;std::string, std::string&gt; m_namedCache;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="comment">// prevent copy</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>(<span class="keyword">const</span> <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp;);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp;);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordtype">bool</span> InitWSAPI();</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classMyth_1_1WSAPI.html#ab6d59d30104f8d8f1e3049d7c725afc5">GetServiceVersion</a>(WSServiceId_t <span class="keywordtype">id</span>, <a class="code" href="structMyth_1_1WSServiceVersion__t.html">WSServiceVersion_t</a>&amp; version);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordtype">bool</span> CheckServerHostName2_0();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordtype">bool</span> CheckVersion2_0();</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    SettingPtr GetSetting2_0(<span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> std::string&amp; hostname);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    SettingMapPtr GetSettings2_0(<span class="keyword">const</span> std::string&amp; hostname);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordtype">bool</span> PutSetting2_0(<span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> std::string&amp; value, <span class="keywordtype">bool</span> myhost);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    CaptureCardListPtr GetCaptureCardList1_4();</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    VideoSourceListPtr GetVideoSourceList1_2();</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    ChannelListPtr GetChannelList1_2(uint32_t sourceid, <span class="keywordtype">bool</span> onlyVisible);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    ChannelListPtr GetChannelList1_5(uint32_t sourceid, <span class="keywordtype">bool</span> onlyVisible);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    ProgramMapPtr GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_t endtime);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    ProgramListPtr GetRecordedList1_5(<span class="keywordtype">unsigned</span> n, <span class="keywordtype">bool</span> descending);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    ProgramPtr GetRecorded1_5(uint32_t chanid, time_t recstartts);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordtype">bool</span> DeleteRecording2_1(uint32_t chanid, time_t recstartts, <span class="keywordtype">bool</span> forceDelete, <span class="keywordtype">bool</span> allowRerecord);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">bool</span> UnDeleteRecording2_1(uint32_t chanid, time_t recstartts);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">bool</span> UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, <span class="keywordtype">bool</span> watched);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    RecordScheduleListPtr GetRecordScheduleList1_5();</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    RecordSchedulePtr GetRecordSchedule1_5(uint32_t recordid);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordtype">bool</span> AddRecordSchedule1_5(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordtype">bool</span> AddRecordSchedule1_7(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordtype">bool</span> UpdateRecordSchedule1_7(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">bool</span> DisableRecordSchedule1_5(uint32_t recordid);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordtype">bool</span> EnableRecordSchedule1_5(uint32_t recordid);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">bool</span> RemoveRecordSchedule1_5(uint32_t recordid);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    ProgramListPtr GetUpcomingList1_5();</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    ProgramListPtr GetUpcomingList2_2();</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    ProgramListPtr GetConflictList1_5();</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    ProgramListPtr GetExpiringList1_5();</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    WSStreamPtr GetFile1_32(<span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> std::string&amp; sgname);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    WSStreamPtr GetChannelIcon1_32(uint32_t chanid, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    WSStreamPtr GetPreviewImage1_32(uint32_t chanid, time_t recstartts, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    WSStreamPtr GetRecordingArtwork1_32(<span class="keyword">const</span> std::string&amp; type, <span class="keyword">const</span> std::string&amp; inetref, uint16_t season, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    ArtworkListPtr GetRecordingArtworkList1_32(uint32_t chanid, time_t recstartts);</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  };</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHWSAPI_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    std::string m_securityPin;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordtype">bool</span> m_checked;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <a class="code" href="structMyth_1_1Version.html">Version</a> m_version;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    std::string m_serverHostName;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="structMyth_1_1WSServiceVersion__t.html">WSServiceVersion_t</a> m_serviceVersion[WS_INVALID + 1];</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    std::map&lt;std::string, std::string&gt; m_namedCache;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="comment">// prevent copy</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>(<span class="keyword">const</span> <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp;);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classMyth_1_1WSAPI.html">WSAPI</a>&amp;);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">bool</span> InitWSAPI();</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classMyth_1_1WSAPI.html#ab6d59d30104f8d8f1e3049d7c725afc5">GetServiceVersion</a>(WSServiceId_t <span class="keywordtype">id</span>, <a class="code" href="structMyth_1_1WSServiceVersion__t.html">WSServiceVersion_t</a>&amp; version);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordtype">bool</span> CheckServerHostName2_0();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordtype">bool</span> CheckVersion2_0();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    SettingPtr GetSetting2_0(<span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> std::string&amp; hostname);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    SettingMapPtr GetSettings2_0(<span class="keyword">const</span> std::string&amp; hostname);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordtype">bool</span> PutSetting2_0(<span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> std::string&amp; value, <span class="keywordtype">bool</span> myhost);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    CaptureCardListPtr GetCaptureCardList1_4();</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    VideoSourceListPtr GetVideoSourceList1_2();</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    ChannelListPtr GetChannelList1_2(uint32_t sourceid, <span class="keywordtype">bool</span> onlyVisible);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    ChannelListPtr GetChannelList1_5(uint32_t sourceid, <span class="keywordtype">bool</span> onlyVisible);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    ProgramMapPtr GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_t endtime);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    ProgramListPtr GetRecordedList1_5(<span class="keywordtype">unsigned</span> n, <span class="keywordtype">bool</span> descending);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    ProgramPtr GetRecorded1_5(uint32_t chanid, time_t recstartts);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">bool</span> DeleteRecording2_1(uint32_t chanid, time_t recstartts, <span class="keywordtype">bool</span> forceDelete, <span class="keywordtype">bool</span> allowRerecord);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">bool</span> UnDeleteRecording2_1(uint32_t chanid, time_t recstartts);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordtype">bool</span> UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, <span class="keywordtype">bool</span> watched);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    RecordScheduleListPtr GetRecordScheduleList1_5();</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    RecordSchedulePtr GetRecordSchedule1_5(uint32_t recordid);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordtype">bool</span> AddRecordSchedule1_5(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordtype">bool</span> AddRecordSchedule1_7(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">bool</span> UpdateRecordSchedule1_7(<a class="code" href="structMyth_1_1RecordSchedule.html">RecordSchedule</a>&amp; record);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordtype">bool</span> DisableRecordSchedule1_5(uint32_t recordid);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">bool</span> EnableRecordSchedule1_5(uint32_t recordid);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordtype">bool</span> RemoveRecordSchedule1_5(uint32_t recordid);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    ProgramListPtr GetUpcomingList1_5();</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    ProgramListPtr GetUpcomingList2_2();</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    ProgramListPtr GetConflictList1_5();</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    ProgramListPtr GetExpiringList1_5();</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    WSStreamPtr GetFile1_32(<span class="keyword">const</span> std::string&amp; filename, <span class="keyword">const</span> std::string&amp; sgname);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    WSStreamPtr GetChannelIcon1_32(uint32_t chanid, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    WSStreamPtr GetPreviewImage1_32(uint32_t chanid, time_t recstartts, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    WSStreamPtr GetRecordingArtwork1_32(<span class="keyword">const</span> std::string&amp; type, <span class="keyword">const</span> std::string&amp; inetref, uint16_t season, <span class="keywordtype">unsigned</span> width, <span class="keywordtype">unsigned</span> height);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    ArtworkListPtr GetRecordingArtworkList1_32(uint32_t chanid, time_t recstartts);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  };</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHWSAPI_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor"></span></div>
 <div class="ttc" id="structMyth_1_1Version_html"><div class="ttname"><a href="structMyth_1_1Version.html">Myth::Version</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00199">mythtypes.h:199</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a51141b31138515af3a802cbf38907fe2"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a51141b31138515af3a802cbf38907fe2">Myth::WSAPI::GetPreviewImage</a></div><div class="ttdeci">WSStreamPtr GetPreviewImage(uint32_t chanid, time_t recstartts, unsigned width=0, unsigned height=0)</div><div class="ttdoc">GET Content/GetPreviewImage. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00326">mythwsapi.h:326</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_aaefaa6b9579078ad05626464b1b01779"><div class="ttname"><a href="classMyth_1_1WSAPI.html#aaefaa6b9579078ad05626464b1b01779">Myth::WSAPI::AddRecordSchedule</a></div><div class="ttdeci">bool AddRecordSchedule(RecordSchedule &amp;record)</div><div class="ttdoc">POST Dvr/AddRecordSchedule. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00224">mythwsapi.h:224</a></div></div>
@@ -426,7 +427,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classMyth_1_1WSAPI_html_a128d2d6f19f0189475965c9b4aab163a"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a128d2d6f19f0189475965c9b4aab163a">Myth::WSAPI::GetRecordingArtwork</a></div><div class="ttdeci">WSStreamPtr GetRecordingArtwork(const std::string &amp;type, const std::string &amp;inetref, uint16_t season, unsigned width=0, unsigned height=0)</div><div class="ttdoc">GET Content/GetRecordingArtwork. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00336">mythwsapi.h:336</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_aba17c17695ffe093b02e909e767b2449"><div class="ttname"><a href="classMyth_1_1WSAPI.html#aba17c17695ffe093b02e909e767b2449">Myth::WSAPI::DisableRecordSchedule</a></div><div class="ttdeci">bool DisableRecordSchedule(uint32_t recordid)</div><div class="ttdoc">POST Dvr/DisableRecordSchedule. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00245">mythwsapi.h:245</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a627ec0376e13df790881cfc24be7f650"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a627ec0376e13df790881cfc24be7f650">Myth::WSAPI::GetRecordedList</a></div><div class="ttdeci">ProgramListPtr GetRecordedList(unsigned n=0, bool descending=false)</div><div class="ttdoc">GET Dvr/GetRecordedList. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00154">mythwsapi.h:154</a></div></div>
-<div class="ttc" id="classMyth_1_1WSAPI_html_ab6d59d30104f8d8f1e3049d7c725afc5"><div class="ttname"><a href="classMyth_1_1WSAPI.html#ab6d59d30104f8d8f1e3049d7c725afc5">Myth::WSAPI::GetServiceVersion</a></div><div class="ttdeci">bool GetServiceVersion(WSServiceId_t id, WSServiceVersion_t &amp;version)</div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8cpp_source.html#l00097">mythwsapi.cpp:97</a></div></div>
+<div class="ttc" id="classMyth_1_1WSAPI_html_ab6d59d30104f8d8f1e3049d7c725afc5"><div class="ttname"><a href="classMyth_1_1WSAPI.html#ab6d59d30104f8d8f1e3049d7c725afc5">Myth::WSAPI::GetServiceVersion</a></div><div class="ttdeci">bool GetServiceVersion(WSServiceId_t id, WSServiceVersion_t &amp;version)</div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8cpp_source.html#l00098">mythwsapi.cpp:98</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a2d787b1615d523e08980334d163b4845"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a2d787b1615d523e08980334d163b4845">Myth::WSAPI::GetRecordSchedule</a></div><div class="ttdeci">RecordSchedulePtr GetRecordSchedule(uint32_t recordid)</div><div class="ttdoc">GET Dvr/GetRecordSchedule. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00214">mythwsapi.h:214</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a53f363eef1ad7aaf3287cdd2a77b812e"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a53f363eef1ad7aaf3287cdd2a77b812e">Myth::WSAPI::UpdateRecordedWatchedStatus</a></div><div class="ttdeci">bool UpdateRecordedWatchedStatus(uint32_t chanid, time_t recstartts, bool watched)</div><div class="ttdoc">POST Dvr/UpdateRecordedWatchedStatus. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00174">mythwsapi.h:174</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_aad9020a70732887397d8cb079e8b64ab"><div class="ttname"><a href="classMyth_1_1WSAPI.html#aad9020a70732887397d8cb079e8b64ab">Myth::WSAPI::GetVideoSourceList</a></div><div class="ttdeci">VideoSourceListPtr GetVideoSourceList()</div><div class="ttdoc">GET Channel/GetVideoSourceList. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00123">mythwsapi.h:123</a></div></div>
@@ -449,7 +450,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 12 2014 01:09:27 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 27 2014 09:56:02 for CppMyth (developer) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
