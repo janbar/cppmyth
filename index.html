@@ -17,7 +17,10 @@
       <header>
         <h1>CppMyth</h1>
         <p>C++ MythTV client library</p>
-
+        <a href="https://scan.coverity.com/projects/1369">
+          <img alt="Coverity Scan Build Status"
+            src="https://scan.coverity.com/projects/1369/badge.svg"/>
+        </a>
         <p class="view"><a href="https://github.com/janbar/cppmyth">View the Project on GitHub <small>janbar/cppmyth</small></a></p>
 
         <p class="view"><a href="doxygen-user-docs/html/index.html">View the user documentation <small>doxygen-user-docs</small></a></p>
@@ -62,7 +65,7 @@ $ make
 
 <p>You can easily write your MythTV client. All structures provided by the library are wrapped within shared or smart pointer. Just use them ...</p>
 
-<pre><code>Myth::Control <font color="DarkBlue">clientMonitor</font>(server, 6543, 6544);
+<pre><code>Myth::Control <font color="DarkBlue">clientMonitor</font>(server, 6543, 6544, "0000");
 if (!<font color="DarkBlue">clientMonitor</font>.<font color="grey">IsOpen</font>())
   return;
 <font color="green">//Types ...Ptr are shared pointer.
