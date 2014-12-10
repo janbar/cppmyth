@@ -198,7 +198,7 @@ int main(int argc, char** argv)
 
     if (chantest)
     {
-      Myth::RecordSchedule rec = {};
+      Myth::RecordSchedule rec = Myth::RecordSchedule();
       rec.chanId = chantest->chanId;
       rec.callSign = chantest->callSign;
       rec.title = "Testing LIB";
