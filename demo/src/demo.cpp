@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <map>
+#include <unistd.h>
 
 #define MYTAG "[DEMO] "
 
@@ -68,7 +69,9 @@ void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
     for (;;)
     {
       r = lp.Read(buf, 64000);
-      if (r < 0 || fwrite(buf, 1, r, file) != r)
+      if (r == 0)
+        usleep(100000);
+      else if (r < 0 || fwrite(buf, 1, r, file) != r)
         break;
     }
     //fclose(file);
