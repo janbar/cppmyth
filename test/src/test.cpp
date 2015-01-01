@@ -137,10 +137,11 @@ int main(int argc, char** argv)
       //pb.openTransfer(pl[n]->FileName, pl[n]->Recording.StorageGroup);
       pb.OpenTransfer((*pl)[n]);
       char buf[64000];
-      int l = 64000;
-      for (int i = 0; i < 30 && l > 0; ++i)
+      int l = 0;
+      for (int i = 0; i < 30; ++i)
       {
-        l = pb.Read(buf, 64000);
+        if ((l = pb.Read(buf, 64000)) == 0)
+          usleep(100000);
       }
       pb.CloseTransfer();
 
@@ -159,16 +160,13 @@ int main(int argc, char** argv)
       {
         FILE* file = fopen("TMP.mpg", "wb");
         char buf[64000];
-        int l = 100000, r;
+        int r = 0;
         for (int i = 0; i < 200; ++i)
         {
-          r = lp.Read(buf, 64000);
-          if (r < 64000)
-            l = ((l + 10000) > 100000 ? 100000 : l + 10000);
-          else
-            l = ((l - 5000) < 50000 ? 50000: l - 5000);
-
-          if (r < 0) break;
+          if ((r = lp.Read(buf, 64000)) == 0)
+            usleep(100000);
+          else if (r < 0)
+            break;
           r = fwrite(buf, 1, r, file);
           if (i == 100)
             lp.KeepLiveRecording(true);
