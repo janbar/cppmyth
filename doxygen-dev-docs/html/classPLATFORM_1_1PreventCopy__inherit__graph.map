@@ -1,0 +1,8 @@
+<map id="PLATFORM::PreventCopy" name="PLATFORM::PreventCopy">
+<area shape="rect" id="node2" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="579,6,746,48"/>
+<area shape="rect" id="node3" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="579,84,746,125"/>
+<area shape="rect" id="node4" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; _Predicate \&gt;" alt="" coords="250,53,417,94"/>
+<area shape="rect" id="node5" href="$classPLATFORM_1_1CLockObject.html" title="PLATFORM::CLockObject" alt="" coords="244,170,423,196"/>
+<area shape="rect" id="node6" href="$classPLATFORM_1_1CMutex.html" title="PLATFORM::CMutex" alt="" coords="259,220,407,247"/>
+<area shape="rect" id="node7" href="$classPLATFORM_1_1CTryLockObject.html" title="PLATFORM::CTryLockObject" alt="" coords="235,271,432,298"/>
+</map>
