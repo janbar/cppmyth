@@ -3,6 +3,11 @@
 #include <Windows.h>
 #include <winsock.h>
 #include <time.h>
+#define usleep(t) Sleep((DWORD)(t)/1000)
+#define sleep(t)  Sleep((DWORD)(t)*1000)
+#else
+#include <unistd.h>
+#include <sys/time.h>
 #endif
 
 #include <mythdebug.h>
@@ -15,7 +20,6 @@
 #include <mythwsapi.h>
 
 #include <cstdio>
-#include <unistd.h>
 
 int main(int argc, char** argv)
 {
