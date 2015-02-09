@@ -41,8 +41,8 @@ set (LIVETVDEMO_SOURCES
 ###############################################################################
 # add targets
 add_executable (livetvdemo ${LIVETVDEMO_SOURCES})
-add_dependencies (livetvdemo cppmyth jansson)
-set (DEPLIBS cppmyth jansson)
+add_dependencies (livetvdemo cppmyth)
+set (DEPLIBS cppmyth)
 if (MSVC)
   list (APPEND DEPLIBS ws2_32)
 else ()

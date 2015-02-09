@@ -41,8 +41,8 @@ set (CPPMYTHTEST_SOURCES
 ###############################################################################
 # add targets
 add_executable (cppmythtest ${CPPMYTHTEST_SOURCES})
-add_dependencies (cppmythtest cppmyth jansson)
-set (DEPLIBS cppmyth jansson)
+add_dependencies (cppmythtest cppmyth)
+set (DEPLIBS cppmyth)
 if (MSVC)
   list (APPEND DEPLIBS ws2_32)
 else ()
