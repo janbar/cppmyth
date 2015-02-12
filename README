@@ -32,5 +32,4 @@ Sources of demo are in <root path of cppmyth>/demo/src/
 Generate the documentation:
 ---------------------------
 
-doxygen <root path of cppmyth>/docs/doxygen-user.cfg
 doxygen <root path of cppmyth>/docs/doxygen-dev.cfg
