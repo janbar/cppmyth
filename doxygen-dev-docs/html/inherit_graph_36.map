@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classPLATFORM_1_1PreventCopy.html" title="PLATFORM::PreventCopy" alt="" coords="6,159,165,183"/>
+<area shape="rect" id="node2" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="226,5,374,41"/>
+<area shape="rect" id="node3" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="226,65,374,101"/>
+<area shape="rect" id="node4" href="$classPLATFORM_1_1CCondition.html" title="PLATFORM::CCondition\l\&lt; _Predicate \&gt;" alt="" coords="226,125,374,161"/>
+<area shape="rect" id="node5" href="$classPLATFORM_1_1CLockObject.html" title="PLATFORM::CLockObject" alt="" coords="222,185,378,209"/>
+<area shape="rect" id="node6" href="$classPLATFORM_1_1CMutex.html" title="PLATFORM::CMutex" alt="" coords="236,233,364,257"/>
+<area shape="rect" id="node7" href="$classPLATFORM_1_1CTryLockObject.html" title="PLATFORM::CTryLockObject" alt="" coords="214,281,386,305"/>
+</map>

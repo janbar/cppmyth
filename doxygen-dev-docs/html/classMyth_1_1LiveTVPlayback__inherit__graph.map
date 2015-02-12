@@ -1,6 +1,6 @@
 <map id="Myth::LiveTVPlayback" name="Myth::LiveTVPlayback">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="5,80,139,107"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="12,5,132,32"/>
-<area shape="rect" id="node4" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="163,80,264,107"/>
-<area shape="rect" id="node5" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="288,80,441,107"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="5,77,133,101"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="12,5,127,29"/>
+<area shape="rect" id="node4" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="157,77,256,101"/>
+<area shape="rect" id="node5" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="280,77,428,101"/>
 </map>

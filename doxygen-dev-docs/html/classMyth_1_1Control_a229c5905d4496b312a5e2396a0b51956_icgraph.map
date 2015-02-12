@@ -1,0 +1,5 @@
+<map id="Myth::Control::GetSetting" name="Myth::Control::GetSetting">
+<area shape="rect" id="node2" href="$classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31" title="Query backend server IP. " alt="" coords="219,5,392,41"/>
+<area shape="rect" id="node3" href="$classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6" title="Query backend server IP6. " alt="" coords="219,65,392,101"/>
+<area shape="rect" id="node4" href="$classMyth_1_1Control.html#a0d03a9a771d0bc805373582a7d17c127" title="Query backend server port for protocol commands. " alt="" coords="219,125,392,161"/>
+</map>
