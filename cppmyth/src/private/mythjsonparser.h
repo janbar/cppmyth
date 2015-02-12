@@ -29,6 +29,10 @@
 
 #include <string>
 
+/**
+ * @namespace MythJSON
+ * @brief This namespace contains all operations to handle JSON content
+ */
 namespace MythJSON
 {
   class Node
