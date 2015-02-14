@@ -35,5 +35,6 @@ var annotated =
     [ "mimetype", "structmimetype.html", "structmimetype" ],
     [ "myth_protomap_t", "structmyth__protomap__t.html", "structmyth__protomap__t" ],
     [ "protoref_t", "structprotoref__t.html", "structprotoref__t" ],
+    [ "timezone", "structtimezone.html", "structtimezone" ],
     [ "URIParser", "classURIParser.html", "classURIParser" ]
 ];

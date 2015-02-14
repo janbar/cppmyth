@@ -152,100 +152,67 @@ $(document).ready(function(){initNavTree('timeutils_8h_source.html','');});
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>PLATFORM</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">  #if defined(__WINDOWS__)</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>timezone</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> tz_minuteswest;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> tz_dsttime;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  };</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">  #define usleep(t) Sleep((DWORD)(t)/1000)</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define sleep(t)  Sleep((DWORD)(t)*1000)</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">int</span> gettimeofday(<span class="keyword">struct</span> timeval *pcur_time, <span class="keyword">struct</span> timezone *tz)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (pcur_time == NULL)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      SetLastError(EFAULT);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">struct </span>_timeb current;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    _ftime(&amp;current);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    pcur_time-&gt;tv_sec = (long) current.time;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    pcur_time-&gt;tv_usec = current.millitm * 1000L;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    if (tz)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      tz-&gt;tz_minuteswest = current.timezone;    <span class="comment">/* minutes west of Greenwich  */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      tz-&gt;tz_dsttime = current.dstflag;       <span class="comment">/* type of dst correction  */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">inline</span> int64_t GetTimeMs()</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">  #if defined(__APPLE__)</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span>    int64_t ticks = 0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">static</span> mach_timebase_info_data_t timebase;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (timebase.denom == 0) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="comment">// Get the timebase if this is the first time we run.</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="comment">// Recommended by Apple&#39;s QA1398.</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      (void)mach_timebase_info(&amp;timebase);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// Use timebase to convert absolute time tick units into nanoseconds.</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ticks = mach_absolute_time() * timebase.numer / timebase.denom;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> ticks / 1000000;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">  #elif defined(__WINDOWS__)</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>    LARGE_INTEGER tickPerSecond;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    LARGE_INTEGER tick;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (QueryPerformanceFrequency(&amp;tickPerSecond))</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      QueryPerformanceCounter(&amp;tick);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keywordflow">return</span> (int64_t) (tick.QuadPart / (tickPerSecond.QuadPart / 1000.));</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">  #else</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span>    timespec time;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    clock_gettime(CLOCK_MONOTONIC, &amp;time);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> (int64_t)time.tv_sec * 1000 + time.tv_nsec / 1000000;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span>  }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">inline</span> T GetTimeSec()</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> (T)GetTimeMs() / (T)1000.0;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classPLATFORM_1_1CTimeout.html">  115</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a>(<span class="keywordtype">void</span>) : m_iTarget(0) {}</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a>(uint32_t iTimeout) { Init(iTimeout); }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">bool</span> IsSet(<span class="keywordtype">void</span>)<span class="keyword"> const       </span>{ <span class="keywordflow">return</span> m_iTarget &gt; 0; }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> Init(uint32_t iTimeout) { m_iTarget = GetTimeMs() + iTimeout; }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    uint32_t TimeLeft(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      uint64_t iNow = GetTimeMs();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">return</span> (iNow &gt; m_iTarget) ? 0 : (uint32_t)(m_iTarget - iNow);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    uint64_t m_iTarget;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  };</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
-<div class="ttc" id="classPLATFORM_1_1CTimeout_html"><div class="ttname"><a href="classPLATFORM_1_1CTimeout.html">PLATFORM::CTimeout</a></div><div class="ttdef"><b>Definition:</b> <a href="timeutils_8h_source.html#l00115">timeutils.h:115</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">inline</span> int64_t GetTimeMs()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">  #if defined(__APPLE__)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span>    <span class="comment">// Recommended by Apple&#39;s QA1398.</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    int64_t ticks = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">static</span> mach_timebase_info_data_t timebase;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Get the timebase if this is the first time we run.</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (timebase.denom == 0)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      (void)mach_timebase_info(&amp;timebase);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// Use timebase to convert absolute time tick units into nanoseconds.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    ticks = mach_absolute_time() * timebase.numer / timebase.denom;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> ticks / 1000000;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">  #elif defined(__WINDOWS__)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>    LARGE_INTEGER tickPerSecond;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    LARGE_INTEGER tick;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (QueryPerformanceFrequency(&amp;tickPerSecond))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      QueryPerformanceCounter(&amp;tick);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">return</span> (int64_t) (tick.QuadPart / (tickPerSecond.QuadPart / 1000.));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">  #else</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span>    timespec time;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    clock_gettime(CLOCK_MONOTONIC, &amp;time);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> (int64_t)time.tv_sec * 1000 + time.tv_nsec / 1000000;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">inline</span> T GetTimeSec()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> (T)GetTimeMs() / (T)1000.0;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classPLATFORM_1_1CTimeout.html">   82</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a>(<span class="keywordtype">void</span>) : m_iTarget(0) {}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classPLATFORM_1_1CTimeout.html">CTimeout</a>(uint32_t iTimeout) { Init(iTimeout); }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> IsSet(<span class="keywordtype">void</span>)<span class="keyword"> const       </span>{ <span class="keywordflow">return</span> m_iTarget &gt; 0; }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> Init(uint32_t iTimeout) { m_iTarget = GetTimeMs() + iTimeout; }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    uint32_t TimeLeft(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      uint64_t iNow = GetTimeMs();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="keywordflow">return</span> (iNow &gt; m_iTarget) ? 0 : (uint32_t)(m_iTarget - iNow);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    uint64_t m_iTarget;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="ttc" id="classPLATFORM_1_1CTimeout_html"><div class="ttname"><a href="classPLATFORM_1_1CTimeout.html">PLATFORM::CTimeout</a></div><div class="ttdef"><b>Definition:</b> <a href="timeutils_8h_source.html#l00082">timeutils.h:82</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><a class="el" href="dir_4c20defe2df6eb4dbd837254b085a722.html">platform</a></li><li class="navelem"><a class="el" href="dir_86933813bb18f523c012c3fb8628ca60.html">util</a></li><li class="navelem"><b>timeutils.h</b></li>
-    <li class="footer">Generated on Fri Feb 13 2015 23:34:45 for C++Myth by
+    <li class="footer">Generated on Sun Feb 15 2015 00:14:58 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
