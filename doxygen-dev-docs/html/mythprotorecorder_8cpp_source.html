@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> ProtoRecorder::DoneRecordingCallback()</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  m_liveRecording = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: completed\n&quot;</span>, __FUNCTION__);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
@@ -205,7 +205,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -238,7 +238,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -290,7 +290,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  ProgramPtr program;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">return</span> program;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -318,7 +318,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  int64_t pos;</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordflow">if</span> (!IsOpen() || !IsPlaying())</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -347,7 +347,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">return</span> list;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -386,7 +386,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">return</span> list;</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -429,7 +429,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="keywordtype">bool</span> ProtoRecorder::IsLiveRecording()</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;{</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordflow">return</span> m_liveRecording;</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
@@ -438,7 +438,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -470,7 +470,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  std::string field;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
@@ -492,17 +492,17 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8cpp_source.html',''
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;}</div>
 <div class="ttc" id="structMyth_1_1CardInput_html"><div class="ttname"><a href="structMyth_1_1CardInput.html">Myth::CardInput</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00372">mythtypes.h:372</a></div></div>
+<div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoPlayback_html"><div class="ttname"><a href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotoplayback_8h_source.html#l00033">mythprotoplayback.h:33</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00126">mythprotobase.cpp:126</a></div></div>
 <div class="ttc" id="structMyth_1_1Channel_html"><div class="ttname"><a href="structMyth_1_1Channel.html">Myth::Channel</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00244">mythtypes.h:244</a></div></div>
-<div class="ttc" id="classPLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00128">mutex.h:128</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotorecorder.cpp</b></li>
-    <li class="footer">Generated on Sun Feb 15 2015 14:24:58 for C++Myth by
+    <li class="footer">Generated on Tue Feb 17 2015 22:06:13 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

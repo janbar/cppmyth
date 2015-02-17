@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">bool</span> ProtoEvent::Announce75()</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::string cmd(<span class="stringliteral">&quot;ANN Monitor &quot;</span>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  cmd.append(m_socket-&gt;GetMyHostName()).append(<span class="stringliteral">&quot; 1&quot;</span>);</div>
@@ -233,7 +233,7 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562">  131</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562">ProtoEvent::RcvBackendMessage</a>(<span class="keywordtype">unsigned</span> timeout, <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg)</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keyword">struct </span>timeval tv;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  tv.tv_sec = timeout;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  tv.tv_usec = 0;</div>
@@ -301,20 +301,20 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordflow">return</span> ((ProtoBase::IsOpen() &amp;&amp; !<a class="code" href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">m_hang</a>) ? 0 : -(ENOTCONN));</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
 <div class="ttc" id="structMyth_1_1SignalStatus_html"><div class="ttname"><a href="structMyth_1_1SignalStatus.html">Myth::SignalStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00494">mythtypes.h:494</a></div></div>
+<div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
 <div class="ttc" id="structMyth_1_1EventMessage_html"><div class="ttname"><a href="structMyth_1_1EventMessage.html">Myth::EventMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00513">mythtypes.h:513</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_ac267c5693ff6661385476b09ea11ff23"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">Myth::ProtoBase::m_hang</a></div><div class="ttdeci">bool m_hang</div><div class="ttdoc">Connection hang: while true allow retry. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00067">mythprotobase.h:67</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00126">mythprotobase.cpp:126</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoEvent_html_aed27d737671cabf8f446477106ea3562"><div class="ttname"><a href="classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562">Myth::ProtoEvent::RcvBackendMessage</a></div><div class="ttdeci">int RcvBackendMessage(unsigned timeout, EventMessage &amp;msg)</div><div class="ttdoc">Wait for new backend message from event connection. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotoevent_8cpp_source.html#l00131">mythprotoevent.cpp:131</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a0f71e11ebbe7e85b1755d48ed7724ec5"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">Myth::ProtoBase::m_tainted</a></div><div class="ttdeci">bool m_tainted</div><div class="ttdoc">Connection has hung since last reset. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00068">mythprotobase.h:68</a></div></div>
-<div class="ttc" id="classPLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00128">mutex.h:128</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotoevent.cpp</b></li>
-    <li class="footer">Generated on Sun Feb 15 2015 14:24:57 for C++Myth by
+    <li class="footer">Generated on Tue Feb 17 2015 22:06:13 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

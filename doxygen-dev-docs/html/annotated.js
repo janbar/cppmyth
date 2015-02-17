@@ -2,18 +2,6 @@ var annotated =
 [
     [ "Myth", "namespaceMyth.html", "namespaceMyth" ],
     [ "MythDTO", "namespaceMythDTO.html", null ],
-    [ "MythJSON", "namespaceMythJSON.html", "namespaceMythJSON" ],
-    [ "PLATFORM", null, [
-      [ "CConditionImpl", "classPLATFORM_1_1CConditionImpl.html", "classPLATFORM_1_1CConditionImpl" ],
-      [ "PreventCopy", "classPLATFORM_1_1PreventCopy.html", "classPLATFORM_1_1PreventCopy" ],
-      [ "CCondition", "classPLATFORM_1_1CCondition.html", "classPLATFORM_1_1CCondition" ],
-      [ "CMutex", "classPLATFORM_1_1CMutex.html", "classPLATFORM_1_1CMutex" ],
-      [ "CLockObject", "classPLATFORM_1_1CLockObject.html", "classPLATFORM_1_1CLockObject" ],
-      [ "CTryLockObject", "classPLATFORM_1_1CTryLockObject.html", "classPLATFORM_1_1CTryLockObject" ],
-      [ "CEvent", "classPLATFORM_1_1CEvent.html", "classPLATFORM_1_1CEvent" ],
-      [ "CThread", "classPLATFORM_1_1CThread.html", "classPLATFORM_1_1CThread" ],
-      [ "CTimeout", "classPLATFORM_1_1CTimeout.html", "classPLATFORM_1_1CTimeout" ]
-    ] ],
     [ "sajson", null, [
       [ "string", "classsajson_1_1string.html", "classsajson_1_1string" ],
       [ "literal", "classsajson_1_1literal.html", "classsajson_1_1literal" ],

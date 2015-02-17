@@ -138,13 +138,13 @@ $(document).ready(function(){initNavTree('mythprotobase_8h_source.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PROTO_STR_SEPARATOR       &quot;[]:[]&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PROTO_STR_SEPARATOR_LEN   (sizeof(PROTO_STR_SEPARATOR) - 1)</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>PLATFORM</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>Myth</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">class </span>CMutex;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>Myth</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">namespace </span>PLATFORM</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">class </span>CMutex;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">class </span>TcpSocket;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('mythprotobase_8h_source.html','');});
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> CleanHanging();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classPLATFORM_1_1CMutex.html">PLATFORM::CMutex</a> *m_mutex;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classMyth_1_1PLATFORM_1_1CMutex.html">PLATFORM::CMutex</a> *m_mutex;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classMyth_1_1TcpSocket.html">TcpSocket</a> *m_socket;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">unsigned</span> m_protoVersion;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::string m_server;</div>
@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('mythprotobase_8h_source.html','');});
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00126">mythprotobase.cpp:126</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a0f71e11ebbe7e85b1755d48ed7724ec5"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">Myth::ProtoBase::m_tainted</a></div><div class="ttdeci">bool m_tainted</div><div class="ttdoc">Connection has hung since last reset. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00068">mythprotobase.h:68</a></div></div>
-<div class="ttc" id="classPLATFORM_1_1CMutex_html"><div class="ttname"><a href="classPLATFORM_1_1CMutex.html">PLATFORM::CMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00061">mutex.h:61</a></div></div>
+<div class="ttc" id="classMyth_1_1PLATFORM_1_1CMutex_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CMutex.html">Myth::PLATFORM::CMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00063">mutex.h:63</a></div></div>
 <div class="ttc" id="classMyth_1_1TcpSocket_html"><div class="ttname"><a href="classMyth_1_1TcpSocket.html">Myth::TcpSocket</a></div><div class="ttdef"><b>Definition:</b> <a href="mythsocket_8h_source.html#l00038">mythsocket.h:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -234,7 +234,7 @@ $(document).ready(function(){initNavTree('mythprotobase_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotobase.h</b></li>
-    <li class="footer">Generated on Sun Feb 15 2015 14:24:57 for C++Myth by
+    <li class="footer">Generated on Tue Feb 17 2015 22:06:13 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

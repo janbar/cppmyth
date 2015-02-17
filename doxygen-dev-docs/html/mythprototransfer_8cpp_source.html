@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Announce75()</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">fileSize</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = 0;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  std::string cmd(<span class="stringliteral">&quot;ANN FileTransfer &quot;</span>);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  cmd.append(m_socket-&gt;GetMyHostName());</div>
@@ -255,6 +255,7 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> m_storageGroupName;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00058">mythprototransfer.h:58</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00056">mythprototransfer.h:56</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html_aecf431d28885c0620a5483971b7e0baf"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Myth::ProtoTransfer::Flush</a></div><div class="ttdeci">void Flush()</div><div class="ttdoc">Flushing unread data previously requested. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8cpp_source.html#l00095">mythprototransfer.cpp:95</a></div></div>
@@ -262,7 +263,6 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00126">mythprotobase.cpp:126</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a0f71e11ebbe7e85b1755d48ed7724ec5"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">Myth::ProtoBase::m_tainted</a></div><div class="ttdeci">bool m_tainted</div><div class="ttdoc">Connection has hung since last reset. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00068">mythprotobase.h:68</a></div></div>
-<div class="ttc" id="classPLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classPLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00128">mutex.h:128</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00057">mythprototransfer.h:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -270,7 +270,7 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprototransfer.cpp</b></li>
-    <li class="footer">Generated on Sun Feb 15 2015 14:24:58 for C++Myth by
+    <li class="footer">Generated on Tue Feb 17 2015 22:06:13 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stopthread',['StopThread',['../classPLATFORM_1_1CThread.html#a20caf70d201be98097cebab424c57fcd',1,'PLATFORM::CThread']]]
+  ['stopthread',['StopThread',['../classMyth_1_1PLATFORM_1_1CThread.html#add7d8c9fd5660cfb6f29ae3d1b456e74',1,'Myth::PLATFORM::CThread']]]
 ];

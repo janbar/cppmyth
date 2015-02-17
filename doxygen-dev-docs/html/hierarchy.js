@@ -5,16 +5,16 @@ var hierarchy =
     [ "bindings_t", "structbindings__t.html", null ],
     [ "Myth::CaptureCard", "structMyth_1_1CaptureCard.html", null ],
     [ "Myth::CardInput", "structMyth_1_1CardInput.html", null ],
-    [ "PLATFORM::CConditionImpl", "classPLATFORM_1_1CConditionImpl.html", null ],
-    [ "PLATFORM::CEvent", "classPLATFORM_1_1CEvent.html", null ],
+    [ "Myth::PLATFORM::CConditionImpl", "classMyth_1_1PLATFORM_1_1CConditionImpl.html", null ],
+    [ "Myth::PLATFORM::CEvent", "classMyth_1_1PLATFORM_1_1CEvent.html", null ],
     [ "Myth::Channel", "structMyth_1_1Channel.html", null ],
     [ "Myth::Control", "classMyth_1_1Control.html", null ],
-    [ "PLATFORM::CThread", "classPLATFORM_1_1CThread.html", [
+    [ "Myth::PLATFORM::CThread", "classMyth_1_1PLATFORM_1_1CThread.html", [
       [ "BasicEventHandler", "classBasicEventHandler.html", null ]
     ] ],
-    [ "PLATFORM::CTimeout", "classPLATFORM_1_1CTimeout.html", null ],
+    [ "Myth::PLATFORM::CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", null ],
     [ "debug_ctx_t", "structdebug__ctx__t.html", null ],
-    [ "MythJSON::Document", "classMythJSON_1_1Document.html", null ],
+    [ "Myth::JSON::Document", "classMyth_1_1JSON_1_1Document.html", null ],
     [ "sajson::document", "classsajson_1_1document.html", null ],
     [ "sajson::double_storage", "unionsajson_1_1double__storage.html", null ],
     [ "sajson::parser::error_result", "structsajson_1_1parser_1_1error__result.html", null ],
@@ -34,18 +34,18 @@ var hierarchy =
     [ "mimetype", "structmimetype.html", null ],
     [ "sajson::mutable_string_view", "classsajson_1_1mutable__string__view.html", null ],
     [ "myth_protomap_t", "structmyth__protomap__t.html", null ],
-    [ "MythJSON::Node", "classMythJSON_1_1Node.html", null ],
+    [ "Myth::JSON::Node", "classMyth_1_1JSON_1_1Node.html", null ],
     [ "sajson::object_key_comparator", "structsajson_1_1object__key__comparator.html", null ],
     [ "sajson::object_key_record", "structsajson_1_1object__key__record.html", null ],
     [ "sajson::parser::parse_result", "structsajson_1_1parser_1_1parse__result.html", null ],
     [ "sajson::parser", "classsajson_1_1parser.html", null ],
-    [ "PLATFORM::PreventCopy", "classPLATFORM_1_1PreventCopy.html", [
-      [ "PLATFORM::CCondition< bool >", "classPLATFORM_1_1CCondition.html", null ],
-      [ "PLATFORM::CCondition< volatile bool >", "classPLATFORM_1_1CCondition.html", null ],
-      [ "PLATFORM::CCondition< _Predicate >", "classPLATFORM_1_1CCondition.html", null ],
-      [ "PLATFORM::CLockObject", "classPLATFORM_1_1CLockObject.html", null ],
-      [ "PLATFORM::CMutex", "classPLATFORM_1_1CMutex.html", null ],
-      [ "PLATFORM::CTryLockObject", "classPLATFORM_1_1CTryLockObject.html", null ]
+    [ "Myth::PLATFORM::PreventCopy", "classMyth_1_1PLATFORM_1_1PreventCopy.html", [
+      [ "Myth::PLATFORM::CCondition< bool >", "classMyth_1_1PLATFORM_1_1CCondition.html", null ],
+      [ "Myth::PLATFORM::CCondition< volatile bool >", "classMyth_1_1PLATFORM_1_1CCondition.html", null ],
+      [ "Myth::PLATFORM::CCondition< _Predicate >", "classMyth_1_1PLATFORM_1_1CCondition.html", null ],
+      [ "Myth::PLATFORM::CLockObject", "classMyth_1_1PLATFORM_1_1CLockObject.html", null ],
+      [ "Myth::PLATFORM::CMutex", "classMyth_1_1PLATFORM_1_1CMutex.html", null ],
+      [ "Myth::PLATFORM::CTryLockObject", "classMyth_1_1PLATFORM_1_1CTryLockObject.html", null ]
     ] ],
     [ "Myth::Program", "structMyth_1_1Program.html", null ],
     [ "Myth::ProtoBase", "classMyth_1_1ProtoBase.html", [

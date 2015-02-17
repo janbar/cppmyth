@@ -1,5 +1,17 @@
 var namespaceMyth =
 [
+    [ "JSON", "namespaceMyth_1_1JSON.html", "namespaceMyth_1_1JSON" ],
+    [ "PLATFORM", null, [
+      [ "CConditionImpl", "classMyth_1_1PLATFORM_1_1CConditionImpl.html", "classMyth_1_1PLATFORM_1_1CConditionImpl" ],
+      [ "PreventCopy", "classMyth_1_1PLATFORM_1_1PreventCopy.html", "classMyth_1_1PLATFORM_1_1PreventCopy" ],
+      [ "CCondition", "classMyth_1_1PLATFORM_1_1CCondition.html", "classMyth_1_1PLATFORM_1_1CCondition" ],
+      [ "CMutex", "classMyth_1_1PLATFORM_1_1CMutex.html", "classMyth_1_1PLATFORM_1_1CMutex" ],
+      [ "CLockObject", "classMyth_1_1PLATFORM_1_1CLockObject.html", "classMyth_1_1PLATFORM_1_1CLockObject" ],
+      [ "CTryLockObject", "classMyth_1_1PLATFORM_1_1CTryLockObject.html", "classMyth_1_1PLATFORM_1_1CTryLockObject" ],
+      [ "CEvent", "classMyth_1_1PLATFORM_1_1CEvent.html", "classMyth_1_1PLATFORM_1_1CEvent" ],
+      [ "CThread", "classMyth_1_1PLATFORM_1_1CThread.html", "classMyth_1_1PLATFORM_1_1CThread" ],
+      [ "CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", "classMyth_1_1PLATFORM_1_1CTimeout" ]
+    ] ],
     [ "Control", "classMyth_1_1Control.html", "classMyth_1_1Control" ],
     [ "EventSubscriber", "classMyth_1_1EventSubscriber.html", "classMyth_1_1EventSubscriber" ],
     [ "EventHandler", "classMyth_1_1EventHandler.html", "classMyth_1_1EventHandler" ],

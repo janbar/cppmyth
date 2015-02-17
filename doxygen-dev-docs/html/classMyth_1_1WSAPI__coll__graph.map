@@ -1,9 +1,9 @@
 <map id="Myth::WSAPI" name="Myth::WSAPI">
-<area shape="rect" id="node2" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="587,189,685,213"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="279,129,361,153"/>
+<area shape="rect" id="node2" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="619,189,717,213"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="295,129,377,153"/>
 <area shape="rect" id="node4" title="STL class. " alt="" coords="6,123,133,159"/>
-<area shape="rect" id="node5" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="553,237,719,261"/>
-<area shape="rect" id="node6" href="$classPLATFORM_1_1CMutex.html" title="PLATFORM::CMutex" alt="" coords="572,285,700,309"/>
-<area shape="rect" id="node7" href="$classPLATFORM_1_1PreventCopy.html" title="PLATFORM::PreventCopy" alt="" coords="241,285,399,309"/>
-<area shape="rect" id="node9" title="STL class. " alt="" coords="259,31,381,55"/>
+<area shape="rect" id="node5" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="585,237,751,261"/>
+<area shape="rect" id="node6" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="587,285,749,309"/>
+<area shape="rect" id="node7" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="240,285,432,309"/>
+<area shape="rect" id="node9" title="STL class. " alt="" coords="275,31,397,55"/>
 </map>

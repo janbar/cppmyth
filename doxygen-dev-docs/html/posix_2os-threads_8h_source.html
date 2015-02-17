@@ -139,113 +139,116 @@ $(document).ready(function(){initNavTree('posix_2os-threads_8h_source.html','');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *     http://www.pulse-eight.net/</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>PLATFORM</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>Myth</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">inline</span> pthread_mutexattr_t *GetRecursiveMutexAttribute(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> pthread_mutexattr_t g_mutexAttr;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAttributeInitialised = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (!bAttributeInitialised)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      pthread_mutexattr_init(&amp;g_mutexAttr);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      pthread_mutexattr_settype(&amp;g_mutexAttr, PTHREAD_MUTEX_RECURSIVE);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      bAttributeInitialised = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> &amp;g_mutexAttr;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">inline</span> <span class="keyword">struct </span>timespec GetAbsTime(uint64_t iIncreaseBy = 0)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">struct </span>timespec now;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">    #ifdef __APPLE__</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>    <span class="keyword">struct </span>timeval tv;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    gettimeofday(&amp;tv, NULL);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    now.tv_sec  = tv.tv_sec;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    now.tv_nsec = tv.tv_usec * 1000;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">    #else</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span>    clock_gettime(CLOCK_REALTIME, &amp;now);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>    now.tv_nsec += iIncreaseBy % 1000 * 1000000;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    now.tv_sec  += iIncreaseBy / 1000 + now.tv_nsec / 1000000000;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    now.tv_nsec %= 1000000000;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> now;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">typedef</span> pthread_t thread_t;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>PLATFORM</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">inline</span> pthread_mutexattr_t *GetRecursiveMutexAttribute(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> pthread_mutexattr_t g_mutexAttr;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAttributeInitialised = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (!bAttributeInitialised)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      pthread_mutexattr_init(&amp;g_mutexAttr);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      pthread_mutexattr_settype(&amp;g_mutexAttr, PTHREAD_MUTEX_RECURSIVE);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      bAttributeInitialised = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> &amp;g_mutexAttr;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">inline</span> <span class="keyword">struct </span>timespec GetAbsTime(uint64_t iIncreaseBy = 0)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">struct </span>timespec now;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    #ifdef __APPLE__</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span>    <span class="keyword">struct </span>timeval tv;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    gettimeofday(&amp;tv, NULL);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    now.tv_sec  = tv.tv_sec;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    now.tv_nsec = tv.tv_usec * 1000;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>    clock_gettime(CLOCK_REALTIME, &amp;now);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span>    now.tv_nsec += iIncreaseBy % 1000 * 1000000;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    now.tv_sec  += iIncreaseBy / 1000 + now.tv_nsec / 1000000000;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    now.tv_nsec %= 1000000000;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> now;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">inline</span> pthread_attr_t *GetDetachedThreadAttribute(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">static</span> pthread_attr_t g_threadAttr;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAttributeInitialised = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (!bAttributeInitialised)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      pthread_attr_init(&amp;g_threadAttr);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      pthread_attr_setdetachstate(&amp;g_threadAttr, PTHREAD_CREATE_DETACHED);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      bAttributeInitialised = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> &amp;g_threadAttr;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">  #define ThreadsCreate(thread, func, arg)         (pthread_create(&amp;thread, GetDetachedThreadAttribute(), (void *(*) (void *))func, (void *)arg) == 0)</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define ThreadsWait(thread, retval)              (pthread_join(thread, retval) == 0)</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">typedef</span> pthread_mutex_t mutex_t;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">  #define MutexCreate(mutex)                       pthread_mutex_init(&amp;mutex, GetRecursiveMutexAttribute());</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexDelete(mutex)                       pthread_mutex_destroy(&amp;mutex);</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexLock(mutex)                         (pthread_mutex_lock(&amp;mutex) == 0)</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexTryLock(mutex)                      (pthread_mutex_trylock(&amp;mutex) == 0)</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexUnlock(mutex)                       pthread_mutex_unlock(&amp;mutex)</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classPLATFORM_1_1CConditionImpl.html">   92</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classPLATFORM_1_1CConditionImpl.html">CConditionImpl</a></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classPLATFORM_1_1CConditionImpl.html">CConditionImpl</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      pthread_cond_init(&amp;m_condition, NULL);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classPLATFORM_1_1CConditionImpl.html">CConditionImpl</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      pthread_cond_destroy(&amp;m_condition);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> Signal(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      pthread_cond_signal(&amp;m_condition);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> Broadcast(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      pthread_cond_broadcast(&amp;m_condition);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">bool</span> Wait(mutex_t &amp;mutex)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      sched_yield();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordflow">return</span> (pthread_cond_wait(&amp;m_condition, &amp;mutex) == 0);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">bool</span> Wait(mutex_t &amp;mutex, uint32_t iTimeoutMs)</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keywordflow">if</span> (iTimeoutMs == 0)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> Wait(mutex);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      sched_yield();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keyword">struct </span>timespec timeout = GetAbsTime(iTimeoutMs);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keywordflow">return</span> (pthread_cond_timedwait(&amp;m_condition, &amp;mutex, &amp;timeout) == 0);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    pthread_cond_t m_condition;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  };</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
-<div class="ttc" id="classPLATFORM_1_1CConditionImpl_html"><div class="ttname"><a href="classPLATFORM_1_1CConditionImpl.html">PLATFORM::CConditionImpl</a></div><div class="ttdef"><b>Definition:</b> <a href="posix_2os-threads_8h_source.html#l00092">os-threads.h:92</a></div></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">typedef</span> pthread_t thread_t;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">inline</span> pthread_attr_t *GetDetachedThreadAttribute(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> pthread_attr_t g_threadAttr;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> bAttributeInitialised = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (!bAttributeInitialised)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      pthread_attr_init(&amp;g_threadAttr);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      pthread_attr_setdetachstate(&amp;g_threadAttr, PTHREAD_CREATE_DETACHED);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      bAttributeInitialised = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> &amp;g_threadAttr;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">  #define ThreadsCreate(thread, func, arg)         (pthread_create(&amp;thread, GetDetachedThreadAttribute(), (void *(*) (void *))func, (void *)arg) == 0)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define ThreadsWait(thread, retval)              (pthread_join(thread, retval) == 0)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">typedef</span> pthread_mutex_t mutex_t;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">  #define MutexCreate(mutex)                       pthread_mutex_init(&amp;mutex, GetRecursiveMutexAttribute());</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexDelete(mutex)                       pthread_mutex_destroy(&amp;mutex);</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexLock(mutex)                         (pthread_mutex_lock(&amp;mutex) == 0)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexTryLock(mutex)                      (pthread_mutex_trylock(&amp;mutex) == 0)</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define MutexUnlock(mutex)                       pthread_mutex_unlock(&amp;mutex)</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classMyth_1_1PLATFORM_1_1CConditionImpl.html">   94</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classMyth_1_1PLATFORM_1_1CConditionImpl.html">CConditionImpl</a></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classMyth_1_1PLATFORM_1_1CConditionImpl.html">CConditionImpl</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      pthread_cond_init(&amp;m_condition, NULL);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classMyth_1_1PLATFORM_1_1CConditionImpl.html">CConditionImpl</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      pthread_cond_destroy(&amp;m_condition);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> Signal(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      pthread_cond_signal(&amp;m_condition);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> Broadcast(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      pthread_cond_broadcast(&amp;m_condition);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">bool</span> Wait(mutex_t &amp;mutex)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      sched_yield();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keywordflow">return</span> (pthread_cond_wait(&amp;m_condition, &amp;mutex) == 0);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">bool</span> Wait(mutex_t &amp;mutex, uint32_t iTimeoutMs)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keywordflow">if</span> (iTimeoutMs == 0)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> Wait(mutex);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      sched_yield();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keyword">struct </span>timespec timeout = GetAbsTime(iTimeoutMs);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <span class="keywordflow">return</span> (pthread_cond_timedwait(&amp;m_condition, &amp;mutex, &amp;timeout) == 0);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    pthread_cond_t m_condition;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  };</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="ttc" id="classMyth_1_1PLATFORM_1_1CConditionImpl_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CConditionImpl.html">Myth::PLATFORM::CConditionImpl</a></div><div class="ttdef"><b>Definition:</b> <a href="posix_2os-threads_8h_source.html#l00094">os-threads.h:94</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><a class="el" href="dir_4c20defe2df6eb4dbd837254b085a722.html">platform</a></li><li class="navelem"><a class="el" href="dir_4d08f390005e71d028af1ff547e6ebb4.html">posix</a></li><li class="navelem"><b>os-threads.h</b></li>
-    <li class="footer">Generated on Sun Feb 15 2015 14:24:57 for C++Myth by
+    <li class="footer">Generated on Tue Feb 17 2015 22:06:13 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

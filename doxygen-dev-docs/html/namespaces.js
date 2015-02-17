@@ -1,6 +1,5 @@
 var namespaces =
 [
-    [ "Myth", "namespaceMyth.html", null ],
-    [ "MythDTO", "namespaceMythDTO.html", null ],
-    [ "MythJSON", "namespaceMythJSON.html", null ]
+    [ "Myth", "namespaceMyth.html", "namespaceMyth" ],
+    [ "MythDTO", "namespaceMythDTO.html", null ]
 ];

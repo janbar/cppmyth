@@ -27,8 +27,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classMyth_1_1ProtoBase.html#af7e4f5154e43cbe60f8e3d2f755c332f",
-"classMyth_1_1WSRequest.html#a1d5988f1ead3a0c90ca3363e3bfe8a32",
+"classMyth_1_1PLATFORM_1_1CEvent.html#afe01b4e64f6338ca25a7802f68f80376",
+"classMyth_1_1TcpSocket.html#aab681b936c020d104efdd5d21b60500f",
 "classsajson_1_1refcount.html#aa19d5db87b941e02b06e2c670f4f8304",
 "structMyth_1_1Recording.html#ae70415613ff4e0ba2019aae2d575a80d"
 ];
