@@ -64,7 +64,7 @@ void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
   Myth::LiveTVPlayback lp(server, 6543);
 
   fprintf(stderr, MYTAG "INFO: spawning live TV\n");
-  if (lp.SpawnLiveTV(*channelPtr))
+  if (lp.SpawnLiveTV(channelPtr))
   {
     //FILE* file = fopen("TMP.mpg", "wb");
     FILE* file = stdout;
