@@ -149,9 +149,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></t
 <tr class="memitem:ac3763f12bd8c657d07f0605007e65236"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3763f12bd8c657d07f0605007e65236"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTuneDelay</b> (unsigned delay)</td></tr>
 <tr class="separator:ac3763f12bd8c657d07f0605007e65236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad67c1fe9a363bc41c2777c73924a1878"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad67c1fe9a363bc41c2777c73924a1878"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>SpawnLiveTV</b> (const <a class="el" href="structMyth_1_1Channel.html">Channel</a> &amp;channel, uint32_t prefcardid=0)</td></tr>
-<tr class="separator:ad67c1fe9a363bc41c2777c73924a1878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7540fb13f34bcebf38bb637664678fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7540fb13f34bcebf38bb637664678fe"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SpawnLiveTV</b> (const std::string &amp;chanNum, const ChannelList &amp;channels)</td></tr>
+<tr class="separator:af7540fb13f34bcebf38bb637664678fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b360dfceb78cbb06071683e03009c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9b360dfceb78cbb06071683e03009c5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SpawnLiveTV</b> (const ChannelPtr &amp;thisChannel)</td></tr>
+<tr class="separator:aa9b360dfceb78cbb06071683e03009c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8688ee1031b86cd8d64c1df0e9bdb77"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8688ee1031b86cd8d64c1df0e9bdb77"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>StopLiveTV</b> ()</td></tr>
 <tr class="separator:ae8688ee1031b86cd8d64c1df0e9bdb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +207,11 @@ Private Types</h2></td></tr>
 typedef std::vector&lt; std::pair<br class="typebreak"/>
 &lt; ProtoTransferPtr, ProgramPtr &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>chained_t</b></td></tr>
 <tr class="separator:aef990cf409392fcbcca7d7013a7f45e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae046573ec3e6ae8a4a7543d1fb5d455b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae046573ec3e6ae8a4a7543d1fb5d455b"></a>
+typedef std::multimap<br class="typebreak"/>
+&lt; unsigned, std::pair<br class="typebreak"/>
+&lt; CardInputPtr, ChannelPtr &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>preferredCards_t</b></td></tr>
+<tr class="separator:ae046573ec3e6ae8a4a7543d1fb5d455b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -213,9 +221,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>InitChain</b> ()</td>
 <tr class="memitem:ac2a7bb3bad8a5d47e20dbcf858a1d4cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2a7bb3bad8a5d47e20dbcf858a1d4cf"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearChain</b> ()</td></tr>
 <tr class="separator:ac2a7bb3bad8a5d47e20dbcf858a1d4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45b0a643a5147d4ffdd158d3055ac13b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45b0a643a5147d4ffdd158d3055ac13b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>GetRecorderNum</b> ()</td></tr>
-<tr class="separator:a45b0a643a5147d4ffdd158d3055ac13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74314df4b9b972d81941b3a6f901c28a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74314df4b9b972d81941b3a6f901c28a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsChained</b> (const <a class="el" href="structMyth_1_1Program.html">Program</a> &amp;program)</td></tr>
 <tr class="separator:a74314df4b9b972d81941b3a6f901c28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,6 +233,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchChain</b> (unsi
 <tr class="memitem:a57440f0aa3757482f3188c8aa06d2bf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57440f0aa3757482f3188c8aa06d2bf4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchChainLast</b> ()</td></tr>
 <tr class="separator:a57440f0aa3757482f3188c8aa06d2bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1af01df6b3501ed0bbc785dbba0a878"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1af01df6b3501ed0bbc785dbba0a878"></a>
+preferredCards_t&#160;</td><td class="memItemRight" valign="bottom"><b>FindTunableCardIds</b> (const std::string &amp;chanNum, const ChannelList &amp;channels)</td></tr>
+<tr class="separator:aa1af01df6b3501ed0bbc785dbba0a878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMyth_1_1ProtoMonitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMyth_1_1ProtoMonitor')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classMyth_1_1ProtoMonitor.html">Myth::ProtoMonitor</a></td></tr>
 <tr class="memitem:a8c40a055244441706bf89592fc24416a inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c40a055244441706bf89592fc24416a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoMonitor</b> (const std::string &amp;server, unsigned port)</td></tr>
@@ -280,6 +288,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>BlockShutdown</b> ()<
 <tr class="memitem:aef871dc95c22bd093549e890ae0904ce inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef871dc95c22bd093549e890ae0904ce"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>AllowShutdown</b> ()</td></tr>
 <tr class="separator:aef871dc95c22bd093549e890ae0904ce inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d89e4b28be55951312620b277d0e198 inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d89e4b28be55951312620b277d0e198"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeCardIdList</b> ()</td></tr>
+<tr class="separator:a0d89e4b28be55951312620b277d0e198 inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4a91d53292503181b49de8ea781937 inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d4a91d53292503181b49de8ea781937"></a>
+CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeInputs</b> (int rnum)</td></tr>
+<tr class="separator:a8d4a91d53292503181b49de8ea781937 inherit pub_methods_classMyth_1_1ProtoMonitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
 <tr class="memitem:a3d12738e883c3a4a4f2d363a9a75fd4c inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d12738e883c3a4a4f2d363a9a75fd4c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoBase</b> (const std::string &amp;server, unsigned port)</td></tr>
@@ -421,7 +435,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceMyth.html">Myth</a></li><li class="navelem"><a class="el" href="classMyth_1_1LiveTVPlayback.html">LiveTVPlayback</a></li>
-    <li class="footer">Generated on Sat Feb 21 2015 20:08:03 for C++Myth by
+    <li class="footer">Generated on Sat Feb 28 2015 14:32:19 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
