@@ -159,7 +159,7 @@ int main(int argc, char** argv)
       fprintf(stderr, "\n***\n*** Testing protocol LiveTV for 1 min :channum %s Stream is TMP.mpg\n***\n", chantest->chanNum.c_str());
 
       Myth::LiveTVPlayback lp(event);
-      if (lp.SpawnLiveTV(*chantest))
+      if (lp.SpawnLiveTV(chantest))
       {
         FILE* file = fopen("TMP.mpg", "wb");
         char buf[64000];
