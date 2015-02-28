@@ -23,6 +23,7 @@ var classMyth_1_1ProtoMonitor =
     [ "GetFreeInputs", "classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937", null ],
     [ "GetFreeInputs75", "classMyth_1_1ProtoMonitor.html#a86bf02a7c0ab30f3815ea62eee20df11", null ],
     [ "GetFreeInputs79", "classMyth_1_1ProtoMonitor.html#a7c3ac1f266f2d56960a4c2c73a3021a7", null ],
+    [ "GetFreeInputs81", "classMyth_1_1ProtoMonitor.html#a4190ce31f3185d4a3ddcd5fbeb52b363", null ],
     [ "GetNextFreeRecorder", "classMyth_1_1ProtoMonitor.html#a1fccd8a4f403d3951fb0472426d8d49a", null ],
     [ "GetNextFreeRecorder75", "classMyth_1_1ProtoMonitor.html#a04474afcf855f9d01af14af4f2d3e077", null ],
     [ "GetRecorderFromNum", "classMyth_1_1ProtoMonitor.html#a00b2ec6a8918c190b537465297941980", null ],

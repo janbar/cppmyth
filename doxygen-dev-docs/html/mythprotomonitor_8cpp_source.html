@@ -848,13 +848,13 @@ $(document).ready(function(){initNavTree('mythprotomonitor_8cpp_source.html','')
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint32(field.c_str(), &amp;(input-&gt;mplexId)))</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// displayName</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint8(field.c_str(), &amp;(input-&gt;liveTVOrder)))</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// recPriority</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// displayName</span></div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// schedOrder</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// recPriority</span></div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint8(field.c_str(), &amp;(input-&gt;liveTVOrder)))</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// schedOrder</span></div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// quickTune</span></div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;      <span class="keywordflow">break</span>;</div>
@@ -863,6 +863,55 @@ $(document).ready(function(){initNavTree('mythprotomonitor_8cpp_source.html','')
 <div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;  FlushMessage();</div>
 <div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <span class="keywordflow">return</span> list;</div>
 <div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;}</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;CardInputListPtr ProtoMonitor::GetFreeInputs81(<span class="keywordtype">int</span> rnum)</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;{</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;  CardInputListPtr list = CardInputListPtr(<span class="keyword">new</span> CardInputList());</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  <span class="keywordtype">char</span> buf[32];</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  std::string field;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;  <span class="keywordflow">if</span> (!IsOpen())</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="keywordflow">return</span> list;</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;  std::string cmd(<span class="stringliteral">&quot;QUERY_RECORDER &quot;</span>);</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;  int32str((int32_t)rnum, buf);</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;  cmd.append(buf);</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;  cmd.append(PROTO_STR_SEPARATOR);</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  cmd.append(<span class="stringliteral">&quot;GET_FREE_INPUTS&quot;</span>);</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;  <span class="keywordflow">if</span> (!SendCommand(cmd.c_str()))</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <span class="keywordflow">return</span> list;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <span class="keywordflow">while</span> (m_msgConsumed &lt; m_msgLength)</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;  {</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    CardInputPtr input(<span class="keyword">new</span> <a class="code" href="structMyth_1_1CardInput.html">CardInput</a>());</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(input-&gt;inputName))</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint32(field.c_str(), &amp;(input-&gt;sourceId)))</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint32(field.c_str(), &amp;(input-&gt;inputId)))</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint32(field.c_str(), &amp;(input-&gt;cardId)))</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint32(field.c_str(), &amp;(input-&gt;mplexId)))</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || str2uint8(field.c_str(), &amp;(input-&gt;liveTVOrder)))</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// displayName</span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// recPriority</span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// schedOrder</span></div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// quickTune</span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field)) <span class="comment">// chanid</span></div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    list-&gt;push_back(input);</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;  }</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;  FlushMessage();</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  <span class="keywordflow">return</span> list;</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;}</div>
 <div class="ttc" id="structMyth_1_1Mark_html"><div class="ttname"><a href="structMyth_1_1Mark.html">Myth::Mark</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00565">mythtypes.h:565</a></div></div>
 <div class="ttc" id="structMyth_1_1CardInput_html"><div class="ttname"><a href="structMyth_1_1CardInput.html">Myth::CardInput</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00372">mythtypes.h:372</a></div></div>
 <div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
@@ -879,7 +928,7 @@ $(document).ready(function(){initNavTree('mythprotomonitor_8cpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotomonitor.cpp</b></li>
-    <li class="footer">Generated on Sat Feb 28 2015 14:32:18 for C++Myth by
+    <li class="footer">Generated on Sat Feb 28 2015 17:51:36 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

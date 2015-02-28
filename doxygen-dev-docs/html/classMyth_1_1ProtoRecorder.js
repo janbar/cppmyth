@@ -14,6 +14,7 @@ var classMyth_1_1ProtoRecorder =
     [ "GetFreeInputs", "classMyth_1_1ProtoRecorder.html#a9f17e8d6bb8339343358c0edf7f0ca21", null ],
     [ "GetFreeInputs75", "classMyth_1_1ProtoRecorder.html#a3f35dac4eab2fa8e7ffcc7f6f254f6da", null ],
     [ "GetFreeInputs79", "classMyth_1_1ProtoRecorder.html#ac333432940aacf0d7f69017d526ad3f2", null ],
+    [ "GetFreeInputs81", "classMyth_1_1ProtoRecorder.html#ac1f41375b6819fffdc7d7c9fdb5952ad", null ],
     [ "GetNum", "classMyth_1_1ProtoRecorder.html#acbd5026d1f53e77d0bdad1df885b5322", null ],
     [ "IsLiveRecording", "classMyth_1_1ProtoRecorder.html#a42739482ba954796798b41b83ca7e1d4", null ],
     [ "IsPlaying", "classMyth_1_1ProtoRecorder.html#a4b41aa9cc9d8b1ad8703aa3f8c4b05c2", null ],
