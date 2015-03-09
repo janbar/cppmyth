@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 2.6 FATAL_ERROR)
 cmake_policy (VERSION 2.6)
 
 project (cppmyth)
+
+set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 #include (GNUInstallDirs)
 
 # Options
@@ -32,12 +34,19 @@ if (MSVC)
 endif ()
 
 if (NOT WIN32 AND (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX))
-   add_definitions ("-fPIC")
+  add_definitions ("-fPIC")
+  include (CheckLibraryExists)
+  include (CheckAtomic)
+  if (HAS_BUILTIN_SYNC_ADD_AND_FETCH)
+    add_definitions ("-DHAS_BUILTIN_SYNC_ADD_AND_FETCH")
+  endif ()
+  if (HAS_BUILTIN_SYNC_SUB_AND_FETCH)
+    add_definitions ("-DHAS_BUILTIN_SYNC_SUB_AND_FETCH")
+  endif ()
 endif ()
 
 ###############################################################################
 # configure
-set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include (CheckFunctionExists)
 include (CheckFunctionKeywords)
 find_package (Threads REQUIRED)
