@@ -16,8 +16,8 @@ endif ()
 
 ###############################################################################
 # set lib version here
-set (CPPMYTH_LIB_VERSION "1.2.0")
-set (CPPMYTH_LIB_SOVERSION "1.2")
+set (CPPMYTH_LIB_VERSION "1.3.0")
+set (CPPMYTH_LIB_SOVERSION "1.3")
 
 ###############################################################################
 # add definitions
