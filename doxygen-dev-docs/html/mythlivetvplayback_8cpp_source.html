@@ -407,12 +407,12 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="keywordtype">void</span> LiveTVPlayback::HandleBackendMessage(<span class="keyword">const</span> <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="keywordtype">void</span> LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  ProtoRecorderPtr recorder(m_recorder);</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">if</span> (!recorder || !recorder-&gt;IsPlaying())</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">switch</span> (msg.event)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">switch</span> (msg-&gt;event)</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  {</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">/*</span></div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">     * Event: LIVETV_CHAIN UPDATE</span></div>
@@ -423,9 +423,9 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">     * in the live tv instance.</span></div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">case</span> EVENT_LIVETV_CHAIN:</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <span class="keywordflow">if</span> (msg.subject.size() &gt;= 3)</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 3)</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">if</span> (msg.subject[1] == <span class="stringliteral">&quot;UPDATE&quot;</span> &amp;&amp; msg.subject[2] == m_chain.UID)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">if</span> (msg-&gt;subject[1] == <span class="stringliteral">&quot;UPDATE&quot;</span> &amp;&amp; msg-&gt;subject[2] == m_chain.UID)</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;          HandleChainUpdate();</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      }</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keywordflow">break</span>;</div>
@@ -444,11 +444,11 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">     * current program info. Watch signal will be down during this period.</span></div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">case</span> EVENT_LIVETV_WATCH:</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      <span class="keywordflow">if</span> (msg.subject.size() &gt;= 3)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 3)</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      {</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        int32_t rnum;</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        int8_t flag;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg.subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; str2int8(msg.subject[2].c_str(), &amp;flag) == 0)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg-&gt;subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; str2int8(msg-&gt;subject[2].c_str(), &amp;flag) == 0)</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        {</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;          <span class="keywordflow">if</span> (recorder-&gt;GetNum() == (int)rnum)</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;          {</div>
@@ -469,10 +469,10 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">     * queuing the frontend for reading file buffer.</span></div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">     */</span></div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">case</span> EVENT_DONE_RECORDING:</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="keywordflow">if</span> (msg.subject.size() &gt;= 2)</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 2)</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      {</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        int32_t rnum;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg.subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; recorder-&gt;GetNum() == (int)rnum)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg-&gt;subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; recorder-&gt;GetNum() == (int)rnum)</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        {</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;          <span class="comment">// Recorder is not subscriber. So callback event to it</span></div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;          recorder-&gt;DoneRecordingCallback();</div>
@@ -496,22 +496,22 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      }</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">case</span> EVENT_UPDATE_FILE_SIZE:</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      <span class="keywordflow">if</span> (msg.subject.size() &gt;= 3)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 3)</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      {</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex); <span class="comment">// Lock chain</span></div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keywordflow">if</span> (m_chain.lastSequence &gt; 0)</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        {</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;          int64_t newsize;</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;          <span class="comment">// Message contains chanid + starttime as recorded key</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;          <span class="keywordflow">if</span> (msg.subject.size() &gt;= 4)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;          <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 4)</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;          {</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            uint32_t chanid;</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            time_t startts;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="keywordflow">if</span> (str2uint32(msg.subject[1].c_str(), &amp;chanid)</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    || str2time(msg.subject[2].c_str(), &amp;startts)</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="keywordflow">if</span> (str2uint32(msg-&gt;subject[1].c_str(), &amp;chanid)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    || str2time(msg-&gt;subject[2].c_str(), &amp;startts)</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    || m_chain.chained[m_chain.lastSequence -1].second-&gt;channel.chanId != chanid</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                    || m_chain.chained[m_chain.lastSequence -1].second-&gt;recording.startTs != startts</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                    || str2int64(msg.subject[3].c_str(), &amp;newsize)</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                    || str2int64(msg-&gt;subject[3].c_str(), &amp;newsize)</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                    || m_chain.chained[m_chain.lastSequence - 1].first-&gt;fileSize &gt;= newsize)</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;              <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;          }</div>
@@ -519,9 +519,9 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;          <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;          {</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            uint32_t recordedid;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="keywordflow">if</span> (str2uint32(msg.subject[1].c_str(), &amp;recordedid)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="keywordflow">if</span> (str2uint32(msg-&gt;subject[1].c_str(), &amp;recordedid)</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                    || m_chain.chained[m_chain.lastSequence -1].second-&gt;recording.recordedId != recordedid</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                    || str2int64(msg.subject[2].c_str(), &amp;newsize)</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                    || str2int64(msg-&gt;subject[2].c_str(), &amp;newsize)</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                    || m_chain.chained[m_chain.lastSequence - 1].first-&gt;fileSize &gt;= newsize)</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;              <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;          }</div>
@@ -536,15 +536,15 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;      }</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">case</span> EVENT_SIGNAL:</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;      <span class="keywordflow">if</span> (msg.subject.size() &gt;= 2)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;      <span class="keywordflow">if</span> (msg-&gt;subject.size() &gt;= 2)</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;      {</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        int32_t rnum;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg.subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; recorder-&gt;GetNum() == (int)rnum)</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;          m_signal = msg.signal;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">if</span> (str2int32(msg-&gt;subject[1].c_str(), &amp;rnum) == 0 &amp;&amp; recorder-&gt;GetNum() == (int)rnum)</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;          m_signal = msg-&gt;signal;</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;      }</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="comment">//case EVENT_HANDLER_STATUS:</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">//  if (msg.subject[0] == EVENTHANDLER_DISCONNECTED)</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">//  if (msg-&gt;subject[0] == EVENTHANDLER_DISCONNECTED)</span></div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="comment">//    closeTransfer();</span></div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">//  break;</span></div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">default</span>:</div>
@@ -833,7 +833,6 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00035">mythprototransfer.h:35</a></div></div>
 <div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
 <div class="ttc" id="classMyth_1_1EventHandler_html"><div class="ttname"><a href="classMyth_1_1EventHandler.html">Myth::EventHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="mytheventhandler_8h_source.html#l00045">mytheventhandler.h:45</a></div></div>
-<div class="ttc" id="structMyth_1_1EventMessage_html"><div class="ttname"><a href="structMyth_1_1EventMessage.html">Myth::EventMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00513">mythtypes.h:513</a></div></div>
 <div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00306">mythtypes.h:306</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoMonitor_html"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html">Myth::ProtoMonitor</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotomonitor_8h_source.html#l00035">mythprotomonitor.h:35</a></div></div>
 <div class="ttc" id="classMyth_1_1PLATFORM_1_1CTimeout_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CTimeout.html">Myth::PLATFORM::CTimeout</a></div><div class="ttdef"><b>Definition:</b> <a href="timeutils_8h_source.html#l00084">timeutils.h:84</a></div></div>
@@ -844,7 +843,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythlivetvplayback.cpp</b></li>
-    <li class="footer">Generated on Sat Feb 28 2015 17:51:36 for C++Myth by
+    <li class="footer">Generated on Tue Mar 10 2015 02:01:53 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

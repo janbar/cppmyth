@@ -1,6 +1,6 @@
 var classBasicEventHandler =
 [
-    [ "subscriptions_t", "classBasicEventHandler.html#a93aeb92dfecb7d8b50f28ad567a6341f", null ],
+    [ "subscriptions_t", "classBasicEventHandler.html#a59f3458fb93641c024dc500ab85fa457", null ],
     [ "subscriptionsByEvent_t", "classBasicEventHandler.html#a5213484f00f7e6bc6bbe67bf2c711fa2", null ],
     [ "BasicEventHandler", "classBasicEventHandler.html#a71552a1ddc636f7f042fa13cb2cec97b", null ],
     [ "~BasicEventHandler", "classBasicEventHandler.html#a0d986f4c8b2d38f7706938541e40dff2", null ],
@@ -13,12 +13,13 @@ var classBasicEventHandler =
     [ "Process", "classBasicEventHandler.html#a4a6777e922ce26bb90a97b66c445aea4", null ],
     [ "Reset", "classBasicEventHandler.html#a759c7415a5a61735cc2f6a2c4dc2f57d", null ],
     [ "RetryConnect", "classBasicEventHandler.html#a815f6d37a1f961a7a8f49c1649963939", null ],
+    [ "RevokeAllSubscriptions", "classBasicEventHandler.html#aa5d141f3b24defa10b90eaab30f6bcf1", null ],
     [ "RevokeSubscription", "classBasicEventHandler.html#adefe6ad78399318170404bcf0b6abc4f", null ],
     [ "Start", "classBasicEventHandler.html#af7fb3fdbd96d09b561b32fe7aff9f449", null ],
     [ "Stop", "classBasicEventHandler.html#a971cde1a3745153ff67bfe1708cc6d9c", null ],
     [ "SubscribeForEvent", "classBasicEventHandler.html#a515ab0d88aca7f59444065a842e3467a", null ],
     [ "m_event", "classBasicEventHandler.html#a0db4a30a02b6538430146ffe534782cd", null ],
-    [ "m_mutex", "classBasicEventHandler.html#a4395f7a8eab32ab2b3f22b883f108c22", null ],
+    [ "m_mutex", "classBasicEventHandler.html#afbb3c18b14fb3979412dae81634dc841", null ],
     [ "m_reset", "classBasicEventHandler.html#a3aa1ba5804206522d4385c016749f78d", null ],
     [ "m_subscriptions", "classBasicEventHandler.html#a81e8ec292dec0f16189543c409057ee0", null ],
     [ "m_subscriptionsByEvent", "classBasicEventHandler.html#a84a5f0bab28c447e5a8528281565febb", null ]

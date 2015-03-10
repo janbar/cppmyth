@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('mythrecordingplayback_8h_source.html',
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    int64_t GetPosition() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Implement EventSubscriber</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> HandleBackendMessage(<span class="keyword">const</span> <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> HandleBackendMessage(EventMessagePtr msg);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classMyth_1_1EventHandler.html">EventHandler</a> m_eventHandler;</div>
@@ -172,7 +172,6 @@ $(document).ready(function(){initNavTree('mythrecordingplayback_8h_source.html',
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHRECORDINGPLAYBACK_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classMyth_1_1EventHandler_html"><div class="ttname"><a href="classMyth_1_1EventHandler.html">Myth::EventHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="mytheventhandler_8h_source.html#l00045">mytheventhandler.h:45</a></div></div>
-<div class="ttc" id="structMyth_1_1EventMessage_html"><div class="ttname"><a href="structMyth_1_1EventMessage.html">Myth::EventMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00513">mythtypes.h:513</a></div></div>
 <div class="ttc" id="classMyth_1_1Stream_html"><div class="ttname"><a href="classMyth_1_1Stream.html">Myth::Stream</a></div><div class="ttdef"><b>Definition:</b> <a href="mythstream_8h_source.html#l00029">mythstream.h:29</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoPlayback_html"><div class="ttname"><a href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotoplayback_8h_source.html#l00033">mythprotoplayback.h:33</a></div></div>
 <div class="ttc" id="classMyth_1_1RecordingPlayback_html"><div class="ttname"><a href="classMyth_1_1RecordingPlayback.html">Myth::RecordingPlayback</a></div><div class="ttdef"><b>Definition:</b> <a href="mythrecordingplayback_8h_source.html#l00033">mythrecordingplayback.h:33</a></div></div>
@@ -183,7 +182,7 @@ $(document).ready(function(){initNavTree('mythrecordingplayback_8h_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythrecordingplayback.h</b></li>
-    <li class="footer">Generated on Sat Feb 28 2015 17:51:36 for C++Myth by
+    <li class="footer">Generated on Tue Mar 10 2015 02:01:53 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

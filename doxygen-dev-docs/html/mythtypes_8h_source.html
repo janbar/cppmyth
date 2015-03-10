@@ -625,66 +625,68 @@ $(document).ready(function(){initNavTree('mythtypes_8h_source.html','');});
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    {}</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  };</div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;</div>
-<div class="line"><a name="l00525"></a><span class="lineno"><a class="line" href="structMyth_1_1StorageGroupFile.html">  525</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structMyth_1_1StorageGroupFile.html">StorageGroupFile</a></div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;  {</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    std::string               fileName;</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    std::string               storageGroup;</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    std::string               hostName;</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    time_t                    lastModified;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    int64_t                   size;</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <a class="code" href="structMyth_1_1StorageGroupFile.html">StorageGroupFile</a>()</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    : lastModified(0)</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    , size(0)</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    {}</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  };</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;StorageGroupFile&gt; StorageGroupFilePtr;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;EventMessage&gt; EventMessagePtr;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;</div>
+<div class="line"><a name="l00527"></a><span class="lineno"><a class="line" href="structMyth_1_1StorageGroupFile.html">  527</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structMyth_1_1StorageGroupFile.html">StorageGroupFile</a></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  {</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    std::string               fileName;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    std::string               storageGroup;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    std::string               hostName;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    time_t                    lastModified;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    int64_t                   size;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <a class="code" href="structMyth_1_1StorageGroupFile.html">StorageGroupFile</a>()</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    : lastModified(0)</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    , size(0)</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    {}</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  };</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">enum</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;  {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    MARK_CUT_END       = 0,</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    MARK_CUT_START     = 1,</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;    MARK_BOOKMARK      = 2,</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    MARK_BLANK_FRAME   = 3,</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    MARK_COMM_START    = 4,</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    MARK_COMM_END      = 5,</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    MARK_GOP_START     = 6,</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    MARK_KEYFRAME      = 7,</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    MARK_SCENE_CHANGE  = 8,</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    MARK_GOP_BYFRAME   = 9,</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    MARK_ASPECT_1_1    = 10,</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    MARK_ASPECT_4_3    = 11,</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    MARK_ASPECT_16_9   = 12,</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    MARK_ASPECT_2_21_1 = 13,</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    MARK_ASPECT_CUSTOM = 14,</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    MARK_VIDEO_WIDTH   = 30,</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    MARK_VIDEO_HEIGHT  = 31,</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    MARK_VIDEO_RATE    = 32,</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    MARK_DURATION_MS   = 33,</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    MARK_TOTAL_FRAMES  = 34,</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  } MARK_t;</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;</div>
-<div class="line"><a name="l00565"></a><span class="lineno"><a class="line" href="structMyth_1_1Mark.html">  565</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structMyth_1_1Mark.html">Mark</a></div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  {</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    MARK_t                    markType;</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    int64_t                   markValue;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <a class="code" href="structMyth_1_1Mark.html">Mark</a>()</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    : markType(MARK_CUT_END)</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    , markValue(0)</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    {}</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  };</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;Mark&gt; MarkPtr;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  <span class="keyword">typedef</span> std::vector&lt;MarkPtr&gt; MarkList;</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;MarkList&gt; MarkListPtr;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;}</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHTYPES_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;StorageGroupFile&gt; StorageGroupFilePtr;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  {</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;    MARK_CUT_END       = 0,</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    MARK_CUT_START     = 1,</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    MARK_BOOKMARK      = 2,</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    MARK_BLANK_FRAME   = 3,</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    MARK_COMM_START    = 4,</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    MARK_COMM_END      = 5,</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    MARK_GOP_START     = 6,</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    MARK_KEYFRAME      = 7,</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    MARK_SCENE_CHANGE  = 8,</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    MARK_GOP_BYFRAME   = 9,</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    MARK_ASPECT_1_1    = 10,</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    MARK_ASPECT_4_3    = 11,</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    MARK_ASPECT_16_9   = 12,</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    MARK_ASPECT_2_21_1 = 13,</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    MARK_ASPECT_CUSTOM = 14,</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    MARK_VIDEO_WIDTH   = 30,</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    MARK_VIDEO_HEIGHT  = 31,</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    MARK_VIDEO_RATE    = 32,</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    MARK_DURATION_MS   = 33,</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    MARK_TOTAL_FRAMES  = 34,</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  } MARK_t;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
+<div class="line"><a name="l00567"></a><span class="lineno"><a class="line" href="structMyth_1_1Mark.html">  567</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structMyth_1_1Mark.html">Mark</a></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    MARK_t                    markType;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    int64_t                   markValue;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <a class="code" href="structMyth_1_1Mark.html">Mark</a>()</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    : markType(MARK_CUT_END)</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    , markValue(0)</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    {}</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  };</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;Mark&gt; MarkPtr;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <span class="keyword">typedef</span> std::vector&lt;MarkPtr&gt; MarkList;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  <span class="keyword">typedef</span> MYTH_SHARED_PTR&lt;MarkList&gt; MarkListPtr;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;}</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHTYPES_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="structMyth_1_1Recording_html"><div class="ttname"><a href="structMyth_1_1Recording.html">Myth::Recording</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00271">mythtypes.h:271</a></div></div>
 <div class="ttc" id="structMyth_1_1SignalStatus_html"><div class="ttname"><a href="structMyth_1_1SignalStatus.html">Myth::SignalStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00494">mythtypes.h:494</a></div></div>
-<div class="ttc" id="structMyth_1_1Mark_html"><div class="ttname"><a href="structMyth_1_1Mark.html">Myth::Mark</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00565">mythtypes.h:565</a></div></div>
+<div class="ttc" id="structMyth_1_1Mark_html"><div class="ttname"><a href="structMyth_1_1Mark.html">Myth::Mark</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00567">mythtypes.h:567</a></div></div>
 <div class="ttc" id="structMyth_1_1Version_html"><div class="ttname"><a href="structMyth_1_1Version.html">Myth::Version</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00208">mythtypes.h:208</a></div></div>
 <div class="ttc" id="structMyth_1_1CaptureCard_html"><div class="ttname"><a href="structMyth_1_1CaptureCard.html">Myth::CaptureCard</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00357">mythtypes.h:357</a></div></div>
 <div class="ttc" id="structMyth_1_1CardInput_html"><div class="ttname"><a href="structMyth_1_1CardInput.html">Myth::CardInput</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00372">mythtypes.h:372</a></div></div>
@@ -696,14 +698,14 @@ $(document).ready(function(){initNavTree('mythtypes_8h_source.html','');});
 <div class="ttc" id="structMyth_1_1Setting_html"><div class="ttname"><a href="structMyth_1_1Setting.html">Myth::Setting</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00222">mythtypes.h:222</a></div></div>
 <div class="ttc" id="structMyth_1_1Artwork_html"><div class="ttname"><a href="structMyth_1_1Artwork.html">Myth::Artwork</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00232">mythtypes.h:232</a></div></div>
 <div class="ttc" id="structMyth_1_1Channel_html"><div class="ttname"><a href="structMyth_1_1Channel.html">Myth::Channel</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00244">mythtypes.h:244</a></div></div>
-<div class="ttc" id="structMyth_1_1StorageGroupFile_html"><div class="ttname"><a href="structMyth_1_1StorageGroupFile.html">Myth::StorageGroupFile</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00525">mythtypes.h:525</a></div></div>
+<div class="ttc" id="structMyth_1_1StorageGroupFile_html"><div class="ttname"><a href="structMyth_1_1StorageGroupFile.html">Myth::StorageGroupFile</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00527">mythtypes.h:527</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythtypes.h</b></li>
-    <li class="footer">Generated on Sat Feb 28 2015 17:51:36 for C++Myth by
+    <li class="footer">Generated on Tue Mar 10 2015 02:01:53 for C++Myth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

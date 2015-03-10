@@ -8,6 +8,7 @@ var classMyth_1_1EventHandler_1_1EventHandlerThread =
     [ "IsConnected", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#a5b439a618ce1ddd899188dc7b69d05a8", null ],
     [ "IsRunning", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#abf29ce2085d446227ccca98b8fd72349", null ],
     [ "Reset", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#ac2044aaffb631eb1254a5959750bf13b", null ],
+    [ "RevokeAllSubscriptions", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#a074524820823feeaf0c7347aadf23538", null ],
     [ "RevokeSubscription", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#a733ce98f443797a8bcb90a63f8fd9d39", null ],
     [ "Start", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#a451b9b0279bd617c928c4a868f50091b", null ],
     [ "Stop", "classMyth_1_1EventHandler_1_1EventHandlerThread.html#a57c744d7731beb76d36d6524b6781e20", null ],

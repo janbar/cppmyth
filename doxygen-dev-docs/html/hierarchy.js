@@ -10,7 +10,8 @@ var hierarchy =
     [ "Myth::Channel", "structMyth_1_1Channel.html", null ],
     [ "Myth::Control", "classMyth_1_1Control.html", null ],
     [ "Myth::PLATFORM::CThread", "classMyth_1_1PLATFORM_1_1CThread.html", [
-      [ "BasicEventHandler", "classBasicEventHandler.html", null ]
+      [ "BasicEventHandler", "classBasicEventHandler.html", null ],
+      [ "SubscriptionHandlerThread", "classSubscriptionHandlerThread.html", null ]
     ] ],
     [ "Myth::PLATFORM::CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", null ],
     [ "debug_ctx_t", "structdebug__ctx__t.html", null ],
