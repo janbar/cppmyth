@@ -126,9 +126,6 @@ void *SubscriptionHandlerThread::Process()
 {
   while (!IsStopped())
   {
-    // The tread is woken up by m_queueContent.Signal();
-    m_queueContent.Wait();
-
     while (!m_msgQueue.empty() && !IsStopped())
     {
       // Critical section
@@ -139,6 +136,8 @@ void *SubscriptionHandlerThread::Process()
       // Do work
       m_handle->HandleBackendMessage(msg);
     }
+    // The tread is woken up by m_queueContent.Signal();
+    m_queueContent.Wait();
   }
   return NULL;
 }
