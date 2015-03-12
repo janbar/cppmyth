@@ -1,7 +1,7 @@
 var classBasicEventHandler =
 [
     [ "subscriptions_t", "classBasicEventHandler.html#a59f3458fb93641c024dc500ab85fa457", null ],
-    [ "subscriptionsByEvent_t", "classBasicEventHandler.html#a5213484f00f7e6bc6bbe67bf2c711fa2", null ],
+    [ "subscriptionsByEvent_t", "classBasicEventHandler.html#a6341c703c35307a1594e7f81fd0ef639", null ],
     [ "BasicEventHandler", "classBasicEventHandler.html#a71552a1ddc636f7f042fa13cb2cec97b", null ],
     [ "~BasicEventHandler", "classBasicEventHandler.html#a0d986f4c8b2d38f7706938541e40dff2", null ],
     [ "AnnounceStatus", "classBasicEventHandler.html#aff14987495fa75061e385f9732b730e8", null ],
