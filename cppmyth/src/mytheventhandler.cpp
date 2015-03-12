@@ -169,7 +169,7 @@ private:
   ProtoEvent *m_event;
   bool m_reset;
   // About subscriptions
-  typedef std::map<EVENT_t, std::vector<unsigned> > subscriptionsByEvent_t;
+  typedef std::map<EVENT_t, std::list<unsigned> > subscriptionsByEvent_t;
   subscriptionsByEvent_t m_subscriptionsByEvent;
   typedef std::map<unsigned, SubscriptionHandlerThread*> subscriptions_t;
   subscriptions_t m_subscriptions;
@@ -261,7 +261,7 @@ bool BasicEventHandler::SubscribeForEvent(unsigned subid, EVENT_t event)
   subscriptions_t::const_iterator it1 = m_subscriptions.find(subid);
   if (it1 == m_subscriptions.end())
     return false;
-  std::vector<unsigned>::const_iterator it2 = m_subscriptionsByEvent[event].begin();
+  std::list<unsigned>::const_iterator it2 = m_subscriptionsByEvent[event].begin();
   while (it2 != m_subscriptionsByEvent[event].end())
   {
     if (*it2 == subid)
@@ -303,8 +303,8 @@ void BasicEventHandler::RevokeAllSubscriptions(EventSubscriber *sub)
 void BasicEventHandler::DispatchEvent(const EventMessage& msg)
 {
   PLATFORM::CLockObject lock(m_mutex);
-  std::vector<std::vector<unsigned>::iterator> revoked;
-  std::vector<unsigned>::iterator it1 = m_subscriptionsByEvent[msg.event].begin();
+  std::vector<std::list<unsigned>::iterator> revoked;
+  std::list<unsigned>::iterator it1 = m_subscriptionsByEvent[msg.event].begin();
   while (it1 != m_subscriptionsByEvent[msg.event].end())
   {
     subscriptions_t::const_iterator it2 = m_subscriptions.find(*it1);
@@ -314,7 +314,7 @@ void BasicEventHandler::DispatchEvent(const EventMessage& msg)
       revoked.push_back(it1);
     ++it1;
   }
-  std::vector<std::vector<unsigned>::iterator>::const_iterator itr;
+  std::vector<std::list<unsigned>::iterator>::const_iterator itr;
   for (itr = revoked.begin(); itr != revoked.end(); ++itr)
     m_subscriptionsByEvent[msg.event].erase(*itr);
 }
