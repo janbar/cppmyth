@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "C++Myth", "index.html", [
+  [ "CPPMyth", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -30,7 +30,7 @@ var NAVTREEINDEX =
 "classMyth_1_1PLATFORM_1_1CEvent.html#aa34a70b01436b567618debf0734c4042",
 "classMyth_1_1TcpSocket.html#a0da9e1262f8b07c9b442c1f58373f5e4",
 "classsajson_1_1parser.html#a30775e762f248810a264761e22cff09d",
-"structMyth_1_1RecordSchedule.html#ab1445d9e9b525fe3042d852b357dbe37"
+"structMyth_1_1RecordSchedule.html#ab5ea75dca827caf42c85897adef00f12"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

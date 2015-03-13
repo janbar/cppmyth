@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"structMyth_1_1RecordSchedule.html#ab1445d9e9b525fe3042d852b357dbe37":[1,0,0,20,44],
 "structMyth_1_1RecordSchedule.html#ab5ea75dca827caf42c85897adef00f12":[1,0,0,20,6],
 "structMyth_1_1RecordSchedule.html#ab6da2d2fa52368cb9b35093509c3f373":[1,0,0,20,17],
 "structMyth_1_1RecordSchedule.html#abc500ba5c7d4c64e51d1e89e515b5069":[1,0,0,20,34],
