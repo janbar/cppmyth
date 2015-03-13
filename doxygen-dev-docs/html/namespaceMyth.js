@@ -13,6 +13,8 @@ var namespaceMyth =
       [ "CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", "classMyth_1_1PLATFORM_1_1CTimeout" ]
     ] ],
     [ "Control", "classMyth_1_1Control.html", "classMyth_1_1Control" ],
+    [ "SubscriptionHandlerThread", "classMyth_1_1SubscriptionHandlerThread.html", "classMyth_1_1SubscriptionHandlerThread" ],
+    [ "BasicEventHandler", "classMyth_1_1BasicEventHandler.html", "classMyth_1_1BasicEventHandler" ],
     [ "EventSubscriber", "classMyth_1_1EventSubscriber.html", "classMyth_1_1EventSubscriber" ],
     [ "EventHandler", "classMyth_1_1EventHandler.html", "classMyth_1_1EventHandler" ],
     [ "FilePlayback", "classMyth_1_1FilePlayback.html", "classMyth_1_1FilePlayback" ],

@@ -10,8 +10,8 @@ var hierarchy =
     [ "Myth::Channel", "structMyth_1_1Channel.html", null ],
     [ "Myth::Control", "classMyth_1_1Control.html", null ],
     [ "Myth::PLATFORM::CThread", "classMyth_1_1PLATFORM_1_1CThread.html", [
-      [ "BasicEventHandler", "classBasicEventHandler.html", null ],
-      [ "SubscriptionHandlerThread", "classSubscriptionHandlerThread.html", null ]
+      [ "Myth::BasicEventHandler", "classMyth_1_1BasicEventHandler.html", null ],
+      [ "Myth::SubscriptionHandlerThread", "classMyth_1_1SubscriptionHandlerThread.html", null ]
     ] ],
     [ "Myth::PLATFORM::CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", null ],
     [ "debug_ctx_t", "structdebug__ctx__t.html", null ],
@@ -21,7 +21,7 @@ var hierarchy =
     [ "sajson::parser::error_result", "structsajson_1_1parser_1_1error__result.html", null ],
     [ "Myth::EventHandler", "classMyth_1_1EventHandler.html", null ],
     [ "Myth::EventHandler::EventHandlerThread", "classMyth_1_1EventHandler_1_1EventHandlerThread.html", [
-      [ "BasicEventHandler", "classBasicEventHandler.html", null ]
+      [ "Myth::BasicEventHandler", "classMyth_1_1BasicEventHandler.html", null ]
     ] ],
     [ "Myth::EventMessage", "structMyth_1_1EventMessage.html", null ],
     [ "Myth::EventSubscriber", "classMyth_1_1EventSubscriber.html", [

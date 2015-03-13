@@ -8,5 +8,5 @@ var searchData=
   ['storagegroupfile',['StorageGroupFile',['../structMyth_1_1StorageGroupFile.html',1,'Myth']]],
   ['stream',['Stream',['../classMyth_1_1Stream.html',1,'Myth']]],
   ['string',['string',['../classsajson_1_1string.html',1,'sajson']]],
-  ['subscriptionhandlerthread',['SubscriptionHandlerThread',['../classSubscriptionHandlerThread.html',1,'']]]
+  ['subscriptionhandlerthread',['SubscriptionHandlerThread',['../classMyth_1_1SubscriptionHandlerThread.html',1,'Myth']]]
 ];

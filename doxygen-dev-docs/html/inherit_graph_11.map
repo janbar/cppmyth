@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classMyth_1_1PLATFORM_1_1CThread.html" title="Myth::PLATFORM::CThread" alt="" coords="6,65,175,89"/>
-<area shape="rect" id="node2" href="$classBasicEventHandler.html" title="BasicEventHandler" alt="" coords="249,15,377,39"/>
-<area shape="rect" id="node3" href="$classSubscriptionHandlerThread.html" title="SubscriptionHandlerThread" alt="" coords="225,65,402,89"/>
+<area shape="rect" id="node2" href="$classMyth_1_1BasicEventHandler.html" title="Myth::BasicEventHandler" alt="" coords="228,11,391,35"/>
+<area shape="rect" id="node3" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="224,59,395,95"/>
 <area shape="rect" id="node4" href="$classMyth_1_1EventHandler_1_1EventHandlerThread.html" title="Myth::EventHandler\l::EventHandlerThread" alt="" coords="18,5,163,41"/>
 </map>

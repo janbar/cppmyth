@@ -1,4 +1,4 @@
-<map id="SubscriptionHandlerThread" name="SubscriptionHandlerThread">
+<map id="Myth::SubscriptionHandlerThread" name="Myth::SubscriptionHandlerThread">
 <area shape="rect" id="node2" href="$classMyth_1_1PLATFORM_1_1CThread.html" title="Myth::PLATFORM::CThread" alt="" coords="1039,245,1209,269"/>
 <area shape="rect" id="node3" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="667,158,850,194"/>
 <area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="13,191,205,215"/>

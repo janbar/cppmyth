@@ -16,14 +16,12 @@ var annotated =
       [ "parser", "classsajson_1_1parser.html", "classsajson_1_1parser" ]
     ] ],
     [ "attr_bind_t", "structattr__bind__t.html", "structattr__bind__t" ],
-    [ "BasicEventHandler", "classBasicEventHandler.html", "classBasicEventHandler" ],
     [ "bindings_t", "structbindings__t.html", "structbindings__t" ],
     [ "debug_ctx_t", "structdebug__ctx__t.html", "structdebug__ctx__t" ],
     [ "imaxdiv_t", "structimaxdiv__t.html", "structimaxdiv__t" ],
     [ "mimetype", "structmimetype.html", "structmimetype" ],
     [ "myth_protomap_t", "structmyth__protomap__t.html", "structmyth__protomap__t" ],
     [ "protoref_t", "structprotoref__t.html", "structprotoref__t" ],
-    [ "SubscriptionHandlerThread", "classSubscriptionHandlerThread.html", "classSubscriptionHandlerThread" ],
     [ "timezone", "structtimezone.html", "structtimezone" ],
     [ "URIParser", "classURIParser.html", "classURIParser" ]
 ];

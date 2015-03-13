@@ -1,4 +1,4 @@
 <map id="Myth::PLATFORM::CThread" name="Myth::PLATFORM::CThread">
-<area shape="rect" id="node2" href="$classBasicEventHandler.html" title="BasicEventHandler" alt="" coords="5,77,133,101"/>
-<area shape="rect" id="node3" href="$classSubscriptionHandlerThread.html" title="SubscriptionHandlerThread" alt="" coords="158,77,335,101"/>
+<area shape="rect" id="node2" href="$classMyth_1_1BasicEventHandler.html" title="Myth::BasicEventHandler" alt="" coords="5,84,168,108"/>
+<area shape="rect" id="node3" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="192,78,363,114"/>
 </map>
