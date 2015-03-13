@@ -52,26 +52,29 @@ EventHandler::EventHandlerThread::~EventHandlerThread()
 //// SubscriptionHandlerThread
 ////
 
-class SubscriptionHandlerThread : private PLATFORM::CThread
+namespace Myth
 {
-public:
-  SubscriptionHandlerThread(EventSubscriber *handle, unsigned subid);
-  virtual ~SubscriptionHandlerThread();
-  EventSubscriber *GetHandle() { return m_handle; }
-  bool IsRunning() { return PLATFORM::CThread::IsRunning(); }
-  void PostMessage(const EventMessage& msg);
+  class SubscriptionHandlerThread : private PLATFORM::CThread
+  {
+  public:
+    SubscriptionHandlerThread(EventSubscriber *handle, unsigned subid);
+    virtual ~SubscriptionHandlerThread();
+    EventSubscriber *GetHandle() { return m_handle; }
+    bool IsRunning() { return PLATFORM::CThread::IsRunning(); }
+    void PostMessage(const EventMessage& msg);
 
-private:
-  EventSubscriber *m_handle;
-  unsigned m_subId;
-  mutable PLATFORM::CMutex m_mutex;
-  PLATFORM::CEvent m_queueContent;
-  std::list<EventMessagePtr> m_msgQueue;
+  private:
+    EventSubscriber *m_handle;
+    unsigned m_subId;
+    mutable PLATFORM::CMutex m_mutex;
+    PLATFORM::CEvent m_queueContent;
+    std::list<EventMessagePtr> m_msgQueue;
 
-  bool Start();
-  void Stop();
-  void *Process();
-};
+    bool Start();
+    void Stop();
+    void *Process();
+  };
+}
 
 SubscriptionHandlerThread::SubscriptionHandlerThread(EventSubscriber *handle, unsigned subid)
 : PLATFORM::CThread()
@@ -147,38 +150,41 @@ void *SubscriptionHandlerThread::Process()
 //// BasicEventHandler
 ////
 
-class BasicEventHandler : public EventHandler::EventHandlerThread, private PLATFORM::CThread
+namespace Myth
 {
-public:
-  BasicEventHandler(const std::string& server, unsigned port);
-  virtual ~BasicEventHandler();
-  // Implements MythEventHandlerThread
-  virtual bool Start();
-  virtual void Stop();
-  virtual void Reset();
-  virtual bool IsRunning();
-  virtual bool IsConnected();
-  virtual unsigned CreateSubscription(EventSubscriber *sub);
-  virtual bool SubscribeForEvent(unsigned subid, EVENT_t event);
-  virtual void RevokeSubscription(unsigned subid);
-  virtual void RevokeAllSubscriptions(EventSubscriber *sub);
+  class BasicEventHandler : public EventHandler::EventHandlerThread, private PLATFORM::CThread
+  {
+  public:
+    BasicEventHandler(const std::string& server, unsigned port);
+    virtual ~BasicEventHandler();
+    // Implements MythEventHandlerThread
+    virtual bool Start();
+    virtual void Stop();
+    virtual void Reset();
+    virtual bool IsRunning();
+    virtual bool IsConnected();
+    virtual unsigned CreateSubscription(EventSubscriber *sub);
+    virtual bool SubscribeForEvent(unsigned subid, EVENT_t event);
+    virtual void RevokeSubscription(unsigned subid);
+    virtual void RevokeAllSubscriptions(EventSubscriber *sub);
 
-private:
-  PLATFORM::CMutex m_mutex;
-  ProtoEvent *m_event;
-  bool m_reset;
-  // About subscriptions
-  typedef std::map<EVENT_t, std::list<unsigned> > subscriptionsByEvent_t;
-  subscriptionsByEvent_t m_subscriptionsByEvent;
-  typedef std::map<unsigned, SubscriptionHandlerThread*> subscriptions_t;
-  subscriptions_t m_subscriptions;
+  private:
+    PLATFORM::CMutex m_mutex;
+    ProtoEvent *m_event;
+    bool m_reset;
+    // About subscriptions
+    typedef std::map<EVENT_t, std::list<unsigned> > subscriptionsByEvent_t;
+    subscriptionsByEvent_t m_subscriptionsByEvent;
+    typedef std::map<unsigned, SubscriptionHandlerThread*> subscriptions_t;
+    subscriptions_t m_subscriptions;
 
-  void DispatchEvent(const EventMessage& msg);
-  virtual void* Process(void);
-  void AnnounceStatus(const char *status);
-  void AnnounceTimer();
-  void RetryConnect();
-};
+    void DispatchEvent(const EventMessage& msg);
+    virtual void* Process(void);
+    void AnnounceStatus(const char *status);
+    void AnnounceTimer();
+    void RetryConnect();
+  };
+}
 
 BasicEventHandler::BasicEventHandler(const std::string& server, unsigned port)
 : EventHandlerThread(server, port), PLATFORM::CThread()
