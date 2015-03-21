@@ -141,6 +141,3 @@ __inline int gettimeofday(struct timeval *pcur_time, struct timezone *tz)
 #if defined(_MSC_VER) /* prevent inclusion of wingdi.h */
 #pragma warning (pop)
 #endif
-
-#pragma warning(disable:4189) /* disable 'defined but not used' */
-#pragma warning(disable:4100) /* disable 'unreferenced formal parameter' */
