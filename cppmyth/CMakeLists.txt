@@ -148,7 +148,7 @@ file (GLOB SRC_FILES
 file (GLOB HDR_FILES
   src/proto/*.h src/*.h)
 
-if (MSVC)
+if (WIN32)
   file (GLOB PLATFORM_SRC_FILES
     src/private/platform/windows/*.cpp)
 endif ()
@@ -159,7 +159,7 @@ set (CPPMYTH_SOURCES
 ###############################################################################
 # add targets
 set (cppmyth_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
-if (MSVC)
+if (WIN32)
   list (APPEND cppmyth_LIBRARIES ws2_32)
 else ()
   list (APPEND cppmyth_LIBRARIES m)
@@ -184,25 +184,27 @@ set_target_properties (cppmyth PROPERTIES
 # Create pkg-conf file.
 # (We use the same files as ./configure does, so we
 #  have to defined the same variables used there).
-if (NOT DEFINED CMAKE_INSTALL_BINDIR)
-  set (CMAKE_INSTALL_BINDIR bin)
-endif ()
-if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
-  set (CMAKE_INSTALL_LIBDIR lib)
-endif ()
-if (NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
-  set (CMAKE_INSTALL_INCLUDEDIR include)
-endif ()
-set (prefix      ${CMAKE_INSTALL_PREFIX})
-set (exec_prefix ${CMAKE_INSTALL_PREFIX})
-set (libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-set (VERSION     ${CPPMYTH_LIB_VERSION})
-configure_file (cppmyth.pc.in cppmyth.pc @ONLY)
+if (NOT WIN32)
+  if (NOT DEFINED CMAKE_INSTALL_BINDIR)
+    set (CMAKE_INSTALL_BINDIR bin)
+  endif ()
+  if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
+    set (CMAKE_INSTALL_LIBDIR lib)
+  endif ()
+  if (NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
+    set (CMAKE_INSTALL_INCLUDEDIR include)
+  endif ()
+  set (prefix      ${CMAKE_INSTALL_PREFIX})
+  set (exec_prefix ${CMAKE_INSTALL_PREFIX})
+  set (libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+  set (VERSION     ${CPPMYTH_LIB_VERSION})
+  configure_file (cppmyth.pc.in cppmyth.pc @ONLY)
 
-install (TARGETS cppmyth
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  install (TARGETS cppmyth
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif ()
 
 install (FILES
   ${CMAKE_CURRENT_BINARY_DIR}/include/cppmyth_config.h

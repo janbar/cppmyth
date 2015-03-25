@@ -36,17 +36,25 @@
 #define __WINDOWS__
 #endif
 
+#define WIN32_LEAN_AND_MEAN           // Enable LEAN_AND_MEAN support
+
+#pragma warning(disable:4005)         // Disable "warning C4005: '_WINSOCKAPI_' : macro redefinition"
+#include <winsock2.h>
+#pragma warning(default:4005)
+
 #ifndef _WINSOCKAPI_
 #define _WINSOCKAPI_
 #endif
 
-#define WIN32_LEAN_AND_MEAN           // Enable LEAN_AND_MEAN support
+#ifndef NOMINMAX
 #define NOMINMAX                      // don't define min() and max() to prevent a clash with std::min() and std::max
+#endif
+
 #include <windows.h>
 #include <wchar.h>
 
 /* String to 64-bit int */
-#if (_MSC_VER < 1800)
+#if (defined(_MSC_VER) && (_MSC_VER < 1800))
 #define atoll(S) _atoi64(S)
 #endif
 
@@ -60,10 +68,6 @@
 #define WcsLen wcslen
 #define WcsToMbs wcstombs
 typedef wchar_t Wchar_t; /* sizeof(wchar_t) = 2 bytes on Windows */
-
-#pragma warning(disable:4005) // Disable "warning C4005: '_WINSOCKAPI_' : macro redefinition"
-#include <winsock2.h>
-#pragma warning(default:4005)
 
 #include <time.h>
 #include <sys/timeb.h>
@@ -95,11 +99,13 @@ typedef _W64 int   ssize_t;
 #define usleep(t) Sleep((DWORD)(t)/1000)
 #define sleep(t)  Sleep((DWORD)(t)*1000)
 
+#if defined(_MSC_VER)
 struct timezone
 {
   int	tz_minuteswest;
   int	tz_dsttime;
 };
+#endif
 
 #define gettimeofday __gettimeofday
 __inline int gettimeofday(struct timeval *pcur_time, struct timezone *tz)
@@ -122,8 +128,10 @@ __inline int gettimeofday(struct timeval *pcur_time, struct timezone *tz)
 }
 
 /* Prevent deprecation warnings */
+#if defined(_MSC_VER)
 #define snprintf _snprintf
 #define strnicmp _strnicmp
+#endif
 
 #if defined(_MSC_VER)
 #pragma warning (push)
