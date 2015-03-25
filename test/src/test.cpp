@@ -1,7 +1,10 @@
+#if (defined(_WIN32) || defined(_WIN64))
+#define __WINDOWS__
+#endif
 
-#if defined _MSC_VER
+#ifdef __WINDOWS__
+#include <winsock2.h>
 #include <Windows.h>
-#include <winsock.h>
 #include <time.h>
 #define usleep(t) Sleep((DWORD)(t)/1000)
 #define sleep(t)  Sleep((DWORD)(t)*1000)
@@ -24,12 +27,12 @@
 int main(int argc, char** argv)
 {
   int ret = 0;
-#if defined _MSC_VER
+#ifdef __WINDOWS__
   //Initialize Winsock
   WSADATA wsaData;
   if ((ret = WSAStartup(MAKEWORD(2, 2), &wsaData)))
     return ret;
-#endif /* _MSC_VER */
+#endif /* __WINDOWS__ */
 
   std::string backendIP;
   Myth::ChannelPtr chantest;
@@ -250,8 +253,8 @@ int main(int argc, char** argv)
   }
 
   //out:
-#if defined _MSC_VER
+#ifdef __WINDOWS__
   WSACleanup();
-#endif /* _MSC_VER */
+#endif /* __WINDOWS__ */
   return ret;
 }
