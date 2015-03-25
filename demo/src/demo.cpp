@@ -1,6 +1,10 @@
-#if defined _MSC_VER
+#if (defined(_WIN32) || defined(_WIN64))
+#define __WINDOWS__
+#endif
+
+#ifdef __WINDOWS__
+#include <winsock2.h>
 #include <Windows.h>
-#include <winsock.h>
 #include <time.h>
 #define usleep(t) Sleep((DWORD)(t)/1000)
 #define sleep(t)  Sleep((DWORD)(t)*1000)
@@ -54,7 +58,7 @@ bool loadChannels(const char * server)
 void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
 {
 
-#if !defined _MSC_VER
+#ifndef __WINDOWS__
   // Ignore SIGPIPE and close gracefully
   (void)signal(SIGPIPE, SIG_IGN);
 #endif
@@ -87,12 +91,12 @@ void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
 int main(int argc, char** argv)
 {
   int ret = 0;
-#if defined _MSC_VER
+#ifdef __WINDOWS__
   //Initialize Winsock
   WSADATA wsaData;
   if ((ret = WSAStartup(MAKEWORD(2, 2), &wsaData)))
     return ret;
-#endif /* _MSC_VER */
+#endif /* __WINDOWS__ */
 
   if (argc > 2)
   {
@@ -112,8 +116,8 @@ int main(int argc, char** argv)
   else
     fprintf(stderr, MYTAG "USAGE: %s {backend ip or hostname} {chanid}\n", argv[0]);
 
-#if defined _MSC_VER
+#ifdef __WINDOWS__
   WSACleanup();
-#endif /* _MSC_VER */
+#endif /* __WINDOWS__ */
   return ret;
 }
