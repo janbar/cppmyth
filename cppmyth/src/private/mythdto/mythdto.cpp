@@ -23,6 +23,7 @@
 #include "mythdto75.h"  // Base protocol version 75
 #include "mythdto76.h"  // Add protocol version 76
 #include "mythdto82.h"  // Add protocol version 82
+#include "mythdto85.h"  // Add protocol version 85
 
 #include <cstddef>
 
@@ -88,5 +89,12 @@ const bindings_t *MythDTO::getRecordScheduleBindArray(unsigned proto)
     return &MythDTO76::recordscheduleBindArray;
   if (proto >= 75)
     return &MythDTO75::recordscheduleBindArray;
+  return NULL;
+}
+
+const bindings_t *MythDTO::getCuttingBindArray(unsigned proto)
+{
+  if (proto >= 75)
+    return &MythDTO85::CuttingBindArray;
   return NULL;
 }
