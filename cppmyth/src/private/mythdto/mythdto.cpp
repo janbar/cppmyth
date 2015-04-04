@@ -86,9 +86,9 @@ const bindings_t *MythDTO::getVideoSourceBindArray(unsigned proto)
 const bindings_t *MythDTO::getRecordScheduleBindArray(unsigned proto)
 {
   if (proto >= 76)
-    return &MythDTO76::recordscheduleBindArray;
+    return &MythDTO76::RecordScheduleBindArray;
   if (proto >= 75)
-    return &MythDTO75::recordscheduleBindArray;
+    return &MythDTO75::RecordScheduleBindArray;
   return NULL;
 }
 
