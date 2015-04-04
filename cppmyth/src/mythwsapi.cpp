@@ -1238,6 +1238,108 @@ bool WSAPI::UpdateRecordedWatchedStatus6_0(uint32_t recordedid, bool watched)
   return true;
 }
 
+MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
+{
+  char buf[32];
+  MarkListPtr ret(new MarkList);
+  unsigned proto = (unsigned)m_version.protocol;
+
+  // Get bindings for protocol version
+  const bindings_t *bindcut = MythDTO::getCuttingBindArray(proto);
+
+  // Initialize request header
+  WSRequest req = WSRequest(m_server, m_port);
+  req.RequestAccept(CT_JSON);
+  req.RequestService("/Dvr/GetRecordedCommBreak");
+  uint32str(recordedid, buf);
+  req.SetContentParam("RecordedId", buf);
+  if (unit == 1)
+    req.SetContentParam("OffsetType", "Position");
+  else if (unit == 2)
+    req.SetContentParam("OffsetType", "Duration");
+  WSResponse resp(req);
+  if (!resp.IsSuccessful())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
+    return ret;
+  }
+  const JSON::Document json(resp);
+  const JSON::Node& root = json.GetRoot();
+  if (!json.IsValid() || !root.IsObject())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: unexpected content\n", __FUNCTION__);
+    return ret;
+  }
+  DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
+
+  // Object: 	CutList
+  const JSON::Node& slist = root.GetObjectValue("CutList");
+  // Object: 	Cuttings[]
+  const JSON::Node& vcuts = slist.GetObjectValue("Cuttings");
+  // Iterates over the sequence elements.
+  size_t vs = vcuts.Size();
+  for (size_t vi = 0; vi < vs; ++vi)
+  {
+    const JSON::Node& vcut = vcuts.GetArrayElement(vi);
+    MarkPtr mark(new Mark());  // Using default constructor
+    // Bind the new videoSource
+    JSON::BindObject(vcut, mark.get(), bindcut);
+    ret->push_back(mark);
+  }
+  return ret;
+}
+
+MarkListPtr WSAPI::GetRecordedCutList6_1(uint32_t recordedid, int unit)
+{
+  char buf[32];
+  MarkListPtr ret(new MarkList);
+  unsigned proto = (unsigned)m_version.protocol;
+
+  // Get bindings for protocol version
+  const bindings_t *bindcut = MythDTO::getCuttingBindArray(proto);
+
+  // Initialize request header
+  WSRequest req = WSRequest(m_server, m_port);
+  req.RequestAccept(CT_JSON);
+  req.RequestService("/Dvr/GetRecordedCutList");
+  uint32str(recordedid, buf);
+  req.SetContentParam("RecordedId", buf);
+  if (unit == 1)
+    req.SetContentParam("OffsetType", "Position");
+  else if (unit == 2)
+    req.SetContentParam("OffsetType", "Duration");
+  WSResponse resp(req);
+  if (!resp.IsSuccessful())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
+    return ret;
+  }
+  const JSON::Document json(resp);
+  const JSON::Node& root = json.GetRoot();
+  if (!json.IsValid() || !root.IsObject())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: unexpected content\n", __FUNCTION__);
+    return ret;
+  }
+  DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
+
+  // Object: 	CutList
+  const JSON::Node& slist = root.GetObjectValue("CutList");
+  // Object: 	Cuttings[]
+  const JSON::Node& vcuts = slist.GetObjectValue("Cuttings");
+  // Iterates over the sequence elements.
+  size_t vs = vcuts.Size();
+  for (size_t vi = 0; vi < vs; ++vi)
+  {
+    const JSON::Node& vcut = vcuts.GetArrayElement(vi);
+    MarkPtr mark(new Mark());  // Using default constructor
+    // Bind the new videoSource
+    JSON::BindObject(vcut, mark.get(), bindcut);
+    ret->push_back(mark);
+  }
+  return ret;
+}
+
 static void ProcessRecordIN(unsigned proto, RecordSchedule& record)
 {
   // Converting API codes to internal types
