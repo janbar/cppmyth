@@ -821,6 +821,90 @@ ProgramMapPtr WSAPI::GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_
   return ret;
 }
 
+ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t endtime)
+{
+  ProgramMapPtr ret(new ProgramMap);
+  char buf[32];
+  uint32_t req_index = 0, req_count = FETCHSIZE, count = 0, total = 0;
+  unsigned proto = (unsigned)m_version.protocol;
+
+  // Get bindings for protocol version
+  const bindings_t *bindlist = MythDTO::getListBindArray(proto);
+  const bindings_t *bindprog = MythDTO::getProgramBindArray(proto);
+  const bindings_t *bindchan = MythDTO::getChannelBindArray(proto);
+
+  // Initialize request header
+  WSRequest req = WSRequest(m_server, m_port);
+  req.RequestAccept(CT_JSON);
+  req.RequestService("/Guide/GetProgramList");
+
+  do
+  {
+    req.ClearContent();
+    uint32str(req_index, buf);
+    req.SetContentParam("StartIndex", buf);
+    uint32str(req_count, buf);
+    req.SetContentParam("Count", buf);
+    uint32str(chanid, buf);
+    req.SetContentParam("ChanId", buf);
+    time2iso8601utc(starttime, buf);
+    req.SetContentParam("StartTime", buf);
+    time2iso8601utc(endtime, buf);
+    req.SetContentParam("EndTime", buf);
+    req.SetContentParam("Details", "false");
+
+    DBG(MYTH_DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
+    WSResponse resp(req);
+    if (!resp.IsSuccessful())
+    {
+      DBG(MYTH_DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
+      break;
+    }
+    const JSON::Document json(resp);
+    const JSON::Node& root = json.GetRoot();
+    if (!json.IsValid() || !root.IsObject())
+    {
+      DBG(MYTH_DBG_ERROR, "%s: unexpected content\n", __FUNCTION__);
+      break;
+    }
+    DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
+
+    // Object: ProgramList
+    const JSON::Node& plist = root.GetObjectValue("ProgramList");
+    ItemList list = ItemList(); // Using default constructor
+    JSON::BindObject(plist, &list, bindlist);
+    // List has ProtoVer. Check it or sound alarm
+    if (list.protoVer != proto)
+    {
+      InvalidateService();
+      break;
+    }
+    count = 0;
+    // Object: Programs[]
+    const JSON::Node& progs = plist.GetObjectValue("Programs");
+    // Iterates over the sequence elements.
+    size_t ps = progs.Size();
+    for (size_t pi = 0; pi < ps; ++pi)
+    {
+      ++count;
+      const JSON::Node& prog = progs.GetArrayElement(pi);
+      ProgramPtr program(new Program());  // Using default constructor
+      // Bind the new program
+      JSON::BindObject(prog, program.get(), bindprog);
+      // Bind channel of program
+      const JSON::Node& chan = prog.GetObjectValue("Channel");
+      JSON::BindObject(chan, &(program->channel), bindchan);
+      ret->insert(std::make_pair(program->startTime, program));
+      ++total;
+    }
+    DBG(MYTH_DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
+    req_index += count; // Set next requested index
+  }
+  while (count == req_count);
+
+  return ret;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 ////
 //// Dvr service

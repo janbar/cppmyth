@@ -146,6 +146,7 @@ namespace Myth
     ProgramMapPtr GetProgramGuide(uint32_t chanid, time_t starttime, time_t endtime)
     {
       WSServiceVersion_t wsv = CheckService(WS_Guide);
+      if (wsv.ranking >= 0x00020002) return GetProgramList2_2(chanid, starttime, endtime);
       if (wsv.ranking >= 0x00010000) return GetProgramGuide1_0(chanid, starttime, endtime);
       return ProgramMapPtr(new ProgramMap);
     }
@@ -451,6 +452,7 @@ namespace Myth
     ChannelListPtr GetChannelList1_5(uint32_t sourceid, bool onlyVisible);
 
     ProgramMapPtr GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_t endtime);
+    ProgramMapPtr GetProgramList2_2(uint32_t chanid, time_t starttime, time_t endtime);
 
     ProgramListPtr GetRecordedList1_5(unsigned n, bool descending);
     ProgramPtr GetRecorded1_5(uint32_t chanid, time_t recstartts);
