@@ -1366,7 +1366,7 @@ MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
   {
     const JSON::Node& vcut = vcuts.GetArrayElement(vi);
     MarkPtr mark(new Mark());  // Using default constructor
-    // Bind the new videoSource
+    // Bind the new mark
     JSON::BindObject(vcut, mark.get(), bindcut);
     ret->push_back(mark);
   }
@@ -1417,7 +1417,7 @@ MarkListPtr WSAPI::GetRecordedCutList6_1(uint32_t recordedid, int unit)
   {
     const JSON::Node& vcut = vcuts.GetArrayElement(vi);
     MarkPtr mark(new Mark());  // Using default constructor
-    // Bind the new videoSource
+    // Bind the new mark
     JSON::BindObject(vcut, mark.get(), bindcut);
     ret->push_back(mark);
   }
