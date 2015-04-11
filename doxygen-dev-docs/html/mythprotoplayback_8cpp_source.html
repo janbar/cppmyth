@@ -135,12 +135,12 @@ $(document).ready(function(){initNavTree('mythprotoplayback_8cpp_source.html',''
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#if defined _MSC_VER</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef __WINDOWS__</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;Ws2tcpip.h&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">// for recv</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;sys/select.h&gt;</span> <span class="comment">// for select</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MSC_VER */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __WINDOWS__ */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">using namespace </span>Myth;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
@@ -477,7 +477,7 @@ $(document).ready(function(){initNavTree('mythprotoplayback_8cpp_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotoplayback.cpp</b></li>
-    <li class="footer">Generated on Fri Mar 13 2015 23:33:15 for CPPMyth by
+    <li class="footer">Generated on Sat Apr 11 2015 12:44:06 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

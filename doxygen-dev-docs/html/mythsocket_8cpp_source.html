@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if defined _MSC_VER</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef __WINDOWS__</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;Ws2tcpip.h&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define SHUT_RDWR SD_BOTH</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SHUT_WR   SD_SEND</span></div>
@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define closesocket(a) close(a)</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LASTERROR errno</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* _MSC_VER */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* __WINDOWS__ */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> __connectAddr(<span class="keyword">struct</span> addrinfo *addr, tcp_socket_t *s, <span class="keywordtype">int</span> rcvbuf)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#ifndef __WINDOWS__</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span>  void (*old_sighandler)(int);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">int</span> old_alarm;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -210,7 +210,7 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span> (getsockopt(*s, SOL_SOCKET, SO_RCVBUF, (<span class="keywordtype">char</span> *)&amp;opt_rcvbuf, &amp;size))</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    DBG(MYTH_DBG_WARN, <span class="stringliteral">&quot;%s: could not get rcvbuf from socket (%d)\n&quot;</span>, __FUNCTION__, LASTERROR);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#ifndef __WINDOWS__</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span>  old_sighandler = signal(SIGALRM, __sigHandler);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  old_alarm = alarm(5);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -220,14 +220,14 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    err = LASTERROR;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    DBG(MYTH_DBG_ERROR, <span class="stringliteral">&quot;%s: failed to connect (%d)\n&quot;</span>, __FUNCTION__, err);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    closesocket(*s);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifndef __WINDOWS__</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span>    signal(SIGALRM, old_sighandler);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    alarm(old_alarm);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> err;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  }</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  my_socket = INVALID_SOCKET_VALUE;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifndef __WINDOWS__</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>  signal(SIGALRM, old_sighandler);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  alarm(old_alarm);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -410,7 +410,7 @@ $(document).ready(function(){initNavTree('mythsocket_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><b>mythsocket.cpp</b></li>
-    <li class="footer">Generated on Fri Mar 13 2015 23:33:15 for CPPMyth by
+    <li class="footer">Generated on Sat Apr 11 2015 12:44:05 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

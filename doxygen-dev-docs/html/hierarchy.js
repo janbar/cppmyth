@@ -79,7 +79,6 @@ var hierarchy =
       [ "sajson::literal", "classsajson_1_1literal.html", null ]
     ] ],
     [ "Myth::TcpSocket", "classMyth_1_1TcpSocket.html", null ],
-    [ "timezone", "structtimezone.html", null ],
     [ "URIParser::URI_t", "structURIParser_1_1URI__t.html", null ],
     [ "URIParser", "classURIParser.html", null ],
     [ "sajson::value", "classsajson_1_1value.html", null ],
