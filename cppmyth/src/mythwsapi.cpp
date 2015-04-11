@@ -851,7 +851,7 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
     req.SetContentParam("StartTime", buf);
     time2iso8601utc(endtime, buf);
     req.SetContentParam("EndTime", buf);
-    req.SetContentParam("Details", "false");
+    req.SetContentParam("Details", "true");
 
     DBG(MYTH_DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
