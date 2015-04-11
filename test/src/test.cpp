@@ -100,7 +100,7 @@ int main(int argc, char** argv)
       fprintf(stderr, "\n***\n*** Testing web service GetProgramGuide\n***\n");
       for (unsigned ci = 0; ci < channel->size(); ++ci)
       {
-        Myth::ProgramMapPtr epg = control.GetProgramGuide((*channel)[ci]->chanId, now, now+604800);
+        Myth::ProgramMapPtr epg = control.GetProgramGuide((*channel)[ci]->chanId, now, now+(24*3600));
         for (Myth::ProgramMap::const_iterator it5 = epg->begin(); it5 != epg->end(); ++it5)
         {
           fprintf(stderr, "Guide ChanId: %u : %lu ", (*channel)[ci]->chanId, it5->first);
