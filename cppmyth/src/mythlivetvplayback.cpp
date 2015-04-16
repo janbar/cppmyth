@@ -157,21 +157,21 @@ bool LiveTVPlayback::SpawnLiveTV(const std::string& chanNum, const ChannelList& 
     if (m_recorder->SpawnLiveTV(m_chain.UID, channel->chanNum))
     {
       // Wait chain update until time limit
-      uint32_t timer = 0, delay = m_tuneDelay * 1000000;
+      uint32_t delayMs = m_tuneDelay * 1000;
+      PLATFORM::CTimeout timeout(delayMs);
       do
       {
         lock.Unlock();  // Release the latch to allow chain update
         usleep(TICK_USEC);
-        timer += TICK_USEC;
         lock.Lock();
         if (!m_chain.switchOnCreate)
         {
-          DBG(MYTH_DBG_DEBUG, "%s: tune delay (%" PRIu32 "ms)\n", __FUNCTION__, (timer / 1000));
+          DBG(MYTH_DBG_DEBUG, "%s: tune delay (%" PRIu32 "ms)\n", __FUNCTION__, (delayMs - timeout.TimeLeft()));
           return true;
         }
       }
-      while (timer < delay);
-      DBG(MYTH_DBG_ERROR, "%s: tune delay exceeded (%" PRIu32 "ms)\n", __FUNCTION__, (timer / 1000));
+      while (timeout.TimeLeft() > 0);
+      DBG(MYTH_DBG_ERROR, "%s: tune delay exceeded (%" PRIu32 "ms)\n", __FUNCTION__, delayMs);
       m_recorder->StopLiveTV();
     }
     ClearChain();
