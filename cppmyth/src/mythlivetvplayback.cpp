@@ -34,6 +34,7 @@
 #define MAX_TUNE_DELAY        60
 #define TICK_USEC             100000  // valid range: 10000 - 999999
 #define START_TIMEOUT         2000    // millisec
+#define AHEAD_TIMEOUT         10000   // millisec
 
 using namespace Myth;
 
@@ -477,12 +478,13 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
     s = fs - m_chain.currentTransfer->filePosition; // Acceptable block size
     if (s == 0)
     {
-      PLATFORM::CTimeout timeout(500);
+      PLATFORM::CTimeout timeout(AHEAD_TIMEOUT);
       for (;;)
       {
         // Reading ahead
         if (m_chain.currentSequence == m_chain.lastSequence)
         {
+          usleep(500000);
           if ((rp = recorder->GetFilePosition()) > fs)
           {
             PLATFORM::CLockObject lock(*m_mutex); // Lock chain
@@ -495,7 +497,6 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
             DBG(MYTH_DBG_WARN, "%s: read position is ahead (%" PRIi64 ")\n", __FUNCTION__, fs);
             return 0;
           }
-          usleep(20000);
         }
         // Switch next file transfer is required to continue
         else
