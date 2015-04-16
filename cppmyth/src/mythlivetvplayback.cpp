@@ -33,7 +33,7 @@
 #define MIN_TUNE_DELAY        5
 #define MAX_TUNE_DELAY        60
 #define TICK_USEC             100000  // valid range: 10000 - 999999
-#define STARTING_DELAY        1
+#define START_TIMEOUT         2000    // millisec
 
 using namespace Myth;
 
@@ -96,17 +96,17 @@ bool LiveTVPlayback::Open()
   {
     if (!m_eventHandler.IsRunning())
     {
-      uint32_t timer = 0, delay = STARTING_DELAY * 1000000;
+      PLATFORM::CTimeout timeout(START_TIMEOUT);
       m_eventHandler.Start();
-      while (!m_eventHandler.IsConnected() && timer < delay)
+      do
       {
         usleep(TICK_USEC);
-        timer += TICK_USEC;
       }
+      while (!m_eventHandler.IsConnected() && timeout.TimeLeft() > 0);
       if (!m_eventHandler.IsConnected())
-        DBG(MYTH_DBG_WARN, "%s: event handler is not connected in time (%" PRIu32 "ms)\n", __FUNCTION__, (timer / 1000));
+        DBG(MYTH_DBG_WARN, "%s: event handler is not connected in time\n", __FUNCTION__);
       else
-        DBG(MYTH_DBG_DEBUG, "%s: event handler is connected (%" PRIu32 "ms)\n", __FUNCTION__, (timer / 1000));
+        DBG(MYTH_DBG_DEBUG, "%s: event handler is connected\n", __FUNCTION__);
     }
     return true;
   }
