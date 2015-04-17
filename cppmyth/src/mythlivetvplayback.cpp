@@ -258,7 +258,7 @@ void LiveTVPlayback::HandleChainUpdate()
             m_chain.UID.c_str(), prog->fileName.c_str());
     ProtoTransferPtr transfer(new ProtoTransfer(recorder->GetServer(), recorder->GetPort(), prog->fileName, prog->recording.storageGroup));
     // Pop previous dummy file if exists then add the new into the chain
-    if (m_chain.lastSequence && m_chain.chained[m_chain.lastSequence - 1].first->fileSize == 0)
+    if (m_chain.lastSequence && m_chain.chained[m_chain.lastSequence - 1].first->GetSize() == 0)
     {
       --m_chain.lastSequence;
       m_chain.chained.pop_back();
@@ -269,7 +269,7 @@ void LiveTVPlayback::HandleChainUpdate()
      * If switchOnCreate flag and file is filled then switch immediatly.
      * Else we will switch later on the next event 'UPDATE_FILE_SIZE'
      */
-    if (m_chain.switchOnCreate && transfer->fileSize > 0 && SwitchChainLast())
+    if (m_chain.switchOnCreate && transfer->GetSize() > 0 && SwitchChainLast())
       m_chain.switchOnCreate = false;
     m_chain.watch = false; // Chain update done. Restore watch flag
     DBG(MYTH_DBG_DEBUG, "%s: liveTV (%s): chain last (%u), watching (%u)\n", __FUNCTION__,
@@ -410,7 +410,7 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
                     || m_chain.chained[m_chain.lastSequence -1].second->channel.chanId != chanid
                     || m_chain.chained[m_chain.lastSequence -1].second->recording.startTs != startts
                     || str2int64(msg->subject[3].c_str(), &newsize)
-                    || m_chain.chained[m_chain.lastSequence - 1].first->fileSize >= newsize)
+                    || m_chain.chained[m_chain.lastSequence - 1].first->GetSize() >= newsize)
               break;
           }
           // Message contains recordedid as key
@@ -420,11 +420,11 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
             if (str2uint32(msg->subject[1].c_str(), &recordedid)
                     || m_chain.chained[m_chain.lastSequence -1].second->recording.recordedId != recordedid
                     || str2int64(msg->subject[2].c_str(), &newsize)
-                    || m_chain.chained[m_chain.lastSequence - 1].first->fileSize >= newsize)
+                    || m_chain.chained[m_chain.lastSequence - 1].first->GetSize() >= newsize)
               break;
           }
           // Update transfer file size
-          m_chain.chained[m_chain.lastSequence - 1].first->fileSize = newsize;
+          m_chain.chained[m_chain.lastSequence - 1].first->SetSize(newsize);
           // Is wait the filling before switching ?
           if (m_chain.switchOnCreate && SwitchChainLast())
             m_chain.switchOnCreate = false;
@@ -455,7 +455,7 @@ int64_t LiveTVPlayback::GetSize() const
   int64_t size = 0;
   PLATFORM::CLockObject lock(*m_mutex); // Lock chain
   for (chained_t::const_iterator it = m_chain.chained.begin(); it != m_chain.chained.end(); ++it)
-    size += it->first->fileSize;
+    size += it->first->GetSize();
   return size;
 }
 
@@ -463,7 +463,7 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
 {
   int r = 0;
   bool retry;
-  int64_t s, fs, rp;
+  int64_t s, fs, fp, rp;
 
   // Begin critical section
   // First of all i hold my shared resources using copies
@@ -474,8 +474,9 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
   do
   {
     retry = false;
-    fs = m_chain.currentTransfer->fileSize;  // Current known fileSize
-    s = fs - m_chain.currentTransfer->filePosition; // Acceptable block size
+    fs = m_chain.currentTransfer->GetSize();
+    fp = m_chain.currentTransfer->GetPosition();
+    s = fs - fp;  // Acceptable block size
     if (s == 0)
     {
       PLATFORM::CTimeout timeout(AHEAD_TIMEOUT);
@@ -484,11 +485,9 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
         // Reading ahead
         if (m_chain.currentSequence == m_chain.lastSequence)
         {
-          usleep(500000);
           if ((rp = recorder->GetFilePosition()) > fs)
           {
-            PLATFORM::CLockObject lock(*m_mutex); // Lock chain
-            m_chain.currentTransfer->fileSize = rp;
+            m_chain.currentTransfer->SetSize(rp);
             retry = true;
             break;
           }
@@ -497,13 +496,14 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
             DBG(MYTH_DBG_WARN, "%s: read position is ahead (%" PRIi64 ")\n", __FUNCTION__, fs);
             return 0;
           }
+          usleep(500000);
         }
         // Switch next file transfer is required to continue
         else
         {
           if (!SwitchChain(m_chain.currentSequence + 1))
             return -1;
-          if (m_chain.currentTransfer->filePosition != 0)
+          if (fp != 0)
             recorder->TransferSeek(*(m_chain.currentTransfer), 0, WHENCE_SET);
           DBG(MYTH_DBG_DEBUG, "%s: liveTV (%s): chain last (%u), watching (%u)\n", __FUNCTION__,
                 m_chain.UID.c_str(), m_chain.lastSequence, m_chain.currentSequence);
@@ -557,7 +557,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
   {
     for (;;)
     {
-      if (position - m_chain.chained[ci].first->filePosition + m_chain.chained[ci].first->fileSize >= p)
+      if (position - m_chain.chained[ci].first->GetPosition() + m_chain.chained[ci].first->GetSize() >= p)
       {
         // Try seek file to desired position. On success switch chain
         if (m_recorder->TransferSeek(*(m_chain.chained[ci].first), p - position, WHENCE_CUR) < 0 ||
@@ -565,10 +565,10 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
           return -1;
         return p;
       }
-      position += m_chain.chained[ci].first->fileSize - m_chain.chained[ci].first->filePosition;
+      position += m_chain.chained[ci].first->GetSize() - m_chain.chained[ci].first->GetPosition();
       ++ci; // switch next
       if (ci < m_chain.lastSequence)
-        position += m_chain.chained[ci].first->filePosition;
+        position += m_chain.chained[ci].first->GetPosition();
       else
         return -1;
     }
@@ -577,7 +577,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
   {
     for (;;)
     {
-      if (position - m_chain.chained[ci].first->filePosition <= p)
+      if (position - m_chain.chained[ci].first->GetPosition() <= p)
       {
         // Try seek file to desired position. On success switch chain
         if (m_recorder->TransferSeek(*(m_chain.chained[ci].first), p - position, WHENCE_CUR) < 0 ||
@@ -585,11 +585,11 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
           return -1;
         return p;
       }
-      position -= m_chain.chained[ci].first->filePosition;
+      position -= m_chain.chained[ci].first->GetPosition();
       if (ci > 0)
       {
         --ci; // switch previous
-        position -= m_chain.chained[ci].first->fileSize - m_chain.chained[ci].first->filePosition;
+        position -= m_chain.chained[ci].first->GetSize() - m_chain.chained[ci].first->GetPosition();
       }
       else
         return -1;
@@ -607,8 +607,8 @@ int64_t LiveTVPlayback::GetPosition() const
   {
     unsigned s = m_chain.currentSequence - 1;
     for (unsigned i = 0; i < s; ++i)
-      pos += m_chain.chained[i].first->fileSize;
-    pos += m_chain.currentTransfer->filePosition;
+      pos += m_chain.chained[i].first->GetSize();
+    pos += m_chain.currentTransfer->GetPosition();
   }
   return pos;
 }
