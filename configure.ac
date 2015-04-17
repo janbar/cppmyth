@@ -1,5 +1,5 @@
 AC_PREREQ([2.60])
-AC_INIT([cppmyth], [1.4], [jlbarriere68@gmail.com])
+AC_INIT([cppmyth], [1.5], [jlbarriere68@gmail.com])
 
 AM_INIT_AUTOMAKE([1.10 foreign subdir-objects])
 
@@ -78,7 +78,7 @@ AC_CONFIG_FILES([
         Makefile
         cppmyth/cppmyth.pc
         cppmyth/Makefile
-        cppmyth/src/cppmyth_config.h
+        cppmyth/src/local_config.h
         test/Makefile
         demo/Makefile
 ])

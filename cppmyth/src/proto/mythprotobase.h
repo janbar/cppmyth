@@ -34,7 +34,7 @@
 namespace Myth
 {
 
-  namespace PLATFORM
+  namespace OS
   {
     class CMutex;
   }
@@ -59,7 +59,7 @@ namespace Myth
     virtual void CleanHanging();
 
   protected:
-    PLATFORM::CMutex *m_mutex;
+    OS::CMutex *m_mutex;
     TcpSocket *m_socket;
     unsigned m_protoVersion;
     std::string m_server;
