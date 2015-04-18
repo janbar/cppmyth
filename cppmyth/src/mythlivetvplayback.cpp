@@ -463,7 +463,7 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
 {
   int r = 0;
   bool retry;
-  int64_t s, fs, fp, rp;
+  int64_t s, fp;
 
   // Begin critical section
   // First of all i hold my shared resources using copies
@@ -471,12 +471,12 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
   if (!m_chain.currentTransfer || !recorder)
     return -1;
 
+  fp = m_chain.currentTransfer->GetPosition();
+
   do
   {
     retry = false;
-    fs = m_chain.currentTransfer->GetSize();
-    fp = m_chain.currentTransfer->GetPosition();
-    s = fs - fp;  // Acceptable block size
+    s = m_chain.currentTransfer->GetRemaining();  // Acceptable block size
     if (s == 0)
     {
       PLATFORM::CTimeout timeout(AHEAD_TIMEOUT);
@@ -485,7 +485,8 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
         // Reading ahead
         if (m_chain.currentSequence == m_chain.lastSequence)
         {
-          if ((rp = recorder->GetFilePosition()) > fs)
+          int64_t rp = recorder->GetFilePosition();
+          if (rp > fp)
           {
             m_chain.currentTransfer->SetSize(rp);
             retry = true;
@@ -493,7 +494,7 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
           }
           if (!timeout.TimeLeft())
           {
-            DBG(MYTH_DBG_WARN, "%s: read position is ahead (%" PRIi64 ")\n", __FUNCTION__, fs);
+            DBG(MYTH_DBG_WARN, "%s: read position is ahead (%" PRIi64 ")\n", __FUNCTION__, fp);
             return 0;
           }
           usleep(500000);
@@ -503,7 +504,7 @@ int LiveTVPlayback::Read(void* buffer, unsigned n)
         {
           if (!SwitchChain(m_chain.currentSequence + 1))
             return -1;
-          if (fp != 0)
+          if (m_chain.currentTransfer->GetPosition() != 0)
             recorder->TransferSeek(*(m_chain.currentTransfer), 0, WHENCE_SET);
           DBG(MYTH_DBG_DEBUG, "%s: liveTV (%s): chain last (%u), watching (%u)\n", __FUNCTION__,
                 m_chain.UID.c_str(), m_chain.lastSequence, m_chain.currentSequence);
