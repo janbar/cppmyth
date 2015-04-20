@@ -92,7 +92,7 @@ static CC_INLINE unsigned atomic_increment(atomic_t *valp)
 
 #elif defined __mips__
   int temp, inc = 1;
-  __asm __volatile (
+  __asm__ volatile (
     "1:  ll     %0, %1\n"       /* load old value */
     "    addu   %2, %0, %3\n"   /* calculate new value */
     "    sc     %2, %1\n"       /* attempt to store */
@@ -228,7 +228,7 @@ static CC_INLINE unsigned atomic_decrement(atomic_t *valp)
 
 #elif defined __mips__
   int temp, sub = 1;
-  __asm __volatile (
+  __asm__ volatile (
     "1:  ll     %0, %1\n"       /* load old value */
     "    subu   %2, %0, %3\n"   /* calculate new value */
     "    sc     %2, %1\n"       /* attempt to store */
