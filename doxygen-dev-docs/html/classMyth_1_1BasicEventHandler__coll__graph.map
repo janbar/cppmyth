@@ -1,20 +1,12 @@
 <map id="Myth::BasicEventHandler" name="Myth::BasicEventHandler">
-<area shape="rect" id="node2" href="$classMyth_1_1EventHandler_1_1EventHandlerThread.html" title="Myth::EventHandler\l::EventHandlerThread" alt="" coords="1577,506,1722,542"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="1083,561,1165,585"/>
-<area shape="rect" id="node24" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="1409,471,1524,495"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="695,555,822,591"/>
-<area shape="rect" id="node5" href="$classMyth_1_1PLATFORM_1_1CThread.html" title="Myth::PLATFORM::CThread" alt="" coords="1039,288,1209,312"/>
-<area shape="rect" id="node18" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="1381,233,1552,269"/>
-<area shape="rect" id="node6" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="667,286,850,322"/>
-<area shape="rect" id="node7" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="13,321,205,345"/>
-<area shape="rect" id="node9" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; _Predicate \&gt;" alt="" coords="337,234,519,270"/>
-<area shape="rect" id="node10" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="677,383,840,407"/>
-<area shape="rect" id="node20" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="667,189,850,225"/>
-<area shape="rect" id="node8" href="$classMyth_1_1PLATFORM_1_1CConditionImpl.html" title="Myth::PLATFORM::CConditionImpl" alt="" coords="6,173,213,197"/>
-<area shape="rect" id="node19" href="$classMyth_1_1PLATFORM_1_1CEvent.html" title="Myth::PLATFORM::CEvent" alt="" coords="1044,239,1204,263"/>
-<area shape="rect" id="node13" title="STL class. " alt="" coords="709,32,808,56"/>
-<area shape="rect" id="node15" title="STL class. " alt="" coords="1063,84,1185,108"/>
-<area shape="rect" id="node21" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="1049,191,1199,215"/>
-<area shape="rect" id="node23" href="$classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="1791,451,1908,475"/>
-<area shape="rect" id="node25" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="1068,509,1180,533"/>
+<area shape="rect" id="node2" href="$classMyth_1_1EventHandler_1_1EventHandlerThread.html" title="Myth::EventHandler\l::EventHandlerThread" alt="" coords="1006,5,1151,41"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="513,20,594,44"/>
+<area shape="rect" id="node18" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="839,85,953,109"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="153,14,279,50"/>
+<area shape="rect" id="node8" title="STL class. " alt="" coords="167,263,265,287"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="493,339,614,363"/>
+<area shape="rect" id="node13" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="811,179,981,215"/>
+<area shape="rect" id="node15" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="479,231,628,255"/>
+<area shape="rect" id="node17" href="$classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="1220,85,1337,109"/>
+<area shape="rect" id="node19" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="497,87,609,111"/>
 </map>

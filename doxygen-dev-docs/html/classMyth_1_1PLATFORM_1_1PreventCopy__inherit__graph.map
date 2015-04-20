@@ -1,8 +1,0 @@
-<map id="Myth::PLATFORM::PreventCopy" name="Myth::PLATFORM::PreventCopy">
-<area shape="rect" id="node2" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="587,6,770,42"/>
-<area shape="rect" id="node3" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="587,80,770,116"/>
-<area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; _Predicate \&gt;" alt="" coords="253,52,435,88"/>
-<area shape="rect" id="node5" href="$classMyth_1_1PLATFORM_1_1CLockObject.html" title="Myth::PLATFORM::CLockObject" alt="" coords="249,163,439,187"/>
-<area shape="rect" id="node6" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="263,211,425,235"/>
-<area shape="rect" id="node7" href="$classMyth_1_1PLATFORM_1_1CTryLockObject.html" title="Myth::PLATFORM::CTryLock\lObject" alt="" coords="259,260,429,296"/>
-</map>

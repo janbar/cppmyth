@@ -35,7 +35,7 @@ var classMyth_1_1ProtoBase =
     [ "m_isOpen", "classMyth_1_1ProtoBase.html#a8f50f0f4f586f9a86015c4fc82056b46", null ],
     [ "m_msgConsumed", "classMyth_1_1ProtoBase.html#a612de3d126c437a78f58e4cc416c0b2a", null ],
     [ "m_msgLength", "classMyth_1_1ProtoBase.html#a31741ac8bf7ef00ad9274296057562a6", null ],
-    [ "m_mutex", "classMyth_1_1ProtoBase.html#ad957c1b4bdf0287b077ebb8556365cd5", null ],
+    [ "m_mutex", "classMyth_1_1ProtoBase.html#ace4e1979a81a92f48e47c83398cbe343", null ],
     [ "m_port", "classMyth_1_1ProtoBase.html#a76783b30e3d26240e7389f8982b151ae", null ],
     [ "m_protoVersion", "classMyth_1_1ProtoBase.html#ae5b5ed44dab340da43ff0668c1e330a9", null ],
     [ "m_server", "classMyth_1_1ProtoBase.html#af593690d0d2d398fb87da0928bfedeea", null ],

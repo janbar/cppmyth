@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('mythjsonbinder_8cpp_source.html','');}
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;mythjsonbinder.h&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;builtin.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../private/builtin.h&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../mythdebug.h&quot;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span>  <span class="comment">// for atof</span></div>
@@ -161,49 +161,49 @@ $(document).ready(function(){initNavTree('mythjsonbinder_8cpp_source.html','');}
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">case</span> IS_INT8:</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          int8_t num = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          err = str2int8(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          err = string_to_int8(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">case</span> IS_INT16:</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;          int16_t num = 0;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;          err = str2int16(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;          err = string_to_int16(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">case</span> IS_INT32:</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          int32_t num = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          err = str2int32(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          err = string_to_int32(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">case</span> IS_INT64:</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          int64_t num = 0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          err = str2int64(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          err = string_to_int64(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">case</span> IS_UINT8:</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          uint8_t num = 0;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          err = str2uint8(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          err = string_to_uint8(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">case</span> IS_UINT16:</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          uint16_t num = 0;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;          err = str2uint16(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;          err = string_to_uint16(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">case</span> IS_UINT32:</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          uint32_t num = 0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          err = str2uint32(value.c_str(), &amp;num);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          err = string_to_uint32(value.c_str(), &amp;num);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;num);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
@@ -222,7 +222,7 @@ $(document).ready(function(){initNavTree('mythjsonbinder_8cpp_source.html','');}
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">case</span> IS_TIME:</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;          time_t time = 0;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          err = str2time(value.c_str(), &amp;time);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          err = string_to_time(value.c_str(), &amp;time);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;          bl-&gt;<a class="code" href="structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663">attr_bind</a>[i].<a class="code" href="structattr__bind__t.html#ae46fb152ea3115af5a7f61cf122ecef1">set</a>(obj, &amp;time);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('mythjsonbinder_8cpp_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><b>mythjsonbinder.cpp</b></li>
-    <li class="footer">Generated on Sat Apr 11 2015 15:26:30 for CPPMyth by
+    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

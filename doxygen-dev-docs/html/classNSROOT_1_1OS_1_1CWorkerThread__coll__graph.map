@@ -1,0 +1,14 @@
+<map id="NSROOT::OS::CWorkerThread" name="NSROOT::OS::CWorkerThread">
+<area shape="rect" id="node2" href="$classNSROOT_1_1OS_1_1CThread.html" title="NSROOT::OS::CThread" alt="" coords="865,155,1015,179"/>
+<area shape="rect" id="node3" href="$structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html" title="NSROOT::OS::CThread\l::ThreadData" alt="" coords="635,157,786,193"/>
+<area shape="rect" id="node4" href="$classNSROOT_1_1OS_1_1CMutex.html" title="NSROOT::OS::CMutex" alt="" coords="359,37,502,61"/>
+<area shape="rect" id="node9" href="$classNSROOT_1_1OS_1_1CThreadPool.html" title="NSROOT::OS::CThreadPool" alt="" coords="1843,155,2018,179"/>
+<area shape="rect" id="node10" href="$classNSROOT_1_1OS_1_1CEvent.html" title="NSROOT::OS::CEvent" alt="" coords="640,80,781,104"/>
+<area shape="rect" id="node5" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="349,209,512,245"/>
+<area shape="rect" id="node6" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="6,215,202,239"/>
+<area shape="rect" id="node7" href="$struct__pthread__v.html" title="_pthread_v" alt="" coords="389,160,473,184"/>
+<area shape="rect" id="node8" href="$struct__pthread__cleanup.html" title="_pthread_cleanup" alt="" coords="43,160,165,184"/>
+<area shape="rect" id="node12" title="STL class. " alt="" coords="1184,203,1283,227"/>
+<area shape="rect" id="node15" href="$classNSROOT_1_1OS_1_1CWorker.html" title="NSROOT::OS::CWorker" alt="" coords="1159,304,1307,328"/>
+<area shape="rect" id="node16" title="STL class. " alt="" coords="1175,352,1291,376"/>
+</map>

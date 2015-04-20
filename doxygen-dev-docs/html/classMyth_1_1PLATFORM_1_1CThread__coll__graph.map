@@ -1,7 +1,0 @@
-<map id="Myth::PLATFORM::CThread" name="Myth::PLATFORM::CThread">
-<area shape="rect" id="node2" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; bool \&gt;" alt="" coords="731,85,914,121"/>
-<area shape="rect" id="node3" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="13,47,205,71"/>
-<area shape="rect" id="node5" href="$classMyth_1_1PLATFORM_1_1CCondition.html" title="Myth::PLATFORM::CCondition\l\&lt; _Predicate \&gt;" alt="" coords="337,97,519,133"/>
-<area shape="rect" id="node6" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="544,5,707,29"/>
-<area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1CConditionImpl.html" title="Myth::PLATFORM::CConditionImpl" alt="" coords="6,135,213,159"/>
-</map>

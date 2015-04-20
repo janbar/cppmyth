@@ -1,17 +1,6 @@
 var namespaceMyth =
 [
     [ "JSON", "namespaceMyth_1_1JSON.html", "namespaceMyth_1_1JSON" ],
-    [ "PLATFORM", null, [
-      [ "CConditionImpl", "classMyth_1_1PLATFORM_1_1CConditionImpl.html", "classMyth_1_1PLATFORM_1_1CConditionImpl" ],
-      [ "PreventCopy", "classMyth_1_1PLATFORM_1_1PreventCopy.html", "classMyth_1_1PLATFORM_1_1PreventCopy" ],
-      [ "CCondition", "classMyth_1_1PLATFORM_1_1CCondition.html", "classMyth_1_1PLATFORM_1_1CCondition" ],
-      [ "CMutex", "classMyth_1_1PLATFORM_1_1CMutex.html", "classMyth_1_1PLATFORM_1_1CMutex" ],
-      [ "CLockObject", "classMyth_1_1PLATFORM_1_1CLockObject.html", "classMyth_1_1PLATFORM_1_1CLockObject" ],
-      [ "CTryLockObject", "classMyth_1_1PLATFORM_1_1CTryLockObject.html", "classMyth_1_1PLATFORM_1_1CTryLockObject" ],
-      [ "CEvent", "classMyth_1_1PLATFORM_1_1CEvent.html", "classMyth_1_1PLATFORM_1_1CEvent" ],
-      [ "CThread", "classMyth_1_1PLATFORM_1_1CThread.html", "classMyth_1_1PLATFORM_1_1CThread" ],
-      [ "CTimeout", "classMyth_1_1PLATFORM_1_1CTimeout.html", "classMyth_1_1PLATFORM_1_1CTimeout" ]
-    ] ],
     [ "Control", "classMyth_1_1Control.html", "classMyth_1_1Control" ],
     [ "SubscriptionHandlerThread", "classMyth_1_1SubscriptionHandlerThread.html", "classMyth_1_1SubscriptionHandlerThread" ],
     [ "BasicEventHandler", "classMyth_1_1BasicEventHandler.html", "classMyth_1_1BasicEventHandler" ],
@@ -41,6 +30,7 @@ var namespaceMyth =
     [ "WSAPI", "classMyth_1_1WSAPI.html", "classMyth_1_1WSAPI" ],
     [ "WSStream", "classMyth_1_1WSStream.html", "classMyth_1_1WSStream" ],
     [ "TcpSocket", "classMyth_1_1TcpSocket.html", "classMyth_1_1TcpSocket" ],
+    [ "URIParser", "classMyth_1_1URIParser.html", "classMyth_1_1URIParser" ],
     [ "WSRequest", "classMyth_1_1WSRequest.html", "classMyth_1_1WSRequest" ],
     [ "WSResponse", "classMyth_1_1WSResponse.html", "classMyth_1_1WSResponse" ],
     [ "ProtoBase", "classMyth_1_1ProtoBase.html", "classMyth_1_1ProtoBase" ],

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['error_5fresult',['error_result',['../structsajson_1_1parser_1_1error__result.html',1,'sajson::parser']]],
-  ['eventhandler',['EventHandler',['../classMyth_1_1EventHandler.html',1,'Myth']]],
-  ['eventhandlerthread',['EventHandlerThread',['../classMyth_1_1EventHandler_1_1EventHandlerThread.html',1,'Myth::EventHandler']]],
-  ['eventmessage',['EventMessage',['../structMyth_1_1EventMessage.html',1,'Myth']]],
-  ['eventsubscriber',['EventSubscriber',['../classMyth_1_1EventSubscriber.html',1,'Myth']]]
+  ['debug_5fctx_5ft',['debug_ctx_t',['../structdebug__ctx__t.html',1,'']]],
+  ['document',['Document',['../classMyth_1_1JSON_1_1Document.html',1,'Myth::JSON']]],
+  ['document',['document',['../classsajson_1_1document.html',1,'sajson']]],
+  ['double_5fstorage',['double_storage',['../unionsajson_1_1double__storage.html',1,'sajson']]]
 ];

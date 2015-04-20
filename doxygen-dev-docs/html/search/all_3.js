@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['debug_5fctx_5ft',['debug_ctx_t',['../structdebug__ctx__t.html',1,'']]],
-  ['deleterecording',['DeleteRecording',['../classMyth_1_1Control.html#a7d19d668b88983fe08b5f20cc582e62d',1,'Myth::Control::DeleteRecording()'],['../classMyth_1_1WSAPI.html#a3b031d93d5077c0b5d24bfe0b41b18a6',1,'Myth::WSAPI::DeleteRecording(uint32_t chanid, time_t recstartts, bool forceDelete=false, bool allowRerecord=false)'],['../classMyth_1_1WSAPI.html#a5f613a76cc35dcc61144a6938ab0e70e',1,'Myth::WSAPI::DeleteRecording(uint32_t recordedid, bool forceDelete=false, bool allowRerecord=false)']]],
-  ['disablerecordschedule',['DisableRecordSchedule',['../classMyth_1_1Control.html#a8568eb5b74d0202f76a2464faedb0f62',1,'Myth::Control::DisableRecordSchedule()'],['../classMyth_1_1WSAPI.html#aba17c17695ffe093b02e909e767b2449',1,'Myth::WSAPI::DisableRecordSchedule()']]],
-  ['document',['document',['../classsajson_1_1document.html',1,'sajson']]],
-  ['document',['Document',['../classMyth_1_1JSON_1_1Document.html',1,'Myth::JSON']]],
-  ['double_5fstorage',['double_storage',['../unionsajson_1_1double__storage.html',1,'sajson']]]
+  ['cancelnextrecording',['CancelNextRecording',['../classMyth_1_1Control.html#a3a97cc0f5291e2052a352f7fc48857a5',1,'Myth::Control']]],
+  ['capturecard',['CaptureCard',['../structMyth_1_1CaptureCard.html',1,'Myth']]],
+  ['cardinput',['CardInput',['../structMyth_1_1CardInput.html',1,'Myth']]],
+  ['ccondition',['CCondition',['../classNSROOT_1_1OS_1_1CCondition.html',1,'NSROOT::OS']]],
+  ['ccondition_3c_20volatile_20bool_20_3e',['CCondition&lt; volatile bool &gt;',['../classNSROOT_1_1OS_1_1CCondition.html',1,'NSROOT::OS']]],
+  ['cevent',['CEvent',['../classNSROOT_1_1OS_1_1CEvent.html',1,'NSROOT::OS']]],
+  ['channel',['Channel',['../structMyth_1_1Channel.html',1,'Myth']]],
+  ['checkservice',['CheckService',['../classMyth_1_1Control.html#a2232d76074da2b49b4870c02ecca206e',1,'Myth::Control']]],
+  ['clockguard',['CLockGuard',['../classNSROOT_1_1OS_1_1CLockGuard.html',1,'NSROOT::OS']]],
+  ['cmutex',['CMutex',['../classNSROOT_1_1OS_1_1CMutex.html',1,'NSROOT::OS']]],
+  ['control',['Control',['../classMyth_1_1Control.html',1,'Myth']]],
+  ['cthread',['CThread',['../classNSROOT_1_1OS_1_1CThread.html',1,'NSROOT::OS']]],
+  ['cthreadpool',['CThreadPool',['../classNSROOT_1_1OS_1_1CThreadPool.html',1,'NSROOT::OS']]],
+  ['ctimeout',['CTimeout',['../classNSROOT_1_1OS_1_1CTimeout.html',1,'NSROOT::OS']]],
+  ['cworker',['CWorker',['../classNSROOT_1_1OS_1_1CWorker.html',1,'NSROOT::OS']]],
+  ['cworkerthread',['CWorkerThread',['../classNSROOT_1_1OS_1_1CWorkerThread.html',1,'NSROOT::OS']]]
 ];

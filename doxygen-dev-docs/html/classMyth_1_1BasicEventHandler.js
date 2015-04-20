@@ -19,7 +19,7 @@ var classMyth_1_1BasicEventHandler =
     [ "Stop", "classMyth_1_1BasicEventHandler.html#a971cde1a3745153ff67bfe1708cc6d9c", null ],
     [ "SubscribeForEvent", "classMyth_1_1BasicEventHandler.html#a515ab0d88aca7f59444065a842e3467a", null ],
     [ "m_event", "classMyth_1_1BasicEventHandler.html#a449abf3662cb2f6fb1fd1bfa579497c2", null ],
-    [ "m_mutex", "classMyth_1_1BasicEventHandler.html#a763e0deb6fd56a476f56c57d2af07703", null ],
+    [ "m_mutex", "classMyth_1_1BasicEventHandler.html#ab3d5254ce1f358ae0a12c36060f274e3", null ],
     [ "m_reset", "classMyth_1_1BasicEventHandler.html#ac6ccf53762323910f22ac539da6d32ae", null ],
     [ "m_subscriptions", "classMyth_1_1BasicEventHandler.html#a2d6a5f7bc598814d879f168e372fd115", null ],
     [ "m_subscriptionsByEvent", "classMyth_1_1BasicEventHandler.html#aa7f397e6ec205f9e2cb298a4fb0714e9", null ]

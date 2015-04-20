@@ -1,13 +1,11 @@
 <map id="Myth::LiveTVPlayback" name="Myth::LiveTVPlayback">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="889,63,1017,87"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="519,73,633,97"/>
-<area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="248,73,411,97"/>
-<area shape="rect" id="node5" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="5,73,197,97"/>
-<area shape="rect" id="node6" title="STL class. " alt="" coords="289,11,370,35"/>
-<area shape="rect" id="node7" title="STL class. " alt="" coords="38,5,165,41"/>
-<area shape="rect" id="node8" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="273,121,385,145"/>
-<area shape="rect" id="node9" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="904,111,1003,135"/>
-<area shape="rect" id="node10" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="879,159,1028,183"/>
-<area shape="rect" id="node12" title="STL class. " alt="" coords="518,213,634,237"/>
-<area shape="rect" id="node14" href="$classMyth_1_1EventHandler.html" title="Myth::EventHandler" alt="" coords="888,268,1019,292"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="775,55,903,79"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="404,55,519,79"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="199,19,281,43"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="6,13,133,49"/>
+<area shape="rect" id="node6" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="184,80,296,104"/>
+<area shape="rect" id="node7" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="789,103,888,127"/>
+<area shape="rect" id="node8" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="764,151,913,175"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="403,205,519,229"/>
+<area shape="rect" id="node12" href="$classMyth_1_1EventHandler.html" title="Myth::EventHandler" alt="" coords="773,260,904,284"/>
 </map>

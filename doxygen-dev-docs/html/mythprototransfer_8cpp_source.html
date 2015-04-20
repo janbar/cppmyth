@@ -128,9 +128,9 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;mythprototransfer.h&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../mythdebug.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../private/builtin.h&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../private/mythsocket.h&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;../private/platform/threads/mutex.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../private/mythsocket.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../private/os/threads/mutex.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;../private/builtin.h&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
@@ -140,9 +140,9 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;ProtoTransfer::ProtoTransfer(<span class="keyword">const</span> std::string&amp; server, <span class="keywordtype">unsigned</span> port, <span class="keyword">const</span> std::string&amp; pathname, <span class="keyword">const</span> std::string&amp; sgname)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;: <a class="code" href="classMyth_1_1ProtoBase.html">ProtoBase</a>(server, port)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;, fileSize(0)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;, filePosition(0)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;, fileRequest(0)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;, m_fileSize(0)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;, m_filePosition(0)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;, m_fileRequest(0)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;, m_fileId(0)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;, m_pathName(pathname)</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;, m_storageGroupName(sgname)</div>
@@ -172,105 +172,148 @@ $(document).ready(function(){initNavTree('mythprototransfer_8cpp_source.html',''
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Close()</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  ProtoBase::Close();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">// Clean hanging and disable retry</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">m_tainted</a> = <a class="code" href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">m_hang</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// Reset transfer</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = 0;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  m_fileId = 0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Lock()</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  m_mutex-&gt;Lock();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Unlock()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  m_mutex-&gt;Unlock();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::TryLock()</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> m_mutex-&gt;TryLock();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">ProtoTransfer::Flush</a>()</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  int64_t unread = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> - <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">if</span> (unread &gt; 0)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">char</span> buf[PROTO_BUFFER_SIZE];</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">size_t</span> n = (size_t)unread;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">while</span> (n &gt; 0)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordtype">size_t</span> s = (n &gt; PROTO_BUFFER_SIZE ? PROTO_BUFFER_SIZE : n);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keywordflow">if</span>(m_socket-&gt;ReadResponse(buf, s) != s)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      n -= s;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: remaining bytes (%u)\n&quot;</span>, __FUNCTION__, (<span class="keywordtype">unsigned</span>)n);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Reset position regardless bytes read</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    filePosition = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Announce75()</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">fileSize</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">fileRequest</a> = 0;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  std::string cmd(<span class="stringliteral">&quot;ANN FileTransfer &quot;</span>);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  cmd.append(m_socket-&gt;GetMyHostName());</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  cmd.append(<span class="stringliteral">&quot; 0 0 1000&quot;</span> PROTO_STR_SEPARATOR);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  cmd.append(m_pathName).append(PROTO_STR_SEPARATOR);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  cmd.append(m_storageGroupName);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">if</span> (!SendCommand(cmd.c_str()))</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  std::string field;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || !IsMessageOK(field))</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">goto</span> out;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || 0 != str2uint32(field.c_str(), &amp;m_fileId))</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  ProtoBase::Close();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// Clean hanging and disable retry</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">m_tainted</a> = <a class="code" href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">m_hang</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// Reset transfer</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a> = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  m_fileId = 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Lock()</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  m_mutex-&gt;Lock();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::Unlock()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  m_mutex-&gt;Unlock();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::TryLock()</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> m_mutex-&gt;TryLock();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">ProtoTransfer::Flush</a>()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  int64_t unread = <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a> - <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">if</span> (unread &gt; 0)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">char</span> buf[PROTO_BUFFER_SIZE];</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">size_t</span> n = (size_t)unread;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">while</span> (n &gt; 0)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="keywordtype">size_t</span> s = (n &gt; PROTO_BUFFER_SIZE ? PROTO_BUFFER_SIZE : n);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordflow">if</span>(m_socket-&gt;ReadResponse(buf, s) != s)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      n -= s;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: unreaded bytes (%u)\n&quot;</span>, __FUNCTION__, (<span class="keywordtype">unsigned</span>)n);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Reset position regardless bytes read</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    m_filePosition = <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">bool</span> ProtoTransfer::Announce75()</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">m_fileSize</a> = <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a> = 0;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  std::string cmd(<span class="stringliteral">&quot;ANN FileTransfer &quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  cmd.append(m_socket-&gt;GetMyHostName());</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  cmd.append(<span class="stringliteral">&quot; 0 0 1000&quot;</span> PROTO_STR_SEPARATOR);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  cmd.append(m_pathName).append(PROTO_STR_SEPARATOR);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  cmd.append(m_storageGroupName);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span> (!SendCommand(cmd.c_str()))</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  std::string field;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || !IsMessageOK(field))</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">goto</span> out;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || 0 != str2int64(field.c_str(), &amp;<a class="code" href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">fileSize</a>))</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || 0 != string_to_uint32(field.c_str(), &amp;m_fileId))</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">goto</span> out;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;out:</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  FlushMessage();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;uint32_t ProtoTransfer::GetFileId()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordflow">return</span> m_fileId;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;std::string ProtoTransfer::GetPathName()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">return</span> m_pathName;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;std::string ProtoTransfer::GetStorageGroupName()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> m_storageGroupName;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
-<div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a444d686b30aee6e0bebdc50ef32ec38f"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a444d686b30aee6e0bebdc50ef32ec38f">Myth::ProtoTransfer::fileRequest</a></div><div class="ttdeci">int64_t fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00058">mythprototransfer.h:58</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_ac879039193cc6962441bc3a36e113966"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#ac879039193cc6962441bc3a36e113966">Myth::ProtoTransfer::fileSize</a></div><div class="ttdeci">int64_t fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00056">mythprototransfer.h:56</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_aecf431d28885c0620a5483971b7e0baf"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Myth::ProtoTransfer::Flush</a></div><div class="ttdeci">void Flush()</div><div class="ttdoc">Flushing unread data previously requested. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8cpp_source.html#l00095">mythprototransfer.cpp:95</a></div></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">ReadField</a>(field) || 0 != string_to_int64(field.c_str(), &amp;<a class="code" href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">m_fileSize</a>))</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">goto</span> out;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;out:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  FlushMessage();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;uint32_t ProtoTransfer::GetFileId()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">return</span> m_fileId;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;std::string ProtoTransfer::GetPathName()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordflow">return</span> m_pathName;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;std::string ProtoTransfer::GetStorageGroupName()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordflow">return</span> m_storageGroupName;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;int64_t ProtoTransfer::GetSize()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">m_fileSize</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;int64_t ProtoTransfer::GetPosition()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;int64_t ProtoTransfer::GetRequested()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;int64_t ProtoTransfer::GetRemaining()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">return</span> (<a class="code" href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">m_fileSize</a> - <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::SetSize(int64_t size)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">m_fileSize</a> = size;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::SetPosition(int64_t position)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;{</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">m_filePosition</a> = position;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keywordtype">void</span> ProtoTransfer::SetRequested(int64_t requested)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <a class="code" href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">m_fileRequest</a> = requested;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a458558fb754a002a91255aa274c2b975"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a458558fb754a002a91255aa274c2b975">Myth::ProtoTransfer::m_fileRequest</a></div><div class="ttdeci">int64_t m_fileRequest</div><div class="ttdoc">Current requested position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00068">mythprototransfer.h:68</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_aecf431d28885c0620a5483971b7e0baf"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf">Myth::ProtoTransfer::Flush</a></div><div class="ttdeci">void Flush()</div><div class="ttdoc">Flushing unread data previously requested. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8cpp_source.html#l00096">mythprototransfer.cpp:96</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_aa75e88cbce484fa95adea7d853f3fc1a"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aa75e88cbce484fa95adea7d853f3fc1a">Myth::ProtoTransfer::m_fileSize</a></div><div class="ttdeci">int64_t m_fileSize</div><div class="ttdoc">Size of file. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00066">mythprototransfer.h:66</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_ac267c5693ff6661385476b09ea11ff23"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">Myth::ProtoBase::m_hang</a></div><div class="ttdeci">bool m_hang</div><div class="ttdoc">Connection hang: while true allow retry. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00067">mythprotobase.h:67</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a35c5d200bb8c30b4e19d978654d6cf09"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09">Myth::ProtoBase::ReadField</a></div><div class="ttdeci">bool ReadField(std::string &amp;field)</div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8cpp_source.html#l00126">mythprotobase.cpp:126</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_a0f71e11ebbe7e85b1755d48ed7724ec5"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#a0f71e11ebbe7e85b1755d48ed7724ec5">Myth::ProtoBase::m_tainted</a></div><div class="ttdeci">bool m_tainted</div><div class="ttdoc">Connection has hung since last reset. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00068">mythprotobase.h:68</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoTransfer_html_a4253b77c7577dd885c27d55be08d65f5"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#a4253b77c7577dd885c27d55be08d65f5">Myth::ProtoTransfer::filePosition</a></div><div class="ttdeci">int64_t filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00057">mythprototransfer.h:57</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoTransfer_html_aabad59730d53badfa2cf50244c0b68a2"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html#aabad59730d53badfa2cf50244c0b68a2">Myth::ProtoTransfer::m_filePosition</a></div><div class="ttdeci">int64_t m_filePosition</div><div class="ttdoc">Current read position. </div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00067">mythprototransfer.h:67</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprototransfer.cpp</b></li>
-    <li class="footer">Generated on Sat Apr 11 2015 15:26:30 for CPPMyth by
+    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

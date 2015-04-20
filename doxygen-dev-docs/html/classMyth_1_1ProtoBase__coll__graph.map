@@ -1,7 +1,5 @@
 <map id="Myth::ProtoBase" name="Myth::ProtoBase">
-<area shape="rect" id="node2" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="39,93,201,117"/>
-<area shape="rect" id="node3" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="5,12,197,36"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="235,93,316,117"/>
-<area shape="rect" id="node5" title="STL class. " alt="" coords="222,6,348,42"/>
-<area shape="rect" id="node6" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="341,93,452,117"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="27,93,108,117"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,6,131,42"/>
+<area shape="rect" id="node4" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="133,93,244,117"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['object_5fkey_5fcomparator',['object_key_comparator',['../structsajson_1_1object__key__comparator.html',1,'sajson']]],
-  ['object_5fkey_5frecord',['object_key_record',['../structsajson_1_1object__key__record.html',1,'sajson']]]
+  ['node',['Node',['../classMyth_1_1JSON_1_1Node.html',1,'Myth::JSON']]]
 ];

@@ -1,8 +1,6 @@
 <map id="Myth::ProtoTransfer" name="Myth::ProtoTransfer">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="236,179,351,203"/>
-<area shape="rect" id="node3" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="20,93,183,117"/>
-<area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="5,12,197,36"/>
-<area shape="rect" id="node5" title="STL class. " alt="" coords="366,93,447,117"/>
-<area shape="rect" id="node6" title="STL class. " alt="" coords="343,6,469,42"/>
-<area shape="rect" id="node7" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="207,93,317,117"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="177,179,292,203"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="27,93,108,117"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="5,6,131,42"/>
+<area shape="rect" id="node5" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="179,93,289,117"/>
 </map>

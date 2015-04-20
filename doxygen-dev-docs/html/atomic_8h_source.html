@@ -194,7 +194,7 @@ $(document).ready(function(){initNavTree('atomic_8h_source.html','');});
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#elif defined __mips__</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> temp, inc = 1;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  __asm __volatile (</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="stringliteral">&quot;1:  ll     %0, %1\n&quot;</span>       <span class="comment">/* load old value */</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="stringliteral">&quot;    addu   %2, %0, %3\n&quot;</span>   <span class="comment">/* calculate new value */</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="stringliteral">&quot;    sc     %2, %1\n&quot;</span>       <span class="comment">/* attempt to store */</span></div>
@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('atomic_8h_source.html','');});
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#elif defined __mips__</span></div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> temp, sub = 1;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  __asm __volatile (</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="stringliteral">&quot;1:  ll     %0, %1\n&quot;</span>       <span class="comment">/* load old value */</span></div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="stringliteral">&quot;    subu   %2, %0, %3\n&quot;</span>   <span class="comment">/* calculate new value */</span></div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="stringliteral">&quot;    sc     %2, %1\n&quot;</span>       <span class="comment">/* attempt to store */</span></div>
@@ -452,7 +452,7 @@ $(document).ready(function(){initNavTree('atomic_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>atomic.h</b></li>
-    <li class="footer">Generated on Sat Apr 11 2015 15:26:30 for CPPMyth by
+    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

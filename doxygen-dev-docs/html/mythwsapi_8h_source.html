@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('mythwsapi_8h_source.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>Myth</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">namespace </span>PLATFORM</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">namespace </span>OS</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">class </span>CMutex;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
@@ -416,7 +416,7 @@ $(document).ready(function(){initNavTree('mythwsapi_8h_source.html','');});
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    }</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <a class="code" href="classMyth_1_1PLATFORM_1_1CMutex.html">PLATFORM::CMutex</a> *m_mutex;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    OS::CMutex *m_mutex;</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    std::string m_server;</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordtype">unsigned</span> m_port;</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    std::string m_securityPin;</div>
@@ -518,7 +518,6 @@ $(document).ready(function(){initNavTree('mythwsapi_8h_source.html','');});
 <div class="ttc" id="classMyth_1_1WSAPI_html_acedec88afeb36600591ebcf848feba86"><div class="ttname"><a href="classMyth_1_1WSAPI.html#acedec88afeb36600591ebcf848feba86">Myth::WSAPI::UpdateRecordSchedule</a></div><div class="ttdeci">bool UpdateRecordSchedule(RecordSchedule &amp;record)</div><div class="ttdoc">POST Dvr/UpdateRecordSchedule. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00278">mythwsapi.h:278</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a3ed241980cfe8e41bc67bfb7d611a8b4"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a3ed241980cfe8e41bc67bfb7d611a8b4">Myth::WSAPI::RemoveRecordSchedule</a></div><div class="ttdeci">bool RemoveRecordSchedule(uint32_t recordid)</div><div class="ttdoc">POST Dvr/RemoveRecordSchedule. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00308">mythwsapi.h:308</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a3b031d93d5077c0b5d24bfe0b41b18a6"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a3b031d93d5077c0b5d24bfe0b41b18a6">Myth::WSAPI::DeleteRecording</a></div><div class="ttdeci">bool DeleteRecording(uint32_t chanid, time_t recstartts, bool forceDelete=false, bool allowRerecord=false)</div><div class="ttdoc">POST Dvr/DeleteRecording. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00207">mythwsapi.h:207</a></div></div>
-<div class="ttc" id="classMyth_1_1PLATFORM_1_1CMutex_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CMutex.html">Myth::PLATFORM::CMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00063">mutex.h:63</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a8eeadfc8dd229718b48f9a9ebc819ad3"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a8eeadfc8dd229718b48f9a9ebc819ad3">Myth::WSAPI::GetUpcomingList</a></div><div class="ttdeci">ProgramListPtr GetUpcomingList()</div><div class="ttdoc">GET Dvr/GetUpcomingList. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00318">mythwsapi.h:318</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a01a27ae8b01622f0d69c85f9b8be6eff"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a01a27ae8b01622f0d69c85f9b8be6eff">Myth::WSAPI::GetRecorded</a></div><div class="ttdeci">ProgramPtr GetRecorded(uint32_t recordedid)</div><div class="ttdoc">GET Dvr/GetRecorded. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00177">mythwsapi.h:177</a></div></div>
 <div class="ttc" id="classMyth_1_1WSAPI_html_a56dd78f5bf2fe2e728350cda81f24721"><div class="ttname"><a href="classMyth_1_1WSAPI.html#a56dd78f5bf2fe2e728350cda81f24721">Myth::WSAPI::GetProgramGuide</a></div><div class="ttdeci">ProgramMapPtr GetProgramGuide(uint32_t chanid, time_t starttime, time_t endtime)</div><div class="ttdoc">GET Guide/GetProgramGuide. </div><div class="ttdef"><b>Definition:</b> <a href="mythwsapi_8h_source.html#l00146">mythwsapi.h:146</a></div></div>
@@ -531,7 +530,7 @@ $(document).ready(function(){initNavTree('mythwsapi_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythwsapi.h</b></li>
-    <li class="footer">Generated on Sat Apr 11 2015 15:26:30 for CPPMyth by
+    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

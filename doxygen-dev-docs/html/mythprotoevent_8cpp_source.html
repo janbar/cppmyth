@@ -128,9 +128,9 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;mythprotoevent.h&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../mythdebug.h&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../private/builtin.h&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../private/mythsocket.h&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;../private/platform/threads/mutex.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../private/mythsocket.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../private/os/threads/mutex.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;../private/builtin.h&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">bool</span> ProtoEvent::Announce75()</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::string cmd(<span class="stringliteral">&quot;ANN Monitor &quot;</span>);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  cmd.append(m_socket-&gt;GetMyHostName()).append(<span class="stringliteral">&quot; 1&quot;</span>);</div>
@@ -219,13 +219,13 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">if</span> (tokens[0] == <span class="stringliteral">&quot;slock&quot;</span>)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        signal-&gt;lock = (tokens[1] == <span class="stringliteral">&quot;1&quot;</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0] == <span class="stringliteral">&quot;signal&quot;</span>)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        signal-&gt;signal = (0 == str2int64(tokens[1].c_str(), &amp;tmpi) ? (int)tmpi : 0);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        signal-&gt;signal = (0 == string_to_int64(tokens[1].c_str(), &amp;tmpi) ? (int)tmpi : 0);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0] == <span class="stringliteral">&quot;snr&quot;</span>)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        signal-&gt;snr = (0 == str2int64(tokens[1].c_str(), &amp;tmpi) ? (int)tmpi : 0);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        signal-&gt;snr = (0 == string_to_int64(tokens[1].c_str(), &amp;tmpi) ? (int)tmpi : 0);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0] == <span class="stringliteral">&quot;ber&quot;</span>)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        signal-&gt;ber = (0 == str2int64(tokens[1].c_str(), &amp;tmpi) ? (long)tmpi : 0);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        signal-&gt;ber = (0 == string_to_int64(tokens[1].c_str(), &amp;tmpi) ? (long)tmpi : 0);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0] == <span class="stringliteral">&quot;ucb&quot;</span>)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        signal-&gt;ucb = (0 == str2int64(tokens[1].c_str(), &amp;tmpi) ? (long)tmpi : 0);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        signal-&gt;ucb = (0 == string_to_int64(tokens[1].c_str(), &amp;tmpi) ? (long)tmpi : 0);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">return</span> signal;</div>
@@ -233,7 +233,7 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562">  131</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562">ProtoEvent::RcvBackendMessage</a>(<span class="keywordtype">unsigned</span> timeout, <a class="code" href="structMyth_1_1EventMessage.html">EventMessage</a>&amp; msg)</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="classMyth_1_1PLATFORM_1_1CLockObject.html">PLATFORM::CLockObject</a> lock(*m_mutex);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  OS::CLockGuard lock(*m_mutex);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keyword">struct </span>timeval tv;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  tv.tv_sec = timeout;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  tv.tv_usec = 0;</div>
@@ -301,7 +301,6 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordflow">return</span> ((ProtoBase::IsOpen() &amp;&amp; !<a class="code" href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">m_hang</a>) ? 0 : -(ENOTCONN));</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
 <div class="ttc" id="structMyth_1_1SignalStatus_html"><div class="ttname"><a href="structMyth_1_1SignalStatus.html">Myth::SignalStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00494">mythtypes.h:494</a></div></div>
-<div class="ttc" id="classMyth_1_1PLATFORM_1_1CLockObject_html"><div class="ttname"><a href="classMyth_1_1PLATFORM_1_1CLockObject.html">Myth::PLATFORM::CLockObject</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00130">mutex.h:130</a></div></div>
 <div class="ttc" id="structMyth_1_1EventMessage_html"><div class="ttname"><a href="structMyth_1_1EventMessage.html">Myth::EventMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00513">mythtypes.h:513</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html_ac267c5693ff6661385476b09ea11ff23"><div class="ttname"><a href="classMyth_1_1ProtoBase.html#ac267c5693ff6661385476b09ea11ff23">Myth::ProtoBase::m_hang</a></div><div class="ttdeci">bool m_hang</div><div class="ttdoc">Connection hang: while true allow retry. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00067">mythprotobase.h:67</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoBase_html"><div class="ttname"><a href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotobase_8h_source.html#l00044">mythprotobase.h:44</a></div></div>
@@ -314,7 +313,7 @@ $(document).ready(function(){initNavTree('mythprotoevent_8cpp_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotoevent.cpp</b></li>
-    <li class="footer">Generated on Sat Apr 11 2015 15:26:30 for CPPMyth by
+    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

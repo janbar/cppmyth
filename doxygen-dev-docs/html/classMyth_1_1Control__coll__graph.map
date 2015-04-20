@@ -1,13 +1,11 @@
 <map id="Myth::Control" name="Myth::Control">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="941,108,1069,132"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="645,73,760,97"/>
-<area shape="rect" id="node4" href="$classMyth_1_1PLATFORM_1_1CMutex.html" title="Myth::PLATFORM::CMutex" alt="" coords="304,5,467,29"/>
-<area shape="rect" id="node9" href="$classMyth_1_1WSAPI.html" title="Myth::WSAPI" alt="" coords="960,183,1051,207"/>
-<area shape="rect" id="node5" href="$classMyth_1_1PLATFORM_1_1PreventCopy.html" title="Myth::PLATFORM::PreventCopy" alt="" coords="5,5,197,29"/>
-<area shape="rect" id="node6" title="STL class. " alt="" coords="345,169,426,193"/>
-<area shape="rect" id="node10" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="653,209,752,233"/>
-<area shape="rect" id="node7" title="STL class. " alt="" coords="38,163,165,199"/>
-<area shape="rect" id="node8" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="329,67,441,91"/>
-<area shape="rect" id="node11" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="619,257,786,281"/>
-<area shape="rect" id="node13" title="STL class. " alt="" coords="325,312,446,336"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="837,72,965,96"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="541,20,656,44"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="261,111,342,135"/>
+<area shape="rect" id="node7" href="$classMyth_1_1WSAPI.html" title="Myth::WSAPI" alt="" coords="856,152,947,176"/>
+<area shape="rect" id="node8" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="549,152,648,176"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="6,105,133,141"/>
+<area shape="rect" id="node6" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="245,5,357,29"/>
+<area shape="rect" id="node9" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="515,200,682,224"/>
+<area shape="rect" id="node11" title="STL class. " alt="" coords="241,255,362,279"/>
 </map>
