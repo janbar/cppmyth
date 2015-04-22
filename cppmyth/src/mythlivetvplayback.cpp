@@ -382,13 +382,13 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
              * Then force live tv chain update for the new current
              * program. We will retry 3 times before returning.
              */
-            for (int i = 0; i < 3; ++i)
+            PLATFORM::CTimeout timeout(2000);
+            do
             {
+              usleep(500000); // wait for 500 ms
               HandleChainUpdate();
-              if (!m_chain.watch)
-                break;
-              usleep(100000); // waiting 100 ms
             }
+            while (m_chain.watch && timeout.TimeLeft() > 0);
           }
         }
       }
