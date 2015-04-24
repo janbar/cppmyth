@@ -558,7 +558,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
   {
     for (;;)
     {
-      if (position - m_chain.chained[ci].first->GetPosition() + m_chain.chained[ci].first->GetSize() >= p)
+      if (position + m_chain.chained[ci].first->GetRemaining() >= p)
       {
         // Try seek file to desired position. On success switch chain
         if (m_recorder->TransferSeek(*(m_chain.chained[ci].first), p - position, WHENCE_CUR) < 0 ||
@@ -566,7 +566,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
           return -1;
         return p;
       }
-      position += m_chain.chained[ci].first->GetSize() - m_chain.chained[ci].first->GetPosition();
+      position += m_chain.chained[ci].first->GetRemaining();
       ++ci; // switch next
       if (ci < m_chain.lastSequence)
         position += m_chain.chained[ci].first->GetPosition();
@@ -590,7 +590,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
       if (ci > 0)
       {
         --ci; // switch previous
-        position -= m_chain.chained[ci].first->GetSize() - m_chain.chained[ci].first->GetPosition();
+        position -= m_chain.chained[ci].first->GetRemaining();
       }
       else
         return -1;
