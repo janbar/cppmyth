@@ -127,12 +127,12 @@ Collaboration diagram for NSROOT::OS::CThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNSROOT_1_1OS_1_1CThread__coll__graph.png" border="0" usemap="#NSROOT_1_1OS_1_1CThread_coll__map" alt="Collaboration graph"/></div>
 <map name="NSROOT_1_1OS_1_1CThread_coll__map" id="NSROOT_1_1OS_1_1CThread_coll__map">
-<area shape="rect" id="node2" href="structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html" title="NSROOT::OS::CThread\l::ThreadData" alt="" coords="178,190,328,226"/><area shape="rect" id="node3" href="classNSROOT_1_1OS_1_1CMutex.html" title="NSROOT::OS::CMutex" alt="" coords="5,97,147,121"/><area shape="rect" id="node4" href="classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="172,91,335,127"/><area shape="rect" id="node5" href="classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="138,5,333,29"/><area shape="rect" id="node6" href="struct__pthread__v.html" title="_pthread_v" alt="" coords="369,97,452,121"/><area shape="rect" id="node7" href="struct__pthread__cleanup.html" title="_pthread_cleanup" alt="" coords="359,5,481,29"/></map>
+<area shape="rect" id="node2" href="structNSROOT_1_1OS_1_1CThread_1_1Handle.html" title="NSROOT::OS::CThread\l::Handle" alt="" coords="178,190,328,226"/><area shape="rect" id="node3" href="classNSROOT_1_1OS_1_1CMutex.html" title="NSROOT::OS::CMutex" alt="" coords="5,97,147,121"/><area shape="rect" id="node4" href="classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="172,91,335,127"/><area shape="rect" id="node5" href="classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="138,5,333,29"/><area shape="rect" id="node6" href="struct__pthread__v.html" title="_pthread_v" alt="" coords="369,97,452,121"/><area shape="rect" id="node7" href="struct__pthread__cleanup.html" title="_pthread_cleanup" alt="" coords="359,5,481,29"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html">ThreadData</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNSROOT_1_1OS_1_1CThread_1_1Handle.html">Handle</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -143,6 +143,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee96a4d15efac036b49c4c5982988feb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee96a4d15efac036b49c4c5982988feb"></a>
 <a class="el" href="classNSROOT_1_1OS_1_1CThread.html">CThread</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classNSROOT_1_1OS_1_1CThread.html">CThread</a> &amp;_thread)</td></tr>
 <tr class="separator:aee96a4d15efac036b49c4c5982988feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d7b55a6ececf6be77c40a0e144dd4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5d7b55a6ececf6be77c40a0e144dd4b"></a>
+<a class="el" href="struct__pthread__v.html">thread_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>NativeHandle</b> ()</td></tr>
+<tr class="separator:ad5d7b55a6ececf6be77c40a0e144dd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a382926d56888ce174008f710e9eb70a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a382926d56888ce174008f710e9eb70a9"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>StartThread</b> (bool wait=true)</td></tr>
 <tr class="separator:a382926d56888ce174008f710e9eb70a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,9 +182,9 @@ static void *&#160;</td><td class="memItemRight" valign="bottom"><b>ThreadHandle
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a5ba372934a6b336032d5b7a356e7073e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ba372934a6b336032d5b7a356e7073e"></a>
-<a class="el" href="structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html">ThreadData</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
-<tr class="separator:a5ba372934a6b336032d5b7a356e7073e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a5eb3ec6ee666e3d470d24845f8d69d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a5eb3ec6ee666e3d470d24845f8d69d"></a>
+<a class="el" href="structNSROOT_1_1OS_1_1CThread_1_1Handle.html">Handle</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_handle</b></td></tr>
+<tr class="separator:a4a5eb3ec6ee666e3d470d24845f8d69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -195,7 +198,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>NSROOT</b></li><li class="navelem"><b>OS</b></li><li class="navelem"><a class="el" href="classNSROOT_1_1OS_1_1CThread.html">CThread</a></li>
-    <li class="footer">Generated on Tue Apr 21 2015 00:20:49 for CPPMyth by
+    <li class="footer">Generated on Fri Apr 24 2015 23:42:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

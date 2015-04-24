@@ -1,5 +1,5 @@
 <map id="NSROOT::OS::CThread" name="NSROOT::OS::CThread">
-<area shape="rect" id="node2" href="$structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html" title="NSROOT::OS::CThread\l::ThreadData" alt="" coords="178,190,328,226"/>
+<area shape="rect" id="node2" href="$structNSROOT_1_1OS_1_1CThread_1_1Handle.html" title="NSROOT::OS::CThread\l::Handle" alt="" coords="178,190,328,226"/>
 <area shape="rect" id="node3" href="$classNSROOT_1_1OS_1_1CMutex.html" title="NSROOT::OS::CMutex" alt="" coords="5,97,147,121"/>
 <area shape="rect" id="node4" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="172,91,335,127"/>
 <area shape="rect" id="node5" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="138,5,333,29"/>

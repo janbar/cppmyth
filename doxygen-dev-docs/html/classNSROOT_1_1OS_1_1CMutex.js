@@ -9,6 +9,6 @@ var classNSROOT_1_1OS_1_1CMutex =
     [ "operator=", "classNSROOT_1_1OS_1_1CMutex.html#ab41629652ecb1ae17286b5e2eb41124e", null ],
     [ "TryLock", "classNSROOT_1_1OS_1_1CMutex.html#a704fd98ea4e0018a7a2b77ed270881ca", null ],
     [ "Unlock", "classNSROOT_1_1OS_1_1CMutex.html#a9cf91ac50a579e0b754dca36a8e7cca2", null ],
-    [ "m_lockCount", "classNSROOT_1_1OS_1_1CMutex.html#af0fd2f66ea9431e32dffa6597e051700", null ],
-    [ "m_mutex", "classNSROOT_1_1OS_1_1CMutex.html#accfcf09514a84b5fb03429ddfb7ece27", null ]
+    [ "m_handle", "classNSROOT_1_1OS_1_1CMutex.html#ac189c42bee0bbef0d07c7d95833e7689", null ],
+    [ "m_lockCount", "classNSROOT_1_1OS_1_1CMutex.html#af0fd2f66ea9431e32dffa6597e051700", null ]
 ];

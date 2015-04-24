@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"classes.html":[1,1],
 "classsajson_1_1document.html":[1,0,3,9],
 "classsajson_1_1document.html#a0bb4a1907ab9945cc1e6df3700b65323":[1,0,3,9,2],
 "classsajson_1_1document.html#a0dc483553d7e05045de718e4ca3aa976":[1,0,3,9,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "structMyth_1_1Program.html#ac1147b76906e54b56b641d930b4095dd":[1,0,0,17,3],
 "structMyth_1_1Program.html#ac69133244dae2c6b719cd35128235f9c":[1,0,0,17,26],
 "structMyth_1_1Program.html#ac7d6681b4a06aef846bafa37e53b8494":[1,0,0,17,14],
-"structMyth_1_1Program.html#ac9f77455bc8f385333f6e534e3500c4b":[1,0,0,17,4],
-"structMyth_1_1Program.html#ad7f24b34328731741f122933a6f30cda":[1,0,0,17,21]
+"structMyth_1_1Program.html#ac9f77455bc8f385333f6e534e3500c4b":[1,0,0,17,4]
 };

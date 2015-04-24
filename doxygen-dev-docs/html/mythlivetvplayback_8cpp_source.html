@@ -483,15 +483,15 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            <span class="comment">/*</span></div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="comment">             * Last recording is now completed but watch signal is ON.</span></div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="comment">             * Then force live tv chain update for the new current</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">             * program. We will retry 3 times before returning.</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">             * program. We will retry for 2s before returning.</span></div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="comment">             */</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i)</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            {</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;              HandleChainUpdate();</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;              <span class="keywordflow">if</span> (!m_chain.watch)</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;              usleep(100000); <span class="comment">// waiting 100 ms</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            OS::CTimeout timeout(2000);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;              usleep(500000); <span class="comment">// wait for 500 ms</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;              HandleChainUpdate();</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">while</span> (m_chain.watch &amp;&amp; timeout.TimeLeft() &gt; 0);</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;          }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        }</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      }</div>
@@ -661,7 +661,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;  {</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="keywordflow">for</span> (;;)</div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    {</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;      <span class="keywordflow">if</span> (position - m_chain.chained[ci].first-&gt;GetPosition() + m_chain.chained[ci].first-&gt;GetSize() &gt;= p)</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;      <span class="keywordflow">if</span> (position + m_chain.chained[ci].first-&gt;GetRemaining() &gt;= p)</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;      {</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="comment">// Try seek file to desired position. On success switch chain</span></div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordflow">if</span> (m_recorder-&gt;TransferSeek(*(m_chain.chained[ci].first), p - position, WHENCE_CUR) &lt; 0 ||</div>
@@ -669,7 +669,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;          <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        <span class="keywordflow">return</span> p;</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;      }</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      position += m_chain.chained[ci].first-&gt;GetSize() - m_chain.chained[ci].first-&gt;GetPosition();</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      position += m_chain.chained[ci].first-&gt;GetRemaining();</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;      ++ci; <span class="comment">// switch next</span></div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      <span class="keywordflow">if</span> (ci &lt; m_chain.lastSequence)</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        position += m_chain.chained[ci].first-&gt;GetPosition();</div>
@@ -693,7 +693,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;      <span class="keywordflow">if</span> (ci &gt; 0)</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;      {</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        --ci; <span class="comment">// switch previous</span></div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        position -= m_chain.chained[ci].first-&gt;GetSize() - m_chain.chained[ci].first-&gt;GetPosition();</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        position -= m_chain.chained[ci].first-&gt;GetRemaining();</div>
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;      }</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;      <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        <span class="keywordflow">return</span> -1;</div>
@@ -843,7 +843,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythlivetvplayback.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
+    <li class="footer">Generated on Fri Apr 24 2015 23:42:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

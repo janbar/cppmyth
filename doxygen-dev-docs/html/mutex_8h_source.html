@@ -141,23 +141,23 @@ $(document).ready(function(){initNavTree('mutex_8h_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classNSROOT_1_1OS_1_1CMutex.html">CMutex</a>()</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    : m_lockCount(0)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      mutex_init(&amp;m_mutex);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      mutex_init(&amp;m_handle);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ~<a class="code" href="classNSROOT_1_1OS_1_1CMutex.html">CMutex</a>()</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      Clear();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      mutex_destroy(&amp;m_mutex);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      mutex_destroy(&amp;m_handle);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    mutex_t* NativeHandle()</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">return</span> &amp;m_mutex;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">return</span> &amp;m_handle;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> TryLock()</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_mutex))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_handle))</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ++m_lockCount;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -167,36 +167,36 @@ $(document).ready(function(){initNavTree('mutex_8h_source.html','');});
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> Lock()</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      mutex_lock(&amp;m_mutex);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      mutex_lock(&amp;m_handle);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      ++m_lockCount;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> Unlock()</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_mutex))</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_handle))</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (m_lockCount &gt; 0)</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          mutex_unlock(&amp;m_mutex);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          mutex_unlock(&amp;m_handle);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;          --m_lockCount;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        mutex_unlock(&amp;m_mutex);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        mutex_unlock(&amp;m_handle);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> Clear()</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_mutex))</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">if</span> (mutex_trylock(&amp;m_handle))</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = m_lockCount; i &gt; 0; --i)</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          mutex_unlock(&amp;m_mutex);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          mutex_unlock(&amp;m_handle);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        m_lockCount = 0;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        mutex_unlock(&amp;m_mutex);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        mutex_unlock(&amp;m_handle);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    mutex_t           m_mutex;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    mutex_t           m_handle;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> m_lockCount;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// Prevent copy</span></div>
@@ -280,7 +280,7 @@ $(document).ready(function(){initNavTree('mutex_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><a class="el" href="dir_5025d33b6e7be89a0d8a420b58ee583c.html">os</a></li><li class="navelem"><a class="el" href="dir_906c4602a2c285a03d7679de84982f18.html">threads</a></li><li class="navelem"><b>mutex.h</b></li>
-    <li class="footer">Generated on Tue Apr 21 2015 00:20:48 for CPPMyth by
+    <li class="footer">Generated on Fri Apr 24 2015 23:42:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

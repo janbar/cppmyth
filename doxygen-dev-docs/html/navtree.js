@@ -29,8 +29,8 @@ var NAVTREEINDEX =
 ".html",
 "classMyth_1_1ProtoBase.html#ad5810c14024df285f403f81150861411",
 "classMyth_1_1WSAPI.html#a5f613a76cc35dcc61144a6938ab0e70e",
-"classsajson_1_1document.html",
-"structMyth_1_1Program.html#ad96cdbbb48c3455f2b0c2717d2377021"
+"classes.html",
+"structMyth_1_1Program.html#ad7f24b34328731741f122933a6f30cda"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

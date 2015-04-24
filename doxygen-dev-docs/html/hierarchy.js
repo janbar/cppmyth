@@ -38,6 +38,7 @@ var hierarchy =
       [ "Myth::LiveTVPlayback", "classMyth_1_1LiveTVPlayback.html", null ],
       [ "Myth::RecordingPlayback", "classMyth_1_1RecordingPlayback.html", null ]
     ] ],
+    [ "NSROOT::OS::CThread::Handle", "structNSROOT_1_1OS_1_1CThread_1_1Handle.html", null ],
     [ "imaxdiv_t", "structimaxdiv__t.html", null ],
     [ "sajson::integer_storage", "unionsajson_1_1integer__storage.html", null ],
     [ "Myth::ItemList", "structMyth_1_1ItemList.html", null ],
@@ -83,7 +84,6 @@ var hierarchy =
       [ "sajson::literal", "classsajson_1_1literal.html", null ]
     ] ],
     [ "Myth::TcpSocket", "classMyth_1_1TcpSocket.html", null ],
-    [ "NSROOT::OS::CThread::ThreadData", "structNSROOT_1_1OS_1_1CThread_1_1ThreadData.html", null ],
     [ "timespec", "structtimespec.html", null ],
     [ "Myth::URIParser::URI_t", "structMyth_1_1URIParser_1_1URI__t.html", null ],
     [ "Myth::URIParser", "classMyth_1_1URIParser.html", null ],
