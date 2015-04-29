@@ -144,7 +144,7 @@ static CC_INLINE unsigned atomic_increment(atomic_t *valp)
   /* The value for __val is in '__oldval' */
   __val = __oldval;
 
-#elif (defined __ARM_ARCH && __ARM_ARCH >= 7)
+#elif (defined __ARM_ARCH && __ARM_ARCH == 7)
   int inc = 1;
   __asm__ volatile (
     "dmb     ish\n"           /* Memory barrier */
@@ -280,7 +280,7 @@ static CC_INLINE unsigned atomic_decrement(atomic_t *valp)
   /* The value for __val is in '__oldval' */
   __val = __oldval;
 
-#elif (defined __ARM_ARCH && __ARM_ARCH >= 7)
+#elif (defined __ARM_ARCH && __ARM_ARCH == 7)
   int dec = 1;
   __asm__ volatile (
     "1:"
