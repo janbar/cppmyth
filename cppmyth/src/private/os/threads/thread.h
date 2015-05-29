@@ -150,18 +150,19 @@ namespace OS
 
       if (thread)
       {
-        thread->m_handle->mutex.Lock();
-        thread->m_handle->started = true;
-        thread->m_handle->running = true;
-        thread->m_handle->stopped = false;
-        thread->m_handle->condition.Broadcast();
-        thread->m_handle->mutex.Unlock();
-        ret = thread->Process();
-        thread->m_handle->mutex.Lock();
-        thread->m_handle->running = false;
-        thread->m_handle->stopped = true;
-        thread->m_handle->condition.Broadcast();
-        thread->m_handle->mutex.Unlock();
+        {
+          CLockGuard lock(thread->m_handle->mutex);
+          thread->m_handle->started = true;
+          thread->m_handle->running = true;
+          thread->m_handle->stopped = false;
+          thread->m_handle->condition.Broadcast();
+          lock.Unlock();
+          ret = thread->Process();
+          lock.Lock();
+          thread->m_handle->running = false;
+          thread->m_handle->stopped = true;
+          thread->m_handle->condition.Broadcast();
+        }
         thread->Finalize();
       }
 
