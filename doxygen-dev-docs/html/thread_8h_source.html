@@ -257,30 +257,31 @@ $(document).ready(function(){initNavTree('thread_8h_source.html','');});
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keywordflow">if</span> (thread)</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        thread-&gt;m_handle-&gt;mutex.Lock();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        thread-&gt;m_handle-&gt;started = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        thread-&gt;m_handle-&gt;running = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        thread-&gt;m_handle-&gt;stopped = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        thread-&gt;m_handle-&gt;condition.Broadcast();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        thread-&gt;m_handle-&gt;mutex.Unlock();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        ret = thread-&gt;Process();</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        thread-&gt;m_handle-&gt;mutex.Lock();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        thread-&gt;m_handle-&gt;running = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        thread-&gt;m_handle-&gt;stopped = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        thread-&gt;m_handle-&gt;condition.Broadcast();</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        thread-&gt;m_handle-&gt;mutex.Unlock();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        thread-&gt;Finalize();</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  };</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef NSROOT</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          <a class="code" href="classNSROOT_1_1OS_1_1CLockGuard.html">CLockGuard</a> lock(thread-&gt;m_handle-&gt;mutex);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          thread-&gt;m_handle-&gt;started = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          thread-&gt;m_handle-&gt;running = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;          thread-&gt;m_handle-&gt;stopped = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          thread-&gt;m_handle-&gt;condition.Broadcast();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          lock.Unlock();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;          ret = thread-&gt;Process();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;          lock.Lock();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;          thread-&gt;m_handle-&gt;running = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;          thread-&gt;m_handle-&gt;stopped = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          thread-&gt;m_handle-&gt;condition.Broadcast();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        thread-&gt;Finalize();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  };</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#ifdef NSROOT</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classNSROOT_1_1OS_1_1CCondition_html"><div class="ttname"><a href="classNSROOT_1_1OS_1_1CCondition.html">NSROOT::OS::CCondition&lt; volatile bool &gt;</a></div></div>
 <div class="ttc" id="classNSROOT_1_1OS_1_1CThread_html"><div class="ttname"><a href="classNSROOT_1_1OS_1_1CThread.html">NSROOT::OS::CThread</a></div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00032">thread.h:32</a></div></div>
 <div class="ttc" id="classNSROOT_1_1OS_1_1CMutex_html"><div class="ttname"><a href="classNSROOT_1_1OS_1_1CMutex.html">NSROOT::OS::CMutex</a></div><div class="ttdef"><b>Definition:</b> <a href="mutex_8h_source.html#l00031">mutex.h:31</a></div></div>
@@ -293,7 +294,7 @@ $(document).ready(function(){initNavTree('thread_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_e140a92e1e9e2f69c9732987c8c7134d.html">private</a></li><li class="navelem"><a class="el" href="dir_5025d33b6e7be89a0d8a420b58ee583c.html">os</a></li><li class="navelem"><a class="el" href="dir_906c4602a2c285a03d7679de84982f18.html">threads</a></li><li class="navelem"><b>thread.h</b></li>
-    <li class="footer">Generated on Fri Apr 24 2015 23:42:48 for CPPMyth by
+    <li class="footer">Generated on Wed Jun 3 2015 12:26:48 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

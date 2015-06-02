@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"structMyth_1_1Program.html#ac7d6681b4a06aef846bafa37e53b8494":[1,0,0,17,14],
+"structMyth_1_1Program.html#ac9f77455bc8f385333f6e534e3500c4b":[1,0,0,17,4],
 "structMyth_1_1Program.html#ad7f24b34328731741f122933a6f30cda":[1,0,0,17,21],
 "structMyth_1_1Program.html#ad96cdbbb48c3455f2b0c2717d2377021":[1,0,0,17,1],
 "structMyth_1_1Program.html#ae8b043079b5d74e721279381ee659747":[1,0,0,17,23],
@@ -151,7 +153,7 @@ var NAVTREEINDEX4 =
 "structmimetype.html#ac93ee7891b0ab8e810dac3f30d13d70c":[1,0,10,1],
 "structmyth__protomap__t.html":[1,0,11],
 "structmyth__protomap__t.html#a337673c1d04678ed1002857aad0f01d7":[1,0,11,1],
-"structmyth__protomap__t.html#aa469d884a101df2015c4e8e769ca10f6":[1,0,11,0],
+"structmyth__protomap__t.html#ae45be608e9200b53264e3813d49f15dc":[1,0,11,0],
 "structprotoref__t.html":[1,0,12],
 "structprotoref__t.html#a38b2dd063c42e72109ce88936e1359a7":[1,0,12,2],
 "structprotoref__t.html#a4be7a117206539e926532db2aa1a8ca2":[1,0,12,1],

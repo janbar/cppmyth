@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classMyth_1_1WSAPI.html#a5bd5fb3d0713304a0f837fd133a273d5":[1,0,0,27,90],
+"classMyth_1_1WSAPI.html#a5edab37a349a6c29d66ed2cc0760724c":[1,0,0,27,67],
 "classMyth_1_1WSAPI.html#a5f613a76cc35dcc61144a6938ab0e70e":[1,0,0,27,11],
 "classMyth_1_1WSAPI.html#a61167fb43d765ac0cf55f8b19fca38a1":[1,0,0,27,8],
 "classMyth_1_1WSAPI.html#a627ec0376e13df790881cfc24be7f650":[1,0,0,27,44],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classNSROOT_1_1OS_1_1CWorker.html#afbbcee57d5f8f797907488ee241d1088":[1,0,2,0,6,4],
 "classNSROOT_1_1OS_1_1CWorkerThread.html":[1,0,2,0,7],
 "classNSROOT_1_1OS_1_1CWorkerThread.html#a5e79b6a1f661696cd49dcb268ee6ac03":[1,0,2,0,7,1],
-"classNSROOT_1_1OS_1_1CWorkerThread.html#a8b8e1a52e01656b6d9c0ddecc23c5f5f":[1,0,2,0,7,3],
-"classNSROOT_1_1OS_1_1CWorkerThread.html#a8faeb0e92b62c5f18631782bd28be716":[1,0,2,0,7,0],
-"classNSROOT_1_1OS_1_1CWorkerThread.html#ad4a4abb9c2a16346026e783aa42baf85":[1,0,2,0,7,2]
+"classNSROOT_1_1OS_1_1CWorkerThread.html#a8b8e1a52e01656b6d9c0ddecc23c5f5f":[1,0,2,0,7,3]
 };
