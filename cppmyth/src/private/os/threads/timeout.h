@@ -50,7 +50,7 @@ namespace OS
     if (QueryPerformanceFrequency(&tickPerSecond))
     {
       QueryPerformanceCounter(&tick);
-      return (int64_t) (tick.QuadPart / (tickPerSecond.QuadPart / 1000.));
+      return (int64_t) (tick.QuadPart / (tickPerSecond.QuadPart / 1000.0));
     }
     return -1;
 #else

@@ -49,8 +49,8 @@ namespace OS
     pcur_time->tv_usec = current.millitm * 1000L;
     if (tz)
     {
-      tz->tz_minuteswest = current.timezone;	/* minutes west of Greenwich  */
-      tz->tz_dsttime = current.dstflag;	      /* type of dst correction  */
+      tz->tz_minuteswest = current.timezone;  /* minutes west of Greenwich  */
+      tz->tz_dsttime = current.dstflag;       /* type of dst correction  */
     }
     return 0;
   }
