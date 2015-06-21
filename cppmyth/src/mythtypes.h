@@ -205,6 +205,9 @@ namespace Myth
     {}
   };
 
+  typedef std::vector<std::string> StringList;
+  typedef MYTH_SHARED_PTR<StringList> StringListPtr;
+
   struct Version
   {
     std::string         version;

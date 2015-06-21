@@ -738,6 +738,47 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
   return ret;
 }
 
+ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
+{
+  ChannelPtr ret;
+  char buf[32];
+  unsigned proto = (unsigned)m_version.protocol;
+
+  // Get bindings for protocol version
+  const bindings_t *bindchan = MythDTO::getChannelBindArray(proto);
+
+  // Initialize request header
+  WSRequest req = WSRequest(m_server, m_port);
+  req.RequestAccept(CT_JSON);
+  req.RequestService("/Channel/GetChannelInfo");
+  uint32_to_string(chanid, buf);
+  req.SetContentParam("	ChanID", buf);
+
+  WSResponse resp(req);
+  if (!resp.IsSuccessful())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
+    return ret;
+  }
+  const JSON::Document json(resp);
+  const JSON::Node& root = json.GetRoot();
+  if (!json.IsValid() || !root.IsObject())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: unexpected content\n", __FUNCTION__);
+    return ret;
+  }
+  DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
+
+  // Object: ChannelInfoList
+  const JSON::Node& chan = root.GetObjectValue("ChannelInfo");
+  ChannelPtr channel(new Channel());  // Using default constructor
+  // Bind the new channel
+  JSON::BindObject(chan, channel.get(), bindchan);
+  if (channel->chanId = chanid)
+    ret = channel;
+  return ret;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 ////
 //// Guide service
@@ -2185,6 +2226,46 @@ ProgramListPtr WSAPI::GetExpiringList1_5()
   }
   while (count == req_count);
 
+  return ret;
+}
+
+StringListPtr WSAPI::GetRecGroupList1_5()
+{
+  StringListPtr ret(new StringList);
+
+  // Initialize request header
+  WSRequest req = WSRequest(m_server, m_port);
+  req.RequestAccept(CT_JSON);
+  req.RequestService("/Dvr/GetRecGroupList");
+  WSResponse resp(req);
+  if (!resp.IsSuccessful())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
+    return ret;
+  }
+  const JSON::Document json(resp);
+  const JSON::Node& root = json.GetRoot();
+  if (!json.IsValid() || !root.IsObject())
+  {
+    DBG(MYTH_DBG_ERROR, "%s: unexpected content\n", __FUNCTION__);
+    return ret;
+  }
+  DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
+
+  // Object: Strings
+  const JSON::Node& list = root.GetObjectValue("StringList");
+  if (list.IsArray())
+  {
+    size_t s = list.Size();
+    for (size_t i = 0; i < s; ++i)
+    {
+      const JSON::Node& val = list.GetArrayElement(i);
+      if (val.IsString())
+      {
+        ret->push_back(val.GetStringValue());
+      }
+    }
+  }
   return ret;
 }
 
