@@ -665,7 +665,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
 {
   ChannelListPtr ret(new ChannelList);
   char buf[32];
-  int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
+  int32_t req_index = 0, req_count = 0 /*FETCHSIZE*/, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -733,7 +733,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
     DBG(MYTH_DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
     req_index += count; // Set next requested index
   }
-  while (count == req_count);
+  while (false /*count == req_count*/); // fix bug ? 0.28-pre
 
   return ret;
 }
