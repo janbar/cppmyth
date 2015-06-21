@@ -752,7 +752,7 @@ ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
   req.RequestAccept(CT_JSON);
   req.RequestService("/Channel/GetChannelInfo");
   uint32_to_string(chanid, buf);
-  req.SetContentParam("	ChanID", buf);
+  req.SetContentParam("ChanID", buf);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -769,12 +769,12 @@ ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
   }
   DBG(MYTH_DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
-  // Object: ChannelInfoList
+  // Object: ChannelInfo
   const JSON::Node& chan = root.GetObjectValue("ChannelInfo");
   ChannelPtr channel(new Channel());  // Using default constructor
   // Bind the new channel
   JSON::BindObject(chan, channel.get(), bindchan);
-  if (channel->chanId = chanid)
+  if (channel->chanId == chanid)
     ret = channel;
   return ret;
 }
