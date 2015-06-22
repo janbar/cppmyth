@@ -665,7 +665,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
 {
   ChannelListPtr ret(new ChannelList);
   char buf[32];
-  int32_t req_index = 0, req_count = 0 /*FETCHSIZE*/, count = 0;
+  int32_t req_index = 0, /*req_count = FETCHSIZE,*/ count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -684,12 +684,13 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
     req.SetContentParam("OnlyVisible", BOOLSTR(onlyVisible));
     uint32_to_string(sourceid, buf);
     req.SetContentParam("SourceID", buf);
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    // W.A. for bug tracked by ticket 12461
+    //int32_to_string(req_index, buf);
+    //req.SetContentParam("StartIndex", buf);
+    //int32_to_string(req_count, buf);
+    //req.SetContentParam("Count", buf);
 
-    DBG(MYTH_DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
+    //DBG(MYTH_DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
     if (!resp.IsSuccessful())
     {
@@ -733,7 +734,8 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
     DBG(MYTH_DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
     req_index += count; // Set next requested index
   }
-  while (false /*count == req_count*/); // fix bug ? 0.28-pre
+  //while (count == req_count);
+  while (false); // W.A. for bug tracked by ticket 12461
 
   return ret;
 }
