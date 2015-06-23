@@ -1600,7 +1600,7 @@ static void ProcessRecordOUT(unsigned proto, RecordSchedule& record)
   // Set find time & day
   sprintf(buf, "%.2d:%.2d:%.2d", stm.tm_hour, stm.tm_min, stm.tm_sec);
   record.findTime = buf;
-  record.findDay = stm.tm_wday;
+  record.findDay = (stm.tm_wday + 1) % 7;
   // Converting internal types to API codes
   record.type = RuleTypeToString(proto, record.type_t);
   record.searchType = SearchTypeToString(proto, record.searchType_t);
