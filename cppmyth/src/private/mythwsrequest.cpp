@@ -124,7 +124,8 @@ void WSRequest::MakeMessagePOST(std::string& msg) const
   msg.append("POST ").append(m_service_url).append(" HTTP/1.1\r\n");
   sprintf(buf, "%u", m_port);
   msg.append("Host: ").append(m_server).append(":").append(buf).append("\r\n");
-  msg.append("Connection: keep-alive\r\n");
+  msg.append("User-Agent: " REQUEST_USER_AGENT "\r\n");
+  msg.append("Connection: " REQUEST_CONNECTION "\r\n");
   if (m_accept != CT_NONE)
     msg.append("Accept: ").append(MimeFromContentType(m_accept)).append("\r\n");
   msg.append("Accept-Charset: ").append(m_charset).append("\r\n");
@@ -152,7 +153,8 @@ void WSRequest::MakeMessageHEAD(std::string& msg) const
   msg.append(" HTTP/1.1\r\n");
   sprintf(buf, "%u", m_port);
   msg.append("Host: ").append(m_server).append(":").append(buf).append("\r\n");
-  msg.append("Connection: keep-alive\r\n");
+  msg.append("User-Agent: " REQUEST_USER_AGENT "\r\n");
+  msg.append("Connection: " REQUEST_CONNECTION "\r\n");
   if (m_accept != CT_NONE)
     msg.append("Accept: ").append(MimeFromContentType(m_accept)).append("\r\n");
   msg.append("Accept-Charset: ").append(m_charset).append("\r\n");
