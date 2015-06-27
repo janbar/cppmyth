@@ -215,6 +215,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>StopRecording</b> (co
 <tr class="memitem:a352658510407fc03875605762e1ef0f6"><td class="memItemLeft" align="right" valign="top">ChannelListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#a352658510407fc03875605762e1ef0f6">GetChannelList</a> (uint32_t sourceid, bool onlyVisible=true)</td></tr>
 <tr class="memdesc:a352658510407fc03875605762e1ef0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all configured channels for a video source.  <a href="#a352658510407fc03875605762e1ef0f6">More...</a><br/></td></tr>
 <tr class="separator:a352658510407fc03875605762e1ef0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae96aad9296473ace6f6216e4290399ec"><td class="memItemLeft" align="right" valign="top">ChannelPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#ae96aad9296473ace6f6216e4290399ec">GetChannel</a> (uint32_t chanid)</td></tr>
+<tr class="memdesc:ae96aad9296473ace6f6216e4290399ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a single channel, by channel id.  <a href="#ae96aad9296473ace6f6216e4290399ec">More...</a><br/></td></tr>
+<tr class="separator:ae96aad9296473ace6f6216e4290399ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2120a5873785a46c2283fe0fe6ad6a12"><td class="memItemLeft" align="right" valign="top">ProgramMapPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#a2120a5873785a46c2283fe0fe6ad6a12">GetProgramGuide</a> (uint32_t chanid, time_t starttime, time_t endtime)</td></tr>
 <tr class="memdesc:a2120a5873785a46c2283fe0fe6ad6a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the guide information for a particular time period and a channel.  <a href="#a2120a5873785a46c2283fe0fe6ad6a12">More...</a><br/></td></tr>
 <tr class="separator:a2120a5873785a46c2283fe0fe6ad6a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -248,6 +251,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>StopRecording</b> (co
 <tr class="memitem:aadbdcddbcbb656d3d4c1e680d9a8b70b"><td class="memItemLeft" align="right" valign="top">ProgramListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#aadbdcddbcbb656d3d4c1e680d9a8b70b">GetExpiringList</a> ()</td></tr>
 <tr class="memdesc:aadbdcddbcbb656d3d4c1e680d9a8b70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query information on recorded programs which are set to expire.  <a href="#aadbdcddbcbb656d3d4c1e680d9a8b70b">More...</a><br/></td></tr>
 <tr class="separator:aadbdcddbcbb656d3d4c1e680d9a8b70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030d5c8d1c9c0632168f066214a8712f"><td class="memItemLeft" align="right" valign="top">StringListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#a030d5c8d1c9c0632168f066214a8712f">GetRecGroupList</a> ()</td></tr>
+<tr class="memdesc:a030d5c8d1c9c0632168f066214a8712f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of recording group.  <a href="#a030d5c8d1c9c0632168f066214a8712f">More...</a><br/></td></tr>
+<tr class="separator:a030d5c8d1c9c0632168f066214a8712f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace927146b543fefbfc88ad1085feb36a"><td class="memItemLeft" align="right" valign="top">WSStreamPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1Control.html#ace927146b543fefbfc88ad1085feb36a">GetFile</a> (const std::string &amp;filename, const std::string &amp;sgname)</td></tr>
 <tr class="memdesc:ace927146b543fefbfc88ad1085feb36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Download a given file from a given storage group.  <a href="#ace927146b543fefbfc88ad1085feb36a">More...</a><br/></td></tr>
 <tr class="separator:ace927146b543fefbfc88ad1085feb36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,9 +329,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status. On success Id is updated with the new. </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00322">322</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00332">332</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00267">Myth::WSAPI::AddRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00277">Myth::WSAPI::AddRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -353,7 +359,7 @@ Private Attributes</h2></td></tr>
 <p>Allows backend to shut down again after a previous call to <a class="el" href="classMyth_1_1Control.html#afff9ebf8d3a32fc8506bffa5895e88f5" title="Prevents backend from shutting down until a the next call to AllowShutdown(). ">BlockShutdown()</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00507">507</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00526">526</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
 </div>
 </div>
@@ -381,7 +387,7 @@ Private Attributes</h2></td></tr>
 <p>Prevents backend from shutting down until a the next call to <a class="el" href="classMyth_1_1Control.html#a444e5c12f95c292c8617e5a58a25d76b" title="Allows backend to shut down again after a previous call to BlockShutdown(). ">AllowShutdown()</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00498">498</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00517">517</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
 </div>
 </div>
@@ -510,7 +516,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00232">232</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00207">Myth::WSAPI::DeleteRecording()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00217">Myth::WSAPI::DeleteRecording()</a>.</p>
 
 </div>
 </div>
@@ -545,9 +551,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00342">342</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00352">352</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00288">Myth::WSAPI::DisableRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00298">Myth::WSAPI::DisableRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -582,9 +588,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00352">352</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00362">362</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00298">Myth::WSAPI::EnableRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00308">Myth::WSAPI::EnableRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -705,6 +711,43 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae96aad9296473ace6f6216e4290399ec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ChannelPtr Myth::Control::GetChannel </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>chanid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve a single channel, by channel id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chanid</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ChannelPtr </dd></dl>
+
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00291">291</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00146">Myth::WSAPI::GetChannel()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="abd603113394254e64e7b62750df88564"></a>
 <div class="memitem">
 <div class="memproto">
@@ -754,9 +797,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WSStreamPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00412">412</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00431">431</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00359">Myth::WSAPI::GetChannelIcon()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00379">Myth::WSAPI::GetChannelIcon()</a>.</p>
 
 </div>
 </div>
@@ -850,9 +893,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>MarkListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00483">483</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00502">502</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00402">Myth::WSAPI::GetRecordedCommBreak()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00422">Myth::WSAPI::GetRecordedCommBreak()</a>.</p>
 
 </div>
 </div>
@@ -880,9 +923,9 @@ Private Attributes</h2></td></tr>
 <p>Query information on upcoming items which will not record due to conflicts. </p>
 <dl class="section return"><dt>Returns</dt><dd>ProgramListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00380">380</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00390">390</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00329">Myth::WSAPI::GetConflictList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00339">Myth::WSAPI::GetConflictList()</a>.</p>
 
 </div>
 </div>
@@ -928,9 +971,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>MarkListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00466">466</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00485">485</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00415">Myth::WSAPI::GetRecordedCutList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00435">Myth::WSAPI::GetRecordedCutList()</a>.</p>
 
 </div>
 </div>
@@ -958,9 +1001,9 @@ Private Attributes</h2></td></tr>
 <p>Query information on recorded programs which are set to expire. </p>
 <dl class="section return"><dt>Returns</dt><dd>ProgramListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00389">389</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00399">399</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00339">Myth::WSAPI::GetExpiringList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00349">Myth::WSAPI::GetExpiringList()</a>.</p>
 
 </div>
 </div>
@@ -1006,9 +1049,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WSStreamPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00400">400</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00419">419</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00349">Myth::WSAPI::GetFile()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00369">Myth::WSAPI::GetFile()</a>.</p>
 
 </div>
 </div>
@@ -1061,9 +1104,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WSStreamPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00424">424</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00443">443</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00369">Myth::WSAPI::GetPreviewImage()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00389">Myth::WSAPI::GetPreviewImage()</a>.</p>
 
 </div>
 </div>
@@ -1116,9 +1159,39 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ProgramMapPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00293">293</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00303">303</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00146">Myth::WSAPI::GetProgramGuide()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00156">Myth::WSAPI::GetProgramGuide()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a030d5c8d1c9c0632168f066214a8712f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StringListPtr Myth::Control::GetRecGroupList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get list of recording group. </p>
+<dl class="section return"><dt>Returns</dt><dd>StringListPtr </dd></dl>
+
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00408">408</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00359">Myth::WSAPI::GetRecGroupList()</a>.</p>
 
 </div>
 </div>
@@ -1166,7 +1239,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00196">196</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00167">Myth::WSAPI::GetRecorded()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00177">Myth::WSAPI::GetRecorded()</a>.</p>
 
 </div>
 </div>
@@ -1203,7 +1276,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00206">206</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00167">Myth::WSAPI::GetRecorded()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00177">Myth::WSAPI::GetRecorded()</a>.</p>
 
 </div>
 </div>
@@ -1251,7 +1324,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00185">185</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00157">Myth::WSAPI::GetRecordedList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00167">Myth::WSAPI::GetRecordedList()</a>.</p>
 
 </div>
 </div>
@@ -1311,9 +1384,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WSStreamPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00437">437</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00456">456</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00379">Myth::WSAPI::GetRecordingArtwork()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00399">Myth::WSAPI::GetRecordingArtwork()</a>.</p>
 
 </div>
 </div>
@@ -1359,9 +1432,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ArtworkListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00448">448</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00467">467</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00389">Myth::WSAPI::GetRecordingArtworkList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00409">Myth::WSAPI::GetRecordingArtworkList()</a>.</p>
 
 <p>Referenced by <a class="el" href="mythcontrol_8cpp_source.html#l00087">RefreshRecordedArtwork()</a>.</p>
 
@@ -1407,9 +1480,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>RecordSchedulePtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00312">312</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00322">322</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00257">Myth::WSAPI::GetRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00267">Myth::WSAPI::GetRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -1437,9 +1510,9 @@ Here is the caller graph for this function:</div>
 <p>Query all configured recording rules. </p>
 <dl class="section return"><dt>Returns</dt><dd>RecordScheduleListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00302">302</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00312">312</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00247">Myth::WSAPI::GetRecordScheduleList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00257">Myth::WSAPI::GetRecordScheduleList()</a>.</p>
 
 </div>
 </div>
@@ -1676,9 +1749,9 @@ Here is the caller graph for this function:</div>
 <p>Query information on all upcoming programs matching recording rules. </p>
 <dl class="section return"><dt>Returns</dt><dd>ProgramListPtr </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00371">371</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00381">381</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00318">Myth::WSAPI::GetUpcomingList()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00328">Myth::WSAPI::GetUpcomingList()</a>.</p>
 
 </div>
 </div>
@@ -1901,7 +1974,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="mythcontrol_8cpp_source.html#l00087">87</a> of file <a class="el" href="mythcontrol_8cpp_source.html">mythcontrol.cpp</a>.</p>
 
-<p>References <a class="el" href="mythcontrol_8h_source.html#l00448">GetRecordingArtworkList()</a>.</p>
+<p>References <a class="el" href="mythcontrol_8h_source.html#l00467">GetRecordingArtworkList()</a>.</p>
 
 </div>
 </div>
@@ -1936,9 +2009,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00362">362</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00372">372</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00308">Myth::WSAPI::RemoveRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00318">Myth::WSAPI::RemoveRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -1986,7 +2059,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00217">217</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00187">Myth::WSAPI::UpdateRecordedWatchedStatus()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00197">Myth::WSAPI::UpdateRecordedWatchedStatus()</a>.</p>
 
 </div>
 </div>
@@ -2021,9 +2094,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status </dd></dl>
 
-<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00332">332</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
+<p>Definition at line <a class="el" href="mythcontrol_8h_source.html#l00342">342</a> of file <a class="el" href="mythcontrol_8h_source.html">mythcontrol.h</a>.</p>
 
-<p>References <a class="el" href="mythwsapi_8h_source.html#l00278">Myth::WSAPI::UpdateRecordSchedule()</a>.</p>
+<p>References <a class="el" href="mythwsapi_8h_source.html#l00288">Myth::WSAPI::UpdateRecordSchedule()</a>.</p>
 
 </div>
 </div>
@@ -2037,7 +2110,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceMyth.html">Myth</a></li><li class="navelem"><a class="el" href="classMyth_1_1Control.html">Control</a></li>
-    <li class="footer">Generated on Wed Jun 3 2015 12:26:48 for CPPMyth by
+    <li class="footer">Generated on Sat Jun 27 2015 16:21:19 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
