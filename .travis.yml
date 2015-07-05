@@ -1,0 +1,45 @@
+language: cpp
+
+os:
+  - linux
+  - osx
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  global:
+    - COVERITY_SCAN_PROJECT_NAME="janbar/cppmyth"
+    - COVERITY_SCAN_NOTIFICATION_EMAIL="jlbarriere68@gmail.com"
+    - COVERITY_SCAN_BRANCH_PATTERN="coverity_scan"
+    - COVERITY_SCAN_BUILD_COMMAND="cmake --build ."
+    - COVERITY_SCAN_BUILD_URL="https://scan.coverity.com/scripts/travisci_build_coverity_scan.sh"
+    - COVERITY_SCAN_BUILD="curl -s $COVERITY_SCAN_BUILD_URL | bash"
+    - secure: "kVgoVZX1HQn0t3X06YzUVfkCnVMT2RM/Pn5Jeq0k7fwJu72+x86rb5AuHhQt1er5KpC1UOr+g+K6HCE0HnVqamYIrApsWcAPEXdmq4jjlAwPHZQSc7bwlvUOHeMb/pUput/anI09zjh4Hy2OY4UkpBCOUR3dFiF/bFHGcrS0oQ8laxDTdzSRcyfSKXeR3TWEVLmqSkjOa4q+7I9fJjsxkf67zDaWBMZCc+By2U9UHdGFcYcy82HNYvtR3dDEjJ6ojj98CvS5kvVLnjwWFbzKPZPJvBcVV7dyQxiO6GsOWMr8A14p7cdoCtN1vmng+v2Svwzw27JeCobebyvwfHN5fsZaIWkNlX+XZXlTvFb/oF3Jqf5UW7dzDEqS+wO95ZGhcwEQMNFpFUkIpm3YG+TUmQTXcgSLZfcU+7a1yQl1xDmLXHXE5m8iBnOYVGGr/kUBCbvNu+L2yIMj4365gyW9PcEJ2eSdyJxm3EjzrCQEPS86OHfLkteGuRzvF6XTgjAszlIrZGDu2uzAj0GNWrTO5ES5bjivgxsXZhyJ7pkpZfQz8y/siC5aQZYf6FY7ucaJpv5ybQMbBMZ769eNduclpTiy0hHGVS+H2OBF/OI2wGOhuc5PR2H+5T7BoX1Ly8Khg+uVoP+6nR5gBz+jS2OX/3XamNaQdHykN15NUE/G2m0="
+
+matrix:
+  exclude:
+     - os: osx
+       compiler: gcc
+
+  include:
+     - os: linux
+       compiler: gcc
+       env: COVERITY_SCAN=1
+
+  allow_failures:
+     - env: COVERITY_SCAN=1
+
+  fast_finish: true
+
+before_script:
+  - mkdir build && cd build
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cmake ..; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then cmake ..; fi
+
+
+script:
+  - if [ "$COVERITY_SCAN" != 1 ]; then  cmake --build .; fi
+  - if [ "$COVERITY_SCAN" = 1 ]; then  eval "${COVERITY_SCAN_BUILD}"; fi
+
