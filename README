@@ -25,10 +25,10 @@ make
 Running liveTV demo:
 --------------------
 
-Choose a server and a channel to spawn, here 1001 from localhost, and pipe the
+Choose a server and a channel number to spawn, here 7 from localhost, and pipe the
 stream to mplayer:
 
-./demo/livetvdemo 127.0.0.1 1001 | mplayer -
+./demo/livetvdemo 127.0.0.1 7 | mplayer -
 
 Sources of demo are in <root path of cppmyth>/demo/src/
 
