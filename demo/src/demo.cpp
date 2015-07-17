@@ -24,8 +24,8 @@
 
 #define MYTAG "[DEMO] "
 
-// Container for MythTV channels
-typedef std::map<unsigned, Myth::ChannelPtr> channelMap_t;
+// Container for MythTV channels indexed by channum
+typedef std::multimap<std::string, Myth::ChannelPtr> channelMap_t;
 channelMap_t channelMap;
 
 // Load visible channels into the channelMap
@@ -46,7 +46,7 @@ bool loadChannels(const char * server)
       Myth::ChannelListPtr chanList = wsapi.GetChannelList((*sourceIt)->sourceId, true); // true for visible
       for (Myth::ChannelList::const_iterator chanIt = chanList->begin(); chanIt != chanList->end(); ++chanIt)
       {
-        channelMap[(*chanIt)->chanId] = *chanIt;
+        channelMap.insert(channelMap_t::value_type((*chanIt)->chanNum, *chanIt));
       }
     }
     return true;
@@ -55,7 +55,7 @@ bool loadChannels(const char * server)
 }
 
 // Spawn live TV and stream out
-void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
+void liveTVSpawn(const char * server, const char * chanNum)
 {
 
 #ifndef __WINDOWS__
@@ -68,8 +68,23 @@ void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
   Myth::LiveTVPlayback lp(server, 6543);
 
   fprintf(stderr, MYTAG "INFO: spawning live TV\n");
-  if (lp.SpawnLiveTV(channelPtr))
+
+  // Spawn will find the channels match this chanNum. Also we can prepare our
+  // predefined set of channels.
+  Myth::ChannelList chanList;
+  channelMap_t::const_iterator it = channelMap.find(chanNum);
+  while (it != channelMap.end())
   {
+    chanList.push_back(it->second);
+    ++it;
+  }
+  // Spawn Live TV
+  if (lp.SpawnLiveTV(chanNum, chanList))
+  {
+    const Myth::ProgramPtr prog = lp.GetPlayedProgram();
+    fprintf(stderr, MYTAG "INFO: live TV is playing channel id %u from source id %u\n",
+            prog->channel.chanId, prog->channel.sourceId);
+    fprintf(stderr, MYTAG "INFO: program title is: %s\n", prog->title.c_str());
     //FILE* file = fopen("TMP.mpg", "wb");
     FILE* file = stdout;
     char buf[64000];
@@ -86,6 +101,8 @@ void liveTVSpawn(const char * server, Myth::ChannelPtr channelPtr)
     fprintf(stderr, MYTAG "INFO: stopping live TV\n");
     lp.StopLiveTV();
   }
+  else
+    fprintf(stderr, MYTAG "ERROR: channel %s is unavailable\n", chanNum);
 }
 
 int main(int argc, char** argv)
@@ -102,19 +119,12 @@ int main(int argc, char** argv)
   {
     // Load all channels from the backend
     if (loadChannels(argv[1]))
-    {
-      // Find our channel by its 'chanid' and then spawn liveTV
-      channelMap_t::const_iterator chanIt = channelMap.find(atoi(argv[2]));
-      if (chanIt != channelMap.end())
-        liveTVSpawn(argv[1], chanIt->second);
-      else
-        fprintf(stderr, MYTAG "ERROR: channel %s not found\n", argv[2]);
-    }
+      liveTVSpawn(argv[1], argv[2]);
     else
       fprintf(stderr, MYTAG "ERROR: cannot load channels from the backend %s\n", argv[1]);
   }
   else
-    fprintf(stderr, MYTAG "USAGE: %s {backend ip or hostname} {chanid}\n", argv[0]);
+    fprintf(stderr, MYTAG "USAGE: %s {backend ip or hostname} {channum}\n", argv[0]);
 
 #ifdef __WINDOWS__
   WSACleanup();
