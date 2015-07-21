@@ -1,5 +1,8 @@
-noinst_LTLIBRARIES = libcppmyth.la
-#lib_LTLIBRARIES    = libcppmyth.la
+#noinst_LTLIBRARIES = libcppmyth.la
+lib_LTLIBRARIES    = libcppmyth.la
+# LIB_VERSION   : [$1-$3].[$3].[$2]
+# LIB_SOVERSION : [$1-$3]
+libcppmyth_la_LDFLAGS = -version-info 2:0:0
 
 AM_CPPFLAGS = -fPIC -Wall -Wextra \
 	-I@abs_srcdir@/src
@@ -29,4 +32,32 @@ libcppmyth_la_SOURCES = \
 	src/mythrecordingplayback.cpp \
 	src/mythtypes.cpp \
 	src/mythwsapi.cpp \
-	src/mythwsstream.cpp
+	src/mythwsstream.cpp \
+	src/mythlocked.cpp \
+	src/mythintrinsic.cpp
+
+cppmythheadersdir = $(includedir)/cppmyth
+cppmythheaders_HEADERS = \
+	src/cppmyth_config.h \
+	src/mythlocked.h \
+	src/mythintrinsic.h \
+	src/mythsharedptr.h \
+	src/mythtypes.h \
+	src/mythcontrol.h \
+	src/mytheventhandler.h \
+	src/mythfileplayback.h \
+	src/mythlivetvplayback.h \
+	src/mythrecordingplayback.h \
+	src/mythwsapi.h \
+	src/mythdebug.h \
+	src/mythstream.h \
+	src/mythwsstream.h
+
+protoheadersdir = $(includedir)/cppmyth/proto
+protoheaders_HEADERS = \
+	src/proto/mythprotobase.h \
+	src/proto/mythprotomonitor.h \
+	src/proto/mythprotorecorder.h \
+	src/proto/mythprotoevent.h \
+	src/proto/mythprotoplayback.h \
+	src/proto/mythprototransfer.h

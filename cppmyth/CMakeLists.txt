@@ -14,10 +14,14 @@ if (MSVC)
   OPTION (STATIC_CRT "Link the static CRT libraries" OFF)
 endif ()
 
+if (NOT WIN32)
+  OPTION (REQUIRE_CXX_98 "Require standard c++98" OFF)
+endif ()
+
 ###############################################################################
 # set lib version here
-set (CPPMYTH_LIB_VERSION "1.5.1")
-set (CPPMYTH_LIB_SOVERSION "1.5")
+set (CPPMYTH_LIB_VERSION "2.0.0")
+set (CPPMYTH_LIB_SOVERSION "2")
 
 ###############################################################################
 # add definitions
@@ -89,13 +93,33 @@ else ()
    set (CC_INLINE)
 endif ()
 
+if (REQUIRE_CXX_98)
+  set (CXX_STANDARD "199711L")
+  message(STATUS "c++98 activated")
+else ()
+  if (MSVC)
+    set (CXX_STANDARD "201103L")
+  else ()
+    include(CheckCXXCompilerFlag)
+    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+    if(COMPILER_SUPPORTS_CXX11)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+      set (CXX_STANDARD "201103L")
+    else()
+      set (CXX_STANDARD "199711L")
+    endif ()
+  endif ()
+endif ()
+
 # configure the public config file
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/cppmyth_config.h.in
                  ${CMAKE_CURRENT_BINARY_DIR}/include/cppmyth_config.h)
 
 # Copy the header files to the public include folder
 
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/atomic.h
+file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythlocked.h
+           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
+file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythintrinsic.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythsharedptr.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
@@ -204,11 +228,16 @@ if (NOT WIN32)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+  install (FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/cppmyth.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif ()
 
 install (FILES
   ${CMAKE_CURRENT_BINARY_DIR}/include/cppmyth_config.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/atomic.h
+  ${CMAKE_CURRENT_BINARY_DIR}/include/mythlocked.h
+  ${CMAKE_CURRENT_BINARY_DIR}/include/mythintrinsic.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythsharedptr.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythtypes.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythcontrol.h
@@ -230,7 +259,3 @@ install (FILES
   ${CMAKE_CURRENT_BINARY_DIR}/include/proto/mythprotoplayback.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/proto/mythprototransfer.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cppmyth/proto/)
-
-install (FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/cppmyth.pc
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
