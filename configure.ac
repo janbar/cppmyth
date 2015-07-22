@@ -1,5 +1,5 @@
 AC_PREREQ([2.60])
-AC_INIT([cppmyth], [1.5], [jlbarriere68@gmail.com])
+AC_INIT([cppmyth], [2.0], [jlbarriere68@gmail.com])
 
 AM_INIT_AUTOMAKE([1.10 foreign subdir-objects])
 
@@ -8,6 +8,7 @@ AC_CONFIG_SRCDIR([cppmyth/src/mythtypes.cpp])
 # Configure external packages.
 
 # Checks for programs.
+AC_LANG([C++])
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_CPP
@@ -74,6 +75,28 @@ if test "x$have_builtin_sync_sub_and_fetch" = "xyes"; then
         [Define to 1 if your compiler supports the __sync_sub_and_fetch() intrinsic.])
 fi
 
+### Require c++ standard
+m4_include([m4/ax_check_compile_flag.m4])
+
+AC_ARG_ENABLE([require-c++98],
+  [AS_HELP_STRING([--enable-require-c++98],
+  [require standard c++98 [default=no]])],
+  [require_cxx_98=$enableval],
+  [require_cxx_98=no])
+
+if test "x${require_cxx_98}" = "xyes"; then
+  CXX_STANDARD=199711L
+else
+  AX_CHECK_COMPILE_FLAG([-std=c++11], [compile_flag_cxx11=yes])
+  if test "x${compile_flag_cxx11}" = "xyes"; then
+    CXXFLAGS="-std=c++11 $CXXFLAGS"
+    CXX_STANDARD=201103L
+  else
+    CXX_STANDARD=199711L
+  fi
+fi
+AC_SUBST([CXX_STANDARD])
+
 AC_CONFIG_FILES([
         Makefile
         cppmyth/cppmyth.pc
@@ -84,3 +107,9 @@ AC_CONFIG_FILES([
 ])
 
 AC_OUTPUT
+
+AC_MSG_CHECKING([
+Require c++98 ............... ${require_cxx_98}
+Enable c++ features ......... ${CXX_STANDARD}
+
+])
