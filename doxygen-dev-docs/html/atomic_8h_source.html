@@ -306,155 +306,161 @@ $(document).ready(function(){initNavTree('atomic_8h_source.html','');});
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning unknown architecture, atomic increment is not...</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor"></span>  __val = ++(*valp);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> __val;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">static</span> CC_INLINE <span class="keywordtype">long</span> atomic_decrement(atomic_t *valp)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;{</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  atomic_t __val;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#if defined _MSC_VER</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor"></span>  __val = InterlockedDecrement(valp);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef ATOMIC_NOATOMIC</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ATOMIC_NOATOMIC</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor"></span>  __val = ++(*valp);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> __val;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">static</span> CC_INLINE <span class="keywordtype">long</span> atomic_decrement(atomic_t *valp)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  atomic_t __val;</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#elif defined __APPLE__</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor"></span>  __val = OSAtomicDecrement32(valp);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#if defined _MSC_VER</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor"></span>  __val = InterlockedDecrement(valp);</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#elif defined ANDROID</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor"></span>  __val = __sync_sub_and_fetch(valp, 1);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#elif defined __APPLE__</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor"></span>  __val = OSAtomicDecrement32(valp);</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#elif defined __mips__</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> temp, sub = 1;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="stringliteral">&quot;1:  ll     %0, %1\n&quot;</span>       <span class="comment">/* load old value */</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="stringliteral">&quot;    subu   %2, %0, %3\n&quot;</span>   <span class="comment">/* calculate new value */</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="stringliteral">&quot;    sc     %2, %1\n&quot;</span>       <span class="comment">/* attempt to store */</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="stringliteral">&quot;    beqz   %2, 1b\n&quot;</span>       <span class="comment">/* spin if failed */</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val), <span class="stringliteral">&quot;=m&quot;</span> (*valp), <span class="stringliteral">&quot;=&amp;r&quot;</span> (temp)</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (sub), <span class="stringliteral">&quot;m&quot;</span> (*valp));</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="comment">/* __val is the old value, so normalize it */</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  --__val;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#elif defined __i486__ || defined __i586__ || defined __i686__</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="stringliteral">&quot;lock xaddl %0, (%1);&quot;</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="stringliteral">&quot;     dec   %0;&quot;</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    : <span class="stringliteral">&quot;=r&quot;</span> (__val)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp), <span class="stringliteral">&quot;0&quot;</span> (-0x1)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    );</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">#elif defined __i386__ || defined __x86_64__</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="stringliteral">&quot;.byte 0xf0, 0x0f, 0xc1, 0x02&quot;</span> <span class="comment">/*lock; xaddl %eax, (%edx) */</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    : <span class="stringliteral">&quot;=a&quot;</span> (__val)</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    : <span class="stringliteral">&quot;0&quot;</span> (-1), <span class="stringliteral">&quot;m&quot;</span> (*valp), <span class="stringliteral">&quot;d&quot;</span> (valp)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    : <span class="stringliteral">&quot;memory&quot;</span>);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="comment">/* __val is the pre-decrement value, so normalize it */</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  --__val;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#elif defined __powerpc__ || defined __ppc__</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="stringliteral">&quot;1: lwarx   %0,0,%1\n&quot;</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="stringliteral">&quot;   addic.   %0,%0,-1\n&quot;</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="stringliteral">&quot;   dcbt    %0,%1\n&quot;</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="stringliteral">&quot;   stwcx.  %0,0,%1\n&quot;</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="stringliteral">&quot;   bne-    1b\n&quot;</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="stringliteral">&quot;   isync\n&quot;</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span>);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#elif defined __sparcv9__</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor"></span>  atomic_t __newval, __oldval = (*valp);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    __newval = __oldval - 1;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    __asm__ (</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <span class="stringliteral">&quot;cas  [%4], %2, %0&quot;</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      : <span class="stringliteral">&quot;=r&quot;</span> (__oldval), <span class="stringliteral">&quot;=m&quot;</span> (*valp)</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      : <span class="stringliteral">&quot;r&quot;</span> (__oldval), <span class="stringliteral">&quot;m&quot;</span> (*valp), <span class="stringliteral">&quot;r&quot;</span>((valp)), <span class="stringliteral">&quot;0&quot;</span> (__newval));</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  } <span class="keywordflow">while</span> (__newval != __oldval);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <span class="comment">/* The value for __val is in &#39;__oldval&#39; */</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  __val = __oldval;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH == 7)</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> dec = 1;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="stringliteral">&quot;1:&quot;</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="stringliteral">&quot;dmb     ish\n&quot;</span>           <span class="comment">/* Memory barrier */</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="stringliteral">&quot;ldrex   %0, [%1]\n&quot;</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="stringliteral">&quot;sub     %0, %0,  %2\n&quot;</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="stringliteral">&quot;strex   r1, %0, [%1]\n&quot;</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="stringliteral">&quot;cmp     r1, #0\n&quot;</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="stringliteral">&quot;bne     1b\n&quot;</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="stringliteral">&quot;dmb     ish\n&quot;</span>           <span class="comment">/* Memory barrier */</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span>(valp), <span class="stringliteral">&quot;r&quot;</span>(dec)</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    : <span class="stringliteral">&quot;r1&quot;</span>);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH == 6)</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> dec = 1;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="stringliteral">&quot;mcr p15, 0, %0, c7, c10, 5&quot;</span>  <span class="comment">/* Memory barrier */</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    : : <span class="stringliteral">&quot;r&quot;</span>(0) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#elif defined ANDROID</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor"></span>  __val = __sync_sub_and_fetch(valp, 1);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#elif defined __mips__</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> temp, sub = 1;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="stringliteral">&quot;1:  ll     %0, %1\n&quot;</span>       <span class="comment">/* load old value */</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="stringliteral">&quot;    subu   %2, %0, %3\n&quot;</span>   <span class="comment">/* calculate new value */</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="stringliteral">&quot;    sc     %2, %1\n&quot;</span>       <span class="comment">/* attempt to store */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="stringliteral">&quot;    beqz   %2, 1b\n&quot;</span>       <span class="comment">/* spin if failed */</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val), <span class="stringliteral">&quot;=m&quot;</span> (*valp), <span class="stringliteral">&quot;=&amp;r&quot;</span> (temp)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (sub), <span class="stringliteral">&quot;m&quot;</span> (*valp));</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <span class="comment">/* __val is the old value, so normalize it */</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  --__val;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#elif defined __i486__ || defined __i586__ || defined __i686__</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="stringliteral">&quot;lock xaddl %0, (%1);&quot;</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="stringliteral">&quot;     dec   %0;&quot;</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    : <span class="stringliteral">&quot;=r&quot;</span> (__val)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp), <span class="stringliteral">&quot;0&quot;</span> (-0x1)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    );</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#elif defined __i386__ || defined __x86_64__</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="stringliteral">&quot;.byte 0xf0, 0x0f, 0xc1, 0x02&quot;</span> <span class="comment">/*lock; xaddl %eax, (%edx) */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    : <span class="stringliteral">&quot;=a&quot;</span> (__val)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    : <span class="stringliteral">&quot;0&quot;</span> (-1), <span class="stringliteral">&quot;m&quot;</span> (*valp), <span class="stringliteral">&quot;d&quot;</span> (valp)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    : <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="comment">/* __val is the pre-decrement value, so normalize it */</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  --__val;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#elif defined __powerpc__ || defined __ppc__</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor"></span>  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="stringliteral">&quot;1: lwarx   %0,0,%1\n&quot;</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="stringliteral">&quot;   addic.   %0,%0,-1\n&quot;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="stringliteral">&quot;   dcbt    %0,%1\n&quot;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="stringliteral">&quot;   stwcx.  %0,0,%1\n&quot;</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="stringliteral">&quot;   bne-    1b\n&quot;</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="stringliteral">&quot;   isync\n&quot;</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor">#elif defined __sparcv9__</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor"></span>  atomic_t __newval, __oldval = (*valp);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    __newval = __oldval - 1;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    __asm__ (</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="stringliteral">&quot;cas  [%4], %2, %0&quot;</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      : <span class="stringliteral">&quot;=r&quot;</span> (__oldval), <span class="stringliteral">&quot;=m&quot;</span> (*valp)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      : <span class="stringliteral">&quot;r&quot;</span> (__oldval), <span class="stringliteral">&quot;m&quot;</span> (*valp), <span class="stringliteral">&quot;r&quot;</span>((valp)), <span class="stringliteral">&quot;0&quot;</span> (__newval));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  } <span class="keywordflow">while</span> (__newval != __oldval);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  <span class="comment">/* The value for __val is in &#39;__oldval&#39; */</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  __val = __oldval;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH == 7)</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> dec = 1;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="stringliteral">&quot;dmb     ish\n&quot;</span>           <span class="comment">/* Memory barrier */</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="stringliteral">&quot;1:&quot;</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="stringliteral">&quot;ldrex   %0, [%1]\n&quot;</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="stringliteral">&quot;sub     %0, %0,  %2\n&quot;</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="stringliteral">&quot;strex   r1, %0, [%1]\n&quot;</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="stringliteral">&quot;cmp     r1, #0\n&quot;</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="stringliteral">&quot;bne     1b\n&quot;</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="stringliteral">&quot;dmb     ish\n&quot;</span>           <span class="comment">/* Memory barrier */</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span>(valp), <span class="stringliteral">&quot;r&quot;</span>(dec)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    : <span class="stringliteral">&quot;r1&quot;</span>);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH == 6)</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> dec = 1;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="stringliteral">&quot;1:&quot;</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="stringliteral">&quot;ldrex   %0, [%1]\n&quot;</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="stringliteral">&quot;sub     %0, %0,  %2\n&quot;</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="stringliteral">&quot;strex   r1, %0, [%1]\n&quot;</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="stringliteral">&quot;cmp     r1, #0\n&quot;</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="stringliteral">&quot;bne     1b\n&quot;</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span>(valp), <span class="stringliteral">&quot;r&quot;</span>(dec)</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    : <span class="stringliteral">&quot;r1&quot;</span>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="stringliteral">&quot;mcr p15, 0, %0, c7, c10, 5&quot;</span>  <span class="comment">/* Memory barrier */</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    : : <span class="stringliteral">&quot;r&quot;</span>(0) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH &lt; 6)</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> tmp1, tmp2;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordtype">int</span> inc = -1;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="stringliteral">&quot;0:&quot;</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="stringliteral">&quot;ldr     %0, [%3]\n&quot;</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="stringliteral">&quot;add     %1, %0, %4\n&quot;</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="stringliteral">&quot;swp     %2, %1, [%3]\n&quot;</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="stringliteral">&quot;cmp     %0, %2\n&quot;</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="stringliteral">&quot;swpne   %0, %2, [%3]\n&quot;</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="stringliteral">&quot;bne     0b\n&quot;</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span>(tmp1), <span class="stringliteral">&quot;=&amp;r&quot;</span>(__val), <span class="stringliteral">&quot;=&amp;r&quot;</span>(tmp2)</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp), <span class="stringliteral">&quot;r&quot;</span>(inc)</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span>);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">#elif defined HAS_BUILTIN_SYNC_SUB_AND_FETCH</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor"></span>  <span class="comment">/*</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">   * Don&#39;t know how to atomic decrement for a generic architecture</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">   * so try to use GCC builtin</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  __val = __sync_sub_and_fetch(valp, 1);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning unknown architecture, atomic deccrement is not...</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="preprocessor"></span>  __val = --(*valp);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> __val;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;}</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#ifdef  __cplusplus</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="stringliteral">&quot;mcr p15, 0, %0, c7, c10, 5&quot;</span>  <span class="comment">/* Memory barrier */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    : : <span class="stringliteral">&quot;r&quot;</span>(0) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="stringliteral">&quot;1:&quot;</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="stringliteral">&quot;ldrex   %0, [%1]\n&quot;</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="stringliteral">&quot;sub     %0, %0,  %2\n&quot;</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="stringliteral">&quot;strex   r1, %0, [%1]\n&quot;</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="stringliteral">&quot;cmp     r1, #0\n&quot;</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="stringliteral">&quot;bne     1b\n&quot;</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span> (__val)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span>(valp), <span class="stringliteral">&quot;r&quot;</span>(dec)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    : <span class="stringliteral">&quot;r1&quot;</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="stringliteral">&quot;mcr p15, 0, %0, c7, c10, 5&quot;</span>  <span class="comment">/* Memory barrier */</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    : : <span class="stringliteral">&quot;r&quot;</span>(0) : <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#elif (defined __ARM_ARCH &amp;&amp; __ARM_ARCH &lt; 6)</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> tmp1, tmp2;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordtype">int</span> inc = -1;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  __asm__ <span class="keyword">volatile</span> (</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="stringliteral">&quot;0:&quot;</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="stringliteral">&quot;ldr     %0, [%3]\n&quot;</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="stringliteral">&quot;add     %1, %0, %4\n&quot;</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="stringliteral">&quot;swp     %2, %1, [%3]\n&quot;</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="stringliteral">&quot;cmp     %0, %2\n&quot;</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="stringliteral">&quot;swpne   %0, %2, [%3]\n&quot;</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="stringliteral">&quot;bne     0b\n&quot;</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    : <span class="stringliteral">&quot;=&amp;r&quot;</span>(tmp1), <span class="stringliteral">&quot;=&amp;r&quot;</span>(__val), <span class="stringliteral">&quot;=&amp;r&quot;</span>(tmp2)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    : <span class="stringliteral">&quot;r&quot;</span> (valp), <span class="stringliteral">&quot;r&quot;</span>(inc)</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    : <span class="stringliteral">&quot;cc&quot;</span>, <span class="stringliteral">&quot;memory&quot;</span>);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">#elif defined HAS_BUILTIN_SYNC_SUB_AND_FETCH</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor"></span>  <span class="comment">/*</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">   * Don&#39;t know how to atomic decrement for a generic architecture</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">   * so try to use GCC builtin</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  __val = __sync_sub_and_fetch(valp, 1);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#warning unknown architecture, atomic deccrement is not...</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifndef ATOMIC_NOATOMIC</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ATOMIC_NOATOMIC</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor"></span>  __val = --(*valp);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* ATOMIC_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> __val;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#ifdef  __cplusplus</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* ATOMIC_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>atomic.h</b></li>
-    <li class="footer">Generated on Sun Jul 5 2015 12:04:39 for CPPMyth by
+    <li class="footer">Generated on Thu Jul 23 2015 15:54:54 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

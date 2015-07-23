@@ -42,6 +42,8 @@ var hierarchy =
     [ "imaxdiv_t", "structimaxdiv__t.html", null ],
     [ "sajson::integer_storage", "unionsajson_1_1integer__storage.html", null ],
     [ "Myth::ItemList", "structMyth_1_1ItemList.html", null ],
+    [ "Myth::Locked< T >", "classMyth_1_1Locked.html", null ],
+    [ "Myth::LockGuard", "classMyth_1_1LockGuard.html", null ],
     [ "Myth::Mark", "structMyth_1_1Mark.html", null ],
     [ "mimetype", "structmimetype.html", null ],
     [ "sajson::mutable_string_view", "classsajson_1_1mutable__string__view.html", null ],

@@ -8,6 +8,8 @@ var namespaceMyth =
     [ "EventHandler", "classMyth_1_1EventHandler.html", "classMyth_1_1EventHandler" ],
     [ "FilePlayback", "classMyth_1_1FilePlayback.html", "classMyth_1_1FilePlayback" ],
     [ "LiveTVPlayback", "classMyth_1_1LiveTVPlayback.html", "classMyth_1_1LiveTVPlayback" ],
+    [ "LockGuard", "classMyth_1_1LockGuard.html", "classMyth_1_1LockGuard" ],
+    [ "Locked", "classMyth_1_1Locked.html", "classMyth_1_1Locked" ],
     [ "RecordingPlayback", "classMyth_1_1RecordingPlayback.html", "classMyth_1_1RecordingPlayback" ],
     [ "shared_ptr", "classMyth_1_1shared__ptr.html", "classMyth_1_1shared__ptr" ],
     [ "Stream", "classMyth_1_1Stream.html", "classMyth_1_1Stream" ],
