@@ -1,5 +1,4 @@
-
-bin_PROGRAMS = livetvdemo
+noinst_PROGRAMS = livetvdemo
 
 livetvdemo_SOURCES = src/demo.cpp
 
