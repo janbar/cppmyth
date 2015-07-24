@@ -1,5 +1,4 @@
-
-bin_PROGRAMS = cppmythtest
+noinst_PROGRAMS = cppmythtest
 
 cppmythtest_SOURCES = src/test.cpp
 

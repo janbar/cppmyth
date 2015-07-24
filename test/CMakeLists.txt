@@ -17,6 +17,12 @@ if (NOT WIN32 AND (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX))
    add_definitions ("-fPIC")
 endif ()
 
+if (NOT MSVC)
+  if (COMPILER_SUPPORTS_CXX11)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  endif ()
+endif ()
+
 ###############################################################################
 # configure
 include_directories (
