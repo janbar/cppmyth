@@ -29,14 +29,11 @@ include_directories (
   ${CMAKE_BINARY_DIR}/cppmyth/include/.)
 
 ###############################################################################
-# add sources
-file (GLOB SRC_FILES src/*.cpp)
-
-set (CPPMYTHTEST_SOURCES
-  ${SRC_FILES})
-
-###############################################################################
 # add targets
-add_executable (cppmythtest ${CPPMYTHTEST_SOURCES})
+add_executable (cppmythtest src/test.cpp)
 add_dependencies (cppmythtest cppmyth)
 target_link_libraries (cppmythtest cppmyth)
+
+add_executable (intrinsictest src/intrinsictest.cpp)
+add_dependencies (intrinsictest cppmyth)
+target_link_libraries (intrinsictest cppmyth)
