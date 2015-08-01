@@ -28,16 +28,7 @@ typedef std::atomic<int> counter_t;
 #define GETVALUE(p)   (p)->load()
 #define INCREMENT(p)  ((p)->fetch_add(1, std::memory_order_relaxed) + 1)
 #define DECREMENT(p)  ((p)->fetch_sub(1, std::memory_order_relaxed) - 1)
-#else
-#include "private/mythatomic.h"
-#ifndef ATOMIC_NOATOMIC
-typedef Myth::atomic<int> counter_t;
-#define GETVALUE(p)   (p)->load()
-#define INCREMENT(p)  (p)->add_fetch(1)
-#define DECREMENT(p)  (p)->sub_fetch(1)
-//
-// Don't know how to do atomic operation for the architecture
-//
+
 #elif defined _MSC_VER
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -63,6 +54,16 @@ typedef volatile int counter_t;
 #define DECREMENT(p)  __sync_add_and_fetch(p, -1)
 #endif
 
+#else
+#include "private/mythatomic.h"
+#ifndef ATOMIC_NOATOMIC
+typedef Myth::atomic<int> counter_t;
+#define GETVALUE(p)   (p)->load()
+#define INCREMENT(p)  (p)->add_fetch(1)
+#define DECREMENT(p)  (p)->sub_fetch(1)
+//
+// Don't know how to do atomic operation for the architecture
+//
 #elif defined USE_MYTH_LOCKED
 #include "mythlocked.h"
 typedef Myth::LockedNumber<int> counter_t;
