@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['putsetting',['PutSetting',['../classMyth_1_1Control.html#a1a6ec494869a7d30784d726519ebabec',1,'Myth::Control::PutSetting()'],['../classMyth_1_1WSAPI.html#a0144c42b50ebe049dde486a03c094931',1,'Myth::WSAPI::PutSetting()']]]
+  ['lock',['Lock',['../classMyth_1_1LockGuard.html#abafeb16b48611cc75303aa691b8b6f30',1,'Myth::LockGuard']]],
+  ['lockguard',['LockGuard',['../classMyth_1_1LockGuard.html#a4692eb078f4c373d1bf46d4f2601ee40',1,'Myth::LockGuard']]]
 ];

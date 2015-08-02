@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['undeleterecording',['UnDeleteRecording',['../classMyth_1_1WSAPI.html#abbec0266d42bf58e2ff607db1d2884c6',1,'Myth::WSAPI::UnDeleteRecording(uint32_t chanid, time_t recstartts)'],['../classMyth_1_1WSAPI.html#a1ce153fa0df52fc9de93c81cd96f019a',1,'Myth::WSAPI::UnDeleteRecording(uint32_t recordedid)']]],
-  ['updaterecordedwatchedstatus',['UpdateRecordedWatchedStatus',['../classMyth_1_1Control.html#a4e4d5bfaaa9bad281071be57223acb5e',1,'Myth::Control::UpdateRecordedWatchedStatus()'],['../classMyth_1_1WSAPI.html#a53f363eef1ad7aaf3287cdd2a77b812e',1,'Myth::WSAPI::UpdateRecordedWatchedStatus(uint32_t chanid, time_t recstartts, bool watched)'],['../classMyth_1_1WSAPI.html#ab08ef92bf9055f4f32b1d8092364f048',1,'Myth::WSAPI::UpdateRecordedWatchedStatus(uint32_t recordedid, bool watched)']]],
-  ['updaterecordschedule',['UpdateRecordSchedule',['../classMyth_1_1Control.html#a9ff8616fb33718351fa7896295162088',1,'Myth::Control::UpdateRecordSchedule()'],['../classMyth_1_1WSAPI.html#acedec88afeb36600591ebcf848feba86',1,'Myth::WSAPI::UpdateRecordSchedule()']]]
+  ['rcvbackendmessage',['RcvBackendMessage',['../classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562',1,'Myth::ProtoEvent']]],
+  ['rcvversion',['RcvVersion',['../classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61',1,'Myth::ProtoBase']]],
+  ['readfield',['ReadField',['../classMyth_1_1ProtoBase.html#a35c5d200bb8c30b4e19d978654d6cf09',1,'Myth::ProtoBase']]],
+  ['refreshrecordedartwork',['RefreshRecordedArtwork',['../classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb',1,'Myth::Control']]],
+  ['removerecordschedule',['RemoveRecordSchedule',['../classMyth_1_1Control.html#aa8e5817a061fa1ea05dbe164ba03d734',1,'Myth::Control::RemoveRecordSchedule()'],['../classMyth_1_1WSAPI.html#a3ed241980cfe8e41bc67bfb7d611a8b4',1,'Myth::WSAPI::RemoveRecordSchedule()']]]
 ];

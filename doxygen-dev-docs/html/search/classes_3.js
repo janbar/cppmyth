@@ -9,6 +9,7 @@ var searchData=
   ['clockguard',['CLockGuard',['../classNSROOT_1_1OS_1_1CLockGuard.html',1,'NSROOT::OS']]],
   ['cmutex',['CMutex',['../classNSROOT_1_1OS_1_1CMutex.html',1,'NSROOT::OS']]],
   ['control',['Control',['../classMyth_1_1Control.html',1,'Myth']]],
+  ['counter',['Counter',['../structMyth_1_1IntrinsicCounter_1_1Counter.html',1,'Myth::IntrinsicCounter']]],
   ['cthread',['CThread',['../classNSROOT_1_1OS_1_1CThread.html',1,'NSROOT::OS']]],
   ['cthreadpool',['CThreadPool',['../classNSROOT_1_1OS_1_1CThreadPool.html',1,'NSROOT::OS']]],
   ['ctimeout',['CTimeout',['../classNSROOT_1_1OS_1_1CTimeout.html',1,'NSROOT::OS']]],

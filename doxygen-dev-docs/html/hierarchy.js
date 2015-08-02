@@ -14,6 +14,7 @@ var hierarchy =
     [ "NSROOT::OS::CLockGuard", "classNSROOT_1_1OS_1_1CLockGuard.html", null ],
     [ "NSROOT::OS::CMutex", "classNSROOT_1_1OS_1_1CMutex.html", null ],
     [ "Myth::Control", "classMyth_1_1Control.html", null ],
+    [ "Myth::IntrinsicCounter::Counter", "structMyth_1_1IntrinsicCounter_1_1Counter.html", null ],
     [ "NSROOT::OS::CThread", "classNSROOT_1_1OS_1_1CThread.html", [
       [ "NSROOT::OS::CWorkerThread", "classNSROOT_1_1OS_1_1CWorkerThread.html", null ]
     ] ],
@@ -41,8 +42,12 @@ var hierarchy =
     [ "NSROOT::OS::CThread::Handle", "structNSROOT_1_1OS_1_1CThread_1_1Handle.html", null ],
     [ "imaxdiv_t", "structimaxdiv__t.html", null ],
     [ "sajson::integer_storage", "unionsajson_1_1integer__storage.html", null ],
+    [ "Myth::IntrinsicCounter", "classMyth_1_1IntrinsicCounter.html", null ],
     [ "Myth::ItemList", "structMyth_1_1ItemList.html", null ],
-    [ "Myth::Locked< T >", "classMyth_1_1Locked.html", null ],
+    [ "Myth::LockGuard::Lockable", "structMyth_1_1LockGuard_1_1Lockable.html", null ],
+    [ "Myth::Locked< T >", "classMyth_1_1Locked.html", [
+      [ "Myth::LockedNumber< T >", "classMyth_1_1LockedNumber.html", null ]
+    ] ],
     [ "Myth::LockGuard", "classMyth_1_1LockGuard.html", null ],
     [ "Myth::Mark", "structMyth_1_1Mark.html", null ],
     [ "mimetype", "structmimetype.html", null ],
@@ -89,6 +94,7 @@ var hierarchy =
     [ "timespec", "structtimespec.html", null ],
     [ "Myth::URIParser::URI_t", "structMyth_1_1URIParser_1_1URI__t.html", null ],
     [ "Myth::URIParser", "classMyth_1_1URIParser.html", null ],
+    [ "Myth::Locked< T >::value", "classMyth_1_1Locked_1_1value.html", null ],
     [ "sajson::value", "classsajson_1_1value.html", null ],
     [ "Myth::Version", "structMyth_1_1Version.html", null ],
     [ "Myth::VideoSource", "structMyth_1_1VideoSource.html", null ],

@@ -1,9 +1,12 @@
 var classMyth_1_1LockGuard =
 [
-    [ "LOCKABLE", "classMyth_1_1LockGuard.html#a0df9a4c097ff0245ca11427337d9587f", null ],
-    [ "LockGuard", "classMyth_1_1LockGuard.html#a5d9d1e591bb11215633cd1a42aa8a15b", null ],
+    [ "Lockable", "structMyth_1_1LockGuard_1_1Lockable.html", "structMyth_1_1LockGuard_1_1Lockable" ],
+    [ "LockGuard", "classMyth_1_1LockGuard.html#a4692eb078f4c373d1bf46d4f2601ee40", null ],
     [ "~LockGuard", "classMyth_1_1LockGuard.html#acf9fd2e90ecd3b193b6292989a644c2c", null ],
-    [ "CreateLock", "classMyth_1_1LockGuard.html#a16b17a66f6e7876c0bb696a96d0ffb50", null ],
-    [ "DestroyLock", "classMyth_1_1LockGuard.html#a90cb52ee135847fa8277e6d08b907544", null ],
-    [ "payload", "classMyth_1_1LockGuard.html#ad115f83985f8d7be012fb6211c216b49", null ]
+    [ "ClearLock", "classMyth_1_1LockGuard.html#a11406b4a1101b7171ff3483409a4efa7", null ],
+    [ "CreateLock", "classMyth_1_1LockGuard.html#a158fb7ea68043ced8d38960c2cc36efa", null ],
+    [ "DestroyLock", "classMyth_1_1LockGuard.html#aa639507e68dc82e024a5680e3b012589", null ],
+    [ "Lock", "classMyth_1_1LockGuard.html#abafeb16b48611cc75303aa691b8b6f30", null ],
+    [ "Unlock", "classMyth_1_1LockGuard.html#a68d034fdf86030776364450303103a89", null ],
+    [ "m_lock", "classMyth_1_1LockGuard.html#a4cc1a1a860c6d4cf0515c71572c71f64", null ]
 ];

@@ -14,6 +14,6 @@ var classMyth_1_1shared__ptr =
     [ "reset", "classMyth_1_1shared__ptr.html#a15f5f988373da424bc2ace90b4e97277", null ],
     [ "swap", "classMyth_1_1shared__ptr.html#a7d1677dc09eb1c56f1b0a34d031a6897", null ],
     [ "use_count", "classMyth_1_1shared__ptr.html#ab51db2b703064ec4cd02dbf939413831", null ],
-    [ "c", "classMyth_1_1shared__ptr.html#a416ef942e08b1703dd24a1bba5dbd55c", null ],
+    [ "c", "classMyth_1_1shared__ptr.html#a552db8453ba2bb850769058817a29efe", null ],
     [ "p", "classMyth_1_1shared__ptr.html#a1587c8d14de0217f32ccaa8b488cefdb", null ]
 ];
