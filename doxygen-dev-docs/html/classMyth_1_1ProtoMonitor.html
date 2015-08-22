@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -94,7 +95,7 @@ $(document).ready(function(){initNavTree('classMyth_1_1ProtoMonitor.html','');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -145,9 +146,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()<
 <tr class="memitem:a05c66c37080e73fd1f404458c9e90813"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05c66c37080e73fd1f404458c9e90813"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsOpen</b> ()</td></tr>
 <tr class="separator:a05c66c37080e73fd1f404458c9e90813"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fccd8a4f403d3951fb0472426d8d49a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fccd8a4f403d3951fb0472426d8d49a"></a>
-ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetNextFreeRecorder</b> (int rnum)</td></tr>
-<tr class="separator:a1fccd8a4f403d3951fb0472426d8d49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00b2ec6a8918c190b537465297941980"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00b2ec6a8918c190b537465297941980"></a>
 ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetRecorderFromNum</b> (int rnum)</td></tr>
 <tr class="separator:a00b2ec6a8918c190b537465297941980"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,11 +188,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>BlockShutdown</b> ()<
 <tr class="memitem:aef871dc95c22bd093549e890ae0904ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef871dc95c22bd093549e890ae0904ce"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>AllowShutdown</b> ()</td></tr>
 <tr class="separator:aef871dc95c22bd093549e890ae0904ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d89e4b28be55951312620b277d0e198"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d89e4b28be55951312620b277d0e198"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeCardIdList</b> ()</td></tr>
+<tr class="memitem:a0d89e4b28be55951312620b277d0e198"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoMonitor.html#a0d89e4b28be55951312620b277d0e198">GetFreeCardIdList</a> ()</td></tr>
+<tr class="memdesc:a0d89e4b28be55951312620b277d0e198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the backend for a list of free recorders.  <a href="#a0d89e4b28be55951312620b277d0e198">More...</a><br/></td></tr>
 <tr class="separator:a0d89e4b28be55951312620b277d0e198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d4a91d53292503181b49de8ea781937"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d4a91d53292503181b49de8ea781937"></a>
-CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeInputs</b> (int rnum)</td></tr>
+<tr class="memitem:a8d4a91d53292503181b49de8ea781937"><td class="memItemLeft" align="right" valign="top">CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937">GetFreeInputs</a> (int rnum)</td></tr>
+<tr class="memdesc:a8d4a91d53292503181b49de8ea781937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the backend for a list of free inputs. A free input is one that is connected but not busy, not in a busy input group or is locked.  <a href="#a8d4a91d53292503181b49de8ea781937">More...</a><br/></td></tr>
 <tr class="separator:a8d4a91d53292503181b49de8ea781937"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
 <tr class="memitem:a3d12738e883c3a4a4f2d363a9a75fd4c inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d12738e883c3a4a4f2d363a9a75fd4c"></a>
@@ -227,9 +225,6 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:af87eb746f5297c772dcd7c79739a226b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af87eb746f5297c772dcd7c79739a226b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Announce75</b> ()</td></tr>
 <tr class="separator:af87eb746f5297c772dcd7c79739a226b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04474afcf855f9d01af14af4f2d3e077"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04474afcf855f9d01af14af4f2d3e077"></a>
-ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetNextFreeRecorder75</b> (int rnum)</td></tr>
-<tr class="separator:a04474afcf855f9d01af14af4f2d3e077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a345fabca07fa06c9b39a0697a3b4af91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a345fabca07fa06c9b39a0697a3b4af91"></a>
 ProtoRecorderPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetRecorderFromNum75</b> (int rnum)</td></tr>
 <tr class="separator:a345fabca07fa06c9b39a0697a3b4af91"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -275,6 +270,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AllowShutdown75</b> (
 <tr class="memitem:aa92ed014eba86babee92a7c2229cd15a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa92ed014eba86babee92a7c2229cd15a"></a>
 std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeCardIdList75</b> ()</td></tr>
 <tr class="separator:aa92ed014eba86babee92a7c2229cd15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b942f5a7127797fd4973ed65e77597"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77b942f5a7127797fd4973ed65e77597"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeCardIdList87</b> ()</td></tr>
+<tr class="separator:a77b942f5a7127797fd4973ed65e77597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86bf02a7c0ab30f3815ea62eee20df11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86bf02a7c0ab30f3815ea62eee20df11"></a>
 CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeInputs75</b> (int rnum)</td></tr>
 <tr class="separator:a86bf02a7c0ab30f3815ea62eee20df11"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -284,6 +282,9 @@ CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeIn
 <tr class="memitem:a4190ce31f3185d4a3ddcd5fbeb52b363"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4190ce31f3185d4a3ddcd5fbeb52b363"></a>
 CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeInputs81</b> (int rnum)</td></tr>
 <tr class="separator:a4190ce31f3185d4a3ddcd5fbeb52b363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aaf8d5eb5d5d5d7f14e5f169cb6120b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aaf8d5eb5d5d5d7f14e5f169cb6120b"></a>
+CardInputListPtr&#160;</td><td class="memItemRight" valign="bottom"><b>GetFreeInputs87</b> (int rnum)</td></tr>
+<tr class="separator:a5aaf8d5eb5d5d5d7f14e5f169cb6120b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -357,7 +358,73 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="mythprotomonitor_8h_source.html#l00035">35</a> of file <a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a0d89e4b28be55951312620b277d0e198"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; Myth::ProtoMonitor::GetFreeCardIdList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Asks the backend for a list of free recorders. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use instead GetFreeInputs(0) since protocol 87. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>List of recorder num (card ids) </dd></dl>
+
+<p>Definition at line <a class="el" href="mythprotomonitor_8h_source.html#l00108">108</a> of file <a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d4a91d53292503181b49de8ea781937"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CardInputListPtr Myth::ProtoMonitor::GetFreeInputs </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rnum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Asks the backend for a list of free inputs. A free input is one that is connected but not busy, not in a busy input group or is locked. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rnum</td><td>Up to protocol 86: Related recorder num (cardId) </td></tr>
+    <tr><td class="paramname">rnum</td><td>Since protocol 87: Input to exclude (not counted as busy). Use 0 for none. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="mythprotomonitor_8h_source.html#l00119">119</a> of file <a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotomonitor_8h_source.html">mythprotomonitor.h</a></li>
 <li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotomonitor_8cpp_source.html">mythprotomonitor.cpp</a></li>
 </ul>
@@ -367,7 +434,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceMyth.html">Myth</a></li><li class="navelem"><a class="el" href="classMyth_1_1ProtoMonitor.html">ProtoMonitor</a></li>
-    <li class="footer">Generated on Mon Aug 10 2015 20:05:42 for CPPMyth by
+    <li class="footer">Generated on Sat Aug 22 2015 14:21:02 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

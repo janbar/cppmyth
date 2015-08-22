@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -120,7 +121,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -249,6 +250,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classMyth_1_1Control.html#ace927146b543fefbfc88ad1085feb36a">Myth::Control</a>
 , <a class="el" href="classMyth_1_1WSAPI.html#a0da36e2f461511d23e136a737f7b0353">Myth::WSAPI</a>
 </li>
+<li>GetFreeCardIdList()
+: <a class="el" href="classMyth_1_1ProtoMonitor.html#a0d89e4b28be55951312620b277d0e198">Myth::ProtoMonitor</a>
+</li>
+<li>GetFreeInputs()
+: <a class="el" href="classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937">Myth::ProtoMonitor</a>
+</li>
 <li>GetPreviewImage()
 : <a class="el" href="classMyth_1_1Control.html#aa02687441d2a953a71cc7b6a5dc1325f">Myth::Control</a>
 , <a class="el" href="classMyth_1_1WSAPI.html#a51141b31138515af3a802cbf38907fe2">Myth::WSAPI</a>
@@ -298,11 +305,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classMyth_1_1WSAPI.html#ab6d59d30104f8d8f1e3049d7c725afc5">Myth::WSAPI</a>
 </li>
 <li>GetSetting()
-: <a class="el" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">Myth::Control</a>
+: <a class="el" href="classMyth_1_1Control.html#a6156009f8fa5959e86904683b4a5f335">Myth::Control</a>
 , <a class="el" href="classMyth_1_1WSAPI.html#a2c76a7b20ae766c42239f104b8ad33ec">Myth::WSAPI</a>
 </li>
 <li>GetSettings()
-: <a class="el" href="classMyth_1_1Control.html#adb3f9d0e1d7505778dfa43de539ddc32">Myth::Control</a>
+: <a class="el" href="classMyth_1_1Control.html#a9911162c927e55dbbf23201f536a376c">Myth::Control</a>
 , <a class="el" href="classMyth_1_1WSAPI.html#a6ca4e7646b0570eab55e5cf32d5b6bbe">Myth::WSAPI</a>
 </li>
 <li>GetUpcomingList()
@@ -421,7 +428,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Aug 10 2015 20:05:42 for CPPMyth by
+    <li class="footer">Generated on Sat Aug 22 2015 14:21:03 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

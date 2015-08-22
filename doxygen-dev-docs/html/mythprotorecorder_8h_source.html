@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -91,7 +92,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8h_source.html','');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -170,43 +171,45 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8h_source.html','');
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    CardInputListPtr GetFreeInputs()</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">if</span> (m_protoVersion &gt;= 81) <span class="keywordflow">return</span> GetFreeInputs81();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">if</span> (m_protoVersion &gt;= 79) <span class="keywordflow">return</span> GetFreeInputs79();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">return</span> GetFreeInputs75();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> IsLiveRecording();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> SetLiveRecording(<span class="keywordtype">bool</span> keep)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordtype">bool</span> ret = SetLiveRecording75(keep);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">if</span> (keep &amp;&amp; ret)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          m_liveRecording = keep; <span class="comment">// Hold status for this showing</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">bool</span> FinishRecording()</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">return</span> FinishRecording75();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> m_num;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> m_playing;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> m_liveRecording;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> SpawnLiveTV75(<span class="keyword">const</span> std::string&amp; chainid, <span class="keyword">const</span> std::string&amp; channum);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> StopLiveTV75();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> CheckChannel75(<span class="keyword">const</span> std::string&amp; channum);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ProgramPtr GetCurrentRecording75();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    int64_t GetFilePosition75();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    CardInputListPtr GetFreeInputs75();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    CardInputListPtr GetFreeInputs79();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    CardInputListPtr GetFreeInputs81();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> SetLiveRecording75(<span class="keywordtype">bool</span> keep);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> FinishRecording75();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  };</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">if</span> (m_protoVersion &gt;= 87) <span class="keywordflow">return</span> GetFreeInputs87();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">if</span> (m_protoVersion &gt;= 81) <span class="keywordflow">return</span> GetFreeInputs81();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">if</span> (m_protoVersion &gt;= 79) <span class="keywordflow">return</span> GetFreeInputs79();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">return</span> GetFreeInputs75();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> IsLiveRecording();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> SetLiveRecording(<span class="keywordtype">bool</span> keep)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordtype">bool</span> ret = SetLiveRecording75(keep);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordflow">if</span> (keep &amp;&amp; ret)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          m_liveRecording = keep; <span class="comment">// Hold status for this showing</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">bool</span> FinishRecording()</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">return</span> FinishRecording75();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> m_num;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> m_playing;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> m_liveRecording;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> SpawnLiveTV75(<span class="keyword">const</span> std::string&amp; chainid, <span class="keyword">const</span> std::string&amp; channum);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> StopLiveTV75();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span> CheckChannel75(<span class="keyword">const</span> std::string&amp; channum);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    ProgramPtr GetCurrentRecording75();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    int64_t GetFilePosition75();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    CardInputListPtr GetFreeInputs75();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    CardInputListPtr GetFreeInputs79();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    CardInputListPtr GetFreeInputs81();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    CardInputListPtr GetFreeInputs87();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">bool</span> SetLiveRecording75(<span class="keywordtype">bool</span> keep);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> FinishRecording75();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  };</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTORECORDER_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* MYTHPROTORECORDER_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classMyth_1_1ProtoPlayback_html"><div class="ttname"><a href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotoplayback_8h_source.html#l00033">mythprotoplayback.h:33</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoRecorder_html"><div class="ttname"><a href="classMyth_1_1ProtoRecorder.html">Myth::ProtoRecorder</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotorecorder_8h_source.html#l00033">mythprotorecorder.h:33</a></div></div>
 <div class="ttc" id="structMyth_1_1Channel_html"><div class="ttname"><a href="structMyth_1_1Channel.html">Myth::Channel</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00253">mythtypes.h:253</a></div></div>
@@ -216,7 +219,7 @@ $(document).ready(function(){initNavTree('mythprotorecorder_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><a class="el" href="dir_012887ab088e747b771213d49fecd247.html">proto</a></li><li class="navelem"><b>mythprotorecorder.h</b></li>
-    <li class="footer">Generated on Mon Aug 10 2015 20:05:41 for CPPMyth by
+    <li class="footer">Generated on Sat Aug 22 2015 14:21:02 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

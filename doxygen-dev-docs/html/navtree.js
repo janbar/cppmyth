@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "CPPMyth", "index.html", [
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -27,11 +28,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classMyth_1_1LockedNumber.html#aeac6707ccc1b97bbb2b6891164101d7a",
-"classMyth_1_1WSAPI.html#a049dbafd6e9c2df5c6e13e91420389ff",
-"classNSROOT_1_1OS_1_1CThreadPool.html#a6c1c7fc57ba4ae28230b825681ec6a28",
-"structMyth_1_1CardInput.html#ad712566a65597d141639f13281693b37",
-"threadpool_8h_source.html"
+"classMyth_1_1LockedNumber.html#a0cc0933c92fa8102fd35de82e682a867",
+"classMyth_1_1URIParser.html#af3af9dcac0074a4f479e556bb9861483",
+"classNSROOT_1_1OS_1_1CThreadPool.html#a2b48cd68ab9bc63c8ad1b564a2ade064",
+"structMyth_1_1CaptureCard.html#aeebe1e6518ce6301d13a31ef6a635ffe",
+"structsajson_1_1parser_1_1parse__result.html#ad8c25585f2d98360b0bdf20453b87da6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
