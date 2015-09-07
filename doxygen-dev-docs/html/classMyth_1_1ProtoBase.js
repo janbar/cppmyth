@@ -1,5 +1,11 @@
 var classMyth_1_1ProtoBase =
 [
+    [ "ERROR_t", "classMyth_1_1ProtoBase.html#a442f68ccaa9333ee42dafd14fdd1fd52", [
+      [ "ERROR_NO_ERROR", "classMyth_1_1ProtoBase.html#a442f68ccaa9333ee42dafd14fdd1fd52a2e400b5338720bd1625b921b173d2d5c", null ],
+      [ "ERROR_SERVER_UNREACHABLE", "classMyth_1_1ProtoBase.html#a442f68ccaa9333ee42dafd14fdd1fd52a182661d81116ef2a99f2d32d49ce1fd5", null ],
+      [ "ERROR_SOCKET_ERROR", "classMyth_1_1ProtoBase.html#a442f68ccaa9333ee42dafd14fdd1fd52acb0f7a975640a16a405e920782793a52", null ],
+      [ "ERROR_UNKNOWN_VERSION", "classMyth_1_1ProtoBase.html#a442f68ccaa9333ee42dafd14fdd1fd52af9af9e111b9b49532a2be9f290134b6e", null ]
+    ] ],
     [ "ProtoBase", "classMyth_1_1ProtoBase.html#a3d12738e883c3a4a4f2d363a9a75fd4c", null ],
     [ "~ProtoBase", "classMyth_1_1ProtoBase.html#a2a71ee141ad83f87c11300ee21ab8bf0", null ],
     [ "CleanHanging", "classMyth_1_1ProtoBase.html#a543c83e0fb4b626d178da96d4e8f3926", null ],
@@ -7,6 +13,7 @@ var classMyth_1_1ProtoBase =
     [ "FlushMessage", "classMyth_1_1ProtoBase.html#a1a2632ea59e6b88718aa41e4bab68b11", null ],
     [ "GetMessageLength", "classMyth_1_1ProtoBase.html#a6287a0f2dd75bfc4b27d7dbfd12937f7", null ],
     [ "GetPort", "classMyth_1_1ProtoBase.html#a35739159ac956fbaf3b637235ab4f4f1", null ],
+    [ "GetProtoError", "classMyth_1_1ProtoBase.html#aa152a9a0c45b36b0325cf14bf7258f6a", null ],
     [ "GetProtoVersion", "classMyth_1_1ProtoBase.html#ade68cb0edb804c12b08fcfe9631a2c40", null ],
     [ "GetServer", "classMyth_1_1ProtoBase.html#ae6fd40cfce8ba216481b5f3766b58ad9", null ],
     [ "GetSocket", "classMyth_1_1ProtoBase.html#a6b14bb426d0cf240ffb9513e25b84a54", null ],
@@ -39,6 +46,7 @@ var classMyth_1_1ProtoBase =
     [ "m_msgLength", "classMyth_1_1ProtoBase.html#a31741ac8bf7ef00ad9274296057562a6", null ],
     [ "m_mutex", "classMyth_1_1ProtoBase.html#ace4e1979a81a92f48e47c83398cbe343", null ],
     [ "m_port", "classMyth_1_1ProtoBase.html#a76783b30e3d26240e7389f8982b151ae", null ],
+    [ "m_protoError", "classMyth_1_1ProtoBase.html#a6cc15c2e0a96167805eaa0913d758faa", null ],
     [ "m_protoVersion", "classMyth_1_1ProtoBase.html#ae5b5ed44dab340da43ff0668c1e330a9", null ],
     [ "m_server", "classMyth_1_1ProtoBase.html#af593690d0d2d398fb87da0928bfedeea", null ],
     [ "m_socket", "classMyth_1_1ProtoBase.html#ab94a0c6b2fa3a0a70d381b34434f6661", null ],

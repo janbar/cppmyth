@@ -27,6 +27,7 @@ var classMyth_1_1Control =
     [ "GetFile", "classMyth_1_1Control.html#ace927146b543fefbfc88ad1085feb36a", null ],
     [ "GetPreviewImage", "classMyth_1_1Control.html#aa02687441d2a953a71cc7b6a5dc1325f", null ],
     [ "GetProgramGuide", "classMyth_1_1Control.html#a2120a5873785a46c2283fe0fe6ad6a12", null ],
+    [ "GetProtoError", "classMyth_1_1Control.html#a5fab577810964cee24ed6d75409060ff", null ],
     [ "GetRecGroupList", "classMyth_1_1Control.html#a030d5c8d1c9c0632168f066214a8712f", null ],
     [ "GetRecorded", "classMyth_1_1Control.html#a9973bb8127834d0a46f79da1f6728480", null ],
     [ "GetRecorded", "classMyth_1_1Control.html#a5c100de668dfabe2333c6ff55e19593b", null ],

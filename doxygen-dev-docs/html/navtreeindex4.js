@@ -1,5 +1,13 @@
 var NAVTREEINDEX4 =
 {
+"structMyth_1_1Artwork.html#a061dfc93563e0ce70f30c4d37ab467ef":[2,0,0,18,2],
+"structMyth_1_1Artwork.html#a12825a2cb2958d73b4675463525f905e":[2,0,0,18,3],
+"structMyth_1_1Artwork.html#a51d188319c6bcaeaa831876d1c415a94":[2,0,0,18,0],
+"structMyth_1_1Artwork.html#af8308b99e3ad3c43315ee1edd8ffd589":[2,0,0,18,1],
+"structMyth_1_1CaptureCard.html":[2,0,0,22],
+"structMyth_1_1CaptureCard.html#a2bb3f77e0e9b31ff06a5bf248d4bf23a":[2,0,0,22,0],
+"structMyth_1_1CaptureCard.html#a52be68e69ef8cc7d6ff6c8c949b3d378":[2,0,0,22,2],
+"structMyth_1_1CaptureCard.html#ae10acc039ee74b2af2baa20dbf5a0cb1":[2,0,0,22,1],
 "structMyth_1_1CaptureCard.html#aeebe1e6518ce6301d13a31ef6a635ffe":[2,0,0,22,3],
 "structMyth_1_1CardInput.html":[2,0,0,23],
 "structMyth_1_1CardInput.html#a6f3ba4405fd6ed7735dc64281ae1a866":[2,0,0,23,3],
@@ -241,13 +249,5 @@ var NAVTREEINDEX4 =
 "structsajson_1_1object__key__comparator.html#af3f4d5f5b798cb04ae808b193faaa2ce":[2,0,3,3,1],
 "structsajson_1_1object__key__record.html":[2,0,3,2],
 "structsajson_1_1object__key__record.html#a1b7fec98b0292a0408da2b73a25dc1c4":[2,0,3,2,2],
-"structsajson_1_1object__key__record.html#a2f4cb6135438290b6052f6792dffe919":[2,0,3,2,1],
-"structsajson_1_1object__key__record.html#a57ed0f7618d34b13911df9fe9c509118":[2,0,3,2,0],
-"structsajson_1_1parser_1_1error__result.html":[2,0,3,10,0],
-"structsajson_1_1parser_1_1error__result.html#ac719a1e87ef836295902344f539daa82":[2,0,3,10,0,0],
-"structsajson_1_1parser_1_1parse__result.html":[2,0,3,10,1],
-"structsajson_1_1parser_1_1parse__result.html#a4f57503287e10c5778ca0864127f5b75":[2,0,3,10,1,2],
-"structsajson_1_1parser_1_1parse__result.html#a98fe03a13f2800c2438a88e542beeaf4":[2,0,3,10,1,3],
-"structsajson_1_1parser_1_1parse__result.html#aa8a33738f296078f39af613671eb0df2":[2,0,3,10,1,1],
-"structsajson_1_1parser_1_1parse__result.html#ac54505e4d98f0d6671832d57e3394c5b":[2,0,3,10,1,0]
+"structsajson_1_1object__key__record.html#a2f4cb6135438290b6052f6792dffe919":[2,0,3,2,1]
 };

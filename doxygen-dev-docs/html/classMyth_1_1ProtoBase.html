@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('classMyth_1_1ProtoBase.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -130,6 +131,15 @@ Collaboration diagram for Myth::ProtoBase:</div>
 <area shape="rect" id="node2" title="STL class. " alt="" coords="27,93,108,117"/><area shape="rect" id="node3" title="STL class. " alt="" coords="5,6,131,42"/><area shape="rect" id="node4" href="classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="133,93,244,117"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a442f68ccaa9333ee42dafd14fdd1fd52"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>ERROR_t</b> { <b>ERROR_NO_ERROR</b> = 0, 
+<b>ERROR_SERVER_UNREACHABLE</b>, 
+<b>ERROR_SOCKET_ERROR</b>, 
+<b>ERROR_UNKNOWN_VERSION</b>
+ }</td></tr>
+<tr class="separator:a442f68ccaa9333ee42dafd14fdd1fd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d12738e883c3a4a4f2d363a9a75fd4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d12738e883c3a4a4f2d363a9a75fd4c"></a>
@@ -165,6 +175,9 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>HasHanging</b
 <tr class="memitem:a543c83e0fb4b626d178da96d4e8f3926"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a543c83e0fb4b626d178da96d4e8f3926"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>CleanHanging</b> ()</td></tr>
 <tr class="separator:a543c83e0fb4b626d178da96d4e8f3926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa152a9a0c45b36b0325cf14bf7258f6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa152a9a0c45b36b0325cf14bf7258f6a"></a>
+virtual ERROR_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetProtoError</b> () const </td></tr>
+<tr class="separator:aa152a9a0c45b36b0325cf14bf7258f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -270,6 +283,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f50f0f4f586f9a86015c4fc82056b46"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr>
 <tr class="separator:a8f50f0f4f586f9a86015c4fc82056b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cc15c2e0a96167805eaa0913d758faa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6cc15c2e0a96167805eaa0913d758faa"></a>
+ERROR_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_protoError</b></td></tr>
+<tr class="separator:a6cc15c2e0a96167805eaa0913d758faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -305,9 +321,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true : false </dd></dl>
 
-<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00247">247</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
+<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00248">248</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
 
-<p>References <a class="el" href="mythprotobase_8cpp_source.html#l00128">ReadField()</a>.</p>
+<p>References <a class="el" href="mythprotobase_8cpp_source.html#l00129">ReadField()</a>.</p>
 
 </div>
 </div>
@@ -341,9 +357,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_isOpen</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true : false </dd></dl>
 
-<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00128">128</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
+<p>Definition at line <a class="el" href="mythprotobase_8cpp_source.html#l00129">129</a> of file <a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="mythprotoevent_8cpp_source.html#l00131">Myth::ProtoEvent::RcvBackendMessage()</a>, and <a class="el" href="mythprotobase_8cpp_source.html#l00247">RcvVersion()</a>.</p>
+<p>Referenced by <a class="el" href="mythprotoevent_8cpp_source.html#l00131">Myth::ProtoEvent::RcvBackendMessage()</a>, and <a class="el" href="mythprotobase_8cpp_source.html#l00248">RcvVersion()</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -357,8 +373,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8h_source.html">mythprotobase.h</a></li>
-<li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a></li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8h_source.html">mythprotobase.h</a></li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/proto/<a class="el" href="mythprotobase_8cpp_source.html">mythprotobase.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -366,7 +382,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceMyth.html">Myth</a></li><li class="navelem"><a class="el" href="classMyth_1_1ProtoBase.html">ProtoBase</a></li>
-    <li class="footer">Generated on Tue Sep 1 2015 14:41:11 for CPPMyth by
+    <li class="footer">Generated on Mon Sep 7 2015 17:19:25 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

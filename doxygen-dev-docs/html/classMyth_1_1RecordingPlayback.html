@@ -219,6 +219,13 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_msgConsumed</b></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classMyth_1_1ProtoBase"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classMyth_1_1ProtoBase')"><img src="closed.png" alt="-"/>&#160;Private Types inherited from <a class="el" href="classMyth_1_1ProtoBase.html">Myth::ProtoBase</a></td></tr>
+<tr class="memitem:a442f68ccaa9333ee42dafd14fdd1fd52 inherit pub_types_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>ERROR_t</b> { <b>ERROR_NO_ERROR</b> = 0, 
+<b>ERROR_SERVER_UNREACHABLE</b>, 
+<b>ERROR_SOCKET_ERROR</b>, 
+<b>ERROR_UNKNOWN_VERSION</b>
+ }</td></tr>
+<tr class="separator:a442f68ccaa9333ee42dafd14fdd1fd52 inherit pub_types_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMyth_1_1ProtoPlayback"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMyth_1_1ProtoPlayback')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classMyth_1_1ProtoPlayback.html">Myth::ProtoPlayback</a></td></tr>
 <tr class="memitem:aaeb3cb8a682dc83f85e1c6a38c57b53d inherit pub_methods_classMyth_1_1ProtoPlayback"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaeb3cb8a682dc83f85e1c6a38c57b53d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ProtoPlayback</b> (const std::string &amp;server, unsigned port)</td></tr>
@@ -260,6 +267,9 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>HasHanging</b
 <tr class="memitem:a543c83e0fb4b626d178da96d4e8f3926 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a543c83e0fb4b626d178da96d4e8f3926"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>CleanHanging</b> ()</td></tr>
 <tr class="separator:a543c83e0fb4b626d178da96d4e8f3926 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa152a9a0c45b36b0325cf14bf7258f6a inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa152a9a0c45b36b0325cf14bf7258f6a"></a>
+virtual ERROR_t&#160;</td><td class="memItemRight" valign="bottom"><b>GetProtoError</b> () const </td></tr>
+<tr class="separator:aa152a9a0c45b36b0325cf14bf7258f6a inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5810c14024df285f403f81150861411 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5810c14024df285f403f81150861411"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>OpenConnection</b> (int rcvbuf)</td></tr>
 <tr class="separator:ad5810c14024df285f403f81150861411 inherit pub_methods_classMyth_1_1ProtoBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,8 +304,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (
 <div class="textblock">
 <p>Definition at line <a class="el" href="mythrecordingplayback_8h_source.html#l00033">33</a> of file <a class="el" href="mythrecordingplayback_8h_source.html">mythrecordingplayback.h</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/<a class="el" href="mythrecordingplayback_8h_source.html">mythrecordingplayback.h</a></li>
-<li>/home/jlb/src/janbar/PVR/cppmythlib/cppmyth/src/<a class="el" href="mythrecordingplayback_8cpp_source.html">mythrecordingplayback.cpp</a></li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/<a class="el" href="mythrecordingplayback_8h_source.html">mythrecordingplayback.h</a></li>
+<li>/home/jlb/src/janbar/cppmythlib/cppmyth/src/<a class="el" href="mythrecordingplayback_8cpp_source.html">mythrecordingplayback.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -303,7 +313,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeProgramInfo</b> (
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceMyth.html">Myth</a></li><li class="navelem"><a class="el" href="classMyth_1_1RecordingPlayback.html">RecordingPlayback</a></li>
-    <li class="footer">Generated on Tue Sep 1 2015 14:41:11 for CPPMyth by
+    <li class="footer">Generated on Mon Sep 7 2015 17:19:25 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
