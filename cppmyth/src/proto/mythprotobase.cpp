@@ -38,18 +38,18 @@ typedef struct
 } myth_protomap_t;
 
 static myth_protomap_t protomap[] = {
-  {75, "SweetRock"},
-  {76, "FireWilde"},
-  {77, "WindMark"},
-  {79, "BasaltGiant"},
-  {80, "TaDah!"},
-  {81, "MultiRecDos"},
-  {82, "IdIdO"},
-  {83, "BreakingGlass"},
-  {84, "CanaryCoalmine"},
-  {85, "BluePool"},
-  {86, "(ノಠ益ಠ)ノ彡┻━┻"},
   {87, "(ノಠ益ಠ)ノ彡┻━┻_No_entiendo!)"},
+  {86, "(ノಠ益ಠ)ノ彡┻━┻"},
+  {85, "BluePool"},
+  {84, "CanaryCoalmine"},
+  {83, "BreakingGlass"},
+  {82, "IdIdO"},
+  {81, "MultiRecDos"},
+  {80, "TaDah!"},
+  {79, "BasaltGiant"},
+  {77, "WindMark"},
+  {76, "FireWilde"},
+  {75, "SweetRock"},
   {0, ""}
 };
 
