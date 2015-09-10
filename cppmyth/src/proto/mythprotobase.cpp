@@ -279,83 +279,74 @@ bool ProtoBase::OpenConnection(int rcvbuf)
 {
   static unsigned my_version = 0;
   char cmd[256];
-  bool ok, retry, attempt = false;
-  myth_protomap_t *map = protomap;
+  myth_protomap_t *map;
   unsigned tmp_ver;
 
   OS::CLockGuard lock(*m_mutex);
 
   if (!my_version)
-    tmp_ver = map->version;
+    // try first version of the map
+    tmp_ver = protomap->version;
   else
+    // try previously agreed version
     tmp_ver = my_version;
 
   if (m_isOpen)
     ProtoBase::Close();
-  // If socket connection failed then hang will remain up allowing retry
-  m_hang = true;
   // Reset error status
   m_protoError = ERROR_NO_ERROR;
-  do
+  for (;;)
   {
-    retry = false;
-    if (!(ok = m_socket->Connect(m_server.c_str(), m_port, rcvbuf)))
-    {
-      m_protoError = ERROR_SERVER_UNREACHABLE;
-      continue;
-    }
-    // Now socket is connected: Reset hang
-    m_hang = false;
-
+    // Reset to allow downgrade/upgrade
+    map = protomap;
     while (map->version != 0 && map->version != tmp_ver)
       ++map;
 
-    ok = false;
     if (map->version == 0)
     {
       m_protoError = ERROR_UNKNOWN_VERSION;
       DBG(MYTH_DBG_ERROR, "%s: failed to connect with any version\n", __FUNCTION__);
-      continue;
+      break;
     }
+
+    if (!m_socket->Connect(m_server.c_str(), m_port, rcvbuf))
+    {
+      // hang will remain up allowing retry
+      m_hang = true;
+      m_protoError = ERROR_SERVER_UNREACHABLE;
+      break;
+    }
+    // Now socket is connected: Reset hang
+    m_hang = false;
 
     sprintf(cmd, "MYTH_PROTO_VERSION %" PRIu32 " %s", map->version, map->token);
 
-    if (!(ok = SendCommand(cmd)))
-      continue;
-    if (!(ok = RcvVersion(&tmp_ver)))
-      continue;
+    if (!SendCommand(cmd) || !RcvVersion(&tmp_ver))
+    {
+      m_protoError = ERROR_SOCKET_ERROR;
+      break;
+    }
 
     DBG(MYTH_DBG_DEBUG, "%s: asked for version %" PRIu32 ", got version %" PRIu32 "\n",
             __FUNCTION__, map->version, tmp_ver);
 
     if (map->version == tmp_ver)
-      continue;
-
-    if (!attempt)
     {
-      m_socket->Disconnect();
-      retry = true;
+      DBG(MYTH_DBG_DEBUG, "%s: agreed on version %u\n", __FUNCTION__, tmp_ver);
+      if (tmp_ver != my_version)
+        my_version = tmp_ver; // Store agreed version for next time
+      m_isOpen = true;
+      m_protoVersion = tmp_ver;
+      return true;
     }
-    ok = false;
-  }
-  while (retry);
-
-  if (!ok)
-  {
+    // Retry with the returned version
     m_socket->Disconnect();
-    m_isOpen = false;
-    m_protoVersion = 0;
-    // An unknown error occurred: We should check error from socket
-    if (m_protoError == ERROR_NO_ERROR)
-      m_protoError = ERROR_SOCKET_ERROR;
-    return false;
   }
-  DBG(MYTH_DBG_DEBUG, "%s: agreed on Version %u protocol\n", __FUNCTION__, tmp_ver);
-  if (tmp_ver != my_version)
-    my_version = tmp_ver; // Store agreed version for next time
-  m_isOpen = true;
-  m_protoVersion = tmp_ver;
-  return true;
+
+  m_socket->Disconnect();
+  m_isOpen = false;
+  m_protoVersion = 0;
+  return false;
 }
 
 void ProtoBase::Close()
