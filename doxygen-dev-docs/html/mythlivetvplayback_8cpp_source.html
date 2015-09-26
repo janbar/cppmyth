@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -92,7 +91,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -813,7 +812,7 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  <span class="keywordflow">return</span> (m_recorder ? m_signal : SignalStatusPtr());</div>
 <div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;}</div>
 <div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;LiveTVPlayback::preferredCards_t LiveTVPlayback::FindTunableCardIds75(<span class="keyword">const</span> std::string&amp; chanNum, <span class="keyword">const</span> ChannelList&amp; channels)</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;LiveTVPlayback::preferredCards_t LiveTVPlayback::FindTunableCardIds(<span class="keyword">const</span> std::string&amp; chanNum, <span class="keyword">const</span> ChannelList&amp; channels)</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;{</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  <span class="comment">// Make the set of channels matching the desired channel number</span></div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  ChannelList chanset;</div>
@@ -825,73 +824,37 @@ $(document).ready(function(){initNavTree('mythlivetvplayback_8cpp_source.html','
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;  <span class="comment">// Retrieve unlocked encoders and fill the list of preferred cards.</span></div>
 <div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;  <span class="comment">// It is ordered by its key liveTVOrder and contains matching between channels</span></div>
 <div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  <span class="comment">// and card inputs using their respective sourceId and mplexId</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  std::vector&lt;int&gt; ids = <a class="code" href="classMyth_1_1ProtoMonitor.html#a0d89e4b28be55951312620b277d0e198">GetFreeCardIdList</a>();</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  preferredCards_t preferredCards;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">for</span> (std::vector&lt;int&gt;::const_iterator itc = ids.begin(); itc != ids.end(); ++itc)</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  preferredCards_t preferredCards;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  CardInputListPtr inputs = <a class="code" href="classMyth_1_1ProtoMonitor.html#a37c6bf91b7a757c3a2e593f6b44e7d78">GetFreeInputs</a>(0);</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">for</span> (CardInputList::const_iterator iti = inputs-&gt;begin(); iti != inputs-&gt;end(); ++iti)</div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  {</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    CardInputListPtr inputs = <a class="code" href="classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937">GetFreeInputs</a>(*itc);</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="keywordflow">for</span> (CardInputList::const_iterator iti = inputs-&gt;begin(); iti != inputs-&gt;end(); ++iti)</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    {</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;      <span class="keywordflow">for</span> (ChannelList::const_iterator itchan = chanset.begin(); itchan != chanset.end(); ++itchan)</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;      {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="keywordflow">if</span> ((*itchan)-&gt;sourceId == (*iti)-&gt;sourceId &amp;&amp; ( (*iti)-&gt;mplexId == 0 || (*iti)-&gt;mplexId == (*itchan)-&gt;mplexId ))</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        {</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;          preferredCards.insert(std::make_pair((*iti)-&gt;liveTVOrder, std::make_pair(*iti, *itchan)));</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;          DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: [%u] channel=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) card=%&quot;</span> PRIu32 <span class="stringliteral">&quot; input=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) mplex=%&quot;</span> PRIu32 <span class="stringliteral">&quot; source=%&quot;</span> PRIu32 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                  __FUNCTION__, (*iti)-&gt;liveTVOrder, (*itchan)-&gt;callSign.c_str(), (*itchan)-&gt;chanId,</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                  (*iti)-&gt;cardId, (*iti)-&gt;inputName.c_str(), (*iti)-&gt;inputId, (*iti)-&gt;mplexId, (*iti)-&gt;sourceId);</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;          <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        }</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;      }</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    }</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  }</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  <span class="keywordflow">return</span> preferredCards;</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;}</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;LiveTVPlayback::preferredCards_t LiveTVPlayback::FindTunableCardIds87(<span class="keyword">const</span> std::string&amp; chanNum, <span class="keyword">const</span> ChannelList&amp; channels)</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;{</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  <span class="comment">// Make the set of channels matching the desired channel number</span></div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  ChannelList chanset;</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  <span class="keywordflow">for</span> (ChannelList::const_iterator it = channels.begin(); it != channels.end(); ++it)</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  {</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="keywordflow">if</span> ((*it)-&gt;chanNum == chanNum)</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;      chanset.push_back(*it);</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  }</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  <span class="comment">// Retrieve unlocked encoders and fill the list of preferred cards.</span></div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;  <span class="comment">// It is ordered by its key liveTVOrder and contains matching between channels</span></div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;  <span class="comment">// and card inputs using their respective sourceId and mplexId</span></div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;  preferredCards_t preferredCards;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;  CardInputListPtr inputs = <a class="code" href="classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937">GetFreeInputs</a>(0);</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <span class="keywordflow">for</span> (CardInputList::const_iterator iti = inputs-&gt;begin(); iti != inputs-&gt;end(); ++iti)</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;  {</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="keywordflow">for</span> (ChannelList::const_iterator itchan = chanset.begin(); itchan != chanset.end(); ++itchan)</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    {</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;      <span class="keywordflow">if</span> ((*itchan)-&gt;sourceId == (*iti)-&gt;sourceId &amp;&amp; ( (*iti)-&gt;mplexId == 0 || (*iti)-&gt;mplexId == (*itchan)-&gt;mplexId ))</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;      {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        preferredCards.insert(std::make_pair((*iti)-&gt;liveTVOrder, std::make_pair(*iti, *itchan)));</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;        DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: [%u] channel=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) card=%&quot;</span> PRIu32 <span class="stringliteral">&quot; input=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) mplex=%&quot;</span> PRIu32 <span class="stringliteral">&quot; source=%&quot;</span> PRIu32 <span class="stringliteral">&quot;\n&quot;</span>,</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                __FUNCTION__, (*iti)-&gt;liveTVOrder, (*itchan)-&gt;callSign.c_str(), (*itchan)-&gt;chanId,</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                (*iti)-&gt;cardId, (*iti)-&gt;inputName.c_str(), (*iti)-&gt;inputId, (*iti)-&gt;mplexId, (*iti)-&gt;sourceId);</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;      }</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    }</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;  }</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;  <span class="keywordflow">return</span> preferredCards;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;}</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    <span class="keywordflow">for</span> (ChannelList::const_iterator itchan = chanset.begin(); itchan != chanset.end(); ++itchan)</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    {</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;      <span class="keywordflow">if</span> ((*itchan)-&gt;sourceId == (*iti)-&gt;sourceId &amp;&amp; ( (*iti)-&gt;mplexId == 0 || (*iti)-&gt;mplexId == (*itchan)-&gt;mplexId ))</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;      {</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        preferredCards.insert(std::make_pair((*iti)-&gt;liveTVOrder, std::make_pair(*iti, *itchan)));</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        DBG(MYTH_DBG_DEBUG, <span class="stringliteral">&quot;%s: [%u] channel=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) card=%&quot;</span> PRIu32 <span class="stringliteral">&quot; input=%s(%&quot;</span> PRIu32 <span class="stringliteral">&quot;) mplex=%&quot;</span> PRIu32 <span class="stringliteral">&quot; source=%&quot;</span> PRIu32 <span class="stringliteral">&quot;\n&quot;</span>,</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                __FUNCTION__, (*iti)-&gt;liveTVOrder, (*itchan)-&gt;callSign.c_str(), (*itchan)-&gt;chanId,</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                (*iti)-&gt;cardId, (*iti)-&gt;inputName.c_str(), (*iti)-&gt;inputId, (*iti)-&gt;mplexId, (*iti)-&gt;sourceId);</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;      }</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  }</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;  <span class="keywordflow">return</span> preferredCards;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;}</div>
 <div class="ttc" id="classMyth_1_1ProtoTransfer_html"><div class="ttname"><a href="classMyth_1_1ProtoTransfer.html">Myth::ProtoTransfer</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprototransfer_8h_source.html#l00035">mythprototransfer.h:35</a></div></div>
+<div class="ttc" id="classMyth_1_1ProtoMonitor_html_a37c6bf91b7a757c3a2e593f6b44e7d78"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html#a37c6bf91b7a757c3a2e593f6b44e7d78">Myth::ProtoMonitor::GetFreeInputs</a></div><div class="ttdeci">CardInputListPtr GetFreeInputs(int rnum=0)</div><div class="ttdoc">Asks the backend for a list of free inputs. A free input is one that is connected but not busy...</div><div class="ttdef"><b>Definition:</b> <a href="mythprotomonitor_8h_source.html#l00108">mythprotomonitor.h:108</a></div></div>
 <div class="ttc" id="classMyth_1_1EventHandler_html"><div class="ttname"><a href="classMyth_1_1EventHandler.html">Myth::EventHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="mytheventhandler_8h_source.html#l00045">mytheventhandler.h:45</a></div></div>
 <div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00315">mythtypes.h:315</a></div></div>
 <div class="ttc" id="classMyth_1_1ProtoMonitor_html"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html">Myth::ProtoMonitor</a></div><div class="ttdef"><b>Definition:</b> <a href="mythprotomonitor_8h_source.html#l00035">mythprotomonitor.h:35</a></div></div>
 <div class="ttc" id="classMyth_1_1EventSubscriber_html"><div class="ttname"><a href="classMyth_1_1EventSubscriber.html">Myth::EventSubscriber</a></div><div class="ttdef"><b>Definition:</b> <a href="mytheventhandler_8h_source.html#l00038">mytheventhandler.h:38</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoMonitor_html_a0d89e4b28be55951312620b277d0e198"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html#a0d89e4b28be55951312620b277d0e198">Myth::ProtoMonitor::GetFreeCardIdList</a></div><div class="ttdeci">std::vector&lt; int &gt; GetFreeCardIdList()</div><div class="ttdoc">Asks the backend for a list of free recorders. </div><div class="ttdef"><b>Definition:</b> <a href="mythprotomonitor_8h_source.html#l00108">mythprotomonitor.h:108</a></div></div>
-<div class="ttc" id="classMyth_1_1ProtoMonitor_html_a8d4a91d53292503181b49de8ea781937"><div class="ttname"><a href="classMyth_1_1ProtoMonitor.html#a8d4a91d53292503181b49de8ea781937">Myth::ProtoMonitor::GetFreeInputs</a></div><div class="ttdeci">CardInputListPtr GetFreeInputs(int rnum)</div><div class="ttdoc">Asks the backend for a list of free inputs. A free input is one that is connected but not busy...</div><div class="ttdef"><b>Definition:</b> <a href="mythprotomonitor_8h_source.html#l00119">mythprotomonitor.h:119</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythlivetvplayback.cpp</b></li>
-    <li class="footer">Generated on Thu Sep 10 2015 10:17:43 for CPPMyth by
+    <li class="footer">Generated on Sat Sep 26 2015 11:25:39 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
