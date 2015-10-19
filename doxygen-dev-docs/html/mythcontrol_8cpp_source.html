@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('mythcontrol_8cpp_source.html','');});
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  std::string backend_addr;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// Query backend server IP</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP&quot;</span>, hostName);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a8d51e61034846a6f39d3b58b28973e5d">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP&quot;</span>, hostName);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">if</span> (settingAddr &amp;&amp; !settingAddr-&gt;value.empty())</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    backend_addr = settingAddr-&gt;value;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">return</span> backend_addr;</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('mythcontrol_8cpp_source.html','');});
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::string backend_addr;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// Query backend server IP6</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP6&quot;</span>, hostName);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Myth::SettingPtr settingAddr = this-&gt;<a class="code" href="classMyth_1_1Control.html#a8d51e61034846a6f39d3b58b28973e5d">GetSetting</a>(<span class="stringliteral">&quot;BackendServerIP6&quot;</span>, hostName);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (settingAddr &amp;&amp; !settingAddr-&gt;value.empty() &amp;&amp; settingAddr-&gt;value != <span class="stringliteral">&quot;::1&quot;</span>)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    backend_addr = settingAddr-&gt;value;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> backend_addr;</div>
@@ -185,7 +185,7 @@ $(document).ready(function(){initNavTree('mythcontrol_8cpp_source.html','');});
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">int</span> backend_port;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// Query backend server port</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  Myth::SettingPtr settingPort = this-&gt;<a class="code" href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">GetSetting</a>(<span class="stringliteral">&quot;BackendServerPort&quot;</span>, hostName);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  Myth::SettingPtr settingPort = this-&gt;<a class="code" href="classMyth_1_1Control.html#a8d51e61034846a6f39d3b58b28973e5d">GetSetting</a>(<span class="stringliteral">&quot;BackendServerPort&quot;</span>, hostName);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (settingPort &amp;&amp; !settingPort-&gt;value.empty() &amp;&amp; (backend_port = Myth::StringToInt(settingPort-&gt;value)) &gt; 0)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> backend_port;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> 0;</div>
@@ -204,8 +204,8 @@ $(document).ready(function(){initNavTree('mythcontrol_8cpp_source.html','');});
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">return</span> (program.artwork.empty() ? <span class="keyword">false</span> : <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="ttc" id="classMyth_1_1Control_html_a8d51e61034846a6f39d3b58b28973e5d"><div class="ttname"><a href="classMyth_1_1Control.html#a8d51e61034846a6f39d3b58b28973e5d">Myth::Control::GetSetting</a></div><div class="ttdeci">SettingPtr GetSetting(const std::string &amp;key, const std::string &amp;hostname)</div><div class="ttdoc">Query setting by its key. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8h_source.html#l00111">mythcontrol.h:111</a></div></div>
 <div class="ttc" id="structMyth_1_1Program_html"><div class="ttname"><a href="structMyth_1_1Program.html">Myth::Program</a></div><div class="ttdef"><b>Definition:</b> <a href="mythtypes_8h_source.html#l00315">mythtypes.h:315</a></div></div>
-<div class="ttc" id="classMyth_1_1Control_html_a229c5905d4496b312a5e2396a0b51956"><div class="ttname"><a href="classMyth_1_1Control.html#a229c5905d4496b312a5e2396a0b51956">Myth::Control::GetSetting</a></div><div class="ttdeci">SettingPtr GetSetting(const std::string &amp;key, const std::string hostname)</div><div class="ttdoc">Query setting by its key. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8h_source.html#l00111">mythcontrol.h:111</a></div></div>
 <div class="ttc" id="classMyth_1_1Control_html_a57bde8e429926ba7d28713b803a845eb"><div class="ttname"><a href="classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb">Myth::Control::RefreshRecordedArtwork</a></div><div class="ttdeci">bool RefreshRecordedArtwork(Program &amp;program)</div><div class="ttdoc">Refresh artwork available for a recording. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00087">mythcontrol.cpp:87</a></div></div>
 <div class="ttc" id="classMyth_1_1Control_html_a0b09a8032bb4587addf68895dc3beb31"><div class="ttname"><a href="classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31">Myth::Control::GetBackendServerIP</a></div><div class="ttdeci">std::string GetBackendServerIP(const std::string &amp;hostName)</div><div class="ttdoc">Query backend server IP. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00057">mythcontrol.cpp:57</a></div></div>
 <div class="ttc" id="classMyth_1_1Control_html_ac0340c8b775fe668e925a168d751c3b6"><div class="ttname"><a href="classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6">Myth::Control::GetBackendServerIP6</a></div><div class="ttdeci">std::string GetBackendServerIP6(const std::string &amp;hostName)</div><div class="ttdoc">Query backend server IP6. </div><div class="ttdef"><b>Definition:</b> <a href="mythcontrol_8cpp_source.html#l00067">mythcontrol.cpp:67</a></div></div>
@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('mythcontrol_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_effb527c06448bba7eccd2edf6d12ad5.html">cppmyth</a></li><li class="navelem"><a class="el" href="dir_539df8db4cc899f22124200982cf8680.html">src</a></li><li class="navelem"><b>mythcontrol.cpp</b></li>
-    <li class="footer">Generated on Sat Sep 26 2015 11:25:39 for CPPMyth by
+    <li class="footer">Generated on Tue Oct 20 2015 00:25:11 for CPPMyth by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
