@@ -86,7 +86,6 @@ void ProtoBase::HangException()
 
 bool ProtoBase::SendCommand(const char *cmd, bool feedback)
 {
-  char buf[9];
   size_t l = strlen(cmd);
 
   if (m_msgConsumed != m_msgLength)
@@ -97,6 +96,7 @@ bool ProtoBase::SendCommand(const char *cmd, bool feedback)
 
   if (l > 0 && l < PROTO_SENDMSG_MAXSIZE)
   {
+    char buf[9];
     std::string msg;
     msg.reserve(l + 8);
     sprintf(buf, "%-8u", (unsigned)l);
@@ -351,8 +351,6 @@ bool ProtoBase::OpenConnection(int rcvbuf)
 
 void ProtoBase::Close()
 {
-  const char *cmd = "DONE";
-
   OS::CLockGuard lock(*m_mutex);
 
   if (m_socket->IsConnected())
@@ -360,6 +358,7 @@ void ProtoBase::Close()
     // Close gracefully by sending DONE message before disconnect
     if (m_isOpen && !m_hang)
     {
+      const char *cmd = "DONE";
       if (SendCommand(cmd, false))
         DBG(MYTH_DBG_PROTO, "%s: done\n", __FUNCTION__);
       else
