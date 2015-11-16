@@ -50,7 +50,7 @@ typedef IN_ADDR in_addr_t;
 
 using namespace Myth;
 
-static int __addressFamily(SocketAdressFamily af)
+static int __addressFamily(SOCKET_AF_t af)
 {
   switch(af)
   {
@@ -84,7 +84,7 @@ namespace Myth
 ////
 
 static char my_hostname[SOCKET_HOSTNAME_MAXSIZE];
-static volatile tcp_socket_t my_socket;
+static volatile net_socket_t my_socket;
 
 static void __sigHandler(int sig)
 {
@@ -114,7 +114,7 @@ TcpSocket::~TcpSocket()
     delete[] m_buffer;
 }
 
-static int __connectAddr(struct addrinfo *addr, tcp_socket_t *s, int rcvbuf)
+static int __connectAddr(struct addrinfo *addr, net_socket_t *s, int rcvbuf)
 {
 #ifndef __WINDOWS__
   void (*old_sighandler)(int);
@@ -380,7 +380,7 @@ int TcpSocket::Listen(timeval *timeout)
   return -1;
 }
 
-tcp_socket_t TcpSocket::GetSocket() const
+net_socket_t TcpSocket::GetSocket() const
 {
   return m_socket;
 }
@@ -437,11 +437,7 @@ TcpServerSocket::TcpServerSocket()
 
 TcpServerSocket::~TcpServerSocket()
 {
-  if (IsValid())
-  {
-    closesocket(m_socket);
-    m_socket = INVALID_SOCKET_VALUE;
-  }
+  Close();
   if (m_addr)
   {
     delete(m_addr);
@@ -449,8 +445,11 @@ TcpServerSocket::~TcpServerSocket()
   }
 }
 
-bool TcpServerSocket::Create(SocketAdressFamily af)
+bool TcpServerSocket::Create(SOCKET_AF_t af)
 {
+  if (IsValid())
+    return false;
+
   m_addr->sa.sa_family = __addressFamily(af);
   m_socket = socket(m_addr->sa.sa_family, SOCK_STREAM, 0);
   if (!IsValid())
@@ -536,6 +535,15 @@ bool TcpServerSocket::AcceptConnection(TcpSocket& socket)
   return true;
 }
 
+void TcpServerSocket::Close()
+{
+  if (IsValid())
+  {
+    closesocket(m_socket);
+    m_socket = INVALID_SOCKET_VALUE;
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 ////
 //// UDP socket
@@ -589,7 +597,7 @@ UdpSocket::~UdpSocket()
   }
 }
 
-bool UdpSocket::SetAddress(SocketAdressFamily af, const char* target, unsigned port)
+bool UdpSocket::SetAddress(SOCKET_AF_t af, const char* target, unsigned port)
 {
   if (IsValid() && m_addr->sa.sa_family != __addressFamily(af))
   {
@@ -629,7 +637,7 @@ bool UdpSocket::SetAddress(SocketAdressFamily af, const char* target, unsigned p
     }
     case AF_INET6:
     {
-      sockaddr_in6* sa = (sockaddr_in6*)&m_addr->sa; 
+      sockaddr_in6* sa = (sockaddr_in6*)&m_addr->sa;
       sa->sin6_family = AF_INET6;
       memcpy(&(sa->sin6_addr), _addr, sizeof(struct in6_addr));
       sa->sin6_port = htons(port);

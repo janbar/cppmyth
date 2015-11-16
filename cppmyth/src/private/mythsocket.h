@@ -40,7 +40,7 @@ namespace Myth
   typedef enum {
     SOCKET_AF_INET4,
     SOCKET_AF_INET6,
-  } SocketAdressFamily;
+  } SOCKET_AF_t;
 
   struct SocketAddress;
 
@@ -53,8 +53,12 @@ namespace Myth
       m_timeout.tv_usec = SOCKET_READ_TIMEOUT_USEC;
     }
     virtual ~NetSocket() { }
+    virtual bool SendData(const char* buf, size_t size) = 0;
     virtual size_t ReceiveData(void* buf, size_t n) = 0;
-    void SetTimeout(timeval timeout) { m_timeout = timeout; }
+    void SetTimeout(timeval timeout)
+    {
+      m_timeout = timeout;
+    }
 
   protected:
     struct timeval m_timeout;
@@ -68,6 +72,10 @@ namespace Myth
     ~TcpSocket();
 
     // Implements NetSocket
+    bool SendData(const char* buf, size_t size)
+    {
+      return SendMessage(buf, size);
+    }
     size_t ReceiveData(void* buf, size_t n)
     {
       return ReadResponse(buf, n);
@@ -94,13 +102,13 @@ namespace Myth
       return IsValid();
     }
     int Listen(timeval *timeout);
-    tcp_socket_t GetSocket() const;
+    net_socket_t GetSocket() const;
     std::string GetLocalIP();
 
     static const char* GetMyHostName();
 
   private:
-    tcp_socket_t m_socket;
+    net_socket_t m_socket;
     int m_rcvbuf;
     int m_errno;
     int m_attempt;
@@ -124,7 +132,7 @@ namespace Myth
     {
       return m_errno;
     }
-    bool Create(SocketAdressFamily af);
+    bool Create(SOCKET_AF_t af);
     bool IsValid() const
     {
       return (m_socket == INVALID_SOCKET_VALUE ? false : true);
@@ -132,10 +140,11 @@ namespace Myth
     bool Bind(unsigned port);
     bool ListenConnection();
     bool AcceptConnection(TcpSocket& socket);
+    void Close();
 
   private:
     SocketAddress* m_addr;
-    tcp_socket_t m_socket;
+    net_socket_t m_socket;
     int m_errno;
     unsigned m_maxconnections;
 
@@ -152,15 +161,15 @@ namespace Myth
     ~UdpSocket();
 
     // Implements NetSocket
+    bool SendData(const char* data, size_t size);
     size_t ReceiveData(void* buf, size_t n);
 
     int GetErrNo() const
     {
       return m_errno;
     }
-    bool SetAddress(SocketAdressFamily af, const char *target, unsigned port);
+    bool SetAddress(SOCKET_AF_t af, const char *target, unsigned port);
     bool SetMulticastTTL(int multicastTTL);
-    bool SendData(const char* data, size_t size);
     size_t GetPayloadLength() const
     {
       return m_rcvlen;
@@ -178,7 +187,7 @@ namespace Myth
   private:
     SocketAddress* m_addr;
     SocketAddress* m_from;
-    tcp_socket_t m_socket;
+    net_socket_t m_socket;
     int m_errno;
     char* m_buffer;
     char* m_bufptr;
