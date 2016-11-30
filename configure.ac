@@ -18,8 +18,23 @@ AM_CONDITIONAL([GCC], [test x$GCC = xyes])
 # Checks for pthread.
 AC_SEARCH_LIBS([pthread_create],[pthread],, AC_MSG_ERROR([required library 'pthread' is missing]))
 
+
 # Checks for rt.
 AC_SEARCH_LIBS(clock_gettime, [rt])
+
+no=0
+AC_CHECK_HEADERS(zlib.h, [], [no=1])
+AC_SEARCH_LIBS(deflate, z, [], [no=1])
+if test $no == 0
+then
+    HAVE_ZLIB=1
+else
+    HAVE_ZLIB=0
+fi
+AC_SUBST([HAVE_ZLIB])
+
+HAVE_OPENSSL=0
+AC_SUBST([HAVE_OPENSSL])
 
 # Check for inttypes.
 AC_CHECK_HEADERS([inttypes.h],, AC_MSG_ERROR([required header 'inttypes.h' is missing]))

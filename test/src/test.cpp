@@ -200,7 +200,7 @@ int main(int argc, char** argv)
               Myth::SearchTypeFromString(proto, (*rl)[i]->searchType));
     }
 
-    if (chantest)
+    if (false && chantest)
     {
       Myth::RecordSchedule rec = Myth::RecordSchedule();
       rec.chanId = chantest->chanId;

@@ -20,7 +20,7 @@
  */
 
 #include "mythwsstream.h"
-#include "private/mythwsresponse.h"
+#include "private/wsresponse.h"
 #include "private/cppdef.h"
 
 using namespace Myth;
