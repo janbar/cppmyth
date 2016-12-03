@@ -8,8 +8,6 @@ set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 enable_language(CXX)
 enable_language(C)
 
-#include (GNUInstallDirs)
-
 # Options
 OPTION (BUILD_SHARED_LIBS "Build shared libraries." OFF)
 if (MSVC)
@@ -24,7 +22,7 @@ endif ()
 
 ###############################################################################
 # set lib version here
-set (CPPMYTH_LIB_VERSION "2.8.0")
+set (CPPMYTH_LIB_VERSION "2.8.1")
 set (CPPMYTH_LIB_SOVERSION "2")
 
 ###############################################################################
@@ -180,8 +178,7 @@ file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotoplayback.h
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprototransfer.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
 
-include_directories (
-  ${CMAKE_CURRENT_BINARY_DIR}/include/.)
+include_directories (${CMAKE_CURRENT_BINARY_DIR}/include/.)
 
 ###############################################################################
 # add sources
