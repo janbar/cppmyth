@@ -85,7 +85,7 @@ else ()
     set (HAVE_GMTIME_R 0)
 endif ()
 
-find_package (ZLIB)
+find_package (ZLIB REQUIRED)
 if (ZLIB_FOUND)
     include_directories (${ZLIB_INCLUDE_DIRS})
     set (HAVE_ZLIB 1)

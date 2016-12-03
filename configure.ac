@@ -30,6 +30,7 @@ then
     HAVE_ZLIB=1
 else
     HAVE_ZLIB=0
+    AC_MSG_ERROR([required library 'zlib' is missing])
 fi
 AC_SUBST([HAVE_ZLIB])
 
