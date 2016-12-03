@@ -22,21 +22,21 @@ env:
 
 matrix:
   include:
-     - os: linux
-       compiler: gcc
-       env: COVERITY_SCAN=1
+    - os: linux
+      compiler: gcc
+      env: COVERITY_SCAN=1
 
   allow_failures:
-     - env: COVERITY_SCAN=1
+    - env: COVERITY_SCAN=1
 
   exclude:
-     - os: osx
-       compiler: gcc
+    - os: osx
+      compiler: gcc
 
   fast_finish: true
 
 install:
-  - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir $HOME/cmake && curl https://cmake.org/files/v3.3/cmake-3.3.0-Linux-x86_64.tar.gz | tar -xz --strip-components=1 -C $HOME/cmake && export PATH=$HOME/cmake/bin:$PATH ; fi
 
 addons:
   apt:
@@ -48,10 +48,10 @@ addons:
       - clang
 
 before_script:
+  - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - cmake --version
   - mkdir build && cd build
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cmake .. -Wdev -DCMAKE_CXX_COMPILER=$(which $CXX) -DCMAKE_C_COMPILER=$(which $CC); fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then cmake .. -Wdev; fi
+  - cmake .. -Wdev -DCMAKE_CXX_COMPILER=$(which $CXX) -DCMAKE_C_COMPILER=$(which $CC)
 
 script:
   - if [ "$COVERITY_SCAN" != 1 ]; then  cmake --build .; fi
