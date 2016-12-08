@@ -22,7 +22,6 @@
 #ifndef MYTHSHAREDPTR_H
 #define	MYTHSHAREDPTR_H
 
-#include <cppmyth_config.h>
 #include "mythintrinsic.h"
 
 #include <cstddef>  // for NULL
@@ -71,15 +70,6 @@ namespace Myth
       }
       return *this;
     }
-
-#if CXX_STANDARD >= 201103L
-    shared_ptr& operator=(shared_ptr&& s)
-    {
-      if (this != &s)
-        swap(s);
-      return *this;
-    }
-#endif
 
     ~shared_ptr()
     {
