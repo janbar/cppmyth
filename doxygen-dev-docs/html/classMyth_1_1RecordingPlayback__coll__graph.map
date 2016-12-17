@@ -1,10 +1,9 @@
 <map id="Myth::RecordingPlayback" name="Myth::RecordingPlayback">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoPlayback.html" title="Myth::ProtoPlayback" alt="" coords="77,253,211,277"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="87,179,201,203"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="27,93,108,117"/>
-<area shape="rect" id="node5" title="STL class. " alt="" coords="5,6,131,42"/>
-<area shape="rect" id="node6" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="133,93,244,117"/>
-<area shape="rect" id="node7" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="236,253,335,277"/>
-<area shape="rect" id="node8" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="359,253,507,277"/>
-<area shape="rect" id="node9" href="$classMyth_1_1EventHandler.html" title="Myth::EventHandler" alt="" coords="532,253,661,277"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoPlayback.html" title="Myth::ProtoPlayback" alt="" coords="5,248,140,272"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="15,175,130,199"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="32,91,113,115"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="9,5,136,41"/>
+<area shape="rect" id="node6" href="$classMyth_1_1Stream.html" title="Myth::Stream" alt="" coords="165,248,263,272"/>
+<area shape="rect" id="node7" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="287,248,437,272"/>
+<area shape="rect" id="node8" href="$classMyth_1_1EventHandler.html" title="Myth::EventHandler" alt="" coords="461,248,591,272"/>
 </map>

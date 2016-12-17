@@ -1,6 +1,6 @@
 <map id="Myth::ProtoPlayback" name="Myth::ProtoPlayback">
 <area shape="rect" id="node3" href="$classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="5,149,128,173"/>
-<area shape="rect" id="node4" href="$classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="153,149,289,173"/>
+<area shape="rect" id="node4" href="$classMyth_1_1ProtoRecorder.html" title="Myth::ProtoRecorder" alt="" coords="153,149,290,173"/>
 <area shape="rect" id="node5" href="$classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="314,149,475,173"/>
 <area shape="rect" id="node2" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="164,5,279,29"/>
 </map>

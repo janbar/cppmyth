@@ -1,0 +1,5 @@
+<map id="NSROOT::NetSocket" name="NSROOT::NetSocket">
+<area shape="rect" id="node2" href="$classNSROOT_1_1TcpSocket.html" title="NSROOT::TcpSocket" alt="" coords="16,77,149,101"/>
+<area shape="rect" id="node4" href="$classNSROOT_1_1UdpSocket.html" title="NSROOT::UdpSocket" alt="" coords="174,77,311,101"/>
+<area shape="rect" id="node3" href="$classNSROOT_1_1SecureSocket.html" title="NSROOT::SecureSocket" alt="" coords="5,149,160,173"/>
+</map>

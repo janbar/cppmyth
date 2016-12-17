@@ -1,6 +1,6 @@
 <map id="Myth::Stream" name="Myth::Stream">
 <area shape="rect" id="node2" href="$classMyth_1_1FilePlayback.html" title="Myth::FilePlayback" alt="" coords="5,77,128,101"/>
-<area shape="rect" id="node3" href="$classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="152,77,292,101"/>
+<area shape="rect" id="node3" href="$classMyth_1_1LiveTVPlayback.html" title="Myth::LiveTVPlayback" alt="" coords="152,77,293,101"/>
 <area shape="rect" id="node4" href="$classMyth_1_1RecordingPlayback.html" title="Myth::RecordingPlayback" alt="" coords="318,77,479,101"/>
 <area shape="rect" id="node5" href="$classMyth_1_1WSStream.html" title="Myth::WSStream" alt="" coords="504,77,619,101"/>
 </map>

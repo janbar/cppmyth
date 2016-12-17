@@ -4,7 +4,6 @@ var dir_539df8db4cc899f22124200982cf8680 =
     [ "proto", "dir_012887ab088e747b771213d49fecd247.html", "dir_012887ab088e747b771213d49fecd247" ],
     [ "mythcontrol.cpp", "mythcontrol_8cpp_source.html", null ],
     [ "mythcontrol.h", "mythcontrol_8h_source.html", null ],
-    [ "mythdebug.cpp", "mythdebug_8cpp_source.html", null ],
     [ "mythdebug.h", "mythdebug_8h_source.html", null ],
     [ "mytheventhandler.cpp", "mytheventhandler_8cpp_source.html", null ],
     [ "mytheventhandler.h", "mytheventhandler_8h_source.html", null ],

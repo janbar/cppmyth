@@ -1,12 +1,11 @@
 <map id="Myth::BasicEventHandler" name="Myth::BasicEventHandler">
-<area shape="rect" id="node2" href="$classMyth_1_1EventHandler_1_1EventHandlerThread.html" title="Myth::EventHandler\l::EventHandlerThread" alt="" coords="1006,5,1151,41"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="513,20,594,44"/>
-<area shape="rect" id="node18" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="839,85,953,109"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="153,14,279,50"/>
-<area shape="rect" id="node8" title="STL class. " alt="" coords="167,263,265,287"/>
-<area shape="rect" id="node10" title="STL class. " alt="" coords="493,339,614,363"/>
-<area shape="rect" id="node13" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="811,179,981,215"/>
-<area shape="rect" id="node15" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="479,231,628,255"/>
-<area shape="rect" id="node17" href="$classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="1220,85,1337,109"/>
-<area shape="rect" id="node19" href="$classMyth_1_1TcpSocket.html" title="Myth::TcpSocket" alt="" coords="497,87,609,111"/>
+<area shape="rect" id="node2" href="$classMyth_1_1EventHandler_1_1EventHandlerThread.html" title="Myth::EventHandler\l::EventHandlerThread" alt="" coords="1000,5,1145,41"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="507,57,589,81"/>
+<area shape="rect" id="node18" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="833,61,948,85"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="149,51,276,87"/>
+<area shape="rect" id="node8" title="STL class. " alt="" coords="163,237,262,261"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="487,158,609,182"/>
+<area shape="rect" id="node13" href="$classMyth_1_1SubscriptionHandlerThread.html" title="Myth::SubscriptionHandler\lThread" alt="" coords="805,288,976,324"/>
+<area shape="rect" id="node15" href="$classMyth_1_1EventSubscriber.html" title="Myth::EventSubscriber" alt="" coords="473,321,623,345"/>
+<area shape="rect" id="node17" href="$classMyth_1_1ProtoEvent.html" title="Myth::ProtoEvent" alt="" coords="1213,61,1330,85"/>
 </map>

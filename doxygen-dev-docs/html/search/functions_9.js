@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['queryfreespacesummary',['QueryFreeSpaceSummary',['../classMyth_1_1Control.html#a6942a6b6dab62634e0536b89930d519e',1,'Myth::Control']]],
-  ['querygenpixmap',['QueryGenPixmap',['../classMyth_1_1Control.html#a63b3f779877f0c87e4ead0b31f8d26a7',1,'Myth::Control']]]
+  ['lock',['Lock',['../classMyth_1_1LockGuard.html#abafeb16b48611cc75303aa691b8b6f30',1,'Myth::LockGuard']]],
+  ['lockguard',['LockGuard',['../classMyth_1_1LockGuard.html#a4692eb078f4c373d1bf46d4f2601ee40',1,'Myth::LockGuard']]]
 ];

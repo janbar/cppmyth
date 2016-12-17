@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNSROOT_1_1OS_1_1CLockGuard.html" title="NSROOT::OS::CLockGuard" alt="" coords="5,5,176,29"/>
+<area shape="rect" id="node1" href="$classNSROOT_1_1OS_1_1CThread.html" title="NSROOT::OS::CThread" alt="" coords="5,5,156,29"/>
+<area shape="rect" id="node2" href="$classNSROOT_1_1OS_1_1CWorkerThread.html" title="NSROOT::OS::CWorkerThread" alt="" coords="204,5,392,29"/>
 </map>

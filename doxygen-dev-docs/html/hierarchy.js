@@ -13,20 +13,22 @@ var hierarchy =
     [ "Myth::Channel", "structMyth_1_1Channel.html", null ],
     [ "NSROOT::OS::CLockGuard", "classNSROOT_1_1OS_1_1CLockGuard.html", null ],
     [ "NSROOT::OS::CMutex", "classNSROOT_1_1OS_1_1CMutex.html", null ],
+    [ "NSROOT::Compressor", "classNSROOT_1_1Compressor.html", null ],
     [ "Myth::Control", "classMyth_1_1Control.html", null ],
     [ "Myth::IntrinsicCounter::Counter", "structMyth_1_1IntrinsicCounter_1_1Counter.html", null ],
-    [ "NSROOT::OS::CThread", "classNSROOT_1_1OS_1_1CThread.html", [
-      [ "NSROOT::OS::CWorkerThread", "classNSROOT_1_1OS_1_1CWorkerThread.html", null ]
-    ] ],
     [ "CThread", null, [
       [ "Myth::BasicEventHandler", "classMyth_1_1BasicEventHandler.html", null ],
       [ "Myth::SubscriptionHandlerThread", "classMyth_1_1SubscriptionHandlerThread.html", null ]
+    ] ],
+    [ "NSROOT::OS::CThread", "classNSROOT_1_1OS_1_1CThread.html", [
+      [ "NSROOT::OS::CWorkerThread", "classNSROOT_1_1OS_1_1CWorkerThread.html", null ]
     ] ],
     [ "NSROOT::OS::CThreadPool", "classNSROOT_1_1OS_1_1CThreadPool.html", null ],
     [ "NSROOT::OS::CTimeout", "classNSROOT_1_1OS_1_1CTimeout.html", null ],
     [ "NSROOT::OS::CWorker", "classNSROOT_1_1OS_1_1CWorker.html", null ],
     [ "debug_ctx_t", "structdebug__ctx__t.html", null ],
-    [ "Myth::JSON::Document", "classMyth_1_1JSON_1_1Document.html", null ],
+    [ "NSROOT::Decompressor", "classNSROOT_1_1Decompressor.html", null ],
+    [ "NSROOT::JSON::Document", "classNSROOT_1_1JSON_1_1Document.html", null ],
     [ "sajson::document", "classsajson_1_1document.html", null ],
     [ "sajson::double_storage", "unionsajson_1_1double__storage.html", null ],
     [ "sajson::parser::error_result", "structsajson_1_1parser_1_1error__result.html", null ],
@@ -53,7 +55,13 @@ var hierarchy =
     [ "mimetype", "structmimetype.html", null ],
     [ "sajson::mutable_string_view", "classsajson_1_1mutable__string__view.html", null ],
     [ "myth_protomap_t", "structmyth__protomap__t.html", null ],
-    [ "Myth::JSON::Node", "classMyth_1_1JSON_1_1Node.html", null ],
+    [ "NSROOT::NetSocket", "classNSROOT_1_1NetSocket.html", [
+      [ "NSROOT::TcpSocket", "classNSROOT_1_1TcpSocket.html", [
+        [ "NSROOT::SecureSocket", "classNSROOT_1_1SecureSocket.html", null ]
+      ] ],
+      [ "NSROOT::UdpSocket", "classNSROOT_1_1UdpSocket.html", null ]
+    ] ],
+    [ "NSROOT::JSON::Node", "classNSROOT_1_1JSON_1_1Node.html", null ],
     [ "sajson::object_key_comparator", "structsajson_1_1object__key__comparator.html", null ],
     [ "sajson::object_key_record", "structsajson_1_1object__key__record.html", null ],
     [ "sajson::parser::parse_result", "structsajson_1_1parser_1_1parse__result.html", null ],
@@ -80,6 +88,8 @@ var hierarchy =
     [ "Myth::Setting", "structMyth_1_1Setting.html", null ],
     [ "Myth::shared_ptr< T >", "classMyth_1_1shared__ptr.html", null ],
     [ "Myth::SignalStatus", "structMyth_1_1SignalStatus.html", null ],
+    [ "NSROOT::SocketAddress", "structNSROOT_1_1SocketAddress.html", null ],
+    [ "NSROOT::SSLSessionFactory", "classNSROOT_1_1SSLSessionFactory.html", null ],
     [ "Myth::StorageGroupFile", "structMyth_1_1StorageGroupFile.html", null ],
     [ "Myth::Stream", "classMyth_1_1Stream.html", [
       [ "Myth::FilePlayback", "classMyth_1_1FilePlayback.html", null ],
@@ -90,16 +100,16 @@ var hierarchy =
     [ "sajson::string", "classsajson_1_1string.html", [
       [ "sajson::literal", "classsajson_1_1literal.html", null ]
     ] ],
-    [ "Myth::TcpSocket", "classMyth_1_1TcpSocket.html", null ],
+    [ "NSROOT::TcpServerSocket", "classNSROOT_1_1TcpServerSocket.html", null ],
     [ "timespec", "structtimespec.html", null ],
-    [ "Myth::URIParser::URI_t", "structMyth_1_1URIParser_1_1URI__t.html", null ],
-    [ "Myth::URIParser", "classMyth_1_1URIParser.html", null ],
-    [ "Myth::Locked< T >::value", "classMyth_1_1Locked_1_1value.html", null ],
+    [ "NSROOT::URIParser::URI_t", "structNSROOT_1_1URIParser_1_1URI__t.html", null ],
+    [ "NSROOT::URIParser", "classNSROOT_1_1URIParser.html", null ],
     [ "sajson::value", "classsajson_1_1value.html", null ],
+    [ "Myth::Locked< T >::value", "classMyth_1_1Locked_1_1value.html", null ],
     [ "Myth::Version", "structMyth_1_1Version.html", null ],
     [ "Myth::VideoSource", "structMyth_1_1VideoSource.html", null ],
     [ "Myth::WSAPI", "classMyth_1_1WSAPI.html", null ],
-    [ "Myth::WSRequest", "classMyth_1_1WSRequest.html", null ],
-    [ "Myth::WSResponse", "classMyth_1_1WSResponse.html", null ],
+    [ "NSROOT::WSRequest", "classNSROOT_1_1WSRequest.html", null ],
+    [ "NSROOT::WSResponse", "classNSROOT_1_1WSResponse.html", null ],
     [ "Myth::WSServiceVersion_t", "structMyth_1_1WSServiceVersion__t.html", null ]
 ];
