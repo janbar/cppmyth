@@ -1042,7 +1042,7 @@ namespace sajson {
                 }
 
                 if (SAJSON_UNLIKELY(*p >= 0 && *p < 0x20)) {
-                    return error("illegal unprintable codepoint in string: %d", static_cast<int>(*p));
+                    *p = 0x20;
                 }
 
                 switch (*p) {
@@ -1111,7 +1111,7 @@ namespace sajson {
                 }
 
                 if (SAJSON_UNLIKELY(*p >= 0 && *p < 0x20)) {
-                    return error("illegal unprintable codepoint in string: %d", static_cast<int>(*p));
+                    *p = 0x20;
                 }
 
                 switch (*p) {
