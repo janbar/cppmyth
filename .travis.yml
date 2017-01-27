@@ -2,23 +2,15 @@ sudo: false
 
 language: cpp
 
+dist: trusty
+
 os:
   - linux
-  - osx
+##  - osx
 
 compiler:
   - gcc
   - clang
-
-env:
-  global:
-    - COVERITY_SCAN_PROJECT_NAME="janbar/cppmyth"
-    - COVERITY_SCAN_NOTIFICATION_EMAIL="jlbarriere68@gmail.com"
-    - COVERITY_SCAN_BRANCH_PATTERN="coverity_scan"
-    - COVERITY_SCAN_BUILD_COMMAND="cmake --build ."
-    - COVERITY_SCAN_BUILD_URL="https://scan.coverity.com/scripts/travisci_build_coverity_scan.sh"
-    - COVERITY_SCAN_BUILD="curl -s $COVERITY_SCAN_BUILD_URL | bash"
-    - secure: "kVgoVZX1HQn0t3X06YzUVfkCnVMT2RM/Pn5Jeq0k7fwJu72+x86rb5AuHhQt1er5KpC1UOr+g+K6HCE0HnVqamYIrApsWcAPEXdmq4jjlAwPHZQSc7bwlvUOHeMb/pUput/anI09zjh4Hy2OY4UkpBCOUR3dFiF/bFHGcrS0oQ8laxDTdzSRcyfSKXeR3TWEVLmqSkjOa4q+7I9fJjsxkf67zDaWBMZCc+By2U9UHdGFcYcy82HNYvtR3dDEjJ6ojj98CvS5kvVLnjwWFbzKPZPJvBcVV7dyQxiO6GsOWMr8A14p7cdoCtN1vmng+v2Svwzw27JeCobebyvwfHN5fsZaIWkNlX+XZXlTvFb/oF3Jqf5UW7dzDEqS+wO95ZGhcwEQMNFpFUkIpm3YG+TUmQTXcgSLZfcU+7a1yQl1xDmLXHXE5m8iBnOYVGGr/kUBCbvNu+L2yIMj4365gyW9PcEJ2eSdyJxm3EjzrCQEPS86OHfLkteGuRzvF6XTgjAszlIrZGDu2uzAj0GNWrTO5ES5bjivgxsXZhyJ7pkpZfQz8y/siC5aQZYf6FY7ucaJpv5ybQMbBMZ769eNduclpTiy0hHGVS+H2OBF/OI2wGOhuc5PR2H+5T7BoX1Ly8Khg+uVoP+6nR5gBz+jS2OX/3XamNaQdHykN15NUE/G2m0="
 
 matrix:
   include:
@@ -32,23 +24,26 @@ matrix:
   exclude:
     - os: osx
       compiler: gcc
+    - os: linux
+      compiler: clang
 
   fast_finish: true
 
 install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir $HOME/cmake && curl https://cmake.org/files/v3.3/cmake-3.3.0-Linux-x86_64.tar.gz | tar -xz --strip-components=1 -C $HOME/cmake && export PATH=$HOME/cmake/bin:$PATH ; fi
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.8
-      - g++-4.8
-      - clang
+##addons:
+##  apt:
+##    sources:
+##      - ubuntu-toolchain-r-test
+##    packages:
+##      - gcc-4.9
+##      - g++-4.9
+##      - clang-3.8
 
 before_script:
-  - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+##  - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+##  - if [ "$TRAVIS_OS_NAME" = "linux" -a "$CXX" = "clang++" ]; then export CXX="clang++-3.8" CC="clang-3.8"; fi
   - cmake --version
   - mkdir build && cd build
   - cmake .. -Wdev -DCMAKE_CXX_COMPILER=$(which $CXX) -DCMAKE_C_COMPILER=$(which $CC)
@@ -56,4 +51,14 @@ before_script:
 script:
   - if [ "$COVERITY_SCAN" != 1 ]; then  cmake --build .; fi
   - if [ "$COVERITY_SCAN" = 1 ]; then  eval "${COVERITY_SCAN_BUILD}"; fi
+  - if [ "$COVERITY_SCAN" = 1 ]; then  cat cov-int/build-log.txt; fi
 
+env:
+  global:
+    - COVERITY_SCAN_PROJECT_NAME="janbar/cppmyth"
+    - COVERITY_SCAN_NOTIFICATION_EMAIL="jlbarriere68@gmail.com"
+    - COVERITY_SCAN_BRANCH_PATTERN="coverity_scan"
+    - COVERITY_SCAN_BUILD_COMMAND="cmake --build ."
+    - COVERITY_SCAN_BUILD_URL="https://scan.coverity.com/scripts/travisci_build_coverity_scan.sh"
+    - COVERITY_SCAN_BUILD="curl -s $COVERITY_SCAN_BUILD_URL | bash"
+    - secure: "kVgoVZX1HQn0t3X06YzUVfkCnVMT2RM/Pn5Jeq0k7fwJu72+x86rb5AuHhQt1er5KpC1UOr+g+K6HCE0HnVqamYIrApsWcAPEXdmq4jjlAwPHZQSc7bwlvUOHeMb/pUput/anI09zjh4Hy2OY4UkpBCOUR3dFiF/bFHGcrS0oQ8laxDTdzSRcyfSKXeR3TWEVLmqSkjOa4q+7I9fJjsxkf67zDaWBMZCc+By2U9UHdGFcYcy82HNYvtR3dDEjJ6ojj98CvS5kvVLnjwWFbzKPZPJvBcVV7dyQxiO6GsOWMr8A14p7cdoCtN1vmng+v2Svwzw27JeCobebyvwfHN5fsZaIWkNlX+XZXlTvFb/oF3Jqf5UW7dzDEqS+wO95ZGhcwEQMNFpFUkIpm3YG+TUmQTXcgSLZfcU+7a1yQl1xDmLXHXE5m8iBnOYVGGr/kUBCbvNu+L2yIMj4365gyW9PcEJ2eSdyJxm3EjzrCQEPS86OHfLkteGuRzvF6XTgjAszlIrZGDu2uzAj0GNWrTO5ES5bjivgxsXZhyJ7pkpZfQz8y/siC5aQZYf6FY7ucaJpv5ybQMbBMZ769eNduclpTiy0hHGVS+H2OBF/OI2wGOhuc5PR2H+5T7BoX1Ly8Khg+uVoP+6nR5gBz+jS2OX/3XamNaQdHykN15NUE/G2m0="
