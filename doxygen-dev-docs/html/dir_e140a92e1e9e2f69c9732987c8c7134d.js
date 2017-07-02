@@ -21,6 +21,7 @@ var dir_e140a92e1e9e2f69c9732987c8c7134d =
     [ "socket.h", "socket_8h_source.html", null ],
     [ "uriparser.cpp", "uriparser_8cpp_source.html", null ],
     [ "uriparser.h", "uriparser_8h_source.html", null ],
+    [ "urlencoder.h", "urlencoder_8h_source.html", null ],
     [ "wscontent.cpp", "wscontent_8cpp_source.html", null ],
     [ "wscontent.h", "wscontent_8h_source.html", null ],
     [ "wsrequest.cpp", "wsrequest_8cpp_source.html", null ],

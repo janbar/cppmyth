@@ -4,7 +4,7 @@ var classsajson_1_1parser =
     [ "parse_result", "structsajson_1_1parser_1_1parse__result.html", "structsajson_1_1parser_1_1parse__result" ],
     [ "parser", "classsajson_1_1parser.html#a13f01eefb4c3ba4f5ca8ba6380db94a3", null ],
     [ "at_eof", "classsajson_1_1parser.html#abe23710f2664f9d7b14526c2891f6cc3", null ],
-    [ "error", "classsajson_1_1parser.html#a8e441a000c2a77ea5acb31a66ed8d3d9", null ],
+    [ "error", "classsajson_1_1parser.html#af1506325b07243d41624721a08bd30e4", null ],
     [ "get_document", "classsajson_1_1parser.html#a3729c4cc2008eb7252a0eb10abee55cd", null ],
     [ "has_remaining_characters", "classsajson_1_1parser.html#aadbd3f220a7bdbcb6c6840d442a7f83e", null ],
     [ "install_array", "classsajson_1_1parser.html#a6b638f42f799466df2994f2098710b7a", null ],

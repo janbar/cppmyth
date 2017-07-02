@@ -8,5 +8,6 @@ var classNSROOT_1_1OS_1_1CCondition =
     [ "Signal", "classNSROOT_1_1OS_1_1CCondition.html#ae506f2e8ade0fd1e3038f1e7e91b581c", null ],
     [ "Wait", "classNSROOT_1_1OS_1_1CCondition.html#a5397dd51e6ccbea83f9f5fa00c0161b4", null ],
     [ "Wait", "classNSROOT_1_1OS_1_1CCondition.html#a0f444f9f4fe53aba42f4c5a19e8c22b7", null ],
+    [ "Wait", "classNSROOT_1_1OS_1_1CCondition.html#a1109e216fde0c1dd94521b9d4a5e766d", null ],
     [ "m_condition", "classNSROOT_1_1OS_1_1CCondition.html#a30d01665d55db4891b83908cb4140e39", null ]
 ];

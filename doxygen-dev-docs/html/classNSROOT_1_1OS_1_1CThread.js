@@ -15,6 +15,7 @@ var classNSROOT_1_1OS_1_1CThread =
     [ "StopThread", "classNSROOT_1_1OS_1_1CThread.html#abe2276dd42ed2f3d184fb5674b5f48a6", null ],
     [ "ThreadHandler", "classNSROOT_1_1OS_1_1CThread.html#a4ec023d8d5f57f64b7feb8f546758d48", null ],
     [ "WaitThread", "classNSROOT_1_1OS_1_1CThread.html#a68d8da987571af9969ff9537c44903b8", null ],
+    [ "WakeUp", "classNSROOT_1_1OS_1_1CThread.html#a73979504745eec28275263ec080f7bcc", null ],
     [ "m_finalizeOnStop", "classNSROOT_1_1OS_1_1CThread.html#abca595967f9acfbfa3ec08eeb52df646", null ],
     [ "m_handle", "classNSROOT_1_1OS_1_1CThread.html#a4a5eb3ec6ee666e3d470d24845f8d69d", null ]
 ];
