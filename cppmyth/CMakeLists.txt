@@ -16,7 +16,7 @@ if (MSVC)
   OPTION (STATIC_CRT "Link the static CRT libraries" OFF)
 endif ()
 
-if (NOT WIN32)
+if (NOT MSVC)
   OPTION (REQUIRE_CXX_98 "Require standard c++98" OFF)
 endif ()
 
@@ -41,7 +41,7 @@ if (MSVC)
   set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W3 /Od /RTC1 /EHsc /nologo")
 endif ()
 
-if (NOT WIN32)
+if (NOT MSVC)
   if (NOT CYGWIN)
     add_definitions ("-fPIC")
   endif ()
@@ -198,7 +198,7 @@ endif ()
 #if (OPENSSL_FOUND)
 #  list (APPEND cppmyth_LIBRARIES ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY})
 #endif ()
-if (WIN32)
+if (MSVC)
   list (APPEND cppmyth_LIBRARIES ws2_32)
 else ()
   list (APPEND cppmyth_LIBRARIES m)
@@ -223,7 +223,7 @@ set_target_properties (cppmyth PROPERTIES
 # Create pkg-conf file.
 # (We use the same files as ./configure does, so we
 #  have to defined the same variables used there).
-if (NOT WIN32)
+if (NOT MSVC)
   if (NOT DEFINED CMAKE_INSTALL_BINDIR)
     set (CMAKE_INSTALL_BINDIR bin)
   endif ()
