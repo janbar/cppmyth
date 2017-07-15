@@ -173,10 +173,10 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}/include/.)
 ###############################################################################
 # add sources
 file (GLOB SRC_FILES
-  src/private/mythdto/*.cpp src/private/mythdto/*.h
-  src/private/*.c src/private/*.cpp src/private/*.h
-  src/proto/*.cpp src/proto/*.h
-  src/*.cpp src/*.h)
+  src/private/mythdto/*.cpp
+  src/private/*.c src/private/*.cpp
+  src/proto/*.cpp
+  src/*.cpp)
 
 file (GLOB OS_SRC_FILES
   src/private/os/threads/threadpool.cpp)
@@ -188,6 +188,18 @@ endif ()
 
 set (CPPMYTH_SOURCES
   ${SRC_FILES} ${OS_SRC_FILES})
+
+file (GLOB HDR_FILES
+  src/private/mythdto/*.h
+  src/private/*.h
+  src/proto/*.h
+  src/*.h)
+
+file (GLOB OS_HDR_FILES
+  src/private/os/threads/*.h)
+
+set (CPPMYTH_HEADERS
+  ${HDR_FILES} ${OS_HDR_FILES})
 
 ###############################################################################
 # add targets
