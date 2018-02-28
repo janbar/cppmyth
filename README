@@ -1,6 +1,6 @@
 This project is intended to create a easy client interface for the
 MythTV backend. Its development started from january 2014 and today
-the API supports the protocol version of MythTV 0.26 to 0.28-pre.
+the API supports the protocol version of MythTV 0.26 to 29.
 
 Online doxygen documentation is available from:
 http://janbar.github.io/cppmyth/doxygen-dev-docs/html/index.html
