@@ -23,6 +23,7 @@
 #include <map>
 
 #define MYTAG "[DEMO] "
+#define BUFSZ 64000
 
 // Container for MythTV channels indexed by channum
 typedef std::multimap<std::string, Myth::ChannelPtr> channelMap_t;
@@ -87,16 +88,21 @@ void liveTVSpawn(const char * server, const char * chanNum)
     fprintf(stderr, MYTAG "INFO: program title is: %s\n", prog->title.c_str());
     //FILE* file = fopen("TMP.mpg", "wb");
     FILE* file = stdout;
-    char buf[64000];
+    char* buf = new char[BUFSZ];
+    unsigned int waitus = 100000; // 100ms
     int r;
     for (;;)
     {
-      r = lp.Read(buf, 64000);
-      if (r == 0)
-        usleep(100000);
-      else if (r < 0 || fwrite(buf, 1, r, file) != r)
+      usleep(waitus);
+      r = lp.Read(buf, BUFSZ);
+      if (r < BUFSZ)
+        waitus *= 1.10f;
+      else
+        waitus /= 1.10f;
+      if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != r))
         break;
     }
+    delete[] buf;
     //fclose(file);
     fprintf(stderr, MYTAG "INFO: stopping live TV\n");
     lp.StopLiveTV();
