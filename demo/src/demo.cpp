@@ -97,7 +97,7 @@ void liveTVSpawn(const char * server, const char * chanNum)
       r = lp.Read(buf, BUFSZ);
       if (r < BUFSZ)
         waitus *= 1.10f;
-      else
+      else if (waitus > 100)
         waitus /= 1.10f;
       if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != r))
         break;
