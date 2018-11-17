@@ -52,6 +52,7 @@ bool Control::Open()
 void Control::Close()
 {
   m_monitor.Close();
+  m_wsapi.InvalidateService();
 }
 
 std::string Control::GetBackendServerIP(const std::string& hostName)
