@@ -151,7 +151,7 @@ namespace Myth
     };
 
     /**
-     * @brief GET Guide/GetProgramGuide
+     * @brief GET Guide/GetProgramGuide for the given channel
      */
     ProgramMapPtr GetProgramGuide(uint32_t chanid, time_t starttime, time_t endtime)
     {
@@ -159,6 +159,17 @@ namespace Myth
       if (wsv.ranking >= 0x00020002) return GetProgramList2_2(chanid, starttime, endtime);
       if (wsv.ranking >= 0x00010000) return GetProgramGuide1_0(chanid, starttime, endtime);
       return ProgramMapPtr(new ProgramMap);
+    }
+
+    /**
+     * @brief GET Guide/GetProgramGuide
+     */
+    std::map<uint32_t, ProgramMapPtr> GetProgramGuide(time_t starttime, time_t endtime)
+    {
+      WSServiceVersion_t wsv = CheckService(WS_Guide);
+      if (wsv.ranking >= 0x00020002) return GetProgramGuide2_2(starttime, endtime);
+      if (wsv.ranking >= 0x00010000) return GetProgramGuide1_0(starttime, endtime);
+      return std::map<uint32_t, ProgramMapPtr>();
     }
 
     /**
@@ -530,7 +541,9 @@ namespace Myth
     ChannelListPtr GetChannelList1_5(uint32_t sourceid, bool onlyVisible);
     ChannelPtr GetChannel1_2(uint32_t chanid);
 
+    std::map<uint32_t, ProgramMapPtr> GetProgramGuide1_0(time_t starttime, time_t endtime);
     ProgramMapPtr GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_t endtime);
+    std::map<uint32_t, ProgramMapPtr> GetProgramGuide2_2(time_t starttime, time_t endtime);
     ProgramMapPtr GetProgramList2_2(uint32_t chanid, time_t starttime, time_t endtime);
 
     ProgramListPtr GetRecordedList1_5(unsigned n, bool descending);

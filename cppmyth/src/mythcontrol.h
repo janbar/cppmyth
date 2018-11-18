@@ -308,6 +308,17 @@ namespace Myth
     }
 
     /**
+     * @brief Query the guide information for a particular time period
+     * @param starttime
+     * @param endtime
+     * @return map
+     */
+    std::map<uint32_t, ProgramMapPtr> GetProgramGuide(time_t starttime, time_t endtime)
+    {
+      return m_wsapi.GetProgramGuide(starttime, endtime);
+    }
+
+    /**
      * @brief Query all configured recording rules
      * @return RecordScheduleListPtr
      */
