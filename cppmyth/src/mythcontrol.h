@@ -440,7 +440,7 @@ namespace Myth
      * @param chanid
      * @param width (default 0)
      * @param height (default 0)
-     * @return WSStreamPtr
+     * @return url
      */
     std::string GetChannelIconUrl(uint32_t chanid, unsigned width = 0, unsigned height = 0)
     {
@@ -464,7 +464,7 @@ namespace Myth
      * @param program
      * @param width (default 0)
      * @param height (default 0)
-     * @return WSStreamPtr
+     * @return url
      */
     std::string GetPreviewImageUrl(const Program& program, unsigned width = 0, unsigned height = 0)
     {
