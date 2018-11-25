@@ -33,6 +33,7 @@
 
 #define BOOLSTR(a)  ((a) ? "true" : "false")
 #define FETCHSIZE   100
+#define FETCHSIZE_L 1000
 
 using namespace Myth;
 
@@ -1053,7 +1054,7 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
 {
   ProgramMapPtr ret(new ProgramMap);
   char buf[32];
-  uint32_t req_index = 0, req_count = FETCHSIZE, count = 0, total = 0;
+  uint32_t req_index = 0, req_count = FETCHSIZE_L, count = 0, total = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
