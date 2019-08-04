@@ -22,7 +22,7 @@ endif ()
 ###############################################################################
 # configure
 include_directories (
-  ${CMAKE_BINARY_DIR}/cppmyth/include/.)
+  ${CMAKE_BINARY_DIR}/cppmyth/include)
 
 ###############################################################################
 # add sources

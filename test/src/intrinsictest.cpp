@@ -3,7 +3,7 @@
 #endif
 
 #ifdef __WINDOWS__
-#include <winsock2.h>
+#include <WinSock2.h>
 #include <Windows.h>
 #include <time.h>
 #else
@@ -11,7 +11,7 @@
 #include <sys/time.h>
 #endif
 
-#include "../../cppmyth/src/private/os/threads/threadpool.h"
+#include "private/os/threads/threadpool.h"
 #include <mythintrinsic.h>
 
 #include <cstdio>
