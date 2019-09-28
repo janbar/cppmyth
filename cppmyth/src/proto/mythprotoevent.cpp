@@ -128,7 +128,7 @@ SignalStatusPtr ProtoEvent::RcvSignalStatus()
   return signal;
 }
 
-int ProtoEvent::RcvBackendMessage(unsigned timeout, EventMessage& msg)
+int ProtoEvent::RcvBackendMessage(unsigned timeout, EventMessage **msg)
 {
   OS::CLockGuard lock(*m_mutex);
   struct timeval tv;
@@ -138,58 +138,60 @@ int ProtoEvent::RcvBackendMessage(unsigned timeout, EventMessage& msg)
   if (r > 0)
   {
     std::string field;
-    msg.event = EVENT_UNKNOWN;
-    msg.subject.clear();
-    msg.program.reset();
-    msg.signal.reset();
+    EventMessage *pmsg = new EventMessage();
+    pmsg->event = EVENT_UNKNOWN;
+    pmsg->subject.clear();
+    pmsg->program.reset();
+    pmsg->signal.reset();
     if (RcvMessageLength() && ReadField(field) && field == "BACKEND_MESSAGE")
     {
       unsigned n = 0;
       ReadField(field);
       // Tokenize the subject
-      __tokenize(field, " ", msg.subject, false);
-      n = (unsigned)msg.subject.size();
+      __tokenize(field, " ", pmsg->subject, false);
+      n = (unsigned)pmsg->subject.size();
       DBG(DBG_DEBUG, "%s: %s (%u)\n", __FUNCTION__, field.c_str(), n);
 
-      if (msg.subject[0] == "UPDATE_FILE_SIZE")
-        msg.event = EVENT_UPDATE_FILE_SIZE;
-      else if (msg.subject[0] == "DONE_RECORDING")
-        msg.event = EVENT_DONE_RECORDING;
-      else if (msg.subject[0] == "QUIT_LIVETV")
-        msg.event = EVENT_QUIT_LIVETV;
-      else if (msg.subject[0] == "LIVETV_WATCH")
-        msg.event = EVENT_LIVETV_WATCH;
-      else if (msg.subject[0] == "LIVETV_CHAIN")
-        msg.event = EVENT_LIVETV_CHAIN;
-      else if (msg.subject[0] == "SIGNAL")
+      if (pmsg->subject[0] == "UPDATE_FILE_SIZE")
+        pmsg->event = EVENT_UPDATE_FILE_SIZE;
+      else if (pmsg->subject[0] == "DONE_RECORDING")
+        pmsg->event = EVENT_DONE_RECORDING;
+      else if (pmsg->subject[0] == "QUIT_LIVETV")
+        pmsg->event = EVENT_QUIT_LIVETV;
+      else if (pmsg->subject[0] == "LIVETV_WATCH")
+        pmsg->event = EVENT_LIVETV_WATCH;
+      else if (pmsg->subject[0] == "LIVETV_CHAIN")
+        pmsg->event = EVENT_LIVETV_CHAIN;
+      else if (pmsg->subject[0] == "SIGNAL")
       {
-        msg.event = EVENT_SIGNAL;
-        msg.signal = RcvSignalStatus();
+        pmsg->event = EVENT_SIGNAL;
+        pmsg->signal = RcvSignalStatus();
       }
-      else if (msg.subject[0] == "RECORDING_LIST_CHANGE")
+      else if (pmsg->subject[0] == "RECORDING_LIST_CHANGE")
       {
-        msg.event = EVENT_RECORDING_LIST_CHANGE;
-        if (n > 1 && msg.subject[1] == "UPDATE")
-          msg.program = RcvProgramInfo();
+        pmsg->event = EVENT_RECORDING_LIST_CHANGE;
+        if (n > 1 && pmsg->subject[1] == "UPDATE")
+          pmsg->program = RcvProgramInfo();
       }
-      else if (msg.subject[0] == "SCHEDULE_CHANGE")
-        msg.event = EVENT_SCHEDULE_CHANGE;
-      else if (msg.subject[0] == "ASK_RECORDING")
+      else if (pmsg->subject[0] == "SCHEDULE_CHANGE")
+        pmsg->event = EVENT_SCHEDULE_CHANGE;
+      else if (pmsg->subject[0] == "ASK_RECORDING")
       {
-        msg.event = EVENT_ASK_RECORDING;
-        msg.program = RcvProgramInfo();
+        pmsg->event = EVENT_ASK_RECORDING;
+        pmsg->program = RcvProgramInfo();
       }
-      else if (msg.subject[0] == "CLEAR_SETTINGS_CACHE")
-        msg.event = EVENT_CLEAR_SETTINGS_CACHE;
-      else if (msg.subject[0] == "GENERATED_PIXMAP")
-        msg.event = EVENT_GENERATED_PIXMAP;
-      else if (msg.subject[0] == "SYSTEM_EVENT")
-        msg.event = EVENT_SYSTEM_EVENT;
+      else if (pmsg->subject[0] == "CLEAR_SETTINGS_CACHE")
+        pmsg->event = EVENT_CLEAR_SETTINGS_CACHE;
+      else if (pmsg->subject[0] == "GENERATED_PIXMAP")
+        pmsg->event = EVENT_GENERATED_PIXMAP;
+      else if (pmsg->subject[0] == "SYSTEM_EVENT")
+        pmsg->event = EVENT_SYSTEM_EVENT;
       else
-        msg.event = EVENT_UNKNOWN;
+        pmsg->event = EVENT_UNKNOWN;
     }
 
     FlushMessage();
+    *msg = pmsg;
     return (m_hang ? -(ENOTCONN) : 1);
   }
   else if (r < 0)

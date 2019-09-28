@@ -44,7 +44,7 @@ namespace Myth
      * @return success: 0 = No message, 1 = New message received
      * @return failure: -(errno)
      */
-    int RcvBackendMessage(unsigned timeout, EventMessage& msg);
+    int RcvBackendMessage(unsigned timeout, EventMessage **msg);
 
   private:
     bool Announce75();

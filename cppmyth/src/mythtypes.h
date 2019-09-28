@@ -539,7 +539,7 @@ namespace Myth
     {}
   };
 
-  typedef MYTH_SHARED_PTR<EventMessage> EventMessagePtr;
+  typedef MYTH_SHARED_PTR<const EventMessage> EventMessagePtr;
 
   struct StorageGroupFile
   {
