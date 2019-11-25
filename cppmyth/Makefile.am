@@ -2,7 +2,7 @@
 lib_LTLIBRARIES    = libcppmyth.la
 # LIB_VERSION   : [$1-$3].[$3].[$2]
 # LIB_SOVERSION : [$1-$3]
-libcppmyth_la_LDFLAGS = -version-info 14:7:12
+libcppmyth_la_LDFLAGS = -version-info 14:8:12
 
 AM_CPPFLAGS = -fPIC -Wall -Wextra \
 	-I@abs_srcdir@/src
