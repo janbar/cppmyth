@@ -1,5 +1,5 @@
 <map id="Myth::ProtoBase::ReadField" name="Myth::ProtoBase::ReadField">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf" title="Flushing unread data previously requested. " alt="" coords="259,5,392,41"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoEvent.html#aed27d737671cabf8f446477106ea3562" title="Wait for new backend message from event connection. " alt="" coords="229,65,421,101"/>
-<area shape="rect" id="node4" href="$classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61" title="Myth::ProtoBase::RcvVersion" alt="" coords="233,126,417,150"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoTransfer.html#aecf431d28885c0620a5483971b7e0baf" title="Flushing unread data previously requested. " alt="" coords="262,5,395,41"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoEvent.html#a6783fd9490515b16396d2c1654ddc676" title="Wait for new backend message from event connection. " alt="" coords="231,65,427,101"/>
+<area shape="rect" id="node4" href="$classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61" title="Myth::ProtoBase::RcvVersion" alt="" coords="235,126,422,150"/>
 </map>

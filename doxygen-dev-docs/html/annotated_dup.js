@@ -22,6 +22,8 @@ var annotated_dup =
       [ "SSLSessionFactory", "classNSROOT_1_1SSLSessionFactory.html", "classNSROOT_1_1SSLSessionFactory" ],
       [ "TcpServerSocket", "classNSROOT_1_1TcpServerSocket.html", "classNSROOT_1_1TcpServerSocket" ],
       [ "TcpSocket", "classNSROOT_1_1TcpSocket.html", "classNSROOT_1_1TcpSocket" ],
+      [ "UdpMessageReader", "classNSROOT_1_1UdpMessageReader.html", "classNSROOT_1_1UdpMessageReader" ],
+      [ "UdpServerSocket", "classNSROOT_1_1UdpServerSocket.html", "classNSROOT_1_1UdpServerSocket" ],
       [ "UdpSocket", "classNSROOT_1_1UdpSocket.html", "classNSROOT_1_1UdpSocket" ],
       [ "URIParser", "classNSROOT_1_1URIParser.html", "classNSROOT_1_1URIParser" ],
       [ "WSRequest", "classNSROOT_1_1WSRequest.html", "classNSROOT_1_1WSRequest" ],

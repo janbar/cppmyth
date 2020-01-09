@@ -1,10 +1,10 @@
 <map id="Myth::Control" name="Myth::Control">
-<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="829,57,957,81"/>
-<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="535,5,650,29"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="257,88,339,112"/>
-<area shape="rect" id="node6" href="$classMyth_1_1WSAPI.html" title="Myth::WSAPI" alt="" coords="848,137,939,161"/>
-<area shape="rect" id="node7" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="543,137,642,161"/>
-<area shape="rect" id="node5" title="STL class. " alt="" coords="5,82,132,118"/>
-<area shape="rect" id="node8" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="509,185,676,209"/>
-<area shape="rect" id="node10" title="STL class. " alt="" coords="237,240,359,264"/>
+<area shape="rect" id="node2" href="$classMyth_1_1ProtoMonitor.html" title="Myth::ProtoMonitor" alt="" coords="824,67,953,91"/>
+<area shape="rect" id="node3" href="$classMyth_1_1ProtoBase.html" title="Myth::ProtoBase" alt="" coords="529,5,643,29"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="254,96,333,120"/>
+<area shape="rect" id="node6" href="$classMyth_1_1WSAPI.html" title="Myth::WSAPI" alt="" coords="842,137,935,161"/>
+<area shape="rect" id="node7" href="$structMyth_1_1Version.html" title="Myth::Version" alt="" coords="537,137,635,161"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="5,90,128,126"/>
+<area shape="rect" id="node8" href="$structMyth_1_1WSServiceVersion__t.html" title="Myth::WSServiceVersion_t" alt="" coords="501,185,671,209"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="233,240,353,264"/>
 </map>

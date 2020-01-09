@@ -1,5 +1,5 @@
 <map id="NSROOT::OS::CEvent" name="NSROOT::OS::CEvent">
 <area shape="rect" id="node2" href="$classNSROOT_1_1OS_1_1CMutex.html" title="NSROOT::OS::CMutex" alt="" coords="5,95,148,119"/>
 <area shape="rect" id="node3" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\l\&lt; volatile bool \&gt;" alt="" coords="173,89,335,125"/>
-<area shape="rect" id="node4" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="156,5,352,29"/>
+<area shape="rect" id="node4" href="$classNSROOT_1_1OS_1_1CCondition.html" title="NSROOT::OS::CCondition\&lt; P \&gt;" alt="" coords="157,5,351,29"/>
 </map>

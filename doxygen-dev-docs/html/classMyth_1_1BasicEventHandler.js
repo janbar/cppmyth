@@ -7,7 +7,7 @@ var classMyth_1_1BasicEventHandler =
     [ "AnnounceStatus", "classMyth_1_1BasicEventHandler.html#aff14987495fa75061e385f9732b730e8", null ],
     [ "AnnounceTimer", "classMyth_1_1BasicEventHandler.html#a687c18b3a604d34348068f60695d6aff", null ],
     [ "CreateSubscription", "classMyth_1_1BasicEventHandler.html#ae34603817ea25fb136966a0c4d00abc7", null ],
-    [ "DispatchEvent", "classMyth_1_1BasicEventHandler.html#a5f4325fc33dbfa6aabf9656fbaacb87c", null ],
+    [ "DispatchEvent", "classMyth_1_1BasicEventHandler.html#aff622070daa4af0c2628b3c328c2cd93", null ],
     [ "IsConnected", "classMyth_1_1BasicEventHandler.html#a5c82a7917e6561a231b49c8c6b3da4df", null ],
     [ "IsRunning", "classMyth_1_1BasicEventHandler.html#ad13206345cea808dd937fbf4d3efcf01", null ],
     [ "Process", "classMyth_1_1BasicEventHandler.html#a4a6777e922ce26bb90a97b66c445aea4", null ],

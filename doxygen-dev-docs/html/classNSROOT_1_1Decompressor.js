@@ -1,8 +1,8 @@
 var classNSROOT_1_1Decompressor =
 [
     [ "STREAM_READER", "classNSROOT_1_1Decompressor.html#a620c01b6bcbc0ed906fe03ca32f01425", null ],
-    [ "MEM_BUFFER", "classNSROOT_1_1Decompressor.html#a852c6afb7d3ce0fd9d958d4d51a6bb9ea80a071477df4c0bfd4029c6dfc4b62b0", null ],
-    [ "FCB_READER", "classNSROOT_1_1Decompressor.html#a852c6afb7d3ce0fd9d958d4d51a6bb9eaeed6b8fec3c25e8cc64096574e6683cc", null ],
+    [ "MEM_BUFFER", "classNSROOT_1_1Decompressor.html#aee4e3c10361a49905956b7053a94265ca80a071477df4c0bfd4029c6dfc4b62b0", null ],
+    [ "FCB_READER", "classNSROOT_1_1Decompressor.html#aee4e3c10361a49905956b7053a94265caeed6b8fec3c25e8cc64096574e6683cc", null ],
     [ "Decompressor", "classNSROOT_1_1Decompressor.html#a2427b8e1bbbc4ca1b72d522aa9733148", null ],
     [ "Decompressor", "classNSROOT_1_1Decompressor.html#af47a436d5852fa4cc3a8ca40ae3dd261", null ],
     [ "~Decompressor", "classNSROOT_1_1Decompressor.html#af08f2454d000fb70f236e09b23dcecd9", null ],
@@ -26,5 +26,5 @@ var classNSROOT_1_1Decompressor =
     [ "m_rstream_hdl", "classNSROOT_1_1Decompressor.html#a0e385240156a3c233cd3db0b6cc138ba", null ],
     [ "m_status", "classNSROOT_1_1Decompressor.html#af80b478fb400fda3261a1f3cf223c567", null ],
     [ "m_stop", "classNSROOT_1_1Decompressor.html#ae43c0b55c1292cccc3779f4f70ea5de7", null ],
-    [ "m_type_in", "classNSROOT_1_1Decompressor.html#a0cc93c6035597f214e0f5d12c2086270", null ]
+    [ "m_type_in", "classNSROOT_1_1Decompressor.html#a07041e066efa02f7825cb7d5a653e188", null ]
 ];

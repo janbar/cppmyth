@@ -1,6 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNSROOT_1_1NetSocket.html" title="NSROOT::NetSocket" alt="" coords="5,29,140,53"/>
-<area shape="rect" id="node2" href="$classNSROOT_1_1TcpSocket.html" title="NSROOT::TcpSocket" alt="" coords="190,5,323,29"/>
-<area shape="rect" id="node4" href="$classNSROOT_1_1UdpSocket.html" title="NSROOT::UdpSocket" alt="" coords="188,53,325,77"/>
-<area shape="rect" id="node3" href="$classNSROOT_1_1SecureSocket.html" title="NSROOT::SecureSocket" alt="" coords="373,5,528,29"/>
+<area shape="rect" id="node1" href="$classNSROOT_1_1NetSocket.html" title="NSROOT::NetSocket" alt="" coords="5,53,139,77"/>
+<area shape="rect" id="node2" href="$classNSROOT_1_1TcpSocket.html" title="NSROOT::TcpSocket" alt="" coords="215,5,347,29"/>
+<area shape="rect" id="node4" href="$classNSROOT_1_1UdpMessageReader.html" title="NSROOT::UdpMessageReader" alt="" coords="187,53,376,77"/>
+<area shape="rect" id="node5" href="$classNSROOT_1_1UdpSocket.html" title="NSROOT::UdpSocket" alt="" coords="213,101,349,125"/>
+<area shape="rect" id="node3" href="$classNSROOT_1_1SecureSocket.html" title="NSROOT::SecureSocket" alt="" coords="424,5,577,29"/>
 </map>

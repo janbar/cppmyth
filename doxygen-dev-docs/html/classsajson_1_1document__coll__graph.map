@@ -1,6 +1,6 @@
 <map id="sajson::document" name="sajson::document">
-<area shape="rect" id="node2" title="STL class. " alt="" coords="28,101,109,125"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="5,5,132,41"/>
-<area shape="rect" id="node4" href="$classsajson_1_1mutable__string__view.html" title="sajson::mutable_string_view" alt="" coords="239,101,423,125"/>
-<area shape="rect" id="node5" href="$classsajson_1_1refcount.html" title="sajson::refcount" alt="" coords="189,11,303,35"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="27,101,106,125"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,5,128,41"/>
+<area shape="rect" id="node4" href="$classsajson_1_1mutable__string__view.html" title="sajson::mutable_string_view" alt="" coords="233,101,415,125"/>
+<area shape="rect" id="node5" href="$classsajson_1_1refcount.html" title="sajson::refcount" alt="" coords="185,11,298,35"/>
 </map>

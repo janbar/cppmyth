@@ -1,5 +1,6 @@
 <map id="NSROOT::NetSocket" name="NSROOT::NetSocket">
-<area shape="rect" id="node2" href="$classNSROOT_1_1TcpSocket.html" title="NSROOT::TcpSocket" alt="" coords="16,77,149,101"/>
-<area shape="rect" id="node4" href="$classNSROOT_1_1UdpSocket.html" title="NSROOT::UdpSocket" alt="" coords="174,77,311,101"/>
-<area shape="rect" id="node3" href="$classNSROOT_1_1SecureSocket.html" title="NSROOT::SecureSocket" alt="" coords="5,149,160,173"/>
+<area shape="rect" id="node2" href="$classNSROOT_1_1TcpSocket.html" title="NSROOT::TcpSocket" alt="" coords="16,77,148,101"/>
+<area shape="rect" id="node4" href="$classNSROOT_1_1UdpMessageReader.html" title="NSROOT::UdpMessageReader" alt="" coords="173,77,362,101"/>
+<area shape="rect" id="node5" href="$classNSROOT_1_1UdpSocket.html" title="NSROOT::UdpSocket" alt="" coords="386,77,522,101"/>
+<area shape="rect" id="node3" href="$classNSROOT_1_1SecureSocket.html" title="NSROOT::SecureSocket" alt="" coords="5,149,159,173"/>
 </map>

@@ -5,7 +5,7 @@ var classNSROOT_1_1SecureSocket =
     [ "Connect", "classNSROOT_1_1SecureSocket.html#aff35ee3819557a40e7cc1cc73c2ce028", null ],
     [ "Disconnect", "classNSROOT_1_1SecureSocket.html#a3b8840cd9133e20d24a4ce310411e54b", null ],
     [ "IsCertificateValid", "classNSROOT_1_1SecureSocket.html#a2aa5300c5c65ed1d464b9621a8a4fd0a", null ],
-    [ "IsValid", "classNSROOT_1_1SecureSocket.html#a9682a20b001f7abdddc1871fccfd3627", null ],
+    [ "IsValid", "classNSROOT_1_1SecureSocket.html#ac669418ea9321027a0069e43ee06d885", null ],
     [ "ReceiveData", "classNSROOT_1_1SecureSocket.html#ab1c7e7ebc9918cc052c2987d86d4b23d", null ],
     [ "SendData", "classNSROOT_1_1SecureSocket.html#ab27dafac00723e66f52f4ccc119285f0", null ],
     [ "SSLSessionFactory", "classNSROOT_1_1SecureSocket.html#a64a7b5aa437acdeea8704b5969f7ff0b", null ],

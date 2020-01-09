@@ -59,6 +59,7 @@ var hierarchy =
       [ "NSROOT::TcpSocket", "classNSROOT_1_1TcpSocket.html", [
         [ "NSROOT::SecureSocket", "classNSROOT_1_1SecureSocket.html", null ]
       ] ],
+      [ "NSROOT::UdpMessageReader", "classNSROOT_1_1UdpMessageReader.html", null ],
       [ "NSROOT::UdpSocket", "classNSROOT_1_1UdpSocket.html", null ]
     ] ],
     [ "NSROOT::JSON::Node", "classNSROOT_1_1JSON_1_1Node.html", null ],
@@ -102,6 +103,7 @@ var hierarchy =
     ] ],
     [ "NSROOT::TcpServerSocket", "classNSROOT_1_1TcpServerSocket.html", null ],
     [ "timespec", "structtimespec.html", null ],
+    [ "NSROOT::UdpServerSocket", "classNSROOT_1_1UdpServerSocket.html", null ],
     [ "NSROOT::URIParser::URI_t", "structNSROOT_1_1URIParser_1_1URI__t.html", null ],
     [ "NSROOT::URIParser", "classNSROOT_1_1URIParser.html", null ],
     [ "sajson::value", "classsajson_1_1value.html", null ],

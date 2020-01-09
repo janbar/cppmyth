@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['undeleterecording',['UnDeleteRecording',['../classMyth_1_1WSAPI.html#abbec0266d42bf58e2ff607db1d2884c6',1,'Myth::WSAPI::UnDeleteRecording(uint32_t chanid, time_t recstartts)'],['../classMyth_1_1WSAPI.html#a1ce153fa0df52fc9de93c81cd96f019a',1,'Myth::WSAPI::UnDeleteRecording(uint32_t recordedid)']]],
-  ['unlock',['Unlock',['../classMyth_1_1LockGuard.html#a68d034fdf86030776364450303103a89',1,'Myth::LockGuard']]],
-  ['updaterecordedwatchedstatus',['UpdateRecordedWatchedStatus',['../classMyth_1_1Control.html#a4e4d5bfaaa9bad281071be57223acb5e',1,'Myth::Control::UpdateRecordedWatchedStatus()'],['../classMyth_1_1WSAPI.html#a53f363eef1ad7aaf3287cdd2a77b812e',1,'Myth::WSAPI::UpdateRecordedWatchedStatus(uint32_t chanid, time_t recstartts, bool watched)'],['../classMyth_1_1WSAPI.html#ab08ef92bf9055f4f32b1d8092364f048',1,'Myth::WSAPI::UpdateRecordedWatchedStatus(uint32_t recordedid, bool watched)']]],
-  ['updaterecordschedule',['UpdateRecordSchedule',['../classMyth_1_1Control.html#a9ff8616fb33718351fa7896295162088',1,'Myth::Control::UpdateRecordSchedule()'],['../classMyth_1_1WSAPI.html#acedec88afeb36600591ebcf848feba86',1,'Myth::WSAPI::UpdateRecordSchedule()']]]
+  ['senddata',['SendData',['../classNSROOT_1_1SecureSocket.html#ab27dafac00723e66f52f4ccc119285f0',1,'NSROOT::SecureSocket::SendData()'],['../classNSROOT_1_1TcpSocket.html#a695988c5194a4a439715ef2788551f7a',1,'NSROOT::TcpSocket::SendData()'],['../classNSROOT_1_1UdpSocket.html#afd7769d06629a6daa19ef6d856fa29ab',1,'NSROOT::UdpSocket::SendData()']]],
+  ['setaddress',['SetAddress',['../classNSROOT_1_1UdpSocket.html#aee32526d871a5ef45a9493ebac52495a',1,'NSROOT::UdpSocket']]],
+  ['setmulticastmembership',['SetMulticastMembership',['../classNSROOT_1_1UdpServerSocket.html#ae955f6516ff874a50ad584db9558250d',1,'NSROOT::UdpServerSocket']]],
+  ['setmulticastttl',['SetMulticastTTL',['../classNSROOT_1_1UdpSocket.html#a6658942848a3f94671bfd7cfffa0afde',1,'NSROOT::UdpSocket::SetMulticastTTL()'],['../classNSROOT_1_1UdpServerSocket.html#aa08220db35c533c74f83322b35aeece6',1,'NSROOT::UdpServerSocket::SetMulticastTTL()']]],
+  ['setreadattempt',['SetReadAttempt',['../classNSROOT_1_1TcpSocket.html#a557ef13af5fb415243ae02a9c25bcec4',1,'NSROOT::TcpSocket']]],
+  ['setsavedbookmark',['SetSavedBookmark',['../classMyth_1_1Control.html#a9c0facfcacbe6a86a9f6b60e3c5dc885',1,'Myth::Control::SetSavedBookmark()'],['../classMyth_1_1WSAPI.html#ac815f747277756579e9c54b26c8be8dc',1,'Myth::WSAPI::SetSavedBookmark()']]]
 ];

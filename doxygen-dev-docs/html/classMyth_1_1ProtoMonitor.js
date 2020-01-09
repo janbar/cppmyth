@@ -1,10 +1,11 @@
 var classMyth_1_1ProtoMonitor =
 [
     [ "ProtoMonitor", "classMyth_1_1ProtoMonitor.html#a8c40a055244441706bf89592fc24416a", null ],
-    [ "ProtoMonitor", "classMyth_1_1ProtoMonitor.html#a4bba32df5d44c92dfe8f6b4f3bbe3347", null ],
+    [ "ProtoMonitor", "classMyth_1_1ProtoMonitor.html#aa8b7fe42a1e7d8eadecb2e40373b7443", null ],
     [ "AllowShutdown", "classMyth_1_1ProtoMonitor.html#aef871dc95c22bd093549e890ae0904ce", null ],
     [ "AllowShutdown75", "classMyth_1_1ProtoMonitor.html#a431424442bb0d04a3a2b950bcceca8b4", null ],
     [ "Announce75", "classMyth_1_1ProtoMonitor.html#af87eb746f5297c772dcd7c79739a226b", null ],
+    [ "Announce88", "classMyth_1_1ProtoMonitor.html#ad90fc24d8b31a21245f4a312375b6271", null ],
     [ "BlockShutdown", "classMyth_1_1ProtoMonitor.html#a570879e18b3567534fc153818dd42a6d", null ],
     [ "BlockShutdown75", "classMyth_1_1ProtoMonitor.html#a81b29c351cdf8b4ca386e68fec6a4392", null ],
     [ "CancelNextRecording", "classMyth_1_1ProtoMonitor.html#ac81a3fbdf0ff2797991127604c940252", null ],
@@ -43,5 +44,5 @@ var classMyth_1_1ProtoMonitor =
     [ "StopRecording75", "classMyth_1_1ProtoMonitor.html#ae2007e2fd814f95963bc3d185c31c56d", null ],
     [ "UndeleteRecording", "classMyth_1_1ProtoMonitor.html#af46f9c7ec7964b8ae0a688ddff5a0aad", null ],
     [ "UndeleteRecording75", "classMyth_1_1ProtoMonitor.html#ad83d53d94b3254f4b8a18cabe1ae22e2", null ],
-    [ "m_blockShutdown", "classMyth_1_1ProtoMonitor.html#a2f28af68b77b006eda76fe377a903b47", null ]
+    [ "m_frontend", "classMyth_1_1ProtoMonitor.html#a414c7075e3931f2bdc6c56ea819713e0", null ]
 ];

@@ -1,8 +1,8 @@
 var classNSROOT_1_1Compressor =
 [
     [ "STREAM_READER", "classNSROOT_1_1Compressor.html#a9f51b255e82dc2fb51ec592d8f981097", null ],
-    [ "MEM_BUFFER", "classNSROOT_1_1Compressor.html#addfd8362f7b4755bc6d6b2503d27cceda8df6452a3557409add02ba6056a3f55a", null ],
-    [ "FCB_READER", "classNSROOT_1_1Compressor.html#addfd8362f7b4755bc6d6b2503d27cceda86e3a1d3382d7875c4562bb8a95bce43", null ],
+    [ "MEM_BUFFER", "classNSROOT_1_1Compressor.html#a859125d4babc55e5e0ffb129b03f1873a8df6452a3557409add02ba6056a3f55a", null ],
+    [ "FCB_READER", "classNSROOT_1_1Compressor.html#a859125d4babc55e5e0ffb129b03f1873a86e3a1d3382d7875c4562bb8a95bce43", null ],
     [ "Compressor", "classNSROOT_1_1Compressor.html#a5e470af0e18ec639e2605f004d9f73fe", null ],
     [ "Compressor", "classNSROOT_1_1Compressor.html#a8891134b00b31c9ff97951a3756db075", null ],
     [ "~Compressor", "classNSROOT_1_1Compressor.html#a7153be4a80054c7da7b355ff6841c0f7", null ],
@@ -27,5 +27,5 @@ var classNSROOT_1_1Compressor =
     [ "m_rstream_hdl", "classNSROOT_1_1Compressor.html#ad1605ee444dd0da2cf6d177a18a21fc8", null ],
     [ "m_status", "classNSROOT_1_1Compressor.html#a91cecf4db87930af54e32afe09328dd1", null ],
     [ "m_stop", "classNSROOT_1_1Compressor.html#a4e1cd7568e2b0f098ecfd429add4f0da", null ],
-    [ "m_type_in", "classNSROOT_1_1Compressor.html#aafd43553c127881364f2a24db98b782d", null ]
+    [ "m_type_in", "classNSROOT_1_1Compressor.html#a2833028985c5e0af525f923d497f3d78", null ]
 ];
