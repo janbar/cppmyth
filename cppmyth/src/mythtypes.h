@@ -333,7 +333,7 @@ namespace Myth
     std::string             inetref;
     time_t                  lastModified;
     std::string             stars;
-    time_t                  airdate;
+    std::string             airdate;
     uint16_t                audioProps;
     uint16_t                videoProps;
     uint16_t                subProps;
@@ -350,7 +350,6 @@ namespace Myth
     , repeat(false)
     , programFlags(0)
     , lastModified(0)
-    , airdate(0)
     , audioProps(0)
     , videoProps(0)
     , subProps(0)

@@ -534,7 +534,7 @@ ProgramPtr ProtoBase::RcvProgramInfo75()
   if (!ReadField(program->stars))
     goto out;
   ++i;
-  if (!ReadField(field) || string_to_time(field.c_str(), &(program->airdate)))
+  if (!ReadField(program->airdate))
     goto out;
   ++i;
   if (!ReadField(program->recording.playGroup))
@@ -682,7 +682,7 @@ ProgramPtr ProtoBase::RcvProgramInfo76()
   if (!ReadField(program->stars))
     goto out;
   ++i;
-  if (!ReadField(field) || string_to_time(field.c_str(), &(program->airdate)))
+  if (!ReadField(program->airdate))
     goto out;
   ++i;
   if (!ReadField(program->recording.playGroup))
@@ -845,7 +845,7 @@ ProgramPtr ProtoBase::RcvProgramInfo79()
   if (!ReadField(program->stars))
     goto out;
   ++i;
-  if (!ReadField(field) || string_to_time(field.c_str(), &(program->airdate)))
+  if (!ReadField(program->airdate))
     goto out;
   ++i;
   if (!ReadField(program->recording.playGroup))
@@ -1012,7 +1012,7 @@ ProgramPtr ProtoBase::RcvProgramInfo82()
   if (!ReadField(program->stars))
     goto out;
   ++i;
-  if (!ReadField(field) || string_to_time(field.c_str(), &(program->airdate)))
+  if (!ReadField(program->airdate))
     goto out;
   ++i;
   if (!ReadField(program->recording.playGroup))
@@ -1182,7 +1182,7 @@ ProgramPtr ProtoBase::RcvProgramInfo86()
   if (!ReadField(program->stars))
     goto out;
   ++i;
-  if (!ReadField(field) || string_to_time(field.c_str(), &(program->airdate)))
+  if (!ReadField(program->airdate))
     goto out;
   ++i;
   if (!ReadField(program->recording.playGroup))
@@ -1292,8 +1292,7 @@ void ProtoBase::MakeProgramInfo75(const Program& program, std::string& msg)
   int64_to_string((int64_t)program.lastModified, buf);
   msg.append(buf).append(PROTO_STR_SEPARATOR);
   msg.append(program.stars).append(PROTO_STR_SEPARATOR);
-  time_to_isodate(program.airdate, buf);
-  msg.append(buf).append(PROTO_STR_SEPARATOR);
+  msg.append(program.airdate).append(PROTO_STR_SEPARATOR);
   msg.append(program.recording.playGroup).append(PROTO_STR_SEPARATOR);
   msg.append("0").append(PROTO_STR_SEPARATOR); // recpriority2
   msg.append("0").append(PROTO_STR_SEPARATOR); // parentid
@@ -1366,8 +1365,7 @@ void ProtoBase::MakeProgramInfo76(const Program& program, std::string& msg)
   int64_to_string((int64_t)program.lastModified, buf);
   msg.append(buf).append(PROTO_STR_SEPARATOR);
   msg.append(program.stars).append(PROTO_STR_SEPARATOR);
-  time_to_isodate(program.airdate, buf);
-  msg.append(buf).append(PROTO_STR_SEPARATOR);
+  msg.append(program.airdate).append(PROTO_STR_SEPARATOR);
   msg.append(program.recording.playGroup).append(PROTO_STR_SEPARATOR);
   msg.append("0").append(PROTO_STR_SEPARATOR); // recpriority2
   msg.append("0").append(PROTO_STR_SEPARATOR); // parentid
@@ -1443,8 +1441,7 @@ void ProtoBase::MakeProgramInfo79(const Program& program, std::string& msg)
   int64_to_string((int64_t)program.lastModified, buf);
   msg.append(buf).append(PROTO_STR_SEPARATOR);
   msg.append(program.stars).append(PROTO_STR_SEPARATOR);
-  time_to_isodate(program.airdate, buf);
-  msg.append(buf).append(PROTO_STR_SEPARATOR);
+  msg.append(program.airdate).append(PROTO_STR_SEPARATOR);
   msg.append(program.recording.playGroup).append(PROTO_STR_SEPARATOR);
   msg.append("0").append(PROTO_STR_SEPARATOR); // recpriority2
   msg.append("0").append(PROTO_STR_SEPARATOR); // parentid
@@ -1522,8 +1519,7 @@ void ProtoBase::MakeProgramInfo82(const Program& program, std::string& msg)
   int64_to_string((int64_t)program.lastModified, buf);
   msg.append(buf).append(PROTO_STR_SEPARATOR);
   msg.append(program.stars).append(PROTO_STR_SEPARATOR);
-  time_to_isodate(program.airdate, buf);
-  msg.append(buf).append(PROTO_STR_SEPARATOR);
+  msg.append(program.airdate).append(PROTO_STR_SEPARATOR);
   msg.append(program.recording.playGroup).append(PROTO_STR_SEPARATOR);
   msg.append("0").append(PROTO_STR_SEPARATOR); // recpriority2
   msg.append("0").append(PROTO_STR_SEPARATOR); // parentid
@@ -1603,8 +1599,7 @@ void ProtoBase::MakeProgramInfo86(const Program& program, std::string& msg)
   int64_to_string((int64_t)program.lastModified, buf);
   msg.append(buf).append(PROTO_STR_SEPARATOR);
   msg.append(program.stars).append(PROTO_STR_SEPARATOR);
-  time_to_isodate(program.airdate, buf);
-  msg.append(buf).append(PROTO_STR_SEPARATOR);
+  msg.append(program.airdate).append(PROTO_STR_SEPARATOR);
   msg.append(program.recording.playGroup).append(PROTO_STR_SEPARATOR);
   msg.append("0").append(PROTO_STR_SEPARATOR); // recpriority2
   msg.append("0").append(PROTO_STR_SEPARATOR); // parentid

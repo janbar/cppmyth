@@ -114,7 +114,7 @@ namespace MythDTO75
     { "Inetref",        IS_STRING,  (setter_t)MythDTO::SetProgram_Inetref },
     { "LastModified",   IS_TIME,    (setter_t)MythDTO::SetProgram_LastModified },
     { "Stars",          IS_STRING,  (setter_t)MythDTO::SetProgram_Stars },
-    { "Airdate",        IS_TIME,    (setter_t)MythDTO::SetProgram_Airdate },
+    { "Airdate",        IS_STRING,  (setter_t)MythDTO::SetProgram_Airdate },
     { "AudioProps",     IS_UINT16,  (setter_t)MythDTO::SetProgram_AudioProps },
     { "VideoProps",     IS_UINT16,  (setter_t)MythDTO::SetProgram_VideoProps },
     { "SubProps",       IS_UINT16,  (setter_t)MythDTO::SetProgram_SubProps },
