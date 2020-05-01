@@ -227,6 +227,11 @@ else ()
   endif ()
 endif ()
 
+if (${CMAKE_SYSTEM_NAME} STREQUAL "SunOS")
+  find_library (SOCKET socket REQUIRED)
+  list (APPEND cppmyth_LIBRARIES socket)
+endif ()
+
 if (BUILD_SHARED_LIBS)
   add_library (cppmyth SHARED ${CPPMYTH_SOURCES})
 else ()
