@@ -131,7 +131,8 @@ private:
 
 private:
   struct Lockable;
-  mutable Lockable * m_lock;
+  mutable Lockable * m_ringlock;
+  mutable Lockable * m_poollock;
   const int m_capacity;           /// buffer size
   volatile unsigned m_count;      /// total count of processed chunk
   volatile unsigned m_unread;     /// total size of unread data in the buffer
