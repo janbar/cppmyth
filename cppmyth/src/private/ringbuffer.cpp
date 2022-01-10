@@ -36,7 +36,7 @@ namespace NSROOT
 
 RingBufferPacket::RingBufferPacket(int _capacity)
 : id(0)
-, size(_capacity)
+, size(0)
 , data(new char [_capacity])
 , capacity(_capacity)
 {
