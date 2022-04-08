@@ -77,7 +77,7 @@ bool WSAPI::InitWSAPI()
   }
   if (mythwsv.ranking > MYTH_API_VERSION_MAX_RANKING) {}
   else if (mythwsv.ranking >= 0x00020000)
-    status = CheckServerHostName2_0() & CheckVersion2_0();
+    status = CheckServerHostName2_0() && CheckVersion2_0();
 
   // If everything is fine then check other services
   if (status)
