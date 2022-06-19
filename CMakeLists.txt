@@ -3,6 +3,8 @@ cmake_policy (VERSION 2.8.12)
 
 project (cppmythroot)
 
+set (CMAKE_IGNORE_PATH "/opt/local/bin;/opt/local/lib;/opt/local/include")
+
 add_subdirectory (${CMAKE_SOURCE_DIR}/cppmyth)
 add_subdirectory (${CMAKE_SOURCE_DIR}/test)
 add_subdirectory (${CMAKE_SOURCE_DIR}/demo)
