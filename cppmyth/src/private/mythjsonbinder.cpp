@@ -39,13 +39,13 @@ void JSON::BindObject(const Node& node, void *obj, const bindings_t *bl)
 
   for (i = 0; i < bl->attr_count; ++i)
   {
+    err = 0;
     const Node& field = node.GetObjectValue(bl->attr_bind[i].field);
     if (field.IsNull())
       continue;
     if (field.IsString())
     {
       std::string value(field.GetStringValue());
-      err = 0;
       switch (bl->attr_bind[i].type)
       {
         case IS_STRING:
@@ -122,10 +122,139 @@ void JSON::BindObject(const Node& node, void *obj, const bindings_t *bl)
         default:
           break;
       }
-      if (err)
-        Myth::DBG(DBG_ERROR, "%s: failed (%d) field \"%s\" type %d: %s\n", __FUNCTION__, err, bl->attr_bind[i].field, bl->attr_bind[i].type, value.c_str());
     }
     else
-      Myth::DBG(DBG_WARN, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+    {
+      switch (bl->attr_bind[i].type)
+      {
+        case IS_STRING:
+        {
+          if (field.IsString())
+          {
+            std::string value(field.GetStringValue());
+            bl->attr_bind[i].set(obj, value.c_str());
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_INT8:
+        {
+          if (field.IsInt())
+          {
+            int8_t num = field.GetIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_INT16:
+        {
+          if (field.IsInt())
+          {
+            int16_t num = field.GetIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_INT32:
+        {
+          if (field.IsInt())
+          {
+            int32_t num = field.GetIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_INT64:
+        {
+          if (field.IsInt() || field.IsDouble())
+          {
+            int64_t num = field.GetBigIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_UINT8:
+        {
+          if (field.IsInt())
+          {
+            uint8_t num = field.GetIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_UINT16:
+        {
+          if (field.IsInt())
+          {
+            uint16_t num = field.GetIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_UINT32:
+        {
+          if (field.IsInt() || field.IsDouble())
+          {
+            uint32_t num = (uint32_t) field.GetBigIntValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_DOUBLE:
+        {
+          if (field.IsDouble() || field.IsInt())
+          {
+            double num = field.GetDoubleValue();
+            bl->attr_bind[i].set(obj, &num);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_BOOLEAN:
+        {
+          if (field.IsTrue() || field.IsFalse())
+          {
+            bool b = field.IsTrue();
+            bl->attr_bind[i].set(obj, &b);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        case IS_TIME:
+        {
+          if (field.IsString())
+          {
+            std::string value(field.GetStringValue());
+            time_t time = 0;
+            err = string_to_time(value.c_str(), &time);
+            bl->attr_bind[i].set(obj, &time);
+          }
+          else
+            Myth::DBG(DBG_ERROR, "%s: invalid value for field \"%s\" type %d\n", __FUNCTION__, bl->attr_bind[i].field, bl->attr_bind[i].type);
+          break;
+        }
+        default:
+          break;
+      }
+    }
+    if (err)
+      Myth::DBG(DBG_ERROR, "%s: failed (%d) field \"%s\" type %d\n", __FUNCTION__, err, bl->attr_bind[i].field, bl->attr_bind[i].type);
   }
 }
