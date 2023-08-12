@@ -44,7 +44,7 @@ namespace MythDTO
   void SetProgram_ProgramId(Myth::Program *obj, const char *val) { obj->programId = val; }
   void SetProgram_Inetref(Myth::Program *obj, const char *val) { obj->inetref = val; }
   void SetProgram_LastModified(Myth::Program *obj, time_t *val) { obj->lastModified = *val; }
-  void SetProgram_Stars(Myth::Program *obj, const char *val) { obj->stars = val; }
+  void SetProgram_Stars(Myth::Program *obj, double *val) { obj->stars = std::to_string(*val); }
   void SetProgram_Airdate(Myth::Program *obj, const char *val) { obj->airdate = val; }
   void SetProgram_AudioProps(Myth::Program *obj, uint16_t *val) { obj->audioProps = *val; }
   void SetProgram_VideoProps(Myth::Program *obj, uint16_t *val) { obj->videoProps = *val; }

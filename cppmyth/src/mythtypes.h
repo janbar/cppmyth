@@ -258,7 +258,7 @@ namespace Myth
     std::string         iconURL;
     std::string         channelName;
     uint32_t            mplexId;
-    std::string         commFree;
+    bool                commFree;
     std::string         chanFilters;
     uint32_t            sourceId;
     uint32_t            inputId;
@@ -267,6 +267,7 @@ namespace Myth
     Channel()
     : chanId(0)
     , mplexId(0)
+    , commFree(false)
     , sourceId(0)
     , inputId(0)
     , visible(true)
@@ -311,6 +312,65 @@ namespace Myth
   typedef MYTH_SHARED_PTR<Recording> RecordingPtr;
   typedef std::vector<RecordingPtr> RecordingList;
   typedef MYTH_SHARED_PTR<RecordingList> RecordingListPtr;
+
+  /* Program flags from MythTV 32 */
+  typedef enum {
+    FL_NONE             = 0x00000000,
+    FL_COMMFLAG         = 0x00000001,
+    FL_CUTLIST          = 0x00000002,
+    FL_AUTOEXP          = 0x00000004,
+    FL_EDITING          = 0x00000008,
+    FL_BOOKMARK         = 0x00000010,
+    FL_REALLYEDITING    = 0x00000020,
+    FL_COMMPROCESSING   = 0x00000040,
+    FL_DELETEPENDING    = 0x00000080,
+    FL_TRANSCODED       = 0x00000100,
+    FL_WATCHED          = 0x00000200,
+    FL_PRESERVED        = 0x00000400,
+    FL_CHANCOMMFREE     = 0x00000800,
+    FL_REPEAT           = 0x00001000,
+    FL_DUPLICATE        = 0x00002000,
+    FL_REACTIVATE       = 0x00004000,
+    FL_IGNOREBOOKMARK   = 0x00008000,
+    FL_IGNOREPROGSTART  = 0x00010000,
+    FL_ALLOWLASTPLAYPOS = 0x00020000,
+    FL_TYPEMASK         = 0x00F00000,
+    FL_INUSERECORDING   = 0x01000000,
+    FL_INUSEPLAYING     = 0x02000000,
+    FL_INUSEOTHER       = 0x04000000,
+  } FL_t;
+
+  /* Video properties from MythTV 32 */
+  typedef enum {
+    VID_UNKNOWN         = 0x00,
+    VID_HDTV            = 0x01,
+    VID_WIDESCREEN      = 0x02,
+    VID_AVC             = 0x04,
+    VID_720             = 0x08,
+    VID_1080            = 0x10,
+    VID_DAMAGED         = 0x20,
+    VID_3DTV            = 0x40,
+  } VID_t;
+
+  /* Audio properties from MythTV 32 */
+  typedef enum {
+    AUD_UNKNOWN         = 0x00,
+    AUD_STEREO          = 0x01,
+    AUD_MONO            = 0x02,
+    AUD_SURROUND        = 0x04,
+    AUD_DOLBY           = 0x08,
+    AUD_HARDHEAR        = 0x10,
+    AUD_VISUALIMPAIR    = 0x20,
+  } AUD_t;
+
+  /* Subtitle properties from MythTV 32 */
+  typedef enum {
+    SUB_UNKNOWN       = 0x00,
+    SUB_HARDHEAR      = 0x01,
+    SUB_NORMAL        = 0x02,
+    SUB_ONSCREEN      = 0x04,
+    SUB_SIGNED        = 0x08
+  } SUB_t;
 
   struct Program
   {

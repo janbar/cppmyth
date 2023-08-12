@@ -490,9 +490,9 @@ bool WSAPI::PutSetting2_0(const std::string& key, const std::string& value, bool
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1215,14 +1215,17 @@ ProgramListPtr WSAPI::GetRecordedList1_5(unsigned n, bool descending)
       const JSON::Node& reco = prog.GetObjectValue("Recording");
       JSON::BindObject(reco, &(program->recording), bindreco);
       // Bind artwork list of program
-      const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
-      size_t as = arts.Size();
-      for (size_t pa = 0; pa < as; ++pa)
+      if (!prog.GetObjectValue("Artwork").IsNull())
       {
-        const JSON::Node& artw = arts.GetArrayElement(pa);
-        Artwork artwork = Artwork();  // Using default constructor
-        JSON::BindObject(artw, &artwork, bindartw);
-        program->artwork.push_back(artwork);
+        const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
+        size_t as = arts.Size();
+        for (size_t pa = 0; pa < as; ++pa)
+        {
+          const JSON::Node& artw = arts.GetArrayElement(pa);
+          Artwork artwork = Artwork();  // Using default constructor
+          JSON::BindObject(artw, &artwork, bindartw);
+          program->artwork.push_back(artwork);
+        }
       }
       ret->push_back(program);
       ++total;
@@ -1280,14 +1283,17 @@ ProgramPtr WSAPI::GetRecorded1_5(uint32_t chanid, time_t recstartts)
   const JSON::Node& reco = prog.GetObjectValue("Recording");
   JSON::BindObject(reco, &(program->recording), bindreco);
   // Bind artwork list of program
-  const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
-  size_t as = arts.Size();
-  for (size_t pa = 0; pa < as; ++pa)
+  if (!prog.GetObjectValue("Artwork").IsNull())
   {
-    const JSON::Node& artw = arts.GetArrayElement(pa);
-    Artwork artwork = Artwork();  // Using default constructor
-    JSON::BindObject(artw, &artwork, bindartw);
-    program->artwork.push_back(artwork);
+    const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
+    size_t as = arts.Size();
+    for (size_t pa = 0; pa < as; ++pa)
+    {
+      const JSON::Node& artw = arts.GetArrayElement(pa);
+      Artwork artwork = Artwork();  // Using default constructor
+      JSON::BindObject(artw, &artwork, bindartw);
+      program->artwork.push_back(artwork);
+    }
   }
   // Return valid program
   if (program->recording.startTs != INVALID_TIME)
@@ -1338,14 +1344,17 @@ ProgramPtr WSAPI::GetRecorded6_0(uint32_t recordedid)
   const JSON::Node& reco = prog.GetObjectValue("Recording");
   JSON::BindObject(reco, &(program->recording), bindreco);
   // Bind artwork list of program
-  const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
-  size_t as = arts.Size();
-  for (size_t pa = 0; pa < as; ++pa)
+  if (!prog.GetObjectValue("Artwork").IsNull())
   {
-    const JSON::Node& artw = arts.GetArrayElement(pa);
-    Artwork artwork = Artwork();  // Using default constructor
-    JSON::BindObject(artw, &artwork, bindartw);
-    program->artwork.push_back(artwork);
+    const JSON::Node& arts = prog.GetObjectValue("Artwork").GetObjectValue("ArtworkInfos");
+    size_t as = arts.Size();
+    for (size_t pa = 0; pa < as; ++pa)
+    {
+      const JSON::Node& artw = arts.GetArrayElement(pa);
+      Artwork artwork = Artwork();  // Using default constructor
+      JSON::BindObject(artw, &artwork, bindartw);
+      program->artwork.push_back(artwork);
+    }
   }
   // Return valid program
   if (program->recording.startTs != INVALID_TIME)
@@ -1383,9 +1392,9 @@ bool WSAPI::DeleteRecording2_1(uint32_t chanid, time_t recstartts, bool forceDel
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::DeleteRecording6_0(uint32_t recordedid, bool forceDelete, bool allowRerecord)
@@ -1416,9 +1425,9 @@ bool WSAPI::DeleteRecording6_0(uint32_t recordedid, bool forceDelete, bool allow
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::UnDeleteRecording2_1(uint32_t chanid, time_t recstartts)
@@ -1449,9 +1458,9 @@ bool WSAPI::UnDeleteRecording2_1(uint32_t chanid, time_t recstartts)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::UnDeleteRecording6_0(uint32_t recordedid)
@@ -1480,9 +1489,9 @@ bool WSAPI::UnDeleteRecording6_0(uint32_t recordedid)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, bool watched)
@@ -1514,9 +1523,9 @@ bool WSAPI::UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, b
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::UpdateRecordedWatchedStatus6_0(uint32_t recordedid, bool watched)
@@ -1546,9 +1555,9 @@ bool WSAPI::UpdateRecordedWatchedStatus6_0(uint32_t recordedid, bool watched)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
@@ -1685,9 +1694,9 @@ bool WSAPI::SetSavedBookmark6_2(uint32_t recordedid, int unit, int64_t value)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 int64_t WSAPI::GetSavedBookmark6_2(uint32_t recordedid, int unit)
@@ -1721,7 +1730,9 @@ int64_t WSAPI::GetSavedBookmark6_2(uint32_t recordedid, int unit)
 
   int64_t value = 0;
   const JSON::Node& field = root.GetObjectValue("long");
-  if (!field.IsString() || string_to_int64(field.GetStringValue().c_str(), &value))
+  if (field.IsInt())
+    value = field.GetBigIntValue();
+  else if (!field.IsString() || string_to_int64(field.GetStringValue().c_str(), &value))
     return -1;
   return value;
 }
@@ -1948,7 +1959,9 @@ bool WSAPI::AddRecordSchedule1_5(RecordSchedule& record)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("int");
-  if (!field.IsString() || string_to_uint32(field.GetStringValue().c_str(), &recordid))
+  if (field.IsInt())
+    recordid = (uint32_t) field.GetBigIntValue();
+  else if (!field.IsString() || string_to_uint32(field.GetStringValue().c_str(), &recordid))
     return false;
   record.recordId = recordid;
   return true;
@@ -2039,7 +2052,9 @@ bool WSAPI::AddRecordSchedule1_7(RecordSchedule& record)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("uint");
-  if (!field.IsString() || string_to_uint32(field.GetStringValue().c_str(), &recordid))
+  if (field.IsInt())
+    recordid = (uint32_t) field.GetBigIntValue();
+  else if (!field.IsString() || string_to_uint32(field.GetStringValue().c_str(), &recordid))
     return false;
   record.recordId = recordid;
   return true;
@@ -2131,9 +2146,9 @@ bool WSAPI::UpdateRecordSchedule1_7(RecordSchedule& record)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::DisableRecordSchedule1_5(uint32_t recordid)
@@ -2164,9 +2179,9 @@ bool WSAPI::DisableRecordSchedule1_5(uint32_t recordid)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::EnableRecordSchedule1_5(uint32_t recordid)
@@ -2197,9 +2212,9 @@ bool WSAPI::EnableRecordSchedule1_5(uint32_t recordid)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 bool WSAPI::RemoveRecordSchedule1_5(uint32_t recordid)
@@ -2230,9 +2245,9 @@ bool WSAPI::RemoveRecordSchedule1_5(uint32_t recordid)
   DBG(DBG_DEBUG, "%s: content parsed\n", __FUNCTION__);
 
   const JSON::Node& field = root.GetObjectValue("bool");
-  if (!field.IsString() || strcmp(field.GetStringValue().c_str(), "true"))
-    return false;
-  return true;
+  if (field.IsTrue() || (field.IsString() && strcmp(field.GetStringValue().c_str(), "true") == 0))
+    return true;
+  return false;
 }
 
 ProgramListPtr WSAPI::GetUpcomingList1_5()

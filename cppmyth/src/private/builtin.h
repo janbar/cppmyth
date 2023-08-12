@@ -97,6 +97,12 @@ static CC_INLINE void uint8_to_string(uint8_t num, char *str)
   sprintf(str, "%u", num);
 }
 
+#define double_to_string __doublestr
+static CC_INLINE void double_to_string(double num, char *str)
+{
+  sprintf(str, "%f", num);
+}
+
 #define TIMESTAMP_UTC_LEN (sizeof("YYYY-MM-DDTHH:MM:SSZ") - 1)
 #define TIMESTAMP_LEN     (sizeof("YYYY-MM-DDTHH:MM:SS") - 1)
 #define DATESTAMP_LEN     (sizeof("YYYY-MM-DD") - 1)

@@ -32,7 +32,7 @@ namespace MythDTO
   void SetChannel_IconURL(Myth::Channel *obj, const char *val) { obj->iconURL = val; }
   void SetChannel_ChannelName(Myth::Channel *obj, const char *val) { obj->channelName = val; }
   void SetChannel_MplexId(Myth::Channel *obj, uint32_t *val) { obj->mplexId = *val; }
-  void SetChannel_CommFree(Myth::Channel *obj, const char *val) { obj->commFree = val; }
+  void SetChannel_CommFree(Myth::Channel *obj, bool *val) { obj->commFree = *val; }
   void SetChannel_ChanFilters(Myth::Channel *obj, const char *val) { obj->chanFilters = val; }
   void SetChannel_SourceId(Myth::Channel *obj, uint32_t *val) { obj->sourceId = *val; }
   void SetChannel_InputId(Myth::Channel *obj, uint32_t *val) { obj->inputId = *val; }
