@@ -34,7 +34,7 @@ void JSON::BindObject(const Node& node, void *obj, const bindings_t *bl)
 {
   int i, err;
 
-  if (bl == NULL)
+  if (bl == NULL || node.IsNull())
     return;
 
   for (i = 0; i < bl->attr_count; ++i)
