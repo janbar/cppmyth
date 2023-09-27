@@ -123,7 +123,7 @@ out:
 
 ProtoRecorderPtr ProtoMonitor::GetRecorderFromNum75(int rnum)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
   ProtoRecorderPtr recorder;
   std::string hostname;
@@ -134,8 +134,8 @@ ProtoRecorderPtr ProtoMonitor::GetRecorderFromNum75(int rnum)
     return recorder;
   std::string cmd("GET_RECORDER_FROM_NUM");
   cmd.append(PROTO_STR_SEPARATOR);
-  int32_to_string((int32_t)rnum, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)rnum, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return recorder;
@@ -252,17 +252,17 @@ out:
 
 bool ProtoMonitor::DeleteRecording75(const Program& program, bool force, bool forget)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("DELETE_RECORDING ");
-  uint32_to_string(program.channel.chanId, buf);
-  cmd.append(buf).append(" ");
-  time_to_iso8601utc(program.recording.startTs, buf);
-  cmd.append(buf).append(" ");
+  uint32_to_string(program.channel.chanId, &buf);
+  cmd.append(buf.data).append(" ");
+  time_to_iso8601utc(program.recording.startTs, &buf);
+  cmd.append(buf.data).append(" ");
   if (force)
     cmd.append("FORCE ");
   else
@@ -338,15 +338,15 @@ bool ProtoMonitor::StopRecording75(const Program& program)
 
 bool ProtoMonitor::CancelNextRecording75(int rnum, bool cancel)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string(rnum, buf);
-  cmd.append(buf).append(PROTO_STR_SEPARATOR);
+  int32_to_string(rnum, &buf);
+  cmd.append(buf.data).append(PROTO_STR_SEPARATOR);
   cmd.append("CANCEL_NEXT_RECORDING").append(PROTO_STR_SEPARATOR);
   cmd.append((cancel ? "1" : "0"));
 
@@ -403,7 +403,7 @@ StorageGroupFilePtr ProtoMonitor::QuerySGFile75(const std::string& hostname, con
 
 MarkListPtr ProtoMonitor::GetCutList75(const Program& program)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
   int32_t nb;
   MarkListPtr list(new MarkList);
@@ -412,10 +412,10 @@ MarkListPtr ProtoMonitor::GetCutList75(const Program& program)
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_CUTLIST ");
-  uint32_to_string(program.channel.chanId, buf);
-  cmd.append(buf).append(" ");
-  int64_to_string(program.recording.startTs, buf);
-  cmd.append(buf);
+  uint32_to_string(program.channel.chanId, &buf);
+  cmd.append(buf.data).append(" ");
+  int64_to_string(program.recording.startTs, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;
@@ -446,7 +446,7 @@ MarkListPtr ProtoMonitor::GetCutList75(const Program& program)
 
 MarkListPtr ProtoMonitor::GetCommBreakList75(const Program& program)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
   int32_t nb;
   MarkListPtr list(new MarkList);
@@ -455,10 +455,10 @@ MarkListPtr ProtoMonitor::GetCommBreakList75(const Program& program)
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_COMMBREAK ");
-  uint32_to_string(program.channel.chanId, buf);
-  cmd.append(buf).append(" ");
-  int64_to_string(program.recording.startTs, buf);
-  cmd.append(buf);
+  uint32_to_string(program.channel.chanId, &buf);
+  cmd.append(buf.data).append(" ");
+  int64_to_string(program.recording.startTs, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;
@@ -568,15 +568,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs75()
   for (std::vector<int>::const_iterator cardIt = cardList.begin(); cardIt != cardList.end(); ++cardIt)
   {
     bool succeeded = false;
-    char buf[32];
+    BUILTIN_BUFFER buf;
     std::string field;
 
     OS::CLockGuard lock(*m_mutex);
     if (!IsOpen())
       break;
     std::string cmd("QUERY_RECORDER ");
-    int32_to_string((int32_t)(*cardIt), buf);
-    cmd.append(buf);
+    int32_to_string((int32_t)(*cardIt), &buf);
+    cmd.append(buf.data);
     cmd.append(PROTO_STR_SEPARATOR);
     cmd.append("GET_FREE_INPUTS");
 
@@ -615,15 +615,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs79()
   for (std::vector<int>::const_iterator cardIt = cardList.begin(); cardIt != cardList.end(); ++cardIt)
   {
     bool succeeded = false;
-    char buf[32];
+    BUILTIN_BUFFER buf;
     std::string field;
 
     OS::CLockGuard lock(*m_mutex);
     if (!IsOpen())
       break;
     std::string cmd("QUERY_RECORDER ");
-    int32_to_string((int32_t)(*cardIt), buf);
-    cmd.append(buf);
+    int32_to_string((int32_t)(*cardIt), &buf);
+    cmd.append(buf.data);
     cmd.append(PROTO_STR_SEPARATOR);
     cmd.append("GET_FREE_INPUTS");
 
@@ -670,15 +670,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs81()
   for (std::vector<int>::const_iterator cardIt = cardList.begin(); cardIt != cardList.end(); ++cardIt)
   {
     bool succeeded = false;
-    char buf[32];
+    BUILTIN_BUFFER buf;
     std::string field;
 
     OS::CLockGuard lock(*m_mutex);
     if (!IsOpen())
       break;
     std::string cmd("QUERY_RECORDER ");
-    int32_to_string((int32_t)(*cardIt), buf);
-    cmd.append(buf);
+    int32_to_string((int32_t)(*cardIt), &buf);
+    cmd.append(buf.data);
     cmd.append(PROTO_STR_SEPARATOR);
     cmd.append("GET_FREE_INPUTS");
 
@@ -723,15 +723,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs81()
 CardInputListPtr ProtoMonitor::GetFreeInputs87(int rnum)
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO ");
-  int32_to_string((int32_t)rnum, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)rnum, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;
@@ -770,15 +770,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs87(int rnum)
 CardInputListPtr ProtoMonitor::GetFreeInputs89(int rnum)
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO ");
-  int32_to_string((int32_t)rnum, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)rnum, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;
@@ -819,15 +819,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs89(int rnum)
 CardInputListPtr ProtoMonitor::GetFreeInputs90(int rnum)
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO ");
-  int32_to_string((int32_t)rnum, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)rnum, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;
@@ -869,15 +869,15 @@ CardInputListPtr ProtoMonitor::GetFreeInputs90(int rnum)
 CardInputListPtr ProtoMonitor::GetFreeInputs91(int rnum)
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO ");
-  int32_to_string((int32_t)rnum, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)rnum, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return list;

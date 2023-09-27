@@ -38,10 +38,10 @@ uint32_t Myth::StringToId(const std::string& str)
 
 std::string Myth::IdToString(uint32_t id)
 {
-  char buf[32];
-  *buf = '\0';
-  uint32_to_string(id, buf);
-  return std::string(buf);
+  BUILTIN_BUFFER buf;
+  buf.data[0] = '\0';
+  uint32_to_string(id, &buf);
+  return std::string(buf.data);
 }
 
 time_t Myth::StringToTime(const std::string& isotime)
@@ -55,17 +55,17 @@ std::string Myth::TimeToString(time_t time, bool utc)
 {
   if (utc)
   {
-    char buf[TIMESTAMP_UTC_LEN + 1];
-    *buf = '\0';
-    time_to_iso8601utc(time, buf);
-    return std::string(buf);
+    BUILTIN_BUFFER buf;
+    buf.data[0] = '\0';
+    time_to_iso8601utc(time, &buf);
+    return std::string(buf.data);
   }
   else
   {
-    char buf[TIMESTAMP_LEN + 1];
-    *buf = '\0';
-    time_to_iso8601(time, buf);
-    return std::string(buf);
+    BUILTIN_BUFFER buf;
+    buf.data[0] = '\0';
+    time_to_iso8601(time, &buf);
+    return std::string(buf.data);
   }
 }
 
@@ -78,10 +78,10 @@ int Myth::StringToInt(const std::string& str)
 
 std::string Myth::IntToString(int i)
 {
-  char buf[32];
-  *buf = '\0';
-  int32_to_string(i, buf);
-  return std::string(buf);
+  BUILTIN_BUFFER buf;
+  buf.data[0] = '\0';
+  int32_to_string(i, &buf);
+  return std::string(buf.data);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

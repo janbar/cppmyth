@@ -99,14 +99,14 @@ out:
 
 void ProtoPlayback::TransferDone75(ProtoTransfer& transfer)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   OS::CLockGuard lock(*m_mutex);
   if (!transfer.IsOpen())
     return;
   std::string cmd("QUERY_FILETRANSFER ");
-  uint32_to_string(transfer.GetFileId(), buf);
-  cmd.append(buf).append(PROTO_STR_SEPARATOR).append("DONE");
+  uint32_to_string(transfer.GetFileId(), &buf);
+  cmd.append(buf.data).append(PROTO_STR_SEPARATOR).append("DONE");
   if (SendCommand(cmd.c_str()))
   {
     std::string field;
@@ -117,7 +117,7 @@ void ProtoPlayback::TransferDone75(ProtoTransfer& transfer)
 
 bool ProtoPlayback::TransferIsOpen75(ProtoTransfer& transfer)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
   int8_t status = 0;
 
@@ -125,8 +125,8 @@ bool ProtoPlayback::TransferIsOpen75(ProtoTransfer& transfer)
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_FILETRANSFER ");
-  uint32_to_string(transfer.GetFileId(), buf);
-  cmd.append(buf);
+  uint32_to_string(transfer.GetFileId(), &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("IS_OPEN");
 
@@ -268,18 +268,18 @@ err:
 bool ProtoPlayback::TransferRequestBlock75(ProtoTransfer& transfer, unsigned n)
 {
   // Note: Caller has to hold mutex until feedback or cancel point
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   if (!transfer.IsOpen())
     return false;
   std::string cmd("QUERY_FILETRANSFER ");
-  uint32_to_string(transfer.GetFileId(), buf);
-  cmd.append(buf);
+  uint32_to_string(transfer.GetFileId(), &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("REQUEST_BLOCK");
   cmd.append(PROTO_STR_SEPARATOR);
-  uint32_to_string(n, buf);
-  cmd.append(buf);
+  uint32_to_string(n, &buf);
+  cmd.append(buf.data);
 
   // No wait for feedback
   if (!SendCommand(cmd.c_str(), false))
@@ -302,7 +302,7 @@ int32_t ProtoPlayback::TransferRequestBlockFeedback75()
 
 int64_t ProtoPlayback::TransferSeek75(ProtoTransfer& transfer, int64_t offset, WHENCE_t whence)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int64_t position = 0;
   std::string field;
 
@@ -338,19 +338,19 @@ int64_t ProtoPlayback::TransferSeek75(ProtoTransfer& transfer, int64_t offset, W
   if (!transfer.IsOpen())
     return -1;
   std::string cmd("QUERY_FILETRANSFER ");
-  uint32_to_string(transfer.GetFileId(), buf);
-  cmd.append(buf);
+  uint32_to_string(transfer.GetFileId(), &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("SEEK");
   cmd.append(PROTO_STR_SEPARATOR);
-  int64_to_string(offset, buf);
-  cmd.append(buf);
+  int64_to_string(offset, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
-  int8_to_string(whence, buf);
-  cmd.append(buf);
+  int8_to_string(whence, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
-  int64_to_string(filePosition, buf);
-  cmd.append(buf);
+  int64_to_string(filePosition, &buf);
+  cmd.append(buf.data);
 
   if (!SendCommand(cmd.c_str()))
     return -1;

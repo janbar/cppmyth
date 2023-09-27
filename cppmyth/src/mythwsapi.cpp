@@ -595,7 +595,7 @@ VideoSourceListPtr WSAPI::GetVideoSourceList1_2()
 ChannelListPtr WSAPI::GetChannelList1_2(uint32_t sourceid, bool onlyVisible)
 {
   ChannelListPtr ret(new ChannelList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -611,12 +611,12 @@ ChannelListPtr WSAPI::GetChannelList1_2(uint32_t sourceid, bool onlyVisible)
   do
   {
     req.ClearContent();
-    uint32_to_string(sourceid, buf);
-    req.SetContentParam("SourceID", buf);
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    uint32_to_string(sourceid, &buf);
+    req.SetContentParam("SourceID", buf.data);
+    int32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    int32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
@@ -670,7 +670,7 @@ ChannelListPtr WSAPI::GetChannelList1_2(uint32_t sourceid, bool onlyVisible)
 ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
 {
   ChannelListPtr ret(new ChannelList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, /*req_count = FETCHSIZE,*/ count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -688,13 +688,13 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
     req.ClearContent();
     req.SetContentParam("Details", "true");
     req.SetContentParam("OnlyVisible", BOOLSTR(onlyVisible));
-    uint32_to_string(sourceid, buf);
-    req.SetContentParam("SourceID", buf);
+    uint32_to_string(sourceid, &buf);
+    req.SetContentParam("SourceID", buf.data);
     // W.A. for bug tracked by ticket 12461
-    //int32_to_string(req_index, buf);
-    //req.SetContentParam("StartIndex", buf);
-    //int32_to_string(req_count, buf);
-    //req.SetContentParam("Count", buf);
+    //int32_to_string(req_index, &buf);
+    //req.SetContentParam("StartIndex", buf.data);
+    //int32_to_string(req_count, &buf);
+    //req.SetContentParam("Count", buf.data);
 
     //DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
@@ -749,7 +749,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
 ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
 {
   ChannelPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -759,8 +759,8 @@ ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Channel/GetChannelInfo");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanID", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanID", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -794,7 +794,7 @@ ChannelPtr WSAPI::GetChannel1_2(uint32_t chanid)
 std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide1_0(time_t starttime, time_t endtime)
 {
   std::map<uint32_t, ProgramMapPtr> ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -809,10 +809,10 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide1_0(time_t starttime, ti
   req.RequestService("/Guide/GetProgramGuide");
   req.SetContentParam("StartChanId", "0");
   req.SetContentParam("NumChannels", "0");
-  time_to_iso8601utc(starttime, buf);
-  req.SetContentParam("StartTime", buf);
-  time_to_iso8601utc(endtime, buf);
-  req.SetContentParam("EndTime", buf);
+  time_to_iso8601utc(starttime, &buf);
+  req.SetContentParam("StartTime", buf.data);
+  time_to_iso8601utc(endtime, &buf);
+  req.SetContentParam("EndTime", buf.data);
   req.SetContentParam("Details", "true");
 
   WSResponse resp(req);
@@ -874,7 +874,7 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide1_0(time_t starttime, ti
 ProgramMapPtr WSAPI::GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_t endtime)
 {
   ProgramMapPtr ret(new ProgramMap);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -887,13 +887,13 @@ ProgramMapPtr WSAPI::GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Guide/GetProgramGuide");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("StartChanId", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("StartChanId", buf.data);
   req.SetContentParam("NumChannels", "1");
-  time_to_iso8601utc(starttime, buf);
-  req.SetContentParam("StartTime", buf);
-  time_to_iso8601utc(endtime, buf);
-  req.SetContentParam("EndTime", buf);
+  time_to_iso8601utc(starttime, &buf);
+  req.SetContentParam("StartTime", buf.data);
+  time_to_iso8601utc(endtime, &buf);
+  req.SetContentParam("EndTime", buf.data);
   req.SetContentParam("Details", "true");
 
   WSResponse resp(req);
@@ -956,7 +956,7 @@ ProgramMapPtr WSAPI::GetProgramGuide1_0(uint32_t chanid, time_t starttime, time_
 std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide2_2(time_t starttime, time_t endtime)
 {
   std::map<uint32_t, ProgramMapPtr> ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   uint32_t req_index = 0, req_count = FETCHSIZE, count = 0, total = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -978,14 +978,14 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide2_2(time_t starttime, ti
   do
   {
     req.ClearContent();
-    uint32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    uint32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
-    time_to_iso8601utc(starttime, buf);
-    req.SetContentParam("StartTime", buf);
-    time_to_iso8601utc(endtime, buf);
-    req.SetContentParam("EndTime", buf);
+    uint32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    uint32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
+    time_to_iso8601utc(starttime, &buf);
+    req.SetContentParam("StartTime", buf.data);
+    time_to_iso8601utc(endtime, &buf);
+    req.SetContentParam("EndTime", buf.data);
     req.SetContentParam("Details", "true");
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
@@ -1053,7 +1053,7 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide2_2(time_t starttime, ti
 ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t endtime)
 {
   ProgramMapPtr ret(new ProgramMap);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   uint32_t req_index = 0, req_count = FETCHSIZE_L, count = 0, total = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1070,16 +1070,16 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
   do
   {
     req.ClearContent();
-    uint32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    uint32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
-    uint32_to_string(chanid, buf);
-    req.SetContentParam("ChanId", buf);
-    time_to_iso8601utc(starttime, buf);
-    req.SetContentParam("StartTime", buf);
-    time_to_iso8601utc(endtime, buf);
-    req.SetContentParam("EndTime", buf);
+    uint32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    uint32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
+    uint32_to_string(chanid, &buf);
+    req.SetContentParam("ChanId", buf.data);
+    time_to_iso8601utc(starttime, &buf);
+    req.SetContentParam("StartTime", buf.data);
+    time_to_iso8601utc(endtime, &buf);
+    req.SetContentParam("EndTime", buf.data);
     req.SetContentParam("Details", "true");
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
@@ -1141,7 +1141,7 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
 ProgramListPtr WSAPI::GetRecordedList1_5(unsigned n, bool descending)
 {
   ProgramListPtr ret(new ProgramList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   uint32_t req_index = 0, req_count = FETCHSIZE, count = 0, total = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1164,10 +1164,10 @@ ProgramListPtr WSAPI::GetRecordedList1_5(unsigned n, bool descending)
       req_count = (n - total);
 
     req.ClearContent();
-    uint32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    uint32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    uint32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    uint32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
     req.SetContentParam("Descending", BOOLSTR(descending));
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
@@ -1241,7 +1241,7 @@ ProgramListPtr WSAPI::GetRecordedList1_5(unsigned n, bool descending)
 ProgramPtr WSAPI::GetRecorded1_5(uint32_t chanid, time_t recstartts)
 {
   ProgramPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -1253,10 +1253,10 @@ ProgramPtr WSAPI::GetRecorded1_5(uint32_t chanid, time_t recstartts)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetRecorded");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1304,7 +1304,7 @@ ProgramPtr WSAPI::GetRecorded1_5(uint32_t chanid, time_t recstartts)
 ProgramPtr WSAPI::GetRecorded6_0(uint32_t recordedid)
 {
   ProgramPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -1316,8 +1316,8 @@ ProgramPtr WSAPI::GetRecorded6_0(uint32_t recordedid)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetRecorded");
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1364,16 +1364,16 @@ ProgramPtr WSAPI::GetRecorded6_0(uint32_t recordedid)
 
 bool WSAPI::DeleteRecording2_1(uint32_t chanid, time_t recstartts, bool forceDelete, bool allowRerecord)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/DeleteRecording", HRM_POST);
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   req.SetContentParam("ForceDelete", BOOLSTR(forceDelete));
   req.SetContentParam("AllowRerecord", BOOLSTR(allowRerecord));
   WSResponse resp(req);
@@ -1399,14 +1399,14 @@ bool WSAPI::DeleteRecording2_1(uint32_t chanid, time_t recstartts, bool forceDel
 
 bool WSAPI::DeleteRecording6_0(uint32_t recordedid, bool forceDelete, bool allowRerecord)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/DeleteRecording", HRM_POST);
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   req.SetContentParam("ForceDelete", BOOLSTR(forceDelete));
   req.SetContentParam("AllowRerecord", BOOLSTR(allowRerecord));
   WSResponse resp(req);
@@ -1432,16 +1432,16 @@ bool WSAPI::DeleteRecording6_0(uint32_t recordedid, bool forceDelete, bool allow
 
 bool WSAPI::UnDeleteRecording2_1(uint32_t chanid, time_t recstartts)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/UnDeleteRecording", HRM_POST);
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1465,14 +1465,14 @@ bool WSAPI::UnDeleteRecording2_1(uint32_t chanid, time_t recstartts)
 
 bool WSAPI::UnDeleteRecording6_0(uint32_t recordedid)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/UnDeleteRecording", HRM_POST);
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1496,16 +1496,16 @@ bool WSAPI::UnDeleteRecording6_0(uint32_t recordedid)
 
 bool WSAPI::UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, bool watched)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/UpdateRecordedWatchedStatus", HRM_POST);
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   req.SetContentParam("Watched", BOOLSTR(watched));
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -1530,14 +1530,14 @@ bool WSAPI::UpdateRecordedWatchedStatus4_5(uint32_t chanid, time_t recstartts, b
 
 bool WSAPI::UpdateRecordedWatchedStatus6_0(uint32_t recordedid, bool watched)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/UpdateRecordedWatchedStatus", HRM_POST);
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   req.SetContentParam("Watched", BOOLSTR(watched));
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -1562,7 +1562,7 @@ bool WSAPI::UpdateRecordedWatchedStatus6_0(uint32_t recordedid, bool watched)
 
 MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   MarkListPtr ret(new MarkList);
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1573,8 +1573,8 @@ MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetRecordedCommBreak");
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   if (unit == 1)
     req.SetContentParam("OffsetType", "Position");
   else if (unit == 2)
@@ -1613,7 +1613,7 @@ MarkListPtr WSAPI::GetRecordedCommBreak6_1(uint32_t recordedid, int unit)
 
 MarkListPtr WSAPI::GetRecordedCutList6_1(uint32_t recordedid, int unit)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   MarkListPtr ret(new MarkList);
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1624,8 +1624,8 @@ MarkListPtr WSAPI::GetRecordedCutList6_1(uint32_t recordedid, int unit)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetRecordedCutList");
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   if (unit == 1)
     req.SetContentParam("OffsetType", "Position");
   else if (unit == 2)
@@ -1664,20 +1664,20 @@ MarkListPtr WSAPI::GetRecordedCutList6_1(uint32_t recordedid, int unit)
 
 bool WSAPI::SetSavedBookmark6_2(uint32_t recordedid, int unit, int64_t value)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/SetSavedBookmark", HRM_POST);
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   if (unit == 2)
     req.SetContentParam("OffsetType", "Duration");
   else
     req.SetContentParam("OffsetType", "Position");
-  int64_to_string(value, buf);
-  req.SetContentParam("Offset", buf);
+  int64_to_string(value, &buf);
+  req.SetContentParam("Offset", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1701,14 +1701,14 @@ bool WSAPI::SetSavedBookmark6_2(uint32_t recordedid, int unit, int64_t value)
 
 int64_t WSAPI::GetSavedBookmark6_2(uint32_t recordedid, int unit)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetSavedBookmark", HRM_POST);
-  uint32_to_string(recordedid, buf);
-  req.SetContentParam("RecordedId", buf);
+  uint32_to_string(recordedid, &buf);
+  req.SetContentParam("RecordedId", buf.data);
   if (unit == 2)
     req.SetContentParam("OffsetType", "Duration");
   else
@@ -1749,7 +1749,7 @@ static void ProcessRecordIN(unsigned proto, RecordSchedule& record)
 RecordScheduleListPtr WSAPI::GetRecordScheduleList1_5()
 {
   RecordScheduleListPtr ret(new RecordScheduleList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1765,10 +1765,10 @@ RecordScheduleListPtr WSAPI::GetRecordScheduleList1_5()
   do
   {
     req.ClearContent();
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    int32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    int32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
@@ -1822,7 +1822,7 @@ RecordScheduleListPtr WSAPI::GetRecordScheduleList1_5()
 RecordSchedulePtr WSAPI::GetRecordSchedule1_5(uint32_t recordid)
 {
   RecordSchedulePtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -1831,8 +1831,8 @@ RecordSchedulePtr WSAPI::GetRecordSchedule1_5(uint32_t recordid)
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/GetRecordSchedule");
-  uint32_to_string(recordid, buf);
-  req.SetContentParam("RecordId", buf);
+  uint32_to_string(recordid, &buf);
+  req.SetContentParam("RecordId", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {
@@ -1868,7 +1868,7 @@ static void ProcessRecordOUT(unsigned proto, RecordSchedule& record)
   time_t st = record.startTime;
   localtime_r(&st, &stm);
   // Set find time & day
-  sprintf(buf, "%.2d:%.2d:%.2d", stm.tm_hour, stm.tm_min, stm.tm_sec);
+  snprintf(buf, sizeof(buf), "%.2d:%.2d:%.2d", stm.tm_hour, stm.tm_min, stm.tm_sec);
   record.findTime = buf;
   record.findDay = (stm.tm_wday + 1) % 7;
   // Converting internal types to API codes
@@ -1880,7 +1880,7 @@ static void ProcessRecordOUT(unsigned proto, RecordSchedule& record)
 
 bool WSAPI::AddRecordSchedule1_5(RecordSchedule& record)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   uint32_t recordid;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1895,43 +1895,43 @@ bool WSAPI::AddRecordSchedule1_5(RecordSchedule& record)
   req.SetContentParam("Subtitle", record.subtitle);
   req.SetContentParam("Description", record.description);
   req.SetContentParam("Category", record.category);
-  time_to_iso8601utc(record.startTime, buf);
-  req.SetContentParam("StartTime", buf);
-  time_to_iso8601utc(record.endTime, buf);
-  req.SetContentParam("EndTime", buf);
+  time_to_iso8601utc(record.startTime, &buf);
+  req.SetContentParam("StartTime", buf.data);
+  time_to_iso8601utc(record.endTime, &buf);
+  req.SetContentParam("EndTime", buf.data);
   req.SetContentParam("SeriesId", record.seriesId);
   req.SetContentParam("ProgramId", record.programId);
-  uint32_to_string(record.chanId, buf);
-  req.SetContentParam("ChanId", buf);
-  uint32_to_string(record.parentId, buf);
-  req.SetContentParam("ParentId", buf);
+  uint32_to_string(record.chanId, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  uint32_to_string(record.parentId, &buf);
+  req.SetContentParam("ParentId", buf.data);
   req.SetContentParam("Inactive", BOOLSTR(record.inactive));
-  uint16_to_string(record.season, buf);
-  req.SetContentParam("Season", buf);
-  uint16_to_string(record.episode, buf);
-  req.SetContentParam("Episode", buf);
+  uint16_to_string(record.season, &buf);
+  req.SetContentParam("Season", buf.data);
+  uint16_to_string(record.episode, &buf);
+  req.SetContentParam("Episode", buf.data);
   req.SetContentParam("Inetref", record.inetref);
   req.SetContentParam("Type", record.type);
   req.SetContentParam("SearchType", record.searchType);
-  int8_to_string(record.recPriority, buf);
-  req.SetContentParam("RecPriority", buf);
-  uint32_to_string(record.preferredInput, buf);
-  req.SetContentParam("PreferredInput", buf);
-  uint8_to_string(record.startOffset, buf);
-  req.SetContentParam("StartOffset", buf);
-  uint8_to_string(record.endOffset, buf);
-  req.SetContentParam("EndOffset", buf);
+  int8_to_string(record.recPriority, &buf);
+  req.SetContentParam("RecPriority", buf.data);
+  uint32_to_string(record.preferredInput, &buf);
+  req.SetContentParam("PreferredInput", buf.data);
+  uint8_to_string(record.startOffset, &buf);
+  req.SetContentParam("StartOffset", buf.data);
+  uint8_to_string(record.endOffset, &buf);
+  req.SetContentParam("EndOffset", buf.data);
   req.SetContentParam("DupMethod", record.dupMethod);
   req.SetContentParam("DupIn", record.dupIn);
-  uint32_to_string(record.filter, buf);
-  req.SetContentParam("Filter", buf);
+  uint32_to_string(record.filter, &buf);
+  req.SetContentParam("Filter", buf.data);
   req.SetContentParam("RecProfile", record.recProfile);
   req.SetContentParam("RecGroup", record.recGroup);
   req.SetContentParam("StorageGroup", record.storageGroup);
   req.SetContentParam("PlayGroup", record.playGroup);
   req.SetContentParam("AutoExpire", BOOLSTR(record.autoExpire));
-  uint32_to_string(record.maxEpisodes, buf);
-  req.SetContentParam("MaxEpisodes", buf);
+  uint32_to_string(record.maxEpisodes, &buf);
+  req.SetContentParam("MaxEpisodes", buf.data);
   req.SetContentParam("MaxNewest", BOOLSTR(record.maxNewest));
   req.SetContentParam("AutoCommflag", BOOLSTR(record.autoCommflag));
   req.SetContentParam("AutoTranscode", BOOLSTR(record.autoTranscode));
@@ -1940,8 +1940,8 @@ bool WSAPI::AddRecordSchedule1_5(RecordSchedule& record)
   req.SetContentParam("AutoUserJob2", BOOLSTR(record.autoUserJob2));
   req.SetContentParam("AutoUserJob3", BOOLSTR(record.autoUserJob3));
   req.SetContentParam("AutoUserJob4", BOOLSTR(record.autoUserJob4));
-  uint32_to_string(record.transcoder, buf);
-  req.SetContentParam("Transcoder", buf);
+  uint32_to_string(record.transcoder, &buf);
+  req.SetContentParam("Transcoder", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -1969,7 +1969,7 @@ bool WSAPI::AddRecordSchedule1_5(RecordSchedule& record)
 
 bool WSAPI::AddRecordSchedule1_7(RecordSchedule& record)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   uint32_t recordid;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -1984,47 +1984,47 @@ bool WSAPI::AddRecordSchedule1_7(RecordSchedule& record)
   req.SetContentParam("Subtitle", record.subtitle);
   req.SetContentParam("Description", record.description);
   req.SetContentParam("Category", record.category);
-  time_to_iso8601utc(record.startTime, buf);
-  req.SetContentParam("StartTime", buf);
-  time_to_iso8601utc(record.endTime, buf);
-  req.SetContentParam("EndTime", buf);
+  time_to_iso8601utc(record.startTime, &buf);
+  req.SetContentParam("StartTime", buf.data);
+  time_to_iso8601utc(record.endTime, &buf);
+  req.SetContentParam("EndTime", buf.data);
   req.SetContentParam("SeriesId", record.seriesId);
   req.SetContentParam("ProgramId", record.programId);
-  uint32_to_string(record.chanId, buf);
-  req.SetContentParam("ChanId", buf);
+  uint32_to_string(record.chanId, &buf);
+  req.SetContentParam("ChanId", buf.data);
   req.SetContentParam("Station", record.callSign);
-  int8_to_string(record.findDay, buf);
-  req.SetContentParam("FindDay", buf);
+  int8_to_string(record.findDay, &buf);
+  req.SetContentParam("FindDay", buf.data);
   req.SetContentParam("FindTime", record.findTime);
-  uint32_to_string(record.parentId, buf);
-  req.SetContentParam("ParentId", buf);
+  uint32_to_string(record.parentId, &buf);
+  req.SetContentParam("ParentId", buf.data);
   req.SetContentParam("Inactive", BOOLSTR(record.inactive));
-  uint16_to_string(record.season, buf);
-  req.SetContentParam("Season", buf);
-  uint16_to_string(record.episode, buf);
-  req.SetContentParam("Episode", buf);
+  uint16_to_string(record.season, &buf);
+  req.SetContentParam("Season", buf.data);
+  uint16_to_string(record.episode, &buf);
+  req.SetContentParam("Episode", buf.data);
   req.SetContentParam("Inetref", record.inetref);
   req.SetContentParam("Type", record.type);
   req.SetContentParam("SearchType", record.searchType);
-  int8_to_string(record.recPriority, buf);
-  req.SetContentParam("RecPriority", buf);
-  uint32_to_string(record.preferredInput, buf);
-  req.SetContentParam("PreferredInput", buf);
-  uint8_to_string(record.startOffset, buf);
-  req.SetContentParam("StartOffset", buf);
-  uint8_to_string(record.endOffset, buf);
-  req.SetContentParam("EndOffset", buf);
+  int8_to_string(record.recPriority, &buf);
+  req.SetContentParam("RecPriority", buf.data);
+  uint32_to_string(record.preferredInput, &buf);
+  req.SetContentParam("PreferredInput", buf.data);
+  uint8_to_string(record.startOffset, &buf);
+  req.SetContentParam("StartOffset", buf.data);
+  uint8_to_string(record.endOffset, &buf);
+  req.SetContentParam("EndOffset", buf.data);
   req.SetContentParam("DupMethod", record.dupMethod);
   req.SetContentParam("DupIn", record.dupIn);
-  uint32_to_string(record.filter, buf);
-  req.SetContentParam("Filter", buf);
+  uint32_to_string(record.filter, &buf);
+  req.SetContentParam("Filter", buf.data);
   req.SetContentParam("RecProfile", record.recProfile);
   req.SetContentParam("RecGroup", record.recGroup);
   req.SetContentParam("StorageGroup", record.storageGroup);
   req.SetContentParam("PlayGroup", record.playGroup);
   req.SetContentParam("AutoExpire", BOOLSTR(record.autoExpire));
-  uint32_to_string(record.maxEpisodes, buf);
-  req.SetContentParam("MaxEpisodes", buf);
+  uint32_to_string(record.maxEpisodes, &buf);
+  req.SetContentParam("MaxEpisodes", buf.data);
   req.SetContentParam("MaxNewest", BOOLSTR(record.maxNewest));
   req.SetContentParam("AutoCommflag", BOOLSTR(record.autoCommflag));
   req.SetContentParam("AutoTranscode", BOOLSTR(record.autoTranscode));
@@ -2033,8 +2033,8 @@ bool WSAPI::AddRecordSchedule1_7(RecordSchedule& record)
   req.SetContentParam("AutoUserJob2", BOOLSTR(record.autoUserJob2));
   req.SetContentParam("AutoUserJob3", BOOLSTR(record.autoUserJob3));
   req.SetContentParam("AutoUserJob4", BOOLSTR(record.autoUserJob4));
-  uint32_to_string(record.transcoder, buf);
-  req.SetContentParam("Transcoder", buf);
+  uint32_to_string(record.transcoder, &buf);
+  req.SetContentParam("Transcoder", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -2062,7 +2062,7 @@ bool WSAPI::AddRecordSchedule1_7(RecordSchedule& record)
 
 bool WSAPI::UpdateRecordSchedule1_7(RecordSchedule& record)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   ProcessRecordOUT(proto, record);
@@ -2072,53 +2072,53 @@ bool WSAPI::UpdateRecordSchedule1_7(RecordSchedule& record)
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/UpdateRecordSchedule", HRM_POST);
 
-  uint32_to_string(record.recordId, buf);
-  req.SetContentParam("RecordId", buf);
+  uint32_to_string(record.recordId, &buf);
+  req.SetContentParam("RecordId", buf.data);
   req.SetContentParam("Title", record.title);
   req.SetContentParam("Subtitle", record.subtitle);
   req.SetContentParam("Description", record.description);
   req.SetContentParam("Category", record.category);
-  time_to_iso8601utc(record.startTime, buf);
-  req.SetContentParam("StartTime", buf);
-  time_to_iso8601utc(record.endTime, buf);
-  req.SetContentParam("EndTime", buf);
+  time_to_iso8601utc(record.startTime, &buf);
+  req.SetContentParam("StartTime", buf.data);
+  time_to_iso8601utc(record.endTime, &buf);
+  req.SetContentParam("EndTime", buf.data);
   req.SetContentParam("SeriesId", record.seriesId);
   req.SetContentParam("ProgramId", record.programId);
-  uint32_to_string(record.chanId, buf);
-  req.SetContentParam("ChanId", buf);
+  uint32_to_string(record.chanId, &buf);
+  req.SetContentParam("ChanId", buf.data);
   req.SetContentParam("Station", record.callSign);
-  int8_to_string(record.findDay, buf);
-  req.SetContentParam("FindDay", buf);
+  int8_to_string(record.findDay, &buf);
+  req.SetContentParam("FindDay", buf.data);
   req.SetContentParam("FindTime", record.findTime);
-  uint32_to_string(record.parentId, buf);
-  req.SetContentParam("ParentId", buf);
+  uint32_to_string(record.parentId, &buf);
+  req.SetContentParam("ParentId", buf.data);
   req.SetContentParam("Inactive", BOOLSTR(record.inactive));
-  uint16_to_string(record.season, buf);
-  req.SetContentParam("Season", buf);
-  uint16_to_string(record.episode, buf);
-  req.SetContentParam("Episode", buf);
+  uint16_to_string(record.season, &buf);
+  req.SetContentParam("Season", buf.data);
+  uint16_to_string(record.episode, &buf);
+  req.SetContentParam("Episode", buf.data);
   req.SetContentParam("Inetref", record.inetref);
   req.SetContentParam("Type", record.type);
   req.SetContentParam("SearchType", record.searchType);
-  int8_to_string(record.recPriority, buf);
-  req.SetContentParam("RecPriority", buf);
-  uint32_to_string(record.preferredInput, buf);
-  req.SetContentParam("PreferredInput", buf);
-  uint8_to_string(record.startOffset, buf);
-  req.SetContentParam("StartOffset", buf);
-  uint8_to_string(record.endOffset, buf);
-  req.SetContentParam("EndOffset", buf);
+  int8_to_string(record.recPriority, &buf);
+  req.SetContentParam("RecPriority", buf.data);
+  uint32_to_string(record.preferredInput, &buf);
+  req.SetContentParam("PreferredInput", buf.data);
+  uint8_to_string(record.startOffset, &buf);
+  req.SetContentParam("StartOffset", buf.data);
+  uint8_to_string(record.endOffset, &buf);
+  req.SetContentParam("EndOffset", buf.data);
   req.SetContentParam("DupMethod", record.dupMethod);
   req.SetContentParam("DupIn", record.dupIn);
-  uint32_to_string(record.filter, buf);
-  req.SetContentParam("Filter", buf);
+  uint32_to_string(record.filter, &buf);
+  req.SetContentParam("Filter", buf.data);
   req.SetContentParam("RecProfile", record.recProfile);
   req.SetContentParam("RecGroup", record.recGroup);
   req.SetContentParam("StorageGroup", record.storageGroup);
   req.SetContentParam("PlayGroup", record.playGroup);
   req.SetContentParam("AutoExpire", BOOLSTR(record.autoExpire));
-  uint32_to_string(record.maxEpisodes, buf);
-  req.SetContentParam("MaxEpisodes", buf);
+  uint32_to_string(record.maxEpisodes, &buf);
+  req.SetContentParam("MaxEpisodes", buf.data);
   req.SetContentParam("MaxNewest", BOOLSTR(record.maxNewest));
   req.SetContentParam("AutoCommflag", BOOLSTR(record.autoCommflag));
   req.SetContentParam("AutoTranscode", BOOLSTR(record.autoTranscode));
@@ -2127,8 +2127,8 @@ bool WSAPI::UpdateRecordSchedule1_7(RecordSchedule& record)
   req.SetContentParam("AutoUserJob2", BOOLSTR(record.autoUserJob2));
   req.SetContentParam("AutoUserJob3", BOOLSTR(record.autoUserJob3));
   req.SetContentParam("AutoUserJob4", BOOLSTR(record.autoUserJob4));
-  uint32_to_string(record.transcoder, buf);
-  req.SetContentParam("Transcoder", buf);
+  uint32_to_string(record.transcoder, &buf);
+  req.SetContentParam("Transcoder", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -2153,15 +2153,15 @@ bool WSAPI::UpdateRecordSchedule1_7(RecordSchedule& record)
 
 bool WSAPI::DisableRecordSchedule1_5(uint32_t recordid)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/DisableRecordSchedule", HRM_POST);
 
-  uint32_to_string(recordid, buf);
-  req.SetContentParam("RecordId", buf);
+  uint32_to_string(recordid, &buf);
+  req.SetContentParam("RecordId", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -2186,15 +2186,15 @@ bool WSAPI::DisableRecordSchedule1_5(uint32_t recordid)
 
 bool WSAPI::EnableRecordSchedule1_5(uint32_t recordid)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/EnableRecordSchedule", HRM_POST);
 
-  uint32_to_string(recordid, buf);
-  req.SetContentParam("RecordId", buf);
+  uint32_to_string(recordid, &buf);
+  req.SetContentParam("RecordId", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -2219,15 +2219,15 @@ bool WSAPI::EnableRecordSchedule1_5(uint32_t recordid)
 
 bool WSAPI::RemoveRecordSchedule1_5(uint32_t recordid)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Dvr/RemoveRecordSchedule", HRM_POST);
 
-  uint32_to_string(recordid, buf);
-  req.SetContentParam("RecordId", buf);
+  uint32_to_string(recordid, &buf);
+  req.SetContentParam("RecordId", buf.data);
 
   WSResponse resp(req);
   if (!resp.IsSuccessful())
@@ -2267,7 +2267,7 @@ ProgramListPtr WSAPI::GetUpcomingList1_5()
 ProgramListPtr WSAPI::GetUpcomingList2_2()
 {
   ProgramListPtr ret(new ProgramList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -2285,10 +2285,10 @@ ProgramListPtr WSAPI::GetUpcomingList2_2()
   do
   {
     req.ClearContent();
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    int32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    int32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
     req.SetContentParam("ShowAll", "true");
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
@@ -2348,7 +2348,7 @@ ProgramListPtr WSAPI::GetUpcomingList2_2()
 ProgramListPtr WSAPI::GetConflictList1_5()
 {
   ProgramListPtr ret(new ProgramList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -2366,10 +2366,10 @@ ProgramListPtr WSAPI::GetConflictList1_5()
   do
   {
     req.ClearContent();
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    int32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    int32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
@@ -2428,7 +2428,7 @@ ProgramListPtr WSAPI::GetConflictList1_5()
 ProgramListPtr WSAPI::GetExpiringList1_5()
 {
   ProgramListPtr ret(new ProgramList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
@@ -2446,10 +2446,10 @@ ProgramListPtr WSAPI::GetExpiringList1_5()
   do
   {
     req.ClearContent();
-    int32_to_string(req_index, buf);
-    req.SetContentParam("StartIndex", buf);
-    int32_to_string(req_count, buf);
-    req.SetContentParam("Count", buf);
+    int32_to_string(req_index, &buf);
+    req.SetContentParam("StartIndex", buf.data);
+    int32_to_string(req_count, &buf);
+    req.SetContentParam("Count", buf.data);
 
     DBG(DBG_DEBUG, "%s: request index(%d) count(%d)\n", __FUNCTION__, req_index, req_count);
     WSResponse resp(req);
@@ -2581,22 +2581,22 @@ WSStreamPtr WSAPI::GetFile1_32(const std::string& filename, const std::string& s
 WSStreamPtr WSAPI::GetChannelIcon1_32(uint32_t chanid, unsigned width, unsigned height)
 {
   WSStreamPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestService("/Guide/GetChannelIcon");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
   if (width)
   {
-    uint32_to_string(width, buf);
-    req.SetContentParam("Width", buf);
+    uint32_to_string(width, &buf);
+    req.SetContentParam("Width", buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    req.SetContentParam("Height", buf);
+    uint32_to_string(height, &buf);
+    req.SetContentParam("Height", buf.data);
   }
   WSResponse *resp = new WSResponse(req);
   /* try redirection if any */
@@ -2620,27 +2620,27 @@ WSStreamPtr WSAPI::GetChannelIcon1_32(uint32_t chanid, unsigned width, unsigned 
 
 std::string WSAPI::GetChannelIconUrl1_32(uint32_t chanid, unsigned width, unsigned height)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string uri;
   uri.reserve(95);
   uri.append("http://").append(m_server);
   if (m_port != 80)
   {
-    uint32_to_string(m_port, buf);
-    uri.append(":").append(buf);
+    uint32_to_string(m_port, &buf);
+    uri.append(":").append(buf.data);
   }
   uri.append("/Guide/GetChannelIcon");
-  uint32_to_string(chanid, buf);
-  uri.append("?ChanId=").append(buf);
+  uint32_to_string(chanid, &buf);
+  uri.append("?ChanId=").append(buf.data);
   if (width)
   {
-    uint32_to_string(width, buf);
-    uri.append("&Width=").append(buf);
+    uint32_to_string(width, &buf);
+    uri.append("&Width=").append(buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    uri.append("&Height=").append(buf);
+    uint32_to_string(height, &buf);
+    uri.append("&Height=").append(buf.data);
   }
   return uri;
 }
@@ -2648,24 +2648,24 @@ std::string WSAPI::GetChannelIconUrl1_32(uint32_t chanid, unsigned width, unsign
 WSStreamPtr WSAPI::GetPreviewImage1_32(uint32_t chanid, time_t recstartts, unsigned width, unsigned height)
 {
   WSStreamPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestService("/Content/GetPreviewImage");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   if (width)
   {
-    uint32_to_string(width, buf);
-    req.SetContentParam("Width", buf);
+    uint32_to_string(width, &buf);
+    req.SetContentParam("Width", buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    req.SetContentParam("Height", buf);
+    uint32_to_string(height, &buf);
+    req.SetContentParam("Height", buf.data);
   }
   WSResponse *resp = new WSResponse(req);
   /* try redirection if any */
@@ -2689,29 +2689,29 @@ WSStreamPtr WSAPI::GetPreviewImage1_32(uint32_t chanid, time_t recstartts, unsig
 
 std::string WSAPI::GetPreviewImageUrl1_32(uint32_t chanid, time_t recstartts, unsigned width, unsigned height)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string uri;
   uri.reserve(95);
   uri.append("http://").append(m_server);
   if (m_port != 80)
   {
-    uint32_to_string(m_port, buf);
-    uri.append(":").append(buf);
+    uint32_to_string(m_port, &buf);
+    uri.append(":").append(buf.data);
   }
   uri.append("/Content/GetPreviewImage");
-  uint32_to_string(chanid, buf);
-  uri.append("?ChanId=").append(buf);
-  time_to_iso8601utc(recstartts, buf);
-  uri.append("&StartTime=").append(encodeParam(buf));
+  uint32_to_string(chanid, &buf);
+  uri.append("?ChanId=").append(buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  uri.append("&StartTime=").append(encodeParam(buf.data));
   if (width)
   {
-    uint32_to_string(width, buf);
-    uri.append("&Width=").append(buf);
+    uint32_to_string(width, &buf);
+    uri.append("&Width=").append(buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    uri.append("&Height=").append(buf);
+    uint32_to_string(height, &buf);
+    uri.append("&Height=").append(buf.data);
   }
   return uri;
 }
@@ -2719,24 +2719,24 @@ std::string WSAPI::GetPreviewImageUrl1_32(uint32_t chanid, time_t recstartts, un
 WSStreamPtr WSAPI::GetRecordingArtwork1_32(const std::string& type, const std::string& inetref, uint16_t season, unsigned width, unsigned height)
 {
   WSStreamPtr ret;
-  char buf[32];
+  BUILTIN_BUFFER buf;
 
   // Initialize request header
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestService("/Content/GetRecordingArtwork");
   req.SetContentParam("Type", type.c_str());
   req.SetContentParam("Inetref", inetref.c_str());
-  uint16_to_string(season, buf);
-  req.SetContentParam("Season", buf);
+  uint16_to_string(season, &buf);
+  req.SetContentParam("Season", buf.data);
   if (width)
   {
-    uint32_to_string(width, buf);
-    req.SetContentParam("Width", buf);
+    uint32_to_string(width, &buf);
+    req.SetContentParam("Width", buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    req.SetContentParam("Height", buf);
+    uint32_to_string(height, &buf);
+    req.SetContentParam("Height", buf.data);
   }
   WSResponse *resp = new WSResponse(req);
   /* try redirection if any */
@@ -2760,29 +2760,29 @@ WSStreamPtr WSAPI::GetRecordingArtwork1_32(const std::string& type, const std::s
 
 std::string WSAPI::GetRecordingArtworkUrl1_32(const std::string& type, const std::string& inetref, uint16_t season, unsigned width, unsigned height)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string uri;
   uri.reserve(127);
   uri.append("http://").append(m_server);
   if (m_port != 80)
   {
-    uint32_to_string(m_port, buf);
-    uri.append(":").append(buf);
+    uint32_to_string(m_port, &buf);
+    uri.append(":").append(buf.data);
   }
   uri.append("/Content/GetRecordingArtwork");
   uri.append("?Type=").append(encodeParam(type));
   uri.append("&Inetref=").append(encodeParam(inetref));
-  uint16_to_string(season, buf);
-  uri.append("&Season=").append(buf);
+  uint16_to_string(season, &buf);
+  uri.append("&Season=").append(buf.data);
   if (width)
   {
-    uint32_to_string(width, buf);
-    uri.append("&Width=").append(buf);
+    uint32_to_string(width, &buf);
+    uri.append("&Width=").append(buf.data);
   }
   if (height)
   {
-    uint32_to_string(height, buf);
-    uri.append("&Height=").append(buf);
+    uint32_to_string(height, &buf);
+    uri.append("&Height=").append(buf.data);
   }
   return uri;
 }
@@ -2790,7 +2790,7 @@ std::string WSAPI::GetRecordingArtworkUrl1_32(const std::string& type, const std
 ArtworkListPtr WSAPI::GetRecordingArtworkList1_32(uint32_t chanid, time_t recstartts)
 {
   ArtworkListPtr ret(new ArtworkList);
-  char buf[32];
+  BUILTIN_BUFFER buf;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -2799,10 +2799,10 @@ ArtworkListPtr WSAPI::GetRecordingArtworkList1_32(uint32_t chanid, time_t recsta
   WSRequest req = WSRequest(m_server, m_port);
   req.RequestAccept(CT_JSON);
   req.RequestService("/Content/GetRecordingArtworkList");
-  uint32_to_string(chanid, buf);
-  req.SetContentParam("ChanId", buf);
-  time_to_iso8601utc(recstartts, buf);
-  req.SetContentParam("StartTime", buf);
+  uint32_to_string(chanid, &buf);
+  req.SetContentParam("ChanId", buf.data);
+  time_to_iso8601utc(recstartts, &buf);
+  req.SetContentParam("StartTime", buf.data);
   WSResponse resp(req);
   if (!resp.IsSuccessful())
   {

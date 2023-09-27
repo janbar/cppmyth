@@ -37,7 +37,7 @@ inline std::string __urlencode(const std::string& str) {
       out.push_back(*cstr);
     else {
       char buf[4];
-      sprintf(buf, "%%%.2x", static_cast<unsigned char>(*cstr));
+      snprintf(buf, sizeof(buf), "%%%.2x", static_cast<unsigned char>(*cstr));
       out.append(buf);
     }
     ++cstr;

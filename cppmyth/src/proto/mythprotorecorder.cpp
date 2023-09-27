@@ -96,15 +96,15 @@ void ProtoRecorder::DoneRecordingCallback()
 
 bool ProtoRecorder::SpawnLiveTV75(const std::string& chainid, const std::string& channum)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("SPAWN_LIVETV");
   cmd.append(PROTO_STR_SEPARATOR);
@@ -129,15 +129,15 @@ bool ProtoRecorder::SpawnLiveTV75(const std::string& chainid, const std::string&
 
 bool ProtoRecorder::StopLiveTV75()
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("STOP_LIVETV");
 
@@ -154,15 +154,15 @@ bool ProtoRecorder::StopLiveTV75()
 
 bool ProtoRecorder::CheckChannel75(const std::string& channum)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("CHECK_CHANNEL");
   cmd.append(PROTO_STR_SEPARATOR);
@@ -181,15 +181,15 @@ bool ProtoRecorder::CheckChannel75(const std::string& channum)
 
 ProgramPtr ProtoRecorder::GetCurrentRecording75()
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   ProgramPtr program;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return program;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("GET_CURRENT_RECORDING");
 
@@ -208,7 +208,7 @@ out:
 
 int64_t ProtoRecorder::GetFilePosition75()
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   int64_t pos;
   std::string field;
 
@@ -216,8 +216,8 @@ int64_t ProtoRecorder::GetFilePosition75()
   if (!IsOpen() || !IsPlaying())
     return -1;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("GET_FILE_POSITION");
 
@@ -238,15 +238,15 @@ out:
 CardInputListPtr ProtoRecorder::GetFreeInputs75()
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("GET_FREE_INPUTS");
 
@@ -277,15 +277,15 @@ CardInputListPtr ProtoRecorder::GetFreeInputs75()
 CardInputListPtr ProtoRecorder::GetFreeInputs79()
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("GET_FREE_INPUTS");
 
@@ -324,15 +324,15 @@ CardInputListPtr ProtoRecorder::GetFreeInputs79()
 CardInputListPtr ProtoRecorder::GetFreeInputs81()
 {
   CardInputListPtr list = CardInputListPtr(new CardInputList());
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("GET_FREE_INPUTS");
 
@@ -562,15 +562,15 @@ bool ProtoRecorder::IsLiveRecording()
 
 bool ProtoRecorder::SetLiveRecording75(bool keep)
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("SET_LIVE_RECORDING").append(PROTO_STR_SEPARATOR);
   if (keep)
@@ -593,15 +593,15 @@ out:
 
 bool ProtoRecorder::FinishRecording75()
 {
-  char buf[32];
+  BUILTIN_BUFFER buf;
   std::string field;
 
   OS::CLockGuard lock(*m_mutex);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
-  int32_to_string((int32_t)m_num, buf);
-  cmd.append(buf);
+  int32_to_string((int32_t)m_num, &buf);
+  cmd.append(buf.data);
   cmd.append(PROTO_STR_SEPARATOR);
   cmd.append("FINISH_RECORDING");
 

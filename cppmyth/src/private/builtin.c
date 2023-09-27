@@ -187,6 +187,15 @@ int string_to_uint8(const char *str, uint8_t *num)
   return 0;
 }
 
+int string_to_double(const char *str, double *dbl)
+{
+  char* pe;
+  *dbl = strtod(str, &pe);
+  if (pe == str)
+    return -(EINVAL);
+  return 0;
+}
+
 time_t __timegm(struct tm *utctime_tm)
 {
   time_t time;
@@ -347,16 +356,16 @@ err:
   return -(EINVAL);
 }
 
-void time_to_iso8601utc(time_t time, char *str)
+void time_to_iso8601utc(time_t time, BUILTIN_BUFFER *str)
 {
   struct tm time_tm;
 
   if (time == INVALID_TIME || NULL == gmtime_r(&time, &time_tm))
   {
-    str[0] = '\0';
+    str->data[0] = '\0';
     return;
   }
-  sprintf(str, "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2dZ",
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2dZ",
           time_tm.tm_year + 1900,
           time_tm.tm_mon + 1,
           time_tm.tm_mday,
@@ -365,16 +374,16 @@ void time_to_iso8601utc(time_t time, char *str)
           time_tm.tm_sec);
 }
 
-void time_to_iso8601(time_t time, char *str)
+void time_to_iso8601(time_t time, BUILTIN_BUFFER *str)
 {
   struct tm time_tm;
 
   if (time == INVALID_TIME || NULL == localtime_r(&time, &time_tm))
   {
-    str[0] = '\0';
+    str->data[0] = '\0';
     return;
   }
-  sprintf(str, "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2d",
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2d",
           time_tm.tm_year + 1900,
           time_tm.tm_mon + 1,
           time_tm.tm_mday,
@@ -383,16 +392,16 @@ void time_to_iso8601(time_t time, char *str)
           time_tm.tm_sec);
 }
 
-void time_to_isodate(time_t time, char *str)
+void time_to_isodate(time_t time, BUILTIN_BUFFER *str)
 {
   struct tm time_tm;
 
   if (time == INVALID_TIME || NULL == localtime_r(&time, &time_tm))
   {
-    str[0] = '\0';
+    str->data[0] = '\0';
     return;
   }
-  sprintf(str, "%4.4d-%2.2d-%2.2d",
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2d",
           time_tm.tm_year + 1900,
           time_tm.tm_mon + 1,
           time_tm.tm_mday);

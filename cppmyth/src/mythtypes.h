@@ -392,7 +392,7 @@ namespace Myth
     std::string             programId;
     std::string             inetref;
     time_t                  lastModified;
-    std::string             stars;
+    double                  stars;
     std::string             airdate;
     uint16_t                audioProps;
     uint16_t                videoProps;

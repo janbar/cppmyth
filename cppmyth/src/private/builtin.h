@@ -34,6 +34,8 @@ extern "C" {
 #include <time.h>
 #include <stdio.h>
 
+typedef struct { char data[32]; } BUILTIN_BUFFER;
+
 #define string_to_int64 __str2int64
 extern int string_to_int64(const char *str, int64_t *num);
 
@@ -55,46 +57,55 @@ extern int string_to_uint16(const char *str, uint16_t *num);
 #define string_to_uint8 __str2uint8
 extern int string_to_uint8(const char *str, uint8_t *num);
 
+#define string_to_double __str2double
+extern int string_to_double(const char *str, double *dbl);
+
 #define int64_to_string __int64str
-static CC_INLINE void int64_to_string(int64_t num, char *str)
+static CC_INLINE void int64_to_string(int64_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%lld", (long long)num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%lld", (long long)num);
 }
 
 #define int32_to_string __int32str
-static CC_INLINE void int32_to_string(int32_t num, char *str)
+static CC_INLINE void int32_to_string(int32_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%ld", (long)num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%ld", (long)num);
 }
 
 #define int16_to_string __int16str
-static CC_INLINE void int16_to_string(int16_t num, char *str)
+static CC_INLINE void int16_to_string(int16_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%d", num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%d", num);
 }
 
 #define int8_to_string __int8str
-static CC_INLINE void int8_to_string(int8_t num, char *str)
+static CC_INLINE void int8_to_string(int8_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%d", num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%d", num);
 }
 
 #define uint32_to_string __uint32str
-static CC_INLINE void uint32_to_string(uint32_t num, char *str)
+static CC_INLINE void uint32_to_string(uint32_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%lu", (unsigned long)num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%lu", (unsigned long)num);
 }
 
 #define uint16_to_string __uint16str
-static CC_INLINE void uint16_to_string(uint16_t num, char *str)
+static CC_INLINE void uint16_to_string(uint16_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%u", num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%u", num);
 }
 
 #define uint8_to_string __uint8str
-static CC_INLINE void uint8_to_string(uint8_t num, char *str)
+static CC_INLINE void uint8_to_string(uint8_t num, BUILTIN_BUFFER *str)
 {
-  sprintf(str, "%u", num);
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%u", num);
+}
+
+#define double_to_string __doublestr
+static CC_INLINE void double_to_string(double dbl, BUILTIN_BUFFER *str)
+{
+  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%.12g", dbl);
 }
 
 #define TIMESTAMP_UTC_LEN (sizeof("YYYY-MM-DDTHH:MM:SSZ") - 1)
@@ -141,13 +152,13 @@ static CC_INLINE struct tm *gmtime_r(const time_t *clock, struct tm *result)
 extern int string_to_time(const char *str, time_t *time);
 
 #define time_to_iso8601utc __time2iso8601utc
-extern void time_to_iso8601utc(time_t time, char *str);
+extern void time_to_iso8601utc(time_t time, BUILTIN_BUFFER *str);
 
 #define time_to_iso8601 __time2iso8601
-extern void time_to_iso8601(time_t time, char *str);
+extern void time_to_iso8601(time_t time, BUILTIN_BUFFER *str);
 
 #define time_to_isodate __time2isodate
-extern void time_to_isodate(time_t time, char *str);
+extern void time_to_isodate(time_t time, BUILTIN_BUFFER *str);
 
 #ifdef __cplusplus
 }

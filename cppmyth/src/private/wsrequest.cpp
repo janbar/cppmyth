@@ -183,7 +183,7 @@ void WSRequest::MakeMessageGET(std::string& msg, const char* method) const
   if (!m_contentData.empty())
     msg.append("?").append(m_contentData);
   msg.append(" " REQUEST_PROTOCOL "\r\n");
-  sprintf(buf, "%u", m_port);
+  snprintf(buf, sizeof(buf), "%u", m_port);
   msg.append("Host: ").append(m_server).append(":").append(buf).append("\r\n");
   if (m_userAgent.empty())
     msg.append("User-Agent: " REQUEST_USER_AGENT "\r\n");
@@ -206,7 +206,7 @@ void WSRequest::MakeMessagePOST(std::string& msg, const char* method) const
   msg.clear();
   msg.reserve(256);
   msg.append(method).append(" ").append(m_service_url).append(" " REQUEST_PROTOCOL "\r\n");
-  sprintf(buf, "%u", m_port);
+  snprintf(buf, sizeof(buf), "%u", m_port);
   msg.append("Host: ").append(m_server).append(":").append(buf).append("\r\n");
   if (m_userAgent.empty())
     msg.append("User-Agent: " REQUEST_USER_AGENT "\r\n");
@@ -218,7 +218,7 @@ void WSRequest::MakeMessagePOST(std::string& msg, const char* method) const
   msg.append("Accept-Charset: ").append(m_charset).append("\r\n");
   if (content_len)
   {
-    sprintf(buf, "%lu", (unsigned long)content_len);
+    snprintf(buf, sizeof(buf), "%lu", (unsigned long)content_len);
     msg.append("Content-Type: ").append(MimeFromContentType(m_contentType));
     msg.append("; charset=" REQUEST_STD_CHARSET "\r\n");
     msg.append("Content-Length: ").append(buf).append("\r\n");
@@ -240,7 +240,7 @@ void WSRequest::MakeMessageHEAD(std::string& msg, const char* method) const
   if (!m_contentData.empty())
     msg.append("?").append(m_contentData);
   msg.append(" " REQUEST_PROTOCOL "\r\n");
-  sprintf(buf, "%u", m_port);
+  snprintf(buf, sizeof(buf), "%u", m_port);
   msg.append("Host: ").append(m_server).append(":").append(buf).append("\r\n");
   if (m_userAgent.empty())
     msg.append("User-Agent: " REQUEST_USER_AGENT "\r\n");
