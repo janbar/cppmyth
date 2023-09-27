@@ -671,7 +671,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
 {
   ChannelListPtr ret(new ChannelList);
   BUILTIN_BUFFER buf;
-  int32_t req_index = 0, /*req_count = FETCHSIZE,*/ count = 0;
+  int32_t /*req_index = 0, req_count = FETCHSIZE,*/ count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -738,7 +738,7 @@ ChannelListPtr WSAPI::GetChannelList1_5(uint32_t sourceid, bool onlyVisible)
         ret->push_back(channel);
     }
     DBG(DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
-    req_index += count; // Set next requested index
+    //req_index += count; // Set next requested index
   }
   //while (count == req_count);
   while (false); // W.A. for bug tracked by ticket 12461
@@ -957,7 +957,7 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide2_2(time_t starttime, ti
 {
   std::map<uint32_t, ProgramMapPtr> ret;
   BUILTIN_BUFFER buf;
-  uint32_t req_index = 0, req_count = FETCHSIZE, count = 0, total = 0;
+  uint32_t req_index = 0, req_count = FETCHSIZE, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Adjust the fetch count according to the number of requested days
@@ -1040,7 +1040,6 @@ std::map<uint32_t, ProgramMapPtr> WSAPI::GetProgramGuide2_2(time_t starttime, ti
         program->channel = channel;
         pmap->insert(std::make_pair(program->startTime, program));
       }
-      ++total;
     }
     DBG(DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
     req_index += count; // Set next requested index
@@ -1054,7 +1053,7 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
 {
   ProgramMapPtr ret(new ProgramMap);
   BUILTIN_BUFFER buf;
-  uint32_t req_index = 0, req_count = FETCHSIZE_L, count = 0, total = 0;
+  uint32_t req_index = 0, req_count = FETCHSIZE_L, count = 0;
   unsigned proto = (unsigned)m_version.protocol;
 
   // Get bindings for protocol version
@@ -1124,7 +1123,6 @@ ProgramMapPtr WSAPI::GetProgramList2_2(uint32_t chanid, time_t starttime, time_t
       const JSON::Node& chan = prog.GetObjectValue("Channel");
       JSON::BindObject(chan, &(program->channel), bindchan);
       ret->insert(std::make_pair(program->startTime, program));
-      ++total;
     }
     DBG(DBG_DEBUG, "%s: received count(%d)\n", __FUNCTION__, count);
     req_index += count; // Set next requested index
