@@ -11,16 +11,17 @@ libcppmyth_la_SOURCES = \
 	src/private/os/threads/threadpool.cpp \
 	src/private/mythdto/mythdto.cpp \
 	src/private/builtin.c \
-        src/private/debug.cpp \
-	src/private/socket.cpp \
-        src/private/securesocket.cpp \
         src/private/compressor.cpp \
+        src/private/debug.cpp \
 	src/private/jsonparser.cpp \
 	src/private/mythjsonbinder.cpp \
+	src/private/ringbuffer.cpp \
+        src/private/securesocket.cpp \
+	src/private/socket.cpp \
+	src/private/uriparser.cpp \
 	src/private/wscontent.cpp \
 	src/private/wsrequest.cpp \
 	src/private/wsresponse.cpp \
-	src/private/uriparser.cpp \
 	src/proto/mythprotobase.cpp \
 	src/proto/mythprotoevent.cpp \
 	src/proto/mythprotomonitor.cpp \
@@ -30,13 +31,13 @@ libcppmyth_la_SOURCES = \
 	src/mythcontrol.cpp \
 	src/mytheventhandler.cpp \
 	src/mythfileplayback.cpp \
+	src/mythintrinsic.cpp \
 	src/mythlivetvplayback.cpp \
+	src/mythlocked.cpp \
 	src/mythrecordingplayback.cpp \
 	src/mythtypes.cpp \
 	src/mythwsapi.cpp \
-	src/mythwsstream.cpp \
-	src/mythlocked.cpp \
-	src/mythintrinsic.cpp
+	src/mythwsstream.cpp
 
 cppmythheadersdir = $(includedir)/cppmyth
 cppmythheaders_HEADERS = \
