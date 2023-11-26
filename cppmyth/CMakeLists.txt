@@ -276,7 +276,7 @@ if (NOT MSVC)
 endif ()
 
 install (FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/include/cppmyth_config.h
+  ${CMAKE_CURRENT_BINARY_DIR}/include/local_config.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythlocked.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythintrinsic.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythsharedptr.h
