@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2017 Jean-Luc Barriere
+ *      Copyright (C) 2017-2019 Jean-Luc Barriere
  *
  *  This library is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published
@@ -22,6 +22,8 @@
 #ifndef URLENCODER_H
 #define URLENCODER_H
 
+#include "builtin.h"
+
 #include <cstdio>
 #include <cstring>
 #include <string>
@@ -35,10 +37,11 @@ inline std::string __urlencode(const std::string& str) {
   {
     if (isalnum(*cstr) || *cstr == '-' || *cstr == '_' || *cstr == '.' || *cstr == '~')
       out.push_back(*cstr);
-    else {
-      char buf[4];
-      snprintf(buf, sizeof(buf), "%%%.2x", static_cast<unsigned char>(*cstr));
-      out.append(buf);
+    else
+    {
+      BUILTIN_BUFFER buf;
+      char_to_hex(*cstr, &buf);
+      out.append("%").append(buf.data);
     }
     ++cstr;
   }
@@ -59,7 +62,7 @@ inline std::string __urldecode(const std::string& str) {
       char buf[3];
       strncpy(buf, cstr + 1, 3);
       buf[2] = '\0';
-      if (sscanf(buf, "%x", &v) == 1 || sscanf(buf, "%X", &v) == 1)
+      if (hex_to_num(buf, &v) == 0)
       {
         c = static_cast<char>(v);
         cstr += 2;

@@ -2556,16 +2556,7 @@ WSStreamPtr WSAPI::GetFile1_32(const std::string& filename, const std::string& s
   req.RequestService("/Content/GetFile");
   req.SetContentParam("StorageGroup", sgname);
   req.SetContentParam("FileName", filename);
-  WSResponse *resp = new WSResponse(req);
-  /* try redirection if any */
-  if (resp->GetStatusCode() == 301 && !resp->Redirection().empty())
-  {
-    URIParser uri(resp->Redirection());
-    WSRequest rreq(ResolveHostName(uri.Host()), uri.Port());
-    rreq.RequestService(std::string("/").append(uri.Path()));
-    delete resp;
-    resp = new WSResponse(rreq);
-  }
+  WSResponse *resp = new WSResponse(req, 1, false, true);
   if (!resp->IsSuccessful())
   {
     DBG(DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
@@ -2596,16 +2587,7 @@ WSStreamPtr WSAPI::GetChannelIcon1_32(uint32_t chanid, unsigned width, unsigned 
     uint32_to_string(height, &buf);
     req.SetContentParam("Height", buf.data);
   }
-  WSResponse *resp = new WSResponse(req);
-  /* try redirection if any */
-  if (resp->GetStatusCode() == 301 && !resp->Redirection().empty())
-  {
-    URIParser uri(resp->Redirection());
-    WSRequest rreq(ResolveHostName(uri.Host()), uri.Port());
-    rreq.RequestService(std::string("/").append(uri.Path()));
-    delete resp;
-    resp = new WSResponse(rreq);
-  }
+  WSResponse *resp = new WSResponse(req, 1, false, true);
   if (!resp->IsSuccessful())
   {
     DBG(DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
@@ -2665,16 +2647,7 @@ WSStreamPtr WSAPI::GetPreviewImage1_32(uint32_t chanid, time_t recstartts, unsig
     uint32_to_string(height, &buf);
     req.SetContentParam("Height", buf.data);
   }
-  WSResponse *resp = new WSResponse(req);
-  /* try redirection if any */
-  if (resp->GetStatusCode() == 301 && !resp->Redirection().empty())
-  {
-    URIParser uri(resp->Redirection());
-    WSRequest rreq(ResolveHostName(uri.Host()), uri.Port());
-    rreq.RequestService(std::string("/").append(uri.Path()));
-    delete resp;
-    resp = new WSResponse(rreq);
-  }
+  WSResponse *resp = new WSResponse(req, 1, false, true);
   if (!resp->IsSuccessful())
   {
     DBG(DBG_ERROR, "%s: invalid response\n", __FUNCTION__);
@@ -2736,16 +2709,7 @@ WSStreamPtr WSAPI::GetRecordingArtwork1_32(const std::string& type, const std::s
     uint32_to_string(height, &buf);
     req.SetContentParam("Height", buf.data);
   }
-  WSResponse *resp = new WSResponse(req);
-  /* try redirection if any */
-  if (resp->GetStatusCode() == 301 && !resp->Redirection().empty())
-  {
-    URIParser uri(resp->Redirection());
-    WSRequest rreq(ResolveHostName(uri.Host()), uri.Port());
-    rreq.RequestService(std::string("/").append(uri.Path()));
-    delete resp;
-    resp = new WSResponse(rreq);
-  }
+  WSResponse *resp = new WSResponse(req, 1, false, true);
   if (!resp->IsSuccessful())
   {
     DBG(DBG_ERROR, "%s: invalid response\n", __FUNCTION__);

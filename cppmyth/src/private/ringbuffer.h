@@ -22,7 +22,7 @@
 #ifndef RINGBUFFER_H
 #define RINGBUFFER_H
 
-#include <cppmyth_config.h>
+#include "local_config.h"
 
 #include <cstring>
 #include <cassert>

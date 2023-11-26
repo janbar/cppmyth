@@ -2,7 +2,7 @@
 lib_LTLIBRARIES    = libcppmyth.la
 # LIB_VERSION   : [$1-$3].[$3].[$2]
 # LIB_SOVERSION : [$1-$3]
-libcppmyth_la_LDFLAGS = -version-info 18:0:16
+libcppmyth_la_LDFLAGS = -version-info 18:1:16
 
 AM_CPPFLAGS = -fPIC -Wall -Wextra \
 	-I@abs_srcdir@/src
@@ -40,7 +40,7 @@ libcppmyth_la_SOURCES = \
 
 cppmythheadersdir = $(includedir)/cppmyth
 cppmythheaders_HEADERS = \
-	src/cppmyth_config.h \
+	src/local_config.h \
 	src/mythlocked.h \
 	src/mythintrinsic.h \
 	src/mythsharedptr.h \

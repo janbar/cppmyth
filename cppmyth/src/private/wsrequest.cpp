@@ -20,13 +20,30 @@
  */
 
 #include "wsrequest.h"
-#include "urlencoder.h"
+#include "builtin.h"
 #include "debug.h"
 
 #include <cstdio>
 #include <cstring> // for strlen
 
 using namespace NSROOT;
+
+static void __form_urlencode(std::string& encoded, const char *str)
+{
+  BUILTIN_BUFFER buf;
+  size_t i, len = 0;
+
+  encoded.clear();
+  if (str != NULL)
+    len = strlen(str);
+  encoded.reserve(len * 3);
+
+  for (i = 0; i < len; ++i)
+  {
+    char_to_hex(str[i], &buf);
+    encoded.append("%").append(buf.data);
+  }
+}
 
 WSRequest::WSRequest(const std::string& server, unsigned port)
 : m_server(server)
@@ -83,12 +100,72 @@ WSRequest::WSRequest(const URIParser& uri, HRM_t method)
   if (uri.Path())
     m_service_url.append(uri.Path());
 
+  if (uri.Fragment())
+    m_service_url.append("#").append(uri.Fragment());
+
+  if (uri.Params())
+    m_contentData.append(uri.Params());
+
   // by default allow content encoding if possible
   RequestAcceptEncoding(true);
 }
 
 WSRequest::~WSRequest()
 {
+}
+
+WSRequest::WSRequest(const WSRequest& o, const URIParser& redirection)
+: m_server(o.m_server)
+, m_port(o.m_port)
+, m_secure_uri(o.m_secure_uri)
+, m_service_method(o.m_service_method)
+, m_charset(o.m_charset)
+, m_accept(o.m_accept)
+, m_contentType(o.m_contentType)
+, m_contentData(o.m_contentData)
+, m_headers(o.m_headers)
+, m_userAgent(o.m_userAgent)
+{
+  /* The "Location" header field is used in some responses to refer to a
+   * specific resource in relation to the response. The type of relationship
+   * is defined by the combination of request method and status code semantics.
+   */
+  if (redirection.Host())
+    m_server.assign(redirection.Host());
+
+  if (redirection.Scheme())
+  {
+    if (strncmp(redirection.Scheme(), "https", 5) == 0)
+    {
+      m_secure_uri = true;
+      m_port = redirection.Port() ? redirection.Port() : 443;
+    }
+    else
+    {
+      m_secure_uri = false;
+      m_port = redirection.Port() ? redirection.Port() : 80;
+    }
+  }
+
+  URIParser o_uri(o.GetService());
+  m_service_url = "/";
+  if (redirection.Path())
+    m_service_url.append(redirection.Path());
+
+  /* If the Location value provided in a 3xx (Redirection) response does not have
+   * a fragment component, a user agent MUST process the redirection as if the
+   * value inherits the fragment component of the URI reference used to generate
+   * the target URI (i.e., the redirection inherits the original reference's
+   * fragment, if any).
+   */
+  if (redirection.Fragment())
+    m_service_url.append("#").append(redirection.Fragment());
+  else if (o_uri.Fragment())
+    m_service_url.append("#").append(o_uri.Fragment());
+
+  /* params have been copied from original request (content data), therefore
+   * those specified in the new location are ignored
+   */
 }
 
 void WSRequest::RequestService(const std::string& url, HRM_t method)
@@ -124,9 +201,11 @@ void WSRequest::SetContentParam(const std::string& param, const std::string& val
 {
   if (m_contentType != CT_FORM)
     return;
+  std::string enc;
+  __form_urlencode(enc, value.c_str());
   if (!m_contentData.empty())
     m_contentData.append("&");
-  m_contentData.append(param).append("=").append(urlencode(value));
+  m_contentData.append(param).append("=").append(enc);
 }
 
 void WSRequest::SetContentCustom(CT_t contentType, const char *content)

@@ -22,9 +22,12 @@ endif ()
 
 ###############################################################################
 # set lib version here
-set (CPPMYTH_LIB_VERSION "2.16.0")
-set (CPPMYTH_LIB_SOVERSION "2")
+set (PACKAGE_VERSION_MAJOR 2)
+set (PACKAGE_VERSION_MINOR 16)
+set (PACKAGE_VERSION_PATCH 1)
 
+set (PACKAGE_VERSION ${PACKAGE_VERSION_MAJOR}.${PACKAGE_VERSION_MINOR}.${PACKAGE_VERSION_PATCH})
+set (PACKAGE_LIB_SOVERSION ${PACKAGE_VERSION_MAJOR})
 ###############################################################################
 # add definitions
 if (MSVC)
@@ -130,8 +133,8 @@ else ()
 endif ()
 
 # configure the public config file
-configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/cppmyth_config.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/include/cppmyth_config.h)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/local_config.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/include/local_config.h)
 
 # Copy the header files to the public include folder
 
@@ -239,8 +242,8 @@ else ()
 endif ()
 target_link_libraries (cppmyth ${cppmyth_LIBRARIES})
 set_target_properties (cppmyth PROPERTIES
-    VERSION "${CPPMYTH_LIB_VERSION}"
-    SOVERSION "${CPPMYTH_LIB_SOVERSION}")
+    VERSION "${PACKAGE_VERSION}"
+    SOVERSION "${PACKAGE_LIB_SOVERSION}")
 
 ###############################################################################
 # install targets
@@ -260,7 +263,6 @@ if (NOT MSVC)
   set (prefix      ${CMAKE_INSTALL_PREFIX})
   set (exec_prefix ${CMAKE_INSTALL_PREFIX})
   set (libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-  set (VERSION     ${CPPMYTH_LIB_VERSION})
   configure_file (cppmyth.pc.in cppmyth.pc @ONLY)
 
   install (TARGETS cppmyth

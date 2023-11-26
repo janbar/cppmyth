@@ -21,7 +21,7 @@
 
 #include "mythintrinsic.h"
 
-#include <cppmyth_config.h>
+#include "local_config.h"
 #if __cplusplus >= 201103L
 #include <atomic>
 typedef std::atomic<int> counter_t;

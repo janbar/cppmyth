@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2014 Jean-Luc Barriere
+ *      Copyright (C) 2014-2023 Jean-Luc Barriere
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -193,6 +193,25 @@ int string_to_double(const char *str, double *dbl)
   *dbl = strtod(str, &pe);
   if (pe == str)
     return -(EINVAL);
+  return 0;
+}
+
+int hex_to_num(const char *str, int *num)
+{
+  int val = 0;
+  while (*str)
+  {
+    if (*str >= '0' && *str <= '9')
+      val = (val << 4) + (*str - '0');
+    else if (*str >= 'A' && *str <= 'F')
+      val = (val << 4) + (*str - 'A' + 10);
+    else if (*str >= 'a' && *str <= 'f')
+      val = (val << 4) + (*str - 'a' + 10);
+    else
+      return -(EINVAL);
+    ++str;
+  }
+  *num = val;
   return 0;
 }
 
@@ -405,4 +424,17 @@ void time_to_isodate(time_t time, BUILTIN_BUFFER *str)
           time_tm.tm_year + 1900,
           time_tm.tm_mon + 1,
           time_tm.tm_mday);
+}
+
+tz_t *time_tz(time_t time, tz_t* tz) {
+  struct tm loc;
+  localtime_r(&time, &loc);
+  struct tm gmt;
+  gmtime_r(&time, &gmt);
+  int minutes = ((loc.tm_hour * 60 + loc.tm_min) - (gmt.tm_hour * 60 + gmt.tm_min)) % 720;
+  tz->tz_dir = minutes < 0 ? (-1) : 1;
+  tz->tz_hour = tz->tz_dir * minutes / 60;
+  tz->tz_min  = tz->tz_dir * ( minutes - tz->tz_hour * 60 );
+  sprintf(tz->tz_str, "%+2.2d:%2.2d", tz->tz_dir * tz->tz_hour, (unsigned)(tz->tz_min) % 60);
+  return tz;
 }

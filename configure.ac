@@ -1,5 +1,5 @@
 AC_PREREQ([2.60])
-AC_INIT([cppmyth], [2.2], [jlbarriere68@gmail.com])
+AC_INIT([cppmyth], [2.16.1], [jlbarriere68@gmail.com])
 
 AM_INIT_AUTOMAKE([1.10 foreign subdir-objects])
 
@@ -113,11 +113,20 @@ else
 fi
 AC_SUBST([CXX_STANDARD])
 
+PACKAGE_VERSION_MAJOR=$(echo $PACKAGE_VERSION | awk -F. '{print $1}')
+PACKAGE_VERSION_MINOR=$(echo $PACKAGE_VERSION | awk -F. '{
+  sub("-.*","",$2); print $2}')
+PACKAGE_VERSION_PATCH=$(echo $PACKAGE_VERSION | awk -F. '{
+  sub("-.*","",$3); print $3 ~ /^@<:@0-9@:>@+$/ ? $3 : 0}')
+AC_SUBST([PACKAGE_VERSION_MAJOR])
+AC_SUBST([PACKAGE_VERSION_MINOR])
+AC_SUBST([PACKAGE_VERSION_PATCH])
+
 AC_CONFIG_FILES([
         Makefile
         cppmyth/cppmyth.pc
         cppmyth/Makefile
-        cppmyth/src/cppmyth_config.h
+        cppmyth/src/local_config.h
         test/Makefile
         demo/Makefile
 ])

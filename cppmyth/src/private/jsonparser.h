@@ -22,7 +22,7 @@
 #ifndef JSONPARSER_H
 #define	JSONPARSER_H
 
-#include <cppmyth_config.h>
+#include "local_config.h"
 #include "wsresponse.h"
 #include "sajson.h"
 #include "os/os.h"

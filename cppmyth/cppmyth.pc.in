@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: cppmyth
 Description: C++ MythClient
-Version: @VERSION@
+Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lcppmyth
 Cflags: -I${includedir}

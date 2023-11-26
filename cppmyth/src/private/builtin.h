@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2014 Jean-Luc Barriere
+ *      Copyright (C) 2014-2023 Jean-Luc Barriere
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 extern "C" {
 #endif
 
-#include <cppmyth_config.h>
+#include "local_config.h"
 
 #include <string.h>
 #include <stdint.h>
@@ -59,6 +59,22 @@ extern int string_to_uint8(const char *str, uint8_t *num);
 
 #define string_to_double __str2double
 extern int string_to_double(const char *str, double *dbl);
+
+#define hex_to_num __hex2num
+extern int hex_to_num(const char *str, int *num);
+
+#define char_to_hex __charhex
+static CC_INLINE void char_to_hex(char c, BUILTIN_BUFFER *str)
+{
+  static const char g[16] = {
+    '0', '1', '2', '3', '4', '5', '6', '7',
+    '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+  };
+  char * p = str->data;
+  p[0] = g[(0xf & (c >> 4))];
+  p[1] = g[(0xf & (c))];
+  p[2] = '\0';
+}
 
 #define int64_to_string __int64str
 static CC_INLINE void int64_to_string(int64_t num, BUILTIN_BUFFER *str)
@@ -159,6 +175,10 @@ extern void time_to_iso8601(time_t time, BUILTIN_BUFFER *str);
 
 #define time_to_isodate __time2isodate
 extern void time_to_isodate(time_t time, BUILTIN_BUFFER *str);
+
+typedef struct { int tz_dir; int tz_hour; int tz_min; char tz_str[8]; } tz_t;
+#define time_tz __timetz
+extern tz_t *time_tz(time_t time, tz_t* tz);
 
 #ifdef __cplusplus
 }
