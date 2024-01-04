@@ -24,7 +24,7 @@
 
 #include "mythprotobase.h"
 
-#define PROTO_TRANSFER_RCVBUF     64000
+#define PROTO_TRANSFER_RCVBUF     262000
 
 namespace Myth
 {
