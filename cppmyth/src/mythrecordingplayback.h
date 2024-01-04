@@ -27,9 +27,9 @@
 #include "mythstream.h"
 #include "mytheventhandler.h"
 
-#define MYTH_RECORDING_CHUNK_SIZE 64000
+#define MYTH_RECORDING_CHUNK_SIZE 262000
 #define MYTH_RECORDING_CHUNK_MIN  8000
-#define MYTH_RECORDING_CHUNK_MAX  128000
+#define MYTH_RECORDING_CHUNK_MAX  524000
 
 namespace Myth
 {
