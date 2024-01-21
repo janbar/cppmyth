@@ -1,5 +1,5 @@
 AC_PREREQ([2.60])
-AC_INIT([cppmyth], [2.16.4], [jlbarriere68@gmail.com])
+AC_INIT([cppmyth], [2.16.5], [jlbarriere68@gmail.com])
 
 AM_INIT_AUTOMAKE([1.10 foreign subdir-objects])
 
