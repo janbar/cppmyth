@@ -89,7 +89,7 @@ void liveTVSpawn(const char * server, const char * chanNum)
     //FILE* file = fopen("TMP.mpg", "wb");
     FILE* file = stdout;
     char* buf = new char[BUFSZ];
-    unsigned int waitus = 100000; // 100ms
+    unsigned int waitus = 100;
     int r;
     for (;;)
     {
@@ -97,7 +97,7 @@ void liveTVSpawn(const char * server, const char * chanNum)
       r = lp.Read(buf, BUFSZ);
       if (r < BUFSZ)
         waitus *= 1.10f;
-      else if (waitus > 100)
+      else if (waitus > 10)
         waitus /= 1.10f;
       if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != r))
         break;

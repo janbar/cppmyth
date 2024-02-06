@@ -1,5 +1,5 @@
 AC_PREREQ([2.60])
-AC_INIT([cppmyth], [2.16.5], [jlbarriere68@gmail.com])
+AC_INIT([cppmyth], [2.17.0], [jlbarriere68@gmail.com])
 
 AM_INIT_AUTOMAKE([1.10 foreign subdir-objects])
 
@@ -93,25 +93,10 @@ fi
 
 ### Require c++ standard
 m4_include([m4/ax_check_compile_flag.m4])
-
-AC_ARG_ENABLE([require-c++98],
-  [AS_HELP_STRING([--enable-require-c++98],
-  [require standard c++98 [default=no]])],
-  [require_cxx_98=$enableval],
-  [require_cxx_98=no])
-
-if test "x${require_cxx_98}" = "xyes"; then
-  CXX_STANDARD=199711L
-else
-  AX_CHECK_COMPILE_FLAG([-std=c++11], [compile_flag_cxx11=yes])
-  if test "x${compile_flag_cxx11}" = "xyes"; then
-    CXXFLAGS="-std=c++11 $CXXFLAGS"
-    CXX_STANDARD=201103L
-  else
-    CXX_STANDARD=199711L
-  fi
+AX_CHECK_COMPILE_FLAG([-std=c++11], [compile_flag_cxx11=yes])
+if test "x${compile_flag_cxx11}" = "xyes"; then
+  CXXFLAGS="-std=c++11 $CXXFLAGS"
 fi
-AC_SUBST([CXX_STANDARD])
 
 PACKAGE_VERSION_MAJOR=$(echo $PACKAGE_VERSION | awk -F. '{print $1}')
 PACKAGE_VERSION_MINOR=$(echo $PACKAGE_VERSION | awk -F. '{
@@ -132,9 +117,3 @@ AC_CONFIG_FILES([
 ])
 
 AC_OUTPUT
-
-AC_MSG_CHECKING([
-Require c++98 ............... ${require_cxx_98}
-Enable c++ features ......... ${CXX_STANDARD}
-
-])

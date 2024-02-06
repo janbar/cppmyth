@@ -16,10 +16,6 @@ if (MSVC)
   OPTION (STATIC_CRT "Link the static CRT libraries" OFF)
 endif ()
 
-if (NOT MSVC)
-  OPTION (REQUIRE_CXX_98 "Require standard c++98" OFF)
-endif ()
-
 ###############################################################################
 # set lib version here
 set (PACKAGE_VERSION_MAJOR 2)
@@ -60,23 +56,18 @@ if (NOT MSVC)
 
   include(CheckCXXCompilerFlag)
   CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-  if(NOT REQUIRE_CXX_98 AND COMPILER_SUPPORTS_CXX11)
+  if(COMPILER_SUPPORTS_CXX11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
     message(STATUS "Using standard c++11")
-  else()
-    CHECK_CXX_COMPILER_FLAG("-std=c++98" COMPILER_SUPPORTS_CXX98)
-    if(COMPILER_SUPPORTS_CXX98)
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++98")
-      message(STATUS "Using standard c++98")
-    endif()
-    include (CheckLibraryExists)
-    include (CheckAtomic)
-    if (HAS_BUILTIN_SYNC_ADD_AND_FETCH)
-      add_definitions ("-DHAS_BUILTIN_SYNC_ADD_AND_FETCH")
-    endif ()
-    if (HAS_BUILTIN_SYNC_SUB_AND_FETCH)
-      add_definitions ("-DHAS_BUILTIN_SYNC_SUB_AND_FETCH")
-    endif ()
+  endif()
+
+  include (CheckLibraryExists)
+  include (CheckAtomic)
+  if (HAS_BUILTIN_SYNC_ADD_AND_FETCH)
+    add_definitions ("-DHAS_BUILTIN_SYNC_ADD_AND_FETCH")
+  endif ()
+  if (HAS_BUILTIN_SYNC_SUB_AND_FETCH)
+    add_definitions ("-DHAS_BUILTIN_SYNC_SUB_AND_FETCH")
   endif ()
 endif ()
 
@@ -139,8 +130,6 @@ configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/local_config.h.in
 # Copy the header files to the public include folder
 
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythlocked.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythintrinsic.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythsharedptr.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
