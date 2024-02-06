@@ -11,13 +11,16 @@
 #include <sys/time.h>
 #endif
 
+#include "local_config.h"
 #include "private/os/threads/threadpool.h"
-#include <mythintrinsic.h>
+#include "private/os/threads/atomic.h"
+#include "mythsharedptr.h"
+#include <string>
 
 #include <cstdio>
 #include <stdlib.h>
 
-Myth::IntrinsicCounter* g_counter = 0;
+Myth::OS::Atomic* g_counter = 0;
 
 class WorkerInc : public Myth::OS::CWorker
 {
@@ -25,7 +28,7 @@ class WorkerInc : public Myth::OS::CWorker
   {
     for (int i = 0; i < 5000000; i++)
     {
-      g_counter->Increment();
+      g_counter->increment();
     }
   }
 };
@@ -36,7 +39,7 @@ class WorkerDec : public Myth::OS::CWorker
   {
     for (int i = 0; i < 5000000; i++)
     {
-      g_counter->Decrement();
+      g_counter->decrement();
     }
   }
 };
@@ -46,7 +49,7 @@ int main(int argc, char** argv)
   int val = 0;
   if (argc > 1)
     val = atoi(argv[1]);
-  g_counter = new Myth::IntrinsicCounter(val);
+  g_counter = new Myth::OS::Atomic(val);
   Myth::OS::CThreadPool pool(20);
   pool.Suspend();
   for (int i = 0; i < 5; ++i)
@@ -59,10 +62,21 @@ int main(int argc, char** argv)
   unsigned ps;
   while ((ps = pool.Size()) > 0)
   {
-    printf("Running (%2u): counter=%d\n", ps, g_counter->GetValue());
+    printf("Running (%2u): counter=%d\n", ps, g_counter->load());
     usleep(10000);
   }
-  printf("Completed   : counter=%d\n", g_counter->GetValue());
+  printf("Completed   : counter=%d\n", g_counter->load());
   delete g_counter;
+
+
+  {
+    Myth::shared_ptr<std::string> toto(new std::string("toto"));
+
+    Myth::shared_ptr<std::string> titi(toto);
+    
+    Myth::shared_ptr<std::string> tata = titi;
+    
+  }
+
   return EXIT_SUCCESS;
 }

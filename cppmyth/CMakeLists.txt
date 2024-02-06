@@ -140,8 +140,6 @@ configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/local_config.h.in
 
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythlocked.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythintrinsic.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythsharedptr.h
            DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
 file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythtypes.h

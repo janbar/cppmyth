@@ -31,7 +31,7 @@ libcppmyth_la_SOURCES = \
 	src/mythcontrol.cpp \
 	src/mytheventhandler.cpp \
 	src/mythfileplayback.cpp \
-	src/mythintrinsic.cpp \
+	src/mythsharedptr.cpp \
 	src/mythlivetvplayback.cpp \
 	src/mythlocked.cpp \
 	src/mythrecordingplayback.cpp \
@@ -43,7 +43,6 @@ cppmythheadersdir = $(includedir)/cppmyth
 cppmythheaders_HEADERS = \
 	src/local_config.h \
 	src/mythlocked.h \
-	src/mythintrinsic.h \
 	src/mythsharedptr.h \
 	src/mythtypes.h \
 	src/mythcontrol.h \

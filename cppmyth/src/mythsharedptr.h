@@ -22,36 +22,58 @@
 #ifndef MYTHSHAREDPTR_H
 #define	MYTHSHAREDPTR_H
 
-#include "mythintrinsic.h"
-
 #include <cstddef>  // for NULL
 
 namespace Myth
 {
+  namespace OS {
+    class Atomic;
+  }
+
+  class shared_ptr_base
+  {
+  private:
+    OS::Atomic* c;
+    OS::Atomic* deleted;
+  protected:
+    virtual ~shared_ptr_base();
+    shared_ptr_base();
+    shared_ptr_base(const shared_ptr_base& s);
+    shared_ptr_base& operator=(const shared_ptr_base& s);
+    bool clear_counter(); /* if deleted, then true */
+    void reset_counter(int val);
+    void swap_counter(shared_ptr_base& s);
+    int get_counter() const;
+    bool is_null() const { return c == NULL; }
+  };
+
 
   template<class T>
-  class shared_ptr
+  class shared_ptr : private shared_ptr_base
   {
+  private:
+    T *p;
   public:
 
-    shared_ptr() : p(NULL), c(NULL) { }
+    shared_ptr()
+    : shared_ptr_base()
+    , p(NULL) { }
 
-    explicit shared_ptr(T* s) : p(s), c(NULL)
+    explicit shared_ptr(T* s)
+    : shared_ptr_base()
+    , p(s)
     {
-      if (p != NULL)
-      {
-        c = new IntrinsicCounter(1);
-      }
+      if (s != NULL)
+        shared_ptr_base::reset_counter(1);
     }
 
-    shared_ptr(const shared_ptr& s) : p(s.p), c(s.c)
+    shared_ptr(const shared_ptr& s)
+    : shared_ptr_base(s)
+    , p(s.p)
     {
-      if (c != NULL)
-        if (c->Increment() < 2)
-        {
-          c = NULL;
-          p = NULL;
-        }
+      /* handles race condition with clearing of s */
+      if (shared_ptr_base::is_null())
+        p = NULL;
     }
 
     shared_ptr& operator=(const shared_ptr& s)
@@ -60,19 +82,16 @@ namespace Myth
       {
         reset();
         p = s.p;
-        c = s.c;
-        if (c != NULL)
-          if (c->Increment() < 2)
-          {
-            c = NULL;
-            p = NULL;
-          }
+        shared_ptr_base::operator = (s);
+        /* handles race condition with clearing of s */
+        if (shared_ptr_base::is_null())
+          p = NULL;
       }
       return *this;
     }
 
 #if __cplusplus >= 201103L
-    shared_ptr& operator=(shared_ptr&& s)
+    shared_ptr& operator=(shared_ptr&& s) noexcept
     {
       if (this != &s)
         swap(s);
@@ -87,13 +106,8 @@ namespace Myth
 
     void reset()
     {
-      if (c != NULL)
-        if (c->Decrement() == 0)
-        {
-            delete p;
-            delete c;
-        }
-      c = NULL;
+      if (shared_ptr_base::clear_counter())
+        delete p;
       p = NULL;
     }
 
@@ -102,32 +116,31 @@ namespace Myth
       if (p != s)
       {
         reset();
+        p = s;
         if (s != NULL)
-        {
-          p = s;
-          c = new IntrinsicCounter(1);
-        }
+          shared_ptr_base::reset_counter(1);
       }
     }
 
     T *get() const
     {
-      return (c != NULL) ? p : NULL;
+      return p;
     }
 
     void swap(shared_ptr<T>& s)
     {
-      T *tmp_p = p;
-      IntrinsicCounter *tmp_c = c;
+      T* _p = p;
       p = s.p;
-      c = s.c;
-      s.p = tmp_p;
-      s.c = tmp_c;
+      s.p = _p;
+      shared_ptr_base::swap_counter(s);
+      /* handles race condition with clearing of s */
+      if (shared_ptr_base::is_null())
+        p = NULL;
     }
 
-    unsigned use_count() const
+    int use_count() const
     {
-      return (unsigned) (c != NULL ? c->GetValue() : 0);
+      return shared_ptr_base::get_counter();
     }
 
     T *operator->() const
@@ -149,10 +162,6 @@ namespace Myth
     {
       return p == NULL;
     }
-
-  protected:
-    T *p;
-    IntrinsicCounter *c;
   };
 
 }
