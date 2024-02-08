@@ -9,6 +9,7 @@ AM_CPPFLAGS = -fPIC -Wall -Wextra \
 
 libcppmyth_la_SOURCES = \
 	src/private/os/threads/threadpool.cpp \
+	src/private/os/threads/latch.cpp \
 	src/private/mythdto/mythdto.cpp \
 	src/private/builtin.c \
         src/private/compressor.cpp \

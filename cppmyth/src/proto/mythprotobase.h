@@ -36,7 +36,7 @@ namespace Myth
 
   namespace OS
   {
-    class CMutex;
+    class CLatch;
   }
 
   class TcpSocket;
@@ -68,7 +68,7 @@ namespace Myth
     virtual ERROR_t GetProtoError() const;
 
   protected:
-    OS::CMutex *m_mutex;
+    OS::CLatch *m_latch;
     TcpSocket *m_socket;
     unsigned m_protoVersion;
     std::string m_server;

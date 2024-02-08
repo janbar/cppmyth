@@ -21,7 +21,7 @@
 
 #include "mythprotorecorder.h"
 #include "../private/debug.h"
-#include "../private/os/threads/mutex.h"
+#include "../private/os/threads/latch.h"
 #include "../private/builtin.h"
 
 
@@ -89,7 +89,7 @@ bool ProtoRecorder::IsTunable(const Channel& channel)
 
 void ProtoRecorder::DoneRecordingCallback()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   m_liveRecording = false;
   DBG(DBG_DEBUG, "%s: completed\n", __FUNCTION__);
 }
@@ -99,7 +99,7 @@ bool ProtoRecorder::SpawnLiveTV75(const std::string& chainid, const std::string&
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
@@ -132,7 +132,7 @@ bool ProtoRecorder::StopLiveTV75()
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
@@ -157,7 +157,7 @@ bool ProtoRecorder::CheckChannel75(const std::string& channum)
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
@@ -184,7 +184,7 @@ ProgramPtr ProtoRecorder::GetCurrentRecording75()
   BUILTIN_BUFFER buf;
   ProgramPtr program;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return program;
   std::string cmd("QUERY_RECORDER ");
@@ -212,7 +212,7 @@ int64_t ProtoRecorder::GetFilePosition75()
   int64_t pos;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen() || !IsPlaying())
     return -1;
   std::string cmd("QUERY_RECORDER ");
@@ -241,7 +241,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs75()
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
@@ -280,7 +280,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs79()
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
@@ -327,7 +327,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs81()
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("QUERY_RECORDER ");
@@ -375,7 +375,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs87()
   CardInputListPtr list = CardInputListPtr(new CardInputList());
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO 0");
@@ -420,7 +420,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs89()
   CardInputListPtr list = CardInputListPtr(new CardInputList());
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO 0");
@@ -467,7 +467,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs90()
   CardInputListPtr list = CardInputListPtr(new CardInputList());
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO 0");
@@ -515,7 +515,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs91()
   CardInputListPtr list = CardInputListPtr(new CardInputList());
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return list;
   std::string cmd("GET_FREE_INPUT_INFO 0");
@@ -556,7 +556,7 @@ CardInputListPtr ProtoRecorder::GetFreeInputs91()
 
 bool ProtoRecorder::IsLiveRecording()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   return m_liveRecording;
 }
 
@@ -565,7 +565,7 @@ bool ProtoRecorder::SetLiveRecording75(bool keep)
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");
@@ -596,7 +596,7 @@ bool ProtoRecorder::FinishRecording75()
   BUILTIN_BUFFER buf;
   std::string field;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_RECORDER ");

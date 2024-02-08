@@ -22,7 +22,7 @@
 #include "mythrecordingplayback.h"
 #include "private/debug.h"
 #include "private/ringbuffer.h"
-#include "private/os/threads/mutex.h"
+#include "private/os/threads/latch.h"
 #include "private/builtin.h"
 
 #include <limits>
@@ -87,7 +87,7 @@ RecordingPlayback::~RecordingPlayback()
 bool RecordingPlayback::Open()
 {
   // Begin critical section
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (ProtoPlayback::IsOpen())
     return true;
   if (ProtoPlayback::Open())
@@ -102,7 +102,7 @@ bool RecordingPlayback::Open()
 void RecordingPlayback::Close()
 {
   // Begin critical section
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   CloseTransfer();
   ProtoPlayback::Close();
 }
@@ -110,7 +110,7 @@ void RecordingPlayback::Close()
 bool RecordingPlayback::OpenTransfer(ProgramPtr recording)
 {
   // Begin critical section
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!ProtoPlayback::IsOpen())
     return false;
   CloseTransfer();
@@ -131,7 +131,7 @@ bool RecordingPlayback::OpenTransfer(ProgramPtr recording)
 void RecordingPlayback::CloseTransfer()
 {
   // Begin critical section
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   m_recording.reset();
   if (m_transfer)
   {

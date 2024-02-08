@@ -178,7 +178,8 @@ file (GLOB SRC_FILES
   src/*.cpp)
 
 file (GLOB OS_SRC_FILES
-  src/private/os/threads/threadpool.cpp)
+  src/private/os/threads/threadpool.cpp
+  src/private/os/threads/latch.cpp)
 
 if (MSVC)
   list (APPEND OS_SRC_FILES
