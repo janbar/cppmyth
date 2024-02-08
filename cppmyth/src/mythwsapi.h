@@ -519,6 +519,8 @@ namespace Myth
     WSServiceVersion_t m_serviceVersion[WS_INVALID + 1];
     std::map<std::string, std::string> m_namedCache;
 
+    static std::string encode_param(const std::string& str);
+
     // prevent copy
     WSAPI(const WSAPI&);
     WSAPI& operator=(const WSAPI&);

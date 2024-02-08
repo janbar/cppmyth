@@ -30,6 +30,7 @@
 #include "private/cppdef.h"
 #include "private/builtin.h"
 #include "private/uriparser.h"
+#include "private/urlencoder.h"
 
 #define BOOLSTR(a)  ((a) ? "true" : "false")
 #define FETCHSIZE   100
@@ -44,7 +45,10 @@ using namespace Myth;
 #define WS_ROOT_CONTENT       "/Content"
 #define WS_ROOT_DVR           "/Dvr"
 
-static std::string encodeParam(const std::string& str);
+std::string WSAPI::encode_param(const std::string& str)
+{
+  return urlencode(str);
+}
 
 WSAPI::WSAPI(const std::string& server, unsigned port, const std::string& securityPin)
 : m_mutex(new OS::CMutex)
@@ -2673,7 +2677,7 @@ std::string WSAPI::GetPreviewImageUrl1_32(uint32_t chanid, time_t recstartts, un
   uint32_to_string(chanid, &buf);
   uri.append("?ChanId=").append(buf.data);
   time_to_iso8601utc(recstartts, &buf);
-  uri.append("&StartTime=").append(encodeParam(buf.data));
+  uri.append("&StartTime=").append(encode_param(buf.data));
   if (width)
   {
     uint32_to_string(width, &buf);
@@ -2732,8 +2736,8 @@ std::string WSAPI::GetRecordingArtworkUrl1_32(const std::string& type, const std
     uri.append(":").append(buf.data);
   }
   uri.append("/Content/GetRecordingArtwork");
-  uri.append("?Type=").append(encodeParam(type));
-  uri.append("&Inetref=").append(encodeParam(inetref));
+  uri.append("?Type=").append(encode_param(type));
+  uri.append("&Inetref=").append(encode_param(inetref));
   uint16_to_string(season, &buf);
   uri.append("&Season=").append(buf.data);
   if (width)
@@ -2792,12 +2796,4 @@ ArtworkListPtr WSAPI::GetRecordingArtworkList1_32(uint32_t chanid, time_t recsta
     ret->push_back(artwork);
   }
   return ret;
-}
-
-// Internal
-#include "private/urlencoder.h"
-
-static std::string encodeParam(const std::string& str)
-{
-  return urlencode(str);
 }
