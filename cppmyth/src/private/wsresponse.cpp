@@ -35,8 +35,7 @@
 
 using namespace NSROOT;
 
-WSResponse::WSResponse(const WSRequest &request, int maxRedirs, bool trustedLocation, bool followAny)
-: p(0)
+void WSResponse::init(const WSRequest &request, int maxRedirs, bool trustedLocation, bool followAny)
 {
   p = new _response(request);
   while (0 < maxRedirs--)

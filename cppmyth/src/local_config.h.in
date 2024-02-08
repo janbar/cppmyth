@@ -29,4 +29,12 @@
 #undef LIBVERSION
 #define LIBVERSION "@PACKAGE_VERSION@"
 
+#if __cplusplus < 201103L
+#undef explicit
+#define explicit
+#undef nullptr
+#define nullptr NULL
+#endif
+
+
 #endif	/* CPPMYTH_CONFIG_H */
