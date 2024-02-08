@@ -67,16 +67,5 @@ int main(int argc, char** argv)
   }
   printf("Completed   : counter=%d\n", g_counter->load());
   delete g_counter;
-
-
-  {
-    Myth::shared_ptr<std::string> toto(new std::string("toto"));
-
-    Myth::shared_ptr<std::string> titi(toto);
-    
-    Myth::shared_ptr<std::string> tata = titi;
-    
-  }
-
   return EXIT_SUCCESS;
 }
