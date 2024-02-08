@@ -89,23 +89,25 @@ void liveTVSpawn(const char * server, const char * chanNum)
     //FILE* file = fopen("TMP.mpg", "wb");
     FILE* file = stdout;
     char* buf = new char[BUFSZ];
-    unsigned int waitus = 100;
+    unsigned int waitus = 100000; // 100ms
     int r;
     for (;;)
     {
       usleep(waitus);
       r = lp.Read(buf, BUFSZ);
-      if (r < BUFSZ)
-        waitus *= 1.10f;
-      else if (waitus > 10)
-        waitus /= 1.10f;
       if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != r))
         break;
+      // adjust the wait time
+      if (r < BUFSZ)
+        waitus *= 1.10f;
+      else if (waitus > 5000) // 5ms
+        waitus /= 1.10f;
     }
     delete[] buf;
     //fclose(file);
     fprintf(stderr, MYTAG "INFO: stopping live TV\n");
     lp.StopLiveTV();
+    fprintf(stderr, "tick = %u usec\n", waitus);
   }
   else
     fprintf(stderr, MYTAG "ERROR: channel %s is unavailable\n", chanNum);
