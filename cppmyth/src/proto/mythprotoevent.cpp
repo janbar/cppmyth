@@ -22,7 +22,7 @@
 #include "mythprotoevent.h"
 #include "../private/debug.h"
 #include "../private/socket.h"
-#include "../private/os/threads/mutex.h"
+#include "../private/os/threads/latch.h"
 #include "../private/builtin.h"
 
 #include <limits>
@@ -83,7 +83,7 @@ void ProtoEvent::Close()
 
 bool ProtoEvent::Announce75()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
 
   std::string cmd("ANN Monitor ");
   cmd.append(m_socket->GetMyHostName()).append(" 1");
@@ -130,7 +130,7 @@ SignalStatusPtr ProtoEvent::RcvSignalStatus()
 
 int ProtoEvent::RcvBackendMessage(unsigned timeout, EventMessage **msg)
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   struct timeval tv;
   tv.tv_sec = timeout;
   tv.tv_usec = 0;

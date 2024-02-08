@@ -22,7 +22,7 @@
 #include "mythprotobase.h"
 #include "../private/debug.h"
 #include "../private/socket.h"
-#include "../private/os/threads/mutex.h"
+#include "../private/os/threads/latch.h"
 #include "../private/cppdef.h"
 #include "../private/builtin.h"
 
@@ -58,7 +58,7 @@ static myth_protomap_t protomap[] = {
 };
 
 ProtoBase::ProtoBase(const std::string& server, unsigned port)
-: m_mutex(new OS::CMutex)
+: m_latch(new OS::CLatch)
 , m_socket(new TcpSocket())
 , m_protoVersion(0)
 , m_server(server)
@@ -77,7 +77,7 @@ ProtoBase::~ProtoBase()
 {
   this->Close();
   SAFE_DELETE(m_socket);
-  SAFE_DELETE(m_mutex);
+  SAFE_DELETE(m_latch);
 }
 
 void ProtoBase::HangException()
@@ -286,7 +286,7 @@ bool ProtoBase::OpenConnection(int rcvbuf)
   myth_protomap_t *map;
   unsigned tmp_ver;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
 
   if (!my_version)
     // try first version of the map
@@ -355,7 +355,7 @@ bool ProtoBase::OpenConnection(int rcvbuf)
 
 void ProtoBase::Close()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
 
   if (m_socket->IsValid())
   {

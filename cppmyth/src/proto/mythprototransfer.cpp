@@ -22,7 +22,7 @@
 #include "mythprototransfer.h"
 #include "../private/debug.h"
 #include "../private/socket.h"
-#include "../private/os/threads/mutex.h"
+#include "../private/os/threads/latch.h"
 #include "../private/builtin.h"
 
 #include <limits>
@@ -69,7 +69,7 @@ bool ProtoTransfer::Open()
 
 void ProtoTransfer::Close()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   ProtoBase::Close();
   // Clean hanging and disable retry
   m_tainted = m_hang = false;
@@ -80,22 +80,17 @@ void ProtoTransfer::Close()
 
 void ProtoTransfer::Lock()
 {
-  m_mutex->Lock();
+  m_latch->lock();
 }
 
 void ProtoTransfer::Unlock()
 {
-  m_mutex->Unlock();
-}
-
-bool ProtoTransfer::TryLock()
-{
-  return m_mutex->TryLock();
+  m_latch->unlock();
 }
 
 void ProtoTransfer::Flush()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   int64_t unread = m_fileRequest - m_filePosition;
   if (unread > 0)
   {
@@ -116,7 +111,7 @@ void ProtoTransfer::Flush()
 
 bool ProtoTransfer::Announce75()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   m_filePosition = m_fileSize = m_fileRequest = 0;
   std::string cmd("ANN FileTransfer ");
   cmd.append(m_socket->GetMyHostName());
@@ -157,42 +152,42 @@ std::string ProtoTransfer::GetStorageGroupName() const
 
 int64_t ProtoTransfer::GetSize() const
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   return m_fileSize;
 }
 
 int64_t ProtoTransfer::GetPosition() const
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   return m_filePosition;
 }
 
 int64_t ProtoTransfer::GetRequested() const
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   return m_fileRequest;
 }
 
 int64_t ProtoTransfer::GetRemaining() const
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   return (m_fileSize - m_filePosition);
 }
 
 void ProtoTransfer::SetSize(int64_t size)
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   m_fileSize = size;
 }
 
 void ProtoTransfer::SetPosition(int64_t position)
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   m_filePosition = position;
 }
 
 void ProtoTransfer::SetRequested(int64_t requested)
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CReadLock lock(*m_latch);
   m_fileRequest = requested;
 }

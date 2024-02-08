@@ -22,7 +22,7 @@
 #include "mythprotoplayback.h"
 #include "../private/debug.h"
 #include "../private/socket.h"
-#include "../private/os/threads/mutex.h"
+#include "../private/os/threads/latch.h"
 #include "../private/builtin.h"
 
 #include <limits>
@@ -80,7 +80,7 @@ bool ProtoPlayback::IsOpen()
 
 bool ProtoPlayback::Announce75()
 {
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
 
   std::string cmd("ANN Playback ");
   cmd.append(m_socket->GetMyHostName()).append(" 0");
@@ -101,7 +101,7 @@ void ProtoPlayback::TransferDone75(ProtoTransfer& transfer)
 {
   BUILTIN_BUFFER buf;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!transfer.IsOpen())
     return;
   std::string cmd("QUERY_FILETRANSFER ");
@@ -121,7 +121,7 @@ bool ProtoPlayback::TransferIsOpen75(ProtoTransfer& transfer)
   std::string field;
   int8_t status = 0;
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!IsOpen())
     return false;
   std::string cmd("QUERY_FILETRANSFER ");
@@ -169,11 +169,11 @@ int ProtoPlayback::TransferRequestBlock(ProtoTransfer& transfer, void *buffer, u
   if ((filePosition + n) > fileRequest)
   {
     // Begin critical section
-    m_mutex->Lock();
+    m_latch->lock();
     bool ok = TransferRequestBlock75(transfer, n);
     if (!ok)
     {
-      m_mutex->Unlock();
+      m_latch->unlock();
       goto err;
     }
     request = true;
@@ -240,7 +240,7 @@ int ProtoPlayback::TransferRequestBlock(ProtoTransfer& transfer, void *buffer, u
     {
       int32_t rlen = TransferRequestBlockFeedback75();
       request = false; // request is completed
-      m_mutex->Unlock();
+      m_latch->unlock();
       if (rlen < 0)
         goto err;
       DBG(DBG_DEBUG, "%s: receive block size (%u)\n", __FUNCTION__, (unsigned)rlen);
@@ -257,7 +257,7 @@ err:
   {
     if (RcvMessageLength())
       FlushMessage();
-    m_mutex->Unlock();
+    m_latch->unlock();
   }
   // Recover the file position or die
   if (TransferSeek(transfer, filePosition, WHENCE_SET) < 0)
@@ -334,7 +334,7 @@ int64_t ProtoPlayback::TransferSeek75(ProtoTransfer& transfer, int64_t offset, W
       return -1;
   }
 
-  OS::CLockGuard lock(*m_mutex);
+  OS::CWriteLock lock(*m_latch);
   if (!transfer.IsOpen())
     return -1;
   std::string cmd("QUERY_FILETRANSFER ");
