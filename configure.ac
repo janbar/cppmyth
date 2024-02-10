@@ -112,7 +112,7 @@ AC_CONFIG_FILES([
         cppmyth/cppmyth.pc
         cppmyth/Makefile
         cppmyth/src/local_config.h
-        test/Makefile
+        tests/Makefile
         demo/Makefile
 ])
 

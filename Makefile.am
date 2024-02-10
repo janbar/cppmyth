@@ -1,2 +1,2 @@
-SUBDIRS = cppmyth test demo
+SUBDIRS = cppmyth tests demo
 
