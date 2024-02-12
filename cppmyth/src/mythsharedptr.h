@@ -33,18 +33,18 @@ namespace Myth
   class shared_ptr_base
   {
   private:
-    OS::Atomic* c;
-    OS::Atomic* deleted;
+    OS::Atomic* pc;
+    OS::Atomic* spare;
   protected:
     virtual ~shared_ptr_base();
     shared_ptr_base();
     shared_ptr_base(const shared_ptr_base& s);
     shared_ptr_base& operator=(const shared_ptr_base& s);
-    bool clear_counter(); /* if deleted, then true */
-    void reset_counter(int val);
+    bool clear_counter(); /* returns true if destroyed */
+    void reset_counter(); /* initialize a new count */
     void swap_counter(shared_ptr_base& s);
-    int get_counter() const;
-    bool is_null() const { return c == NULL; }
+    int get_count() const;
+    bool is_null() const { return pc == NULL; }
   };
 
 
@@ -64,14 +64,13 @@ namespace Myth
     , p(s)
     {
       if (s != NULL)
-        shared_ptr_base::reset_counter(1);
+        shared_ptr_base::reset_counter();
     }
 
     shared_ptr(const shared_ptr& s)
     : shared_ptr_base(s)
     , p(s.p)
     {
-      /* handles race condition with clearing of s */
       if (shared_ptr_base::is_null())
         p = NULL;
     }
@@ -83,7 +82,6 @@ namespace Myth
         reset();
         p = s.p;
         shared_ptr_base::operator = (s);
-        /* handles race condition with clearing of s */
         if (shared_ptr_base::is_null())
           p = NULL;
       }
@@ -118,7 +116,7 @@ namespace Myth
         reset();
         p = s;
         if (s != NULL)
-          shared_ptr_base::reset_counter(1);
+          shared_ptr_base::reset_counter();
       }
     }
 
@@ -133,14 +131,13 @@ namespace Myth
       p = s.p;
       s.p = _p;
       shared_ptr_base::swap_counter(s);
-      /* handles race condition with clearing of s */
       if (shared_ptr_base::is_null())
         p = NULL;
     }
 
     int use_count() const
     {
-      return shared_ptr_base::get_counter();
+      return shared_ptr_base::get_count();
     }
 
     T *operator->() const

@@ -19,31 +19,31 @@
  *
  */
 
-#include "mythsharedptr.h"
-
 #include "local_config.h"
 #include "private/os/threads/atomic.h"
+#include "private/os/threads/latch.h"
+#include "private/os/threads/threadpool.h"
+#include "mythsharedptr.h"
 
 using namespace Myth;
 
 shared_ptr_base::shared_ptr_base()
-: c(NULL)
-, deleted(NULL) { }
+: pc(NULL)
+, spare(NULL) { }
 
 shared_ptr_base::~shared_ptr_base()
 {
   clear_counter();
-  if (deleted != NULL)
-    delete deleted;
+  if (spare != NULL)
+    delete spare;
 }
 
 shared_ptr_base::shared_ptr_base(const shared_ptr_base& s)
-: c(s.c)
-, deleted(NULL)
+: pc(s.pc)
+, spare(NULL)
 {
-  /* handles race condition with clearing of s */
-  if (c != NULL && c->add_fetch(1) == 1)
-    c = NULL;
+  if (pc != NULL && (pc->load() == 0 || pc->add_fetch(1) < 2))
+    pc = NULL;
 }
 
 shared_ptr_base& shared_ptr_base::operator=(const shared_ptr_base& s)
@@ -51,50 +51,53 @@ shared_ptr_base& shared_ptr_base::operator=(const shared_ptr_base& s)
   if (this != &s)
   {
     clear_counter();
-    c = s.c;
-    /* handles race condition with clearing of s */
-    if (c != NULL && c->add_fetch(1) == 1)
-      c = NULL;
+    pc = s.pc;
+    if (pc != NULL && (pc->load() == 0 || pc->add_fetch(1) < 2))
+      pc = NULL;
   }
   return *this;
 }
 
 bool shared_ptr_base::clear_counter()
 {
-  if (c != NULL && c->sub_fetch(1) == 0)
+  if (pc != NULL && pc->load() > 0 && pc->sub_fetch(1) == 0)
   {
     /* delete later */
-    if (deleted != NULL)
-      delete deleted;
-    deleted = c;
-    c = NULL;
+    if (spare != NULL)
+      delete spare;
+    spare = pc;
+    pc = NULL;
     return true;
   }
-  c = NULL;
+  pc = NULL;
   return false;
 }
 
-void shared_ptr_base::reset_counter(int val)
+void shared_ptr_base::reset_counter()
 {
   clear_counter();
-  if (deleted != NULL)
+  if (spare != NULL)
   {
-    c = deleted;
-    deleted = NULL;
-    c->store(val);
+    /* reuse the spare */
+    spare->store(1);
+    pc = spare;
+    spare = NULL;
   }
   else
-    c = new OS::Atomic(val);
+  {
+    /* create a new */
+    pc = new OS::Atomic(1);
+  }
 }
 
 void shared_ptr_base::swap_counter(shared_ptr_base& s)
 {
-  OS::Atomic* _c = c;
-  c = s.c;
-  s.c = _c;
+  OS::Atomic* _pc = pc;
+  pc = s.pc;
+  s.pc = _pc;
 }
 
-int shared_ptr_base::get_counter() const
+int shared_ptr_base::get_count() const
 {
-  return (c != NULL ? c->load() : 0);
+  return (pc != NULL ? pc->load() : 0);
 }
