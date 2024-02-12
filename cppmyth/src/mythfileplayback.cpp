@@ -91,7 +91,9 @@ void FilePlayback::CloseTransfer()
 
 bool FilePlayback::TransferIsOpen()
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return ProtoPlayback::TransferIsOpen(*transfer);
   return false;
@@ -99,7 +101,9 @@ bool FilePlayback::TransferIsOpen()
 
 int64_t FilePlayback::GetSize() const
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return transfer->GetSize();
   return 0;
@@ -107,7 +111,9 @@ int64_t FilePlayback::GetSize() const
 
 int FilePlayback::Read(void *buffer, unsigned n)
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
   {
     int r = 0;
@@ -126,7 +132,9 @@ int FilePlayback::Read(void *buffer, unsigned n)
 
 int64_t FilePlayback::Seek(int64_t offset, WHENCE_t whence)
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return TransferSeek(*transfer, offset, whence);
   return -1;
@@ -134,7 +142,9 @@ int64_t FilePlayback::Seek(int64_t offset, WHENCE_t whence)
 
 int64_t FilePlayback::GetPosition() const
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return transfer->GetPosition();
   return 0;
