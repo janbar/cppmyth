@@ -143,7 +143,9 @@ void RecordingPlayback::CloseTransfer()
 
 bool RecordingPlayback::TransferIsOpen()
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return ProtoPlayback::TransferIsOpen(*transfer);
   return false;
@@ -160,7 +162,9 @@ void RecordingPlayback::SetChunk(unsigned size)
 
 int64_t RecordingPlayback::GetSize() const
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return transfer->GetSize();
   return 0;
@@ -209,7 +213,9 @@ int RecordingPlayback::Read(void* buffer, unsigned n)
 
 int RecordingPlayback::_read(void *buffer, unsigned n)
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
   {
     if (!m_readAhead)
@@ -261,7 +267,9 @@ int64_t RecordingPlayback::Seek(int64_t offset, WHENCE_t whence)
 
 int64_t RecordingPlayback::_seek(int64_t offset, WHENCE_t whence)
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
     return TransferSeek(*transfer, offset, whence);
   return -1;
@@ -269,7 +277,9 @@ int64_t RecordingPlayback::_seek(int64_t offset, WHENCE_t whence)
 
 int64_t RecordingPlayback::GetPosition() const
 {
+  m_latch->lock_shared();
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   if (transfer)
   {
     // it must returns the current position of first byte in buffer
@@ -282,8 +292,10 @@ int64_t RecordingPlayback::GetPosition() const
 void RecordingPlayback::HandleBackendMessage(EventMessagePtr msg)
 {
   // First of all i hold shared resources using copies
+  m_latch->lock_shared();
   ProgramPtr recording(m_recording);
   ProtoTransferPtr transfer(m_transfer);
+  m_latch->unlock_shared();
   switch (msg->event)
   {
     case EVENT_UPDATE_FILE_SIZE:
