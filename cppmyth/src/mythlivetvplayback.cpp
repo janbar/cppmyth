@@ -263,6 +263,7 @@ void LiveTVPlayback::ClearChain()
 
 bool LiveTVPlayback::IsChained(const Program& program)
 {
+  OS::CReadLock lock(*m_latch);
   for (chained_t::const_iterator it = m_chain.chained.begin(); it != m_chain.chained.end(); ++it)
   {
     if (it->first && it->first->GetPathName() == program.fileName)
@@ -273,11 +274,11 @@ bool LiveTVPlayback::IsChained(const Program& program)
 
 void LiveTVPlayback::HandleChainUpdate()
 {
+  // Begin critical section
   OS::CWriteLock lock(*m_latch); // Lock chain
-  ProtoRecorderPtr recorder(m_recorder);
-  if (!recorder)
+  if (!m_recorder)
     return;
-  ProgramPtr prog = recorder->GetCurrentRecording();
+  ProgramPtr prog = m_recorder->GetCurrentRecording();
   /*
    * If program file doesn't exist in the recorder chain then create a new
    * transfer and add it to the chain.
@@ -286,7 +287,7 @@ void LiveTVPlayback::HandleChainUpdate()
   {
     DBG(DBG_DEBUG, "%s: liveTV (%s): adding new transfer %s\n", __FUNCTION__,
             m_chain.UID.c_str(), prog->fileName.c_str());
-    ProtoTransferPtr transfer(new ProtoTransfer(recorder->GetServer(), recorder->GetPort(), prog->fileName, prog->recording.storageGroup));
+    ProtoTransferPtr transfer(new ProtoTransfer(m_recorder->GetServer(), m_recorder->GetPort(), prog->fileName, prog->recording.storageGroup));
     // Pop previous dummy file if exists then add the new into the chain
     if (m_chain.lastSequence && m_chain.chained[m_chain.lastSequence - 1].first->GetSize() == 0)
     {
@@ -327,9 +328,9 @@ bool LiveTVPlayback::SwitchChainLast()
 {
   if (SwitchChain(m_chain.lastSequence))
   {
-    ProtoRecorderPtr recorder(m_recorder);
-    ProtoTransferPtr transfer(m_chain.currentTransfer);
-    if (recorder && transfer && recorder->TransferSeek(*transfer, 0, WHENCE_SET) == 0)
+    OS::CReadLock lock(*m_latch);
+    if (m_recorder && m_chain.currentTransfer
+            && m_recorder->TransferSeek(*m_chain.currentTransfer, 0, WHENCE_SET) == 0)
       return true;
   }
   return false;
@@ -337,7 +338,10 @@ bool LiveTVPlayback::SwitchChainLast()
 
 void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
 {
+  /* stage the current recorder */
+  m_latch->lock_shared();
   ProtoRecorderPtr recorder(m_recorder);
+  m_latch->unlock_shared();
   if (!recorder || !recorder->IsPlaying())
     return;
   switch (msg->event)
@@ -404,8 +408,8 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
         {
           // Recorder is not subscriber. So callback event to it
           recorder->DoneRecordingCallback();
-          // Manage program break
-          if (m_chain.watch)
+          // Manage program break without locking
+          if (m_chain.watch /* volatile */)
           {
             /*
              * Last recording is now completed but watch signal is ON.
@@ -418,7 +422,8 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
               usleep(500000); // wait for 500 ms
               HandleChainUpdate();
             }
-            while (m_chain.watch && timeout.TimeLeft() > 0);
+            while (m_chain.watch /* volatile */ &&
+                    timeout.TimeLeft() > 0);
           }
         }
       }
@@ -426,6 +431,7 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
     case EVENT_UPDATE_FILE_SIZE:
       if (msg->subject.size() >= 3)
       {
+        // Begin critical section
         OS::CWriteLock lock(*m_latch); // Lock chain
         if (m_chain.lastSequence > 0)
         {
@@ -468,7 +474,12 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
       {
         int32_t rnum;
         if (string_to_int32(msg->subject[1].c_str(), &rnum) == 0 && recorder->GetNum() == (int)rnum)
+        {
+          // Begin critical section
+          m_latch->lock();
           m_signal = msg->signal;
+          m_latch->unlock();
+        }
       }
       break;
     //case EVENT_HANDLER_STATUS:
@@ -545,9 +556,10 @@ int LiveTVPlayback::_read(void* buffer, unsigned n)
   bool retry;
   int64_t s, fp;
 
-  // Begin critical section
-  // First of all i hold my shared resources using copies
+  /* stage the current recorder */
+  m_latch->lock_shared();
   ProtoRecorderPtr recorder(m_recorder);
+  m_latch->unlock_shared();
   if (!m_chain.currentTransfer || !recorder)
     return -1;
 
@@ -639,6 +651,7 @@ int64_t LiveTVPlayback::Seek(int64_t offset, WHENCE_t whence)
 
 int64_t LiveTVPlayback::_seek(int64_t offset, WHENCE_t whence)
 {
+  // Begin critical section
   OS::CWriteLock lock(*m_latch); // Lock chain
   if (!m_recorder || !m_chain.currentSequence)
     return -1;
@@ -730,29 +743,28 @@ int64_t LiveTVPlayback::GetPosition() const
 
 bool LiveTVPlayback::IsPlaying() const
 {
-  ProtoRecorderPtr recorder(m_recorder);
-  return (recorder ? recorder->IsPlaying() : false);
+  OS::CReadLock lock(*m_latch);
+  return (m_recorder ? m_recorder->IsPlaying() : false);
 }
 
 bool LiveTVPlayback::IsLiveRecording() const
 {
-  ProtoRecorderPtr recorder(m_recorder);
-  return (recorder ? recorder->IsLiveRecording() : false);
+  OS::CReadLock lock(*m_latch);
+  return (m_recorder ? m_recorder->IsLiveRecording() : false);
 }
 
 bool LiveTVPlayback::KeepLiveRecording(bool keep)
 {
-  ProtoRecorderPtr recorder(m_recorder);
   // Begin critical section
   OS::CWriteLock lock(*m_latch);
-  if (recorder && recorder->IsPlaying())
+  if (m_recorder && m_recorder->IsPlaying())
   {
-    ProgramPtr prog = recorder->GetCurrentRecording();
+    ProgramPtr prog = m_recorder->GetCurrentRecording();
     if (prog)
     {
       if (keep)
       {
-        if (UndeleteRecording(*prog) && recorder->SetLiveRecording(keep))
+        if (UndeleteRecording(*prog) && m_recorder->SetLiveRecording(keep))
         {
           QueryGenpixmap(*prog);
           return true;
@@ -760,7 +772,7 @@ bool LiveTVPlayback::KeepLiveRecording(bool keep)
       }
       else
       {
-        if (recorder->SetLiveRecording(keep) && recorder->FinishRecording())
+        if (m_recorder->SetLiveRecording(keep) && m_recorder->FinishRecording())
           return true;
       }
     }
@@ -800,12 +812,13 @@ ProgramPtr LiveTVPlayback::GetChainedProgram(unsigned sequence) const
 
 uint32_t LiveTVPlayback::GetCardId() const
 {
-  ProtoRecorderPtr recorder(m_recorder);
-  return (recorder ? recorder->GetNum() : 0);
+  OS::CReadLock lock(*m_latch);
+  return (m_recorder ? m_recorder->GetNum() : 0);
 }
 
 SignalStatusPtr LiveTVPlayback::GetSignal() const
 {
+  OS::CReadLock lock(*m_latch);
   return (m_recorder ? m_signal : SignalStatusPtr());
 }
 
