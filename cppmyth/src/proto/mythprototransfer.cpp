@@ -176,18 +176,18 @@ int64_t ProtoTransfer::GetRemaining() const
 
 void ProtoTransfer::SetSize(int64_t size)
 {
-  OS::CReadLock lock(*m_latch);
+  OS::CWriteLock lock(*m_latch);
   m_fileSize = size;
 }
 
 void ProtoTransfer::SetPosition(int64_t position)
 {
-  OS::CReadLock lock(*m_latch);
+  OS::CWriteLock lock(*m_latch);
   m_filePosition = position;
 }
 
 void ProtoTransfer::SetRequested(int64_t requested)
 {
-  OS::CReadLock lock(*m_latch);
+  OS::CWriteLock lock(*m_latch);
   m_fileRequest = requested;
 }
