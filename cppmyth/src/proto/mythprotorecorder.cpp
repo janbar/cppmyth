@@ -53,6 +53,11 @@ int ProtoRecorder::GetNum() const
 
 bool ProtoRecorder::IsPlaying() const
 {
+  /*
+   * WARNING
+   * reading this must be lock-free, to allow the dispatching of the backend
+   * messages during the spawning step
+   */
   return m_playing;
 }
 
