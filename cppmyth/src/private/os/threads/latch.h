@@ -65,7 +65,6 @@ namespace OS
     thread_t x_owner;
 
     volatile int x_wait;                /* counts requests in wait for X  */
-    volatile int s_count;               /* counts held S locks            */
     volatile int x_flag;                /* X status: 0, 1, 2, or 3        */
 
     mutex_t x_gate_lock;
@@ -74,7 +73,15 @@ namespace OS
     condition_t s_gate;                 /* wait for release of S          */
 
     bool px;                            /* enable X precedence            */
-    int s_buckets[latch_bucket_count];
+
+    struct TNode {
+      TNode * _prev;
+      TNode * _next;
+      thread_t id;
+      int count;
+    };
+    TNode * s_freed;
+    TNode * s_nodes;
 
     // Prevent copy
     CLatch(const CLatch& other);
@@ -91,7 +98,9 @@ namespace OS
     }
     void spin_unlock() { s_spin.store(0); }
 
-    static unsigned hash_bucket(thread_t * t);
+    TNode * find_node(const thread_t& id);
+    TNode * new_node(const thread_t& id);
+    void free_node(TNode * n);
   };
 
   class CReadLock

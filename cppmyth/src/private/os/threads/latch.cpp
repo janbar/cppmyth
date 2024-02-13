@@ -21,7 +21,7 @@
 
 #include "latch.h"
 
-#include <string.h> // for memset, memcmp
+#include <cassert>
 
 #ifdef NSROOT
 using namespace NSROOT::OS;
@@ -29,34 +29,107 @@ using namespace NSROOT::OS;
 using namespace OS;
 #endif
 
-unsigned CLatch::hash_bucket(thread_t * t)
+CLatch::TNode * CLatch::find_node(const thread_t& id)
 {
-  const unsigned char * ptr = reinterpret_cast<unsigned char*>(t);
-  /* DJB Hash Function */
-  unsigned h = 5381;
-  for (unsigned i = 0; i < sizeof(thread_t); ++i)
+  TNode * p = s_nodes;
+  while (p != NULL && thread_equal(p->id, id) == 0)
   {
-    h = ((h << 5) + h) + *ptr++;
+    p = p->_next;
   }
-  return h % latch_bucket_count;
+  return p;
+}
+
+CLatch::TNode * CLatch::new_node(const thread_t& id)
+{
+  TNode * p;
+  if (s_freed == NULL)
+  {
+    /* create node */
+    p = new TNode();
+  }
+  else
+  {
+    /* pop front from free list */
+    p = s_freed;
+    s_freed = p->_next;
+  }
+
+  /* setup */
+  p->id = id;
+  p->count = 0;
+
+  /* push front in list */
+  p->_prev = NULL;
+  p->_next = s_nodes;
+  if (s_nodes != NULL)
+  {
+    s_nodes->_prev = p;
+  }
+  s_nodes = p;
+  return p;
+}
+
+void CLatch::free_node(TNode * n)
+{
+  /* remove from list */
+  if (n == s_nodes)
+  {
+    s_nodes = n->_next;
+  }
+  else
+  {
+    n->_prev->_next = n->_next;
+  }
+  if (n->_next != NULL)
+  {
+    n->_next->_prev = n->_prev;
+  }
+
+  /* push front in free list */
+  if (s_freed != NULL)
+  {
+    s_freed->_prev = n;
+  }
+  n->_next = s_freed;
+  n->_prev = NULL;
+  s_freed = n;
 }
 
 CLatch::CLatch(bool _px)
 : s_spin(0)
 , x_wait(0)
-, s_count(0)
 , x_flag(0)
 , px(_px)
+, s_freed(NULL)
+, s_nodes(NULL)
 {
   mutex_init(&x_gate_lock);
   cond_init(&x_gate);
   mutex_init(&s_gate_lock);
   cond_init(&s_gate);
-  memset(s_buckets, 0, sizeof(int) * latch_bucket_count);
+
+  /* preallocate free list with 2 nodes */
+  TNode * n1 = new_node(thread_t());
+  TNode * n2 = new_node(thread_t());
+  free_node(n1);
+  free_node(n2);
 }
 
 CLatch::~CLatch()
 {
+  /* destroy free nodes */
+  while (s_freed != nullptr) {
+    TNode * n = s_freed;
+    s_freed = s_freed->_next;
+    delete n;
+  }
+  /* it should be empty, but still tries to destroy any existing busy node */
+  while (s_nodes != nullptr) {
+    TNode * n = s_nodes;
+    s_nodes = s_nodes->_next;
+    delete n;
+  }
+
   cond_destroy(&s_gate);
   mutex_destroy(&s_gate_lock);
   cond_destroy(&x_gate);
@@ -114,12 +187,15 @@ void CLatch::lock()
       spin_lock();
     }
 
+    /* find the thread node */
+    TNode * n = find_node(tid);
     /* X = 1, check the releasing of S */
     for (;;)
     {
-      /* if the count of S is zeroed then it finalize with no wait,
-       * in other case it have to wait for S gate */
-      if (s_count == 0)
+      /* if the count of S is zeroed, or equal to self count, then it finalizes
+       * with no wait,
+       * in other case it has to wait for S gate */
+      if (s_nodes == NULL || (s_nodes == n && s_nodes->_next == NULL))
       {
         x_flag = X_STEP_3;
         break;
@@ -190,6 +266,10 @@ void CLatch::lock_shared()
   thread_t tid = thread_self();
 
   spin_lock();
+
+  /* find the thread node */
+  TNode * n = find_node(tid);
+
   if (!thread_equal(x_owner, tid))
   {
     /* if flag is 0 or 1 then it hold S with no wait,
@@ -208,10 +288,9 @@ void CLatch::lock_shared()
       else
       {
         /* X precedence is true,
-         * estimate if this thread holds a recursive S lock
+         * test if this thread holds a recursive S lock
          */
-        if (x_flag == X_STEP_0 || (x_flag == X_STEP_1 &&
-                s_buckets[hash_bucket(&tid)] > 0))
+        if (x_flag == X_STEP_0 || (x_flag == X_STEP_1 && n != NULL))
         {
           break;
         }
@@ -224,12 +303,13 @@ void CLatch::lock_shared()
       spin_lock();
     }
   }
-  ++s_count;
-  if (px)
+  if (n == NULL)
   {
-    /* X precedence is true */
-    ++s_buckets[hash_bucket(&tid)];
+    n = new_node(tid);
   }
+  /* increment recursive count for this thread */
+  ++n->count;
+
   spin_unlock();
 }
 
@@ -238,20 +318,33 @@ void CLatch::unlock_shared()
   thread_t tid = thread_self();
 
   spin_lock();
-  if (px)
+
+  /* find the thread node */
+  TNode * n = find_node(tid);
+  /* does it own shared lock ? */
+  assert(n != NULL);
+
+  /* decrement recursive count for this thread, finally free */
+  if (--n->count == 0)
   {
-    /* X precedence is true */
-    --s_buckets[hash_bucket(&tid)];
-  }
-  /* on last S, finalize X request in wait, and notify */
-  if (--s_count == 0 && x_flag == X_STEP_1 && !thread_equal(x_owner, tid))
-  {
-    x_flag = X_STEP_3;
-    /* !!! unlock spin then pop gate (reverse order for X receiver) */
-    spin_unlock();
-    mutex_lock(&s_gate_lock);
-    cond_signal(&s_gate);
-    mutex_unlock(&s_gate_lock);
+    free_node(n);
+    /* on last S, finalize X request in wait, and notify */
+    if (x_flag == X_STEP_1 && !thread_equal(x_owner, tid))
+    {
+      if (s_nodes == NULL)
+      {
+        x_flag = X_STEP_3;
+      }
+      /* !!! unlock spin then pop gate (reverse order for X receiver) */
+      spin_unlock();
+      mutex_lock(&s_gate_lock);
+      cond_signal(&s_gate);
+      mutex_unlock(&s_gate_lock);
+    }
+    else
+    {
+      spin_unlock();
+    }
   }
   else
   {
@@ -269,12 +362,15 @@ bool CLatch::try_lock_shared()
    */
   if (x_flag == X_STEP_0 || thread_equal(x_owner, tid))
   {
-    ++s_count;
-    if (px)
+    /* find the thread node, else create */
+    TNode * n = find_node(tid);
+    if (n == NULL)
     {
-      /* X precedence is true */
-      ++s_buckets[hash_bucket(&tid)];
+      n = new_node(tid);
     }
+    /* increment recursive count for this thread */
+    ++n->count;
+
     spin_unlock();
     return true;
   }
