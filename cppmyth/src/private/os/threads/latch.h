@@ -23,8 +23,6 @@
 #include "os-threads.h"
 #include "atomic.h"
 
-#define latch_bucket_count 64
-
 #ifdef NSROOT
 namespace NSROOT {
 #endif
