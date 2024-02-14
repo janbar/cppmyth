@@ -20,6 +20,8 @@
  *
  */
 
+#include "../os.h"
+
 #if __cplusplus >= 201103L
 
 #include <atomic>

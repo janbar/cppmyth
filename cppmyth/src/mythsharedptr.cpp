@@ -19,11 +19,8 @@
  *
  */
 
-#include "local_config.h"
-#include "private/os/threads/atomic.h"
-#include "private/os/threads/latch.h"
-#include "private/os/threads/threadpool.h"
 #include "mythsharedptr.h"
+#include "private/os/threads/atomic.h"
 
 using namespace Myth;
 
