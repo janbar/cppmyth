@@ -215,6 +215,59 @@ int hex_to_num(const char *str, int *num)
   return 0;
 }
 
+static unsigned __mul10(unsigned n)
+{
+  return (((n << 2) + n ) << 1);
+}
+
+static unsigned __div10(unsigned n)
+{
+  unsigned q, r;
+  q = (n >> 1) + (n >> 2);
+  q = q + (q >> 4);
+  q = q + (q >> 8);
+  q = q + (q >> 16);
+  q = q >> 3;
+  r = n - __mul10(q);
+  return q + ((r + 6) >> 4);
+}
+
+unsigned uint_to_strdec(unsigned u, char *str, unsigned len, int pad)
+{
+  static const char g[10] = {
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+  };
+  if (len)
+  {
+    char *ptr = str, *end = str + len;
+    unsigned n = u, n10 = __div10(u);
+    do
+    {
+      *ptr++ = g[n - __mul10(n10)];
+      n = n10;
+    } while ((n10 = __div10(n)) > 0 && ptr < end);
+    if (ptr < end)
+    {
+      /* push last digit */
+      if (n > 0)
+        *ptr++ = g[n];
+      /* padding */
+      if (pad)
+        while (ptr < end) *ptr++ = '0';
+    }
+    len = ptr - str;
+    /* reorder digits */
+    while (--ptr > str)
+    {
+      char c = *str;
+      *str = *ptr;
+      *ptr = c;
+      ++str;
+    }
+  }
+  return len;
+}
+
 time_t __timegm(struct tm *utctime_tm)
 {
   time_t time;
@@ -384,13 +437,20 @@ void time_to_iso8601utc(time_t time, BUILTIN_BUFFER *str)
     str->data[0] = '\0';
     return;
   }
-  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2dZ",
-          time_tm.tm_year + 1900,
-          time_tm.tm_mon + 1,
-          time_tm.tm_mday,
-          time_tm.tm_hour,
-          time_tm.tm_min,
-          time_tm.tm_sec);
+  /* yyyy-MM-ddTHH:mm:ssZ */
+  uint_to_strdec(time_tm.tm_year + 1900, str->data, 4, 1);
+  str->data[4] = '-';
+  uint_to_strdec(time_tm.tm_mon + 1, str->data + 5, 2, 1);
+  str->data[7] = '-';
+  uint_to_strdec(time_tm.tm_mday, str->data + 8, 2, 1);
+  str->data[10] = 'T';
+  uint_to_strdec(time_tm.tm_hour, str->data + 11, 2, 1);
+  str->data[13] = ':';
+  uint_to_strdec(time_tm.tm_min, str->data + 14, 2, 1);
+  str->data[16] = ':';
+  uint_to_strdec(time_tm.tm_sec, str->data + 17, 2, 1);
+  str->data[19] = 'Z';
+  str->data[20] = '\0';
 }
 
 void time_to_iso8601(time_t time, BUILTIN_BUFFER *str)
@@ -402,13 +462,19 @@ void time_to_iso8601(time_t time, BUILTIN_BUFFER *str)
     str->data[0] = '\0';
     return;
   }
-  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2d",
-          time_tm.tm_year + 1900,
-          time_tm.tm_mon + 1,
-          time_tm.tm_mday,
-          time_tm.tm_hour,
-          time_tm.tm_min,
-          time_tm.tm_sec);
+  /* yyyy-MM-ddTHH:mm:ss */
+  uint_to_strdec(time_tm.tm_year + 1900, str->data, 4, 1);
+  str->data[4] = '-';
+  uint_to_strdec(time_tm.tm_mon + 1, str->data + 5, 2, 1);
+  str->data[7] = '-';
+  uint_to_strdec(time_tm.tm_mday, str->data + 8, 2, 1);
+  str->data[10] = 'T';
+  uint_to_strdec(time_tm.tm_hour, str->data + 11, 2, 1);
+  str->data[13] = ':';
+  uint_to_strdec(time_tm.tm_min, str->data + 14, 2, 1);
+  str->data[16] = ':';
+  uint_to_strdec(time_tm.tm_sec, str->data + 17, 2, 1);
+  str->data[19] = '\0';
 }
 
 void time_to_isodate(time_t time, BUILTIN_BUFFER *str)
@@ -420,10 +486,12 @@ void time_to_isodate(time_t time, BUILTIN_BUFFER *str)
     str->data[0] = '\0';
     return;
   }
-  snprintf(str->data, sizeof(BUILTIN_BUFFER), "%4.4d-%2.2d-%2.2d",
-          time_tm.tm_year + 1900,
-          time_tm.tm_mon + 1,
-          time_tm.tm_mday);
+  uint_to_strdec(time_tm.tm_year + 1900, str->data, 4, 1);
+  str->data[4] = '-';
+  uint_to_strdec(time_tm.tm_mon + 1, str->data + 5, 2, 1);
+  str->data[7] = '-';
+  uint_to_strdec(time_tm.tm_mday, str->data + 8, 2, 1);
+  str->data[10] = '\0';
 }
 
 tz_t *time_tz(time_t time, tz_t* tz) {

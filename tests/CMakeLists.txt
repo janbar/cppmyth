@@ -51,3 +51,4 @@ include(UnitTestProject)
 
 unittest_project(NAME check_compressor SOURCES src/check_compressor.cpp TARGET cppmyth)
 unittest_project(NAME check_intrinsic SOURCES src/check_intrinsic.cpp TARGET cppmyth)
+unittest_project(NAME check_builtin SOURCES src/check_builtin.cpp TARGET cppmyth)
