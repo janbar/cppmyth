@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2014-2023 Jean-Luc Barriere
+ *      Copyright (C) 2014-2024 Jean-Luc Barriere
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -215,23 +215,6 @@ int hex_to_num(const char *str, int *num)
   return 0;
 }
 
-static unsigned __mul10(unsigned n)
-{
-  return (((n << 2) + n ) << 1);
-}
-
-static unsigned __div10(unsigned n)
-{
-  unsigned q, r;
-  q = (n >> 1) + (n >> 2);
-  q = q + (q >> 4);
-  q = q + (q >> 8);
-  q = q + (q >> 16);
-  q = q >> 3;
-  r = n - __mul10(q);
-  return q + ((r + 6) >> 4);
-}
-
 unsigned uint_to_strdec(unsigned u, char *str, unsigned len, int pad)
 {
   static const char g[10] = {
@@ -240,12 +223,12 @@ unsigned uint_to_strdec(unsigned u, char *str, unsigned len, int pad)
   if (len)
   {
     char *ptr = str, *end = str + len;
-    unsigned n = u, n10 = __div10(u);
+    unsigned n = u, n10 = u / 10;
     do
     {
-      *ptr++ = g[n - __mul10(n10)];
+      *ptr++ = g[n - n10 * 10];
       n = n10;
-    } while ((n10 = __div10(n)) > 0 && ptr < end);
+    } while ((n10 = n / 10) > 0 && ptr < end);
     if (ptr < end)
     {
       /* push last digit */
