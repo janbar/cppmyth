@@ -11,6 +11,7 @@
 #else
 #include <unistd.h>
 #include <sys/time.h>
+#include <signal.h>
 #endif
 
 #include <mythdebug.h>
@@ -24,6 +25,11 @@
 
 #include <cstdio>
 
+void mySigHandler(int sig)
+{
+  fprintf(stderr, "INFO: signal %d ignored\n", sig);
+}
+
 int main(int argc, char** argv)
 {
   int ret = 0;
@@ -32,6 +38,8 @@ int main(int argc, char** argv)
   WSADATA wsaData;
   if ((ret = WSAStartup(MAKEWORD(2, 2), &wsaData)))
     return ret;
+#else
+  (void)signal(SIGALRM, mySigHandler);
 #endif /* __WINDOWS__ */
 
   std::string backendIP;
