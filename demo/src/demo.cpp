@@ -113,6 +113,11 @@ void liveTVSpawn(const char * server, const char * chanNum)
     fprintf(stderr, MYTAG "ERROR: channel %s is unavailable\n", chanNum);
 }
 
+void mySigHandler(int sig)
+{
+  fprintf(stderr, MYTAG "INFO: signal %d ignored\n", sig);
+}
+
 int main(int argc, char** argv)
 {
   int ret = 0;
@@ -121,6 +126,8 @@ int main(int argc, char** argv)
   WSADATA wsaData;
   if ((ret = WSAStartup(MAKEWORD(2, 2), &wsaData)))
     return ret;
+#else
+  (void)signal(SIGALRM, mySigHandler);
 #endif /* __WINDOWS__ */
 
   if (argc > 2)
