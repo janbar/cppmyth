@@ -1,5 +1,4 @@
-cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
-cmake_policy (VERSION 2.8.12)
+cmake_minimum_required (VERSION 2.8.12...3.20)
 
 project (cppmythroot)
 
@@ -12,17 +11,18 @@ include(DownloadProject)
 find_package (ZLIB QUIET)
 if(NOT ZLIB_FOUND)
     download_project(PROJ zlib
-        URL "${CMAKE_CURRENT_SOURCE_DIR}/zlib-1.2.13.tar.gz"
-        URL_HASH MD5=201979193acddd53849e7e0a7f035564
+        URL "${CMAKE_CURRENT_SOURCE_DIR}/zlib-1.3.1.tar.gz"
+        URL_HASH MD5=9855b6d802d7fe5b7bd5b196a2271655
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}
         UPDATE_DISCONNECTED ON)
     set(BUILD_SHARED_LIBS OFF)
+    set(SKIP_INSTALL_ALL ON)
     add_subdirectory(
         ${CMAKE_CURRENT_BINARY_DIR}/zlib-src
         ${CMAKE_CURRENT_BINARY_DIR}/zlib-build
         EXCLUDE_FROM_ALL
     )
-    set(ZLIB_LIBRARIES zlib)
+    set(ZLIB_LIBRARIES zlibstatic)
     set(ZLIB_INCLUDE_DIRS "${zlib_SOURCE_DIR}" "${zlib_BINARY_DIR}")
     set(ZLIB_FOUND ON)
     message(STATUS "Build ZLIB: ${zlib_BINARY_DIR}")
