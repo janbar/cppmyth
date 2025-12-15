@@ -22,7 +22,7 @@
 
 Myth::OS::Atomic* g_counter = 0;
 
-class WorkerInc : public Myth::OS::CWorker
+class WorkerInc : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -33,7 +33,7 @@ class WorkerInc : public Myth::OS::CWorker
   }
 };
 
-class WorkerDec : public Myth::OS::CWorker
+class WorkerDec : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
   if (argc > 1)
     val = atoi(argv[1]);
   g_counter = new Myth::OS::Atomic(val);
-  Myth::OS::CThreadPool pool(20);
+  Myth::OS::ThreadPool pool(20);
   pool.Suspend();
   for (int i = 0; i < 5; ++i)
   {

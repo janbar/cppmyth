@@ -28,7 +28,7 @@ namespace Myth
 {
   struct LockGuard::Lockable
   {
-    OS::CMutex mutex;
+    OS::Mutex mutex;
   };
 }
 

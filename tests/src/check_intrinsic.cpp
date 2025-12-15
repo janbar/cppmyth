@@ -11,7 +11,7 @@
 
 Myth::OS::Atomic* g_counter = nullptr;
 
-class WorkerInc : public Myth::OS::CWorker
+class WorkerInc : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -22,7 +22,7 @@ class WorkerInc : public Myth::OS::CWorker
   }
 };
 
-class WorkerDec : public Myth::OS::CWorker
+class WorkerDec : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -37,7 +37,7 @@ TEST_CASE("Stress atomic counter")
 {
   int val = 0;
   g_counter = new Myth::OS::Atomic(val);
-  Myth::OS::CThreadPool pool(4);
+  Myth::OS::ThreadPool pool(4);
   pool.Suspend();
   pool.Enqueue(new WorkerInc());
   pool.Enqueue(new WorkerDec());
@@ -52,7 +52,7 @@ TEST_CASE("Stress atomic counter")
 
 Myth::LockedNumber<int>* g_locked;
 
-class WorkerLockInc : public Myth::OS::CWorker
+class WorkerLockInc : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -63,7 +63,7 @@ class WorkerLockInc : public Myth::OS::CWorker
   }
 };
 
-class WorkerLockDec : public Myth::OS::CWorker
+class WorkerLockDec : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -78,7 +78,7 @@ TEST_CASE("Stress locked number")
 {
   int val = 0;
   g_locked = new Myth::LockedNumber<int>(val);
-  Myth::OS::CThreadPool pool(4);
+  Myth::OS::ThreadPool pool(4);
   pool.Suspend();
   pool.Enqueue(new WorkerLockInc());
   pool.Enqueue(new WorkerLockDec());
@@ -91,10 +91,10 @@ TEST_CASE("Stress locked number")
   delete g_locked;
 }
 
-Myth::OS::CLatch g_latch(false);
+Myth::OS::Latch g_latch(false);
 Myth::shared_ptr<size_t> g_pointer;
 
-class WorkerPtrClear : public Myth::OS::CWorker
+class WorkerPtrClear : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -108,7 +108,7 @@ class WorkerPtrClear : public Myth::OS::CWorker
   }
 };
 
-class WorkerPtrCopy : public Myth::OS::CWorker
+class WorkerPtrCopy : public Myth::OS::Worker
 {
   virtual void Process()
   {
@@ -129,7 +129,7 @@ TEST_CASE("Stress shared pointer")
   int val = 0;
   g_counter = new Myth::OS::Atomic(0);
   g_pointer.reset(new size_t(0));
-  Myth::OS::CThreadPool pool(4);
+  Myth::OS::ThreadPool pool(4);
   pool.Suspend();
   pool.Enqueue(new WorkerPtrCopy());
   pool.Enqueue(new WorkerPtrClear());
