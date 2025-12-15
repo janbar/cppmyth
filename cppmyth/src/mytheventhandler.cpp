@@ -162,7 +162,7 @@ namespace Myth
     virtual bool Start();
     virtual void Stop();
     virtual void Reset();
-    virtual bool IsRunning();
+    virtual bool HasStarted();
     virtual bool IsConnected();
     virtual unsigned CreateSubscription(EventSubscriber *sub);
     virtual bool SubscribeForEvent(unsigned subid, EVENT_t event);
@@ -232,7 +232,7 @@ void BasicEventHandler::Reset()
   m_reset = true;
 }
 
-bool BasicEventHandler::IsRunning()
+bool BasicEventHandler::HasStarted()
 {
   return OS::Thread::IsRunning();
 }
