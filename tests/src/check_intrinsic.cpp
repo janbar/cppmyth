@@ -50,7 +50,7 @@ TEST_CASE("Stress atomic counter")
   delete g_counter;
 }
 
-Myth::LockedNumber<int>* g_locked;
+Myth::Locked<int>* g_locked;
 
 class WorkerLockInc : public Myth::OS::Worker
 {
@@ -58,7 +58,8 @@ class WorkerLockInc : public Myth::OS::Worker
   {
     for (int i = 0; i < 500100; i++)
     {
-      g_locked->Add(1);
+      Myth::Locked<int>::pointer p = g_locked->GetExclusive();
+      *p += 1;
     }
   }
 };
@@ -69,15 +70,16 @@ class WorkerLockDec : public Myth::OS::Worker
   {
     for (int i = 0; i < 500000; i++)
     {
-      g_locked->Sub(1);
+      Myth::Locked<int>::pointer p = g_locked->GetExclusive();
+      *p -= 1;
     }
   }
 };
 
-TEST_CASE("Stress locked number")
+TEST_CASE("Stress locked object")
 {
   int val = 0;
-  g_locked = new Myth::LockedNumber<int>(val);
+  g_locked = new Myth::Locked<int>(val);
   Myth::OS::ThreadPool pool(4);
   pool.Suspend();
   pool.Enqueue(new WorkerLockInc());
