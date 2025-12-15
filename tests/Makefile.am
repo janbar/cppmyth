@@ -14,11 +14,11 @@ testintrinsic_SOURCES = src/testintrinsic.cpp
 testintrinsic_LDFLAGS = -static
 
 testintrinsic_LDADD   = \
-        @abs_top_builddir@/cppmyth/libcppmyth.la
+	@abs_top_builddir@/cppmyth/libcppmyth.la
 
 testwget_SOURCES = src/testwget.cpp
 
 testwget_LDFLAGS = -static
 
 testwget_LDADD   = \
-        @abs_top_builddir@/cppmyth/libcppmyth.la
+	@abs_top_builddir@/cppmyth/libcppmyth.la

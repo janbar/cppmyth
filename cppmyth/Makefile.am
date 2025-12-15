@@ -12,12 +12,12 @@ libcppmyth_la_SOURCES = \
 	src/private/os/threads/latch.cpp \
 	src/private/mythdto/mythdto.cpp \
 	src/private/builtin.c \
-        src/private/compressor.cpp \
-        src/private/debug.cpp \
+	src/private/compressor.cpp \
+	src/private/debug.cpp \
 	src/private/jsonparser.cpp \
 	src/private/mythjsonbinder.cpp \
 	src/private/ringbuffer.cpp \
-        src/private/securesocket.cpp \
+	src/private/securesocket.cpp \
 	src/private/socket.cpp \
 	src/private/uriparser.cpp \
 	src/private/wscontent.cpp \
