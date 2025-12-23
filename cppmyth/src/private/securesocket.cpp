@@ -139,8 +139,11 @@ SecureSocket* SSLSessionFactory::NewClientSocket()
 
 SSLServerContext::~SSLServerContext()
 {
-  DBG(DBG_DEBUG, "%s: Free SSL server context (%p)\n", __FUNCTION__, m_server_ctx);
-  SSL_CTX_free(static_cast<SSL_CTX*>(m_server_ctx));
+  if (m_server_ctx)
+  {
+    DBG(DBG_DEBUG, "%s: Free SSL server context (%p)\n", __FUNCTION__, m_server_ctx);
+    SSL_CTX_free(static_cast<SSL_CTX*>(m_server_ctx));
+  }
 }
 
 bool SSLServerContext::InitContext(const std::string& certfile, const std::string& pkeyfile)
