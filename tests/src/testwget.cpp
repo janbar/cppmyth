@@ -36,7 +36,8 @@ int main() {
 
   Myth::WSRequest req(dest_url, 80);
   req.RequestAcceptEncoding(true);
-  req.RequestService("/", Myth::HRM_GET);
+  req.RequestAccept(ws_ctype_to_str(WS_CTYPE_Any));
+  req.RequestService("/", WS_METHOD_Get);
   Myth::WSResponse resp(req);
   if (resp.IsSuccessful())
   {

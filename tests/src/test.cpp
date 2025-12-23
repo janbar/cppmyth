@@ -182,9 +182,9 @@ int main(int argc, char** argv)
           else if (r < 0)
             break;
           r = fwrite(buf, 1, r, file);
-          if (i == 100)
+          if (i == 50)
             lp.KeepLiveRecording(true);
-          if (i == 300)
+          if (i == 150)
             lp.KeepLiveRecording(false);
         }
         fclose(file);
