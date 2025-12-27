@@ -81,6 +81,11 @@ int main(int argc, char** argv)
       Myth::ProgramPtr prog = control.GetRecorded((*pl)[0]->channel.chanId, (*pl)[0]->recording.startTs);
       if (prog)
         fprintf(stderr, "%s | %lu | %s\n", prog->fileName.c_str(), prog->recording.startTs, prog->title.c_str());
+      else
+      {
+        fprintf(stderr,"ERROR: Fetching program data failed\n");
+        return EXIT_FAILURE;
+      }
     }
 
     fprintf(stderr, "\n***\n*** Testing web service GetCaptureCard\n***\n");
@@ -136,7 +141,18 @@ int main(int argc, char** argv)
 
     fprintf(stderr, "\n***\n*** Testing protocol command: starting event handler\n***\n");
     Myth::EventHandler event(backendIP, 6543);
-    event.Start();
+    if (!event.Start())
+    {
+      fprintf(stderr,"ERROR: Starting event handler failed\n");
+      return EXIT_FAILURE;
+    }
+
+    sleep(1);
+    if (!event.IsRunning() || !event.IsConnected())
+    {
+      fprintf(stderr,"ERROR: Event handler not connected\n");
+      return EXIT_FAILURE;
+    }
 
     Myth::DBGLevel(MYTH_DBG_PROTO);
 
@@ -149,14 +165,20 @@ int main(int argc, char** argv)
       //Myth::RecordingPlayback pb(backendIP, 6543);
       //Myth::FilePlayback pb(backendIP, 6543);
       //pb.openTransfer(pl[n]->FileName, pl[n]->Recording.StorageGroup);
-      pb.OpenTransfer((*pl)[n]);
+      if (!pb.OpenTransfer((*pl)[n]))
+        return EXIT_FAILURE;
       char buf[64000];
-      int l = 0;
-      for (int i = 0; i < 30; ++i)
+      int l = 0, i = 0;
+      for (; i < 30; ++i)
       {
-        if ((l = pb.Read(buf, 64000)) == 0)
+        l = pb.Read(buf, 64000);
+        if (l < 0)
+          break;
+        if (l == 0)
           usleep(100000);
       }
+      if (l < 0)
+        fprintf(stderr,"ERROR: File transfer failed at loop %d\n", i);
       pb.CloseTransfer();
 
       fprintf(stderr, "\n***\n*** Testing protocol command queryGenpixmap\n***\n");
@@ -224,7 +246,11 @@ int main(int argc, char** argv)
       rec.findTime = "00:00:00";
 
       Myth::DBGLevel(MYTH_DBG_DEBUG);
-      control.AddRecordSchedule(rec);
+      if (!control.AddRecordSchedule(rec))
+      {
+        fprintf(stderr,"ERROR: Add record schedule failed\n");
+        return EXIT_FAILURE;
+      }
 
       Myth::RecordSchedulePtr rc = control.GetRecordSchedule(rec.recordId);
       if (rc)
@@ -233,6 +259,11 @@ int main(int argc, char** argv)
         Myth::DBGLevel(MYTH_DBG_DEBUG);
         fprintf(stderr,"Removing record %u returns %d\n", rc->recordId, control.RemoveRecordSchedule(rc->recordId));
         Myth::DBGLevel(MYTH_DBG_WARN);
+      }
+      else
+      {
+        fprintf(stderr,"ERROR: Fetching record schedule %d failed\n", rc->recordId);
+        return EXIT_FAILURE;
       }
     }
 
