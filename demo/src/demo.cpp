@@ -18,6 +18,7 @@
 #include <mythdebug.h>
 
 #include <cstdio>
+#include <cstring>
 #include <stdlib.h>
 #include <signal.h>
 #include <map>
@@ -25,14 +26,29 @@
 #define MYTAG "[DEMO] "
 #define BUFSZ 64000
 
+struct
+{
+  std::string   host;
+  unsigned      proto_port;
+  unsigned      wsapi_port;
+  std::string   pin;
+  std::string   user_name;
+  std::string   password;
+  bool          ssl;
+  std::string   channum;
+} config;
+
 // Container for MythTV channels indexed by channum
 typedef std::multimap<std::string, Myth::ChannelPtr> channelMap_t;
 channelMap_t channelMap;
 
 // Load visible channels into the channelMap
-bool loadChannels(const char * server)
+bool loadChannels()
 {
-  Myth::WSAPI wsapi(server, 6544, "");
+  Myth::WSAPI wsapi(config.host, config.wsapi_port, config.pin);
+  wsapi.WithAuthorization(config.user_name, config.password)
+       .WithSSL(config.ssl);
+
   if (wsapi.CheckService())
   {
     // Print the version of our backend
@@ -56,7 +72,7 @@ bool loadChannels(const char * server)
 }
 
 // Spawn live TV and stream out
-void liveTVSpawn(const char * server, const char * chanNum)
+void liveTVSpawn()
 {
 
 #ifndef __WINDOWS__
@@ -66,21 +82,21 @@ void liveTVSpawn(const char * server, const char * chanNum)
 
 
   Myth::DBGLevel(MYTH_DBG_INFO);
-  Myth::LiveTVPlayback lp(server, 6543);
+  Myth::LiveTVPlayback lp(config.host, config.proto_port);
 
   fprintf(stderr, MYTAG "INFO: spawning live TV\n");
 
   // Spawn will find the channels match this chanNum. Also we can prepare our
   // predefined set of channels.
   Myth::ChannelList chanList;
-  channelMap_t::const_iterator it = channelMap.find(chanNum);
+  channelMap_t::const_iterator it = channelMap.find(config.channum);
   while (it != channelMap.end())
   {
     chanList.push_back(it->second);
     ++it;
   }
   // Spawn Live TV
-  if (lp.SpawnLiveTV(chanNum, chanList))
+  if (lp.SpawnLiveTV(config.channum, chanList))
   {
     const Myth::ProgramPtr prog = lp.GetPlayedProgram();
     fprintf(stderr, MYTAG "INFO: live TV is playing channel id %u from source id %u\n",
@@ -110,12 +126,27 @@ void liveTVSpawn(const char * server, const char * chanNum)
     fprintf(stderr, "tick = %u usec\n", waitus);
   }
   else
-    fprintf(stderr, MYTAG "ERROR: channel %s is unavailable\n", chanNum);
+    fprintf(stderr, MYTAG "ERROR: channel %s is unavailable\n", config.channum.c_str());
 }
 
 void mySigHandler(int sig)
 {
   fprintf(stderr, MYTAG "INFO: signal %d ignored\n", sig);
+}
+
+void usage(const char * cmd)
+{
+  fprintf(stderr,"Usage:\n"
+          "  --host=<IP>              The backend IP\n"
+          "  --channum=<1>            The channel number to stream\n"
+          "  --proto=<6543>           The protocol port     (6543)\n"
+          "  --wsapi=<6544>           The service API port  (6544)\n"
+          "  --ssl                    Enable SSL for API    (Required for port 6554)\n"
+          "  --pin=<0000>             The security PIN      ('0000')\n"
+          "  --username=<admin>       The user name         ('admin')\n"
+          "  --password=<mythtv>      The user password     ('myhtv')"
+          "\n");
+  exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char** argv)
@@ -130,16 +161,56 @@ int main(int argc, char** argv)
   (void)signal(SIGALRM, mySigHandler);
 #endif /* __WINDOWS__ */
 
-  if (argc > 2)
+  config.host = "127.0.0.1";
+  config.proto_port = 6543;
+  config.wsapi_port = 6544;
+  config.pin = "0000";
+  config.user_name = "admin";
+  config.password = "mythtv";
+  config.ssl = false;
+  config.channum = "1";
+
+  if (argc > 1)
   {
-    // Load all channels from the backend
-    if (loadChannels(argv[1]))
-      liveTVSpawn(argv[1], argv[2]);
-    else
-      fprintf(stderr, MYTAG "ERROR: cannot load channels from the backend %s\n", argv[1]);
+    for (int i = 1; i < argc; ++i)
+    {
+      if (strncmp("--host=", argv[i], 7) == 0)
+        config.host.assign(argv[i]+7);
+      else if (strncmp("--channum=", argv[i], 10) == 0)
+        config.channum.assign(argv[i]+10);
+      else if (strncmp("--proto=", argv[i], 8) == 0)
+        config.proto_port = atoi(argv[i]+8);
+      else if (strncmp("--wsapi=", argv[i], 8) == 0)
+        config.wsapi_port = atoi(argv[i]+8);
+      else if (strncmp("--pin=", argv[i], 6) == 0)
+        config.pin.assign(argv[i]+6);
+      else if (strncmp("--username=", argv[i], 11) == 0)
+        config.user_name.assign(argv[i]+11);
+      else if (strncmp("--password=", argv[i], 11) == 0)
+        config.password.assign(argv[i]+11);
+      else if (strncmp("--ssl", argv[i], 6) == 0)
+        config.ssl = true;
+      else if (strncmp("--help", argv[i], 7) == 0)
+        usage(argv[0]);
+      else if (strncmp("-h", argv[i], 3) == 0)
+        usage(argv[0]);
+      else
+      {
+        fprintf(stderr,"Invalid argument (%s)\n", argv[i]);
+        return EXIT_FAILURE;
+      }
+    }
   }
   else
-    fprintf(stderr, MYTAG "USAGE: %s {backend ip or hostname} {channum}\n", argv[0]);
+  {
+    usage(argv[0]);
+  }
+
+  // Load all channels from the backend
+  if (loadChannels())
+    liveTVSpawn();
+  else
+    fprintf(stderr, MYTAG "ERROR: cannot load channels from the backend %s\n", config.host.c_str());
 
 #ifdef __WINDOWS__
   WSACleanup();

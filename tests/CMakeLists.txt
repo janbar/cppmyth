@@ -40,7 +40,7 @@ add_executable (testintrinsic src/testintrinsic.cpp)
 add_dependencies (testintrinsic cppmyth)
 target_link_libraries (testintrinsic cppmyth)
 
-add_executable (cppmythtest src/test.cpp)
+add_executable (cppmythtest src/cppmythtest.cpp)
 add_dependencies (cppmythtest cppmyth)
 target_link_libraries (cppmythtest cppmyth)
 
