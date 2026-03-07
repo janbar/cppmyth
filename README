@@ -1,6 +1,6 @@
 This project is intended to create a easy client interface for the
 MythTV backend. Its development started from january 2014 and today
-the API supports the protocol version of MythTV 0.26 to 35.
+the API supports the protocol version of MythTV 0.26 to 36.
 
 Online doxygen documentation is available from:
 http://janbar.github.io/cppmyth/doxygen-dev-docs/html/index.html
@@ -11,6 +11,8 @@ http://janbar.github.io/cppmyth/doxygen-dev-docs/html/index.html
 
 Build:
 ------
+
+To support SSL, first you have to install the openssl headers on your system.
 
 Start by configuring the build folder:
 
@@ -28,7 +30,14 @@ Running liveTV demo:
 Choose a server and a channel number to spawn, here 7 from localhost, and pipe the
 stream to mplayer:
 
-./demo/livetvdemo 127.0.0.1 7 | mplayer -
+./demo/livetvdemo --host=127.0.0.1 --channum=7 | mplayer -
+
+Please type option `--help` for the list of available options.
+
+Using SSL and authenticated session:
+
+./demo/livetvdemo --host=127.0.0.1 --channum=7 --wsapi=6554 --ssl \
+  --username=admin --password=mythtv | mplayer -
 
 Sources of demo are in <root path of cppmyth>/demo/src/
 

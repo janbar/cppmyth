@@ -2,7 +2,7 @@ noinst_PROGRAMS = cppmythtest testintrinsic testwget
 
 AM_CPPFLAGS = -I@abs_top_srcdir@/cppmyth/src
 
-cppmythtest_SOURCES = src/test.cpp
+cppmythtest_SOURCES = src/cppmythtest.cpp
 
 cppmythtest_LDFLAGS = -static
 

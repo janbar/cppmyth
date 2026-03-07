@@ -24,10 +24,25 @@
 #include <mythwsapi.h>
 
 #include <cstdio>
+#include <cstring>
 
 void mySigHandler(int sig)
 {
   fprintf(stderr, "INFO: signal %d ignored\n", sig);
+}
+
+void usage(const char * cmd)
+{
+  fprintf(stderr,"Usage:\n"
+          "  --host=<IP>              The backend IP\n"
+          "  --proto=<6543>           The protocol port     (6543)\n"
+          "  --wsapi=<6544>           The service API port  (6544)\n"
+          "  --ssl                    Enable SSL for API    (Required for port 6554)\n"
+          "  --pin=<0000>             The security PIN      ('0000')\n"
+          "  --username=<admin>       The user name         ('admin')\n"
+          "  --password=<mythtv>      The user password     ('myhtv')"
+          "\n");
+  exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char** argv)
@@ -42,17 +57,66 @@ int main(int argc, char** argv)
   (void)signal(SIGALRM, mySigHandler);
 #endif /* __WINDOWS__ */
 
-  std::string backendIP;
-  Myth::ChannelPtr chantest;
+  struct
+  {
+    std::string   host;
+    unsigned      proto_port;
+    unsigned      wsapi_port;
+    std::string   pin;
+    std::string   user_name;
+    std::string   password;
+    bool          ssl;
+  } config;
+
+  config.host = "127.0.0.1";
+  config.proto_port = 6543;
+  config.wsapi_port = 6544;
+  config.pin = "0000";
+  config.user_name = "admin";
+  config.password = "mythtv";
+  config.ssl = false;
 
   if (argc > 1)
-    backendIP = argv[1];
+  {
+    for (int i = 1; i < argc; ++i)
+    {
+      if (strncmp("--host=", argv[i], 7) == 0)
+        config.host.assign(argv[i]+7);
+      else if (strncmp("--proto=", argv[i], 8) == 0)
+        config.proto_port = atoi(argv[i]+8);
+      else if (strncmp("--wsapi=", argv[i], 8) == 0)
+        config.wsapi_port = atoi(argv[i]+8);
+      else if (strncmp("--pin=", argv[i], 6) == 0)
+        config.pin.assign(argv[i]+6);
+      else if (strncmp("--username=", argv[i], 11) == 0)
+        config.user_name.assign(argv[i]+11);
+      else if (strncmp("--password=", argv[i], 11) == 0)
+        config.password.assign(argv[i]+11);
+      else if (strncmp("--ssl", argv[i], 6) == 0)
+        config.ssl = true;
+      else if (strncmp("--help", argv[i], 7) == 0)
+        usage(argv[0]);
+      else if (strncmp("-h", argv[i], 3) == 0)
+        usage(argv[0]);
+      else
+      {
+        fprintf(stderr,"Invalid argument (%s)\n", argv[i]);
+        return EXIT_FAILURE;
+      }
+    }
+  }
   else
-    backendIP = "127.0.0.1";
+  {
+    usage(argv[0]);
+  }
+
+  Myth::ChannelPtr chantest;
 
   {
     Myth::DBGLevel(MYTH_DBG_WARN);
-    Myth::Control control(backendIP, 6543, 6544, "");
+    Myth::Control control(config.host, config.proto_port, config.wsapi_port, config.pin);
+    control.WithAuthorization(config.user_name, config.password)
+           .WithSSL(config.ssl);
 
     fprintf(stderr, "\n***\n*** Testing web service GetSetting\n***\n");
     Myth::SettingPtr set = control.GetSetting("LiveTVPriority", true);
@@ -86,6 +150,18 @@ int main(int argc, char** argv)
         fprintf(stderr,"ERROR: Fetching program data failed\n");
         return EXIT_FAILURE;
       }
+
+      fprintf(stderr, "\n***\n*** Testing web service SetSavedBookmark\n***\n");
+
+      int64_t svp = prog->fileSize / 3;
+      fprintf(stderr,"Save bookmark at byte %ld returns %s\n", svp, (control.SetSavedBookmark(*prog, 1, svp) ? "true": "false"));
+
+      fprintf(stderr, "\n***\n*** Testing web service GetSavedBookmark\n***\n");
+
+      int64_t pos = control.GetSavedBookmark(*prog, 1);
+      fprintf(stderr,"Get saved bookmark returns position %u\n", (unsigned)pos);
+      int64_t ptm = control.GetSavedBookmark(*prog, 2);
+      fprintf(stderr,"Get saved bookmark returns time %u ms\n", (unsigned)ptm);
     }
 
     fprintf(stderr, "\n***\n*** Testing web service GetCaptureCard\n***\n");
@@ -132,7 +208,7 @@ int main(int argc, char** argv)
         Myth::DBGLevel(MYTH_DBG_DEBUG);
         for (unsigned i = 0; i < clist->size(); ++i)
         {
-          Myth::ProtoRecorder recorder((*clist)[i]->cardId, backendIP, 6543);
+          Myth::ProtoRecorder recorder((*clist)[i]->cardId, config.host, config.proto_port);
           recorder.IsTunable(*chantest);
         }
         Myth::DBGLevel(MYTH_DBG_WARN);
@@ -140,7 +216,7 @@ int main(int argc, char** argv)
     }
 
     fprintf(stderr, "\n***\n*** Testing protocol command: starting event handler\n***\n");
-    Myth::EventHandler event(backendIP, 6543);
+    Myth::EventHandler event(config.host, config.proto_port);
     if (!event.Start())
     {
       fprintf(stderr,"ERROR: Starting event handler failed\n");
@@ -162,8 +238,8 @@ int main(int argc, char** argv)
       int n = pl->size() - 1;
 
       Myth::RecordingPlayback pb(event);
-      //Myth::RecordingPlayback pb(backendIP, 6543);
-      //Myth::FilePlayback pb(backendIP, 6543);
+      //Myth::RecordingPlayback pb(config.host, config.proto_port);
+      //Myth::FilePlayback pb(config.host, config.proto_port);
       //pb.openTransfer(pl[n]->FileName, pl[n]->Recording.StorageGroup);
       if (!pb.OpenTransfer((*pl)[n]))
         return EXIT_FAILURE;
