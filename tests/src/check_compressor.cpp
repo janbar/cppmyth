@@ -34,7 +34,7 @@ size_t _flush_decompressed_data(Myth::Decompressor * d, char * out)
 
 TEST_CASE("Compress Z data")
 {
-  Myth::Compressor * c =  new Myth::Compressor((const char*)stream_raw, stream_raw_len);
+  Myth::Compressor * c =  new Myth::Compressor((const char*)stream_raw, stream_raw_len, true);
   char * zip = new char[stream_raw_len];
   size_t lz = _flush_compressed_data(c, zip);
   REQUIRE(c->HasStreamError() == false);
@@ -43,7 +43,7 @@ TEST_CASE("Compress Z data")
   REQUIRE((lz > 0 && lz < stream_raw_len));
 
   char * raw = new char[stream_raw_len];
-  Myth::Decompressor * d =  new Myth::Decompressor((const char*)zip, lz);
+  Myth::Decompressor * d =  new Myth::Decompressor((const char*)zip, lz, true);
   size_t lr = _flush_decompressed_data(d, raw);
   REQUIRE(d->HasStreamError() == false);
   REQUIRE(d->HasBufferError() == false);
