@@ -280,7 +280,6 @@ endif ()
 install (FILES
   ${CMAKE_CURRENT_BINARY_DIR}/include/local_config.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythlocked.h
-  ${CMAKE_CURRENT_BINARY_DIR}/include/mythintrinsic.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythsharedptr.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythtypes.h
   ${CMAKE_CURRENT_BINARY_DIR}/include/mythcontrol.h
