@@ -1,0 +1,23 @@
+<map id="NSROOT::RingBuffer" name="NSROOT::RingBuffer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="865,120,991,147"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1OS_1_1Mutex.html" title=" " alt="" coords="620,5,744,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="737,35,843,80,908,120,903,119,840,85,736,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="612,149,752,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="767,155,868,142,862,143,768,160"/>
+<area shape="rect" id="Node000004" href="$structNSROOT_1_1RingBuffer_1_1Chunk.html" title="total size of unread data in the buffer" alt="" coords="267,99,392,141"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="407,114,604,110,723,111,842,117,867,122,862,123,841,123,723,116,604,115,408,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="407,140,416,141,519,156,614,167,609,167,518,161,416,147,407,145"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="309,81,316,75,329,72,341,74,350,80,353,89,352,99,347,97,348,90,345,83,339,79,329,77,319,79,312,85"/>
+<area shape="rect" id="Node000005" href="$classNSROOT_1_1RingBufferPacket.html" title=" " alt="" coords="5,155,164,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="170,149,268,131,264,134,172,154"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="618,216,746,259"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="179,170,402,185,510,195,588,205,621,215,615,215,588,211,509,200,401,190,179,176"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="281,241,378,268"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="394,248,486,237,537,227,587,214,611,202,633,193,638,192,613,206,589,218,539,232,487,242,394,253"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="65,268,104,295"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="119,275,281,257,280,263,119,280"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="288,296,370,323"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="119,285,188,296,291,307,285,308,187,301,119,290"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="760,213,840,183,904,148,909,146,842,188,762,218"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="386,316,430,321,482,322,535,318,587,306,627,284,658,260,663,258,630,289,589,310,536,323,482,327,430,326,385,322"/>
+</map>

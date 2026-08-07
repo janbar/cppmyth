@@ -1,0 +1,21 @@
+<map id="Myth::WSAPI" name="Myth::WSAPI">
+<area shape="rect" id="Node000001" title=" " alt="" coords="753,236,840,263"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="234,213,307,240"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,226,729,243,755,246,750,247,729,248,323,231"/>
+<area shape="rect" id="Node000004" href="$structMyth_1_1Version.html" title=" " alt="" coords="491,275,581,301"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="303,246,347,267,384,276,422,282,493,289,488,289,421,287,383,281,345,272,303,251"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="471,29,601,72"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="300,201,371,148,460,88,490,74,494,71,462,93,374,153,303,206"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,205,116,248"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="131,224,235,225,231,228,132,229"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="596,283,661,277,729,267,751,264,756,263,730,272,661,282,597,288"/>
+<area shape="rect" id="Node000005" href="$structMyth_1_1WSServiceVersion__t.html" title=" " alt="" coords="461,325,611,352"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="626,335,678,327,728,310,760,287,783,264,788,262,764,291,731,314,679,332,627,340"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="595,78,613,88,664,127,713,168,784,236,779,235,709,172,661,131,610,93,595,83"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="219,37,322,64"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="337,48,473,49,468,52,338,53"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="41,9,80,36"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="95,25,220,42,216,46,96,30"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="41,64,80,91"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="94,78,142,78,194,73,238,63,233,66,195,79,143,83,96,82"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="NSROOT::WSResponse::_response" name="NSROOT::WSResponse::_response">
+<area shape="rect" id="Node000001" title=" " alt="" coords="717,123,853,165"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1TcpSocket.html" title=" " alt="" coords="464,5,584,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="600,23,648,34,695,52,738,85,770,123,765,121,734,89,692,57,646,39,600,28"/>
+<area shape="rect" id="Node000003" href="$classNSROOT_1_1NetSocket.html" title=" " alt="" coords="147,5,268,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="283,16,466,17,462,20,284,21"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="488,103,561,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="576,119,719,136,714,137,577,124"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="152,95,263,137"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="278,113,489,115,485,117,278,119"/>
+<area shape="rect" id="Node000006" href="$classNSROOT_1_1Decompressor.html" title=" " alt="" coords="453,157,595,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="611,172,693,167,714,165,720,164,694,172,611,177"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="459,208,589,251"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="605,222,649,214,692,202,727,184,755,167,760,165,729,189,694,206,650,220,605,227"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="156,216,259,243"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="275,227,461,229,456,230,275,232"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,188,44,215"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="59,204,157,219,154,224,59,209"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,243,44,269"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="59,255,122,252,166,244,171,243,123,257,59,260"/>
+</map>

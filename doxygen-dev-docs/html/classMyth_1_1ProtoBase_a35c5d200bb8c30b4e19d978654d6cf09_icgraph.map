@@ -1,0 +1,7 @@
+<map id="Myth::ProtoBase::ReadField" name="Myth::ProtoBase::ReadField">
+<area shape="rect" id="Node000001" title=" " alt="" coords="228,43,388,69"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1ProtoEvent.html#a6783fd9490515b16396d2c1654ddc676" title="Wait for new backend message from event connection." alt="" coords="5,5,180,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,43,180,41,180,36,215,43"/>
+<area shape="rect" id="Node000003" href="$classMyth_1_1ProtoBase.html#a1cc04397dc559f4bca7e254aaf71ac61" title=" " alt="" coords="11,72,174,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,69,175,77,174,72,215,69"/>
+</map>

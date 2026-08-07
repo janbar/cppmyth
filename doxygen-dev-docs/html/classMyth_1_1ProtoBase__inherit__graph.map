@@ -1,0 +1,19 @@
+<map id="Myth::ProtoBase" name="Myth::ProtoBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="217,5,320,32"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1ProtoEvent.html" title=" " alt="" coords="5,80,113,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,40,97,82,95,77,219,35"/>
+<area shape="rect" id="Node000003" href="$classMyth_1_1ProtoMonitor.html" title=" " alt="" coords="137,80,256,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,42,210,82,207,78,243,45"/>
+<area shape="rect" id="Node000005" href="$classMyth_1_1ProtoPlayback.html" title=" " alt="" coords="280,80,403,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="293,41,332,80,326,79,291,46"/>
+<area shape="rect" id="Node000009" href="$classMyth_1_1ProtoTransfer.html" title=" " alt="" coords="427,80,547,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="321,35,451,79,446,80,320,40"/>
+<area shape="rect" id="Node000004" href="$classMyth_1_1LiveTVPlayback.html" title=" " alt="" coords="58,155,188,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="175,117,137,156,134,152,170,119"/>
+<area shape="rect" id="Node000006" href="$classMyth_1_1FilePlayback.html" title=" " alt="" coords="212,155,327,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="321,117,283,157,281,152,316,119"/>
+<area shape="rect" id="Node000007" href="$classMyth_1_1ProtoRecorder.html" title=" " alt="" coords="352,155,476,181"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="366,115,404,155,399,154,364,120"/>
+<area shape="rect" id="Node000008" href="$classMyth_1_1RecordingPlayback.html" title=" " alt="" coords="500,155,650,181"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="397,109,537,154,531,154,396,114"/>
+</map>

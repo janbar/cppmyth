@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classNSROOT_1_1NetSocket.html" title=" " alt="" coords="5,56,127,83"/>
+<area shape="rect" id="Node000001" href="$classNSROOT_1_1TcpSocket.html" title=" " alt="" coords="193,5,313,32"/>
+<area shape="poly" id="edge19_Node000000_Node000001" title=" " alt="" coords="132,49,203,31,199,34,133,54"/>
+<area shape="rect" id="Node000003" href="$classNSROOT_1_1UdpServerSocket.html" title=" " alt="" coords="175,56,331,83"/>
+<area shape="poly" id="edge21_Node000000_Node000003" title=" " alt="" coords="142,67,177,69,172,70,143,72"/>
+<area shape="rect" id="Node000004" href="$classNSROOT_1_1UdpSocket.html" title=" " alt="" coords="190,107,316,133"/>
+<area shape="poly" id="edge22_Node000000_Node000004" title=" " alt="" coords="133,85,203,105,198,107,132,90"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1SecureSocket.html" title=" " alt="" coords="379,5,516,32"/>
+<area shape="poly" id="edge20_Node000001_Node000002" title=" " alt="" coords="328,16,381,18,376,19,329,21"/>
+</map>

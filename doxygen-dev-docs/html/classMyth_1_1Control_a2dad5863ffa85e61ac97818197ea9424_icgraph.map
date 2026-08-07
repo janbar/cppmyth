@@ -1,0 +1,9 @@
+<map id="Myth::Control::GetHostSetting" name="Myth::Control::GetHostSetting">
+<area shape="rect" id="Node000001" title="Query setting by its key." alt="" coords="212,80,386,107"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1Control.html#a0b09a8032bb4587addf68895dc3beb31" title="Query backend server IP." alt="" coords="5,5,164,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,76,155,51,156,46,241,74"/>
+<area shape="rect" id="Node000003" href="$classMyth_1_1Control.html#ac0340c8b775fe668e925a168d751c3b6" title="Query backend server IP6." alt="" coords="5,72,164,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,94,165,96,164,91,199,93"/>
+<area shape="rect" id="Node000004" href="$classMyth_1_1Control.html#a0d03a9a771d0bc805373582a7d17c127" title="Query backend server port for protocol commands." alt="" coords="5,139,164,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,111,156,141,155,135,236,113"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Myth::Control::GetRecordingArtworkList" name="Myth::Control::GetRecordingArtworkList">
+<area shape="rect" id="Node000001" title="Get a list of artwork available for a recording by start time and channel id." alt="" coords="237,5,403,48"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1Control.html#a57bde8e429926ba7d28713b803a845eb" title="Refresh artwork available for a recording." alt="" coords="5,5,189,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,27,189,29,189,24,224,26"/>
+</map>

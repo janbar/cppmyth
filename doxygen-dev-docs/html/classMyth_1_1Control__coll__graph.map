@@ -1,0 +1,28 @@
+<map id="Myth::Control" name="Myth::Control">
+<area shape="rect" id="Node000001" title=" " alt="" coords="984,187,1074,213"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1ProtoMonitor.html" title=" " alt="" coords="753,145,873,172"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="888,170,986,191,980,192,888,176"/>
+<area shape="rect" id="Node000003" href="$classMyth_1_1ProtoBase.html" title=" " alt="" coords="484,5,588,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="585,36,613,48,711,99,790,145,785,145,708,104,610,53,585,41"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="234,196,307,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="294,183,366,118,411,82,460,48,499,31,495,34,462,53,414,86,369,122,298,187"/>
+<area shape="rect" id="Node000006" href="$classMyth_1_1WSAPI.html" title=" " alt="" coords="770,231,856,257"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="322,202,401,197,503,195,616,199,730,213,780,230,775,230,729,219,616,205,503,200,401,202,323,207"/>
+<area shape="rect" id="Node000007" href="$structMyth_1_1Version.html" title=" " alt="" coords="491,235,581,261"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="322,221,346,227,423,237,493,245,488,246,422,243,346,232,322,227"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="471,336,601,379"/>
+<area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="290,232,316,263,347,290,409,321,473,344,468,344,407,326,345,294,312,267,289,238"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,188,116,231"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="131,207,235,208,231,211,132,212"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="871,231,959,213,980,211,986,210,960,219,872,236"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="596,244,772,244,767,245,597,250"/>
+<area shape="rect" id="Node000008" href="$structMyth_1_1WSServiceVersion__t.html" title=" " alt="" coords="461,285,611,312"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="626,290,677,284,729,273,779,259,784,257,730,279,678,289,627,295"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="616,350,673,339,728,319,750,305,769,289,799,259,803,257,773,292,753,310,731,324,674,344,617,355"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="219,369,322,396"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="338,383,437,379,468,376,473,375,437,384,338,388"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="41,341,80,368"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="95,357,220,374,217,378,95,362"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="41,396,80,423"/>
+<area shape="poly" id="edge14_Node000010_Node000012" title=" " alt="" coords="95,409,142,410,194,405,233,397,238,396,195,411,143,415,95,415"/>
+</map>

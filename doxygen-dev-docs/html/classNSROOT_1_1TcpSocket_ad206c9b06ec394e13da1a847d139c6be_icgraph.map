@@ -1,0 +1,22 @@
+<map id="NSROOT::TcpSocket::IsValid" name="NSROOT::TcpSocket::IsValid">
+<area shape="rect" id="Node000001" title=" " alt="" coords="379,256,505,299"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1TcpServerSocket.html#ac98c0831f4f69cf3dd731900c370685d" title=" " alt="" coords="180,5,331,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,241,414,201,393,153,365,105,329,62,316,51,315,46,333,58,369,102,398,151,419,199,434,242"/>
+<area shape="rect" id="Node000003" href="$classNSROOT_1_1TcpSocket.html#ae3cc12a234516c2f8034c2798c4afd78" title=" " alt="" coords="192,72,318,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="418,243,380,190,356,161,329,135,305,118,304,113,333,131,360,158,384,186,423,243"/>
+<area shape="rect" id="Node000004" href="$classNSROOT_1_1TcpSocket.html#ad2357d2b2519444eb400db0b78788d49" title=" " alt="" coords="5,160,132,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="413,244,377,209,355,192,330,180,280,167,228,162,177,164,134,170,131,165,177,159,228,157,281,161,332,175,357,188,380,205,418,244"/>
+<area shape="rect" id="Node000005" href="$classNSROOT_1_1TcpSocket.html#a2aaf0b4f138e72472241850b0ac578da" title=" " alt="" coords="192,189,318,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="364,251,317,235,317,230,369,250"/>
+<area shape="rect" id="Node000006" href="$classNSROOT_1_1TcpSocket.html#a461dcc9edb6f264c8d042094fdb996b7" title=" " alt="" coords="192,256,318,299"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="361,278,320,280,318,275,366,276"/>
+<area shape="rect" id="Node000007" href="$classNSROOT_1_1TcpSocket.html#a3a7dbed3c7c0264478d1118d3bb568d7" title=" " alt="" coords="192,323,318,365"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="364,306,318,324,316,320,369,303"/>
+<area shape="rect" id="Node000008" href="$classNSROOT_1_1TcpSocket.html#adff22526afe9be29714fd236b0739785" title=" " alt="" coords="192,389,318,432"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="413,308,376,346,332,380,312,391,310,386,330,375,372,342,409,311"/>
+<area shape="rect" id="Node000009" href="$classNSROOT_1_1TcpSocket.html#a4dd497989396e011469b688c8250d236" title=" " alt="" coords="192,456,318,499"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="427,311,390,380,363,415,333,446,316,458,313,453,329,442,359,411,385,377,423,314"/>
+<area shape="rect" id="Node000010" href="$classNSROOT_1_1TcpSocket.html#a695988c5194a4a439715ef2788551f7a" title=" " alt="" coords="192,523,318,565"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="434,312,421,359,400,412,371,465,333,513,318,524,315,520,329,509,367,462,395,409,416,357,430,316"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="175,200,133,194,131,189,179,197"/>
+</map>

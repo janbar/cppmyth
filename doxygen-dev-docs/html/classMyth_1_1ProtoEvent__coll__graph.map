@@ -1,0 +1,9 @@
+<map id="Myth::ProtoEvent" name="Myth::ProtoEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="7,272,114,299"/>
+<area shape="rect" id="Node000002" href="$classMyth_1_1ProtoBase.html" title=" " alt="" coords="9,196,112,223"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,236,63,272,58,271,59,240"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="24,97,97,124"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="62,137,63,196,58,195,59,142"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,116,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="61,61,63,97,58,97,60,66"/>
+</map>

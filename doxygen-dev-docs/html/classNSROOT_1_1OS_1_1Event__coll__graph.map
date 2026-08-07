@@ -1,0 +1,9 @@
+<map id="NSROOT::OS::Event" name="NSROOT::OS::Event">
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,219,225,245"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1OS_1_1Condition.html" title=" " alt="" coords="17,104,158,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,159,119,193,146,218,141,218,114,196,97,164"/>
+<area shape="rect" id="Node000003" href="$classNSROOT_1_1OS_1_1Condition.html" title=" " alt="" coords="5,5,170,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,45,90,104,85,103,87,50"/>
+<area shape="rect" id="Node000004" href="$classNSROOT_1_1OS_1_1Mutex.html" title=" " alt="" coords="182,112,305,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="228,150,177,220,174,216,223,152"/>
+</map>

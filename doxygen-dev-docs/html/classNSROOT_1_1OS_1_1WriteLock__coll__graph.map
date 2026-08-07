@@ -1,0 +1,14 @@
+<map id="NSROOT::OS::WriteLock" name="NSROOT::OS::WriteLock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,440,146,467"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1OS_1_1Latch.html" title=" " alt="" coords="16,341,135,368"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,382,78,440,73,439,73,385"/>
+<area shape="rect" id="Node000003" href="$struct__pthread__v.html" title=" " alt="" coords="37,104,114,131"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,144,68,203,70,281,76,341,71,341,64,281,63,203,71,149"/>
+<area shape="rect" id="Node000005" href="$structNSROOT_1_1OS_1_1Latch_1_1TNode.html" title=" " alt="" coords="128,204,252,247"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="100,138,170,203,165,205,100,144"/>
+<area shape="rect" id="Node000004" href="$struct__pthread__cleanup.html" title=" " alt="" coords="19,5,132,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,45,78,104,73,104,75,50"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="147,9,159,19,151,27,134,30,131,26,148,23,154,19,149,14"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="161,260,89,342,85,339,163,256"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="268,215,279,225,271,235,254,238,252,234,268,230,274,225,268,220"/>
+</map>

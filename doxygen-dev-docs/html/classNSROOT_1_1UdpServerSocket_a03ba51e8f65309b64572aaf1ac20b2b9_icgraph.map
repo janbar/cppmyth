@@ -1,0 +1,21 @@
+<map id="NSROOT::UdpServerSocket::IsValid" name="NSROOT::UdpServerSocket::IsValid">
+<area shape="rect" id="Node000001" title=" " alt="" coords="414,223,570,265"/>
+<area shape="rect" id="Node000002" href="$classNSROOT_1_1UdpServerSocket.html#a9c4a2f505783017d1ae07cce96d5fe32" title=" " alt="" coords="210,5,366,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="470,209,427,140,398,103,364,69,340,51,339,46,368,65,402,99,431,137,476,210"/>
+<area shape="rect" id="Node000003" href="$classNSROOT_1_1UdpServerSocket.html#acc522d8edd6c141fcb558e29dbe020f2" title=" " alt="" coords="5,64,162,107"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="467,210,425,158,396,133,365,113,315,95,262,84,210,80,163,80,161,76,210,75,263,79,316,90,367,108,400,129,428,155,472,210"/>
+<area shape="rect" id="Node000004" href="$classNSROOT_1_1UdpServerSocket.html#a97ade9ed12ebc2f00a59773b1f6925e4" title=" " alt="" coords="210,123,366,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="436,215,365,180,341,168,341,163,367,175,441,214"/>
+<area shape="rect" id="Node000005" href="$classNSROOT_1_1UdpServerSocket.html#a69175751a8f9bd89ec0304d8f87961f7" title=" " alt="" coords="210,189,366,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="396,229,367,226,365,221,401,228"/>
+<area shape="rect" id="Node000006" href="$classNSROOT_1_1UdpServerSocket.html#ad957526c3abd505a57d6086f7f1625e6" title=" " alt="" coords="210,256,366,299"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="396,260,367,267,365,262,401,258"/>
+<area shape="rect" id="Node000007" href="$classNSROOT_1_1UdpServerSocket.html#ab4cc0c89f937f1b98bf0ac7e6064d145" title=" " alt="" coords="210,323,366,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="436,274,367,313,342,325,340,320,365,308,441,272"/>
+<area shape="rect" id="Node000008" href="$classNSROOT_1_1UdpServerSocket.html#ae955f6516ff874a50ad584db9558250d" title=" " alt="" coords="210,389,366,432"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="468,277,424,330,368,379,348,391,346,386,364,375,420,326,463,280"/>
+<area shape="rect" id="Node000009" href="$classNSROOT_1_1UdpServerSocket.html#aa08220db35c533c74f83322b35aeece6" title=" " alt="" coords="210,456,366,499"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="479,278,437,362,405,407,368,446,351,458,349,453,364,442,401,403,432,359,475,281"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,55,162,65,159,61,199,51"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="210,313,208,313,164,262,129,205,105,150,92,110,92,105,110,148,134,202,168,259,212,309,216,313"/>
+</map>
