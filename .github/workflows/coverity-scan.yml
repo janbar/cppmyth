@@ -1,0 +1,75 @@
+name: coverity-scan
+
+on:
+  push:
+    branches: [ "coverity_scan" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: build
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Add more dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y zlib1g-dev libssl-dev
+
+    - name: Lookup coverity tool
+      id: coverity-cache-lookup
+      run: |
+        hash=$(curl https://scan.coverity.com/download/cxx/linux64 \
+             --data "token=${TOKEN}&project=janbar%2Fcppmyth&md5=1")
+        echo "hash=${hash}" >> $GITHUB_OUTPUT
+      env:
+        TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+
+    - name: Cache coverity tool
+      id: cov-build-cache
+      uses: actions/cache@v3
+      env:
+        cache-name: cov-build-cache
+      with:
+        path: |
+          ~/cov-analysis
+        key: cov-build-${{steps.coverity-cache-lookup.outputs.hash}}
+
+    - if: ${{steps.cov-build-cache.outputs.cache-hit != 'true' }}
+      name: Download coverity tool
+      continue-on-error: true
+      run: |
+        curl https://scan.coverity.com/download/cxx/linux64 \
+        --no-progress-meter \
+        --output cov-analysis.tar.gz \
+        --data "token=${TOKEN}&project=janbar%2Fcppmyth"
+        mkdir ~/cov-analysis
+        tar -xzf cov-analysis.tar.gz --strip 1 -C ~/cov-analysis
+        rm -f cov-analysis.tar.gz
+      env:
+        TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+
+    - name: Configure CMake
+      run: cmake -B ${{ github.workspace }}/build
+
+    - name: Build
+      run: |
+        export PATH=~/cov-analysis/bin:$PATH
+        cov-build --dir cov-int cmake --build ${{ github.workspace }}/build
+
+    - name: Archive build output
+      run: tar -czvf cov-int.tgz cov-int
+    - name: Submit build to coverity-scan
+      run: |
+        curl --form token="${TOKEN}" \
+             --form email="${EMAIL}" \
+             --form file=@cov-int.tgz \
+             --form version="${{ github.sha }}" \
+             --form description="coverity-scan ${{ github.repository }}/${{ github.ref }}" \
+             "https://scan.coverity.com/builds?project=janbar%2Fcppmyth"
+      shell: bash
+      env:
+        TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+        EMAIL: ${{ secrets.PRIVATE_EMAIL }}
+
