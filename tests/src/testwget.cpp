@@ -43,7 +43,7 @@ int main() {
   {
     int l = 0;
     char buf[500];
-    while ((l = resp.ReadContent(buf, 500))) {
+    while ((l = resp.ReadContent(buf, 500)) > 0) {
       fwrite(buf, l, 1, stdout);
     }
   }
