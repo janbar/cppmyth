@@ -54,7 +54,7 @@ int main(int argc, char** argv)
   if ((ret = WSAStartup(MAKEWORD(2, 2), &wsaData)))
     return ret;
 #else
-  (void)signal(SIGALRM, mySigHandler);
+  (void)signal(SIGPIPE, mySigHandler);
 #endif /* __WINDOWS__ */
 
   struct
