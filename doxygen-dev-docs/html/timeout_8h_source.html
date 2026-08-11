@@ -163,24 +163,24 @@ $(function(){initNavTree('timeout_8h_source.html','',''); });
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    Timeout() : m_time(0) { }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Timeout(<span class="keywordtype">unsigned</span> millisec) : m_time(0) { Set(millisec); }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Timeout(<span class="keywordtype">unsigned</span> millisec) : m_time(0) { set(millisec); }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> Set(<span class="keywordtype">unsigned</span> millisec)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> set(<span class="keywordtype">unsigned</span> millisec)</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    {</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      m_time = gettime_ms() + millisec;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">bool</span> IsSet()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">bool</span> is_set()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">    </span>{</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      <span class="keywordflow">return</span> (m_time &gt; 0 ? <span class="keyword">true</span> : <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> Clear()</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> clear()</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      m_time = 0;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">unsigned</span> TimeLeft()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">unsigned</span> time_left()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">    </span>{</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      int64_t time = gettime_ms();</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="keywordflow">return</span> (time &gt; m_time ? 0 : <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(m_time - time));</div>

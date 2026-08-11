@@ -13,7 +13,8 @@ var searchData=
   ['wsapi_10',['WSAPI',['../classMyth_1_1WSAPI.html',1,'Myth']]],
   ['wsheader_11',['WSHeader',['../classNSROOT_1_1WSHeader.html',1,'NSROOT']]],
   ['wsrequest_12',['WSRequest',['../classNSROOT_1_1WSRequest.html',1,'NSROOT']]],
-  ['wsresponse_13',['WSResponse',['../classNSROOT_1_1WSResponse.html',1,'NSROOT']]],
-  ['wsserviceversion_5ft_14',['WSServiceVersion_t',['../structMyth_1_1WSServiceVersion__t.html',1,'Myth']]],
-  ['wsstream_15',['WSStream',['../classMyth_1_1WSStream.html',1,'Myth']]]
+  ['wsrequeststreamsink_13',['WSRequestStreamSink',['../classNSROOT_1_1WSRequestStreamSink.html',1,'NSROOT']]],
+  ['wsresponse_14',['WSResponse',['../classNSROOT_1_1WSResponse.html',1,'NSROOT']]],
+  ['wsserviceversion_5ft_15',['WSServiceVersion_t',['../structMyth_1_1WSServiceVersion__t.html',1,'Myth']]],
+  ['wsstream_16',['WSStream',['../classMyth_1_1WSStream.html',1,'Myth']]]
 ];

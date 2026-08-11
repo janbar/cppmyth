@@ -285,7 +285,7 @@ $(function(){initNavTree('mythwsapi_8cpp_source.html','',''); });
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <a class="code hl_class" href="classMyth_1_1WSAPI_1_1Query.html">Query</a> qry(*<span class="keyword">this</span>);</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  qry.Request().RequestAccept(WS_ACCEPT);</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  qry.Request().RequestService(url, WS_METHOD_Get);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  WSResponse * resp = qry.Execute();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <a class="code hl_class" href="classautoptr.html">autoptr&lt;WSResponse&gt;</a> resp(qry.Execute());</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="keywordflow">if</span> (resp-&gt;IsSuccessful())</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  {</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="comment">// Parse content response</span></div>
@@ -297,7 +297,7 @@ $(function(){initNavTree('mythwsapi_8cpp_source.html','',''); });
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      <span class="keywordflow">if</span> (field.IsString())</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      {</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keyword">const</span> std::string&amp; val = field.GetStringValue();</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">if</span> (sscanf(val.c_str(), <span class="stringliteral">&quot;%d.%d&quot;</span>, &amp;(wsv.major), &amp;(wsv.minor)) == 2)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">if</span> (sscanf(val.c_str(), <span class="stringliteral">&quot;%u.%u&quot;</span>, &amp;(wsv.major), &amp;(wsv.minor)) == 2)</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        {</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>          wsv.ranking = ((wsv.major &amp; 0xFFFF) &lt;&lt; 16) | (wsv.minor &amp; 0xFFFF);</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>          <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>

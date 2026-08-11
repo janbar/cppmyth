@@ -212,7 +212,7 @@ $(function(){initNavTree('mythlivetvplayback_8cpp_source.html','',''); });
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      {</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        usleep(TICK_USEC);</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      <span class="keywordflow">while</span> (!m_eventHandler.IsConnected() &amp;&amp; timeout.TimeLeft() &gt; 0);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      <span class="keywordflow">while</span> (!m_eventHandler.IsConnected() &amp;&amp; timeout.time_left() &gt; 0);</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      <span class="keywordflow">if</span> (!m_eventHandler.IsConnected())</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        DBG(DBG_WARN, <span class="stringliteral">&quot;%s: event handler is not connected in time\n&quot;</span>, __FUNCTION__);</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>      <span class="keywordflow">else</span></div>
@@ -283,11 +283,11 @@ $(function(){initNavTree('mythlivetvplayback_8cpp_source.html','',''); });
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        lock.lock();</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keywordflow">if</span> (!m_chain.switchOnCreate)</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>          DBG(DBG_DEBUG, <span class="stringliteral">&quot;%s: tune delay (%&quot;</span> PRIu32 <span class="stringliteral">&quot;ms)\n&quot;</span>, __FUNCTION__, (delayMs - timeout.TimeLeft()));</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>          DBG(DBG_DEBUG, <span class="stringliteral">&quot;%s: tune delay (%&quot;</span> PRIu32 <span class="stringliteral">&quot;ms)\n&quot;</span>, __FUNCTION__, (delayMs - timeout.time_left()));</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>          <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>      }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      <span class="keywordflow">while</span> (timeout.TimeLeft() &gt; 0);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      <span class="keywordflow">while</span> (timeout.time_left() &gt; 0);</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>      DBG(DBG_ERROR, <span class="stringliteral">&quot;%s: tune delay exceeded (%&quot;</span> PRIu32 <span class="stringliteral">&quot;ms)\n&quot;</span>, __FUNCTION__, delayMs);</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>      m_recorder-&gt;StopLiveTV();</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
@@ -515,7 +515,7 @@ $(function(){initNavTree('mythlivetvplayback_8cpp_source.html','',''); });
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>              HandleChainUpdate();</div>
 <div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>            }</div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>            <span class="keywordflow">while</span> (m_chain.watch <span class="comment">/* volatile */</span> &amp;&amp;</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>                    timeout.TimeLeft() &gt; 0);</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>                    timeout.time_left() &gt; 0);</div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>          }</div>
 <div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        }</div>
 <div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>      }</div>
@@ -679,7 +679,7 @@ $(function(){initNavTree('mythlivetvplayback_8cpp_source.html','',''); });
 <div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>            retry = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>            <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>          }</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>          <span class="keywordflow">if</span> (!timeout.TimeLeft())</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>          <span class="keywordflow">if</span> (!timeout.time_left())</div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>          {</div>
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>            DBG(DBG_WARN, <span class="stringliteral">&quot;%s: read position is ahead (%&quot;</span> PRIi64 <span class="stringliteral">&quot;)\n&quot;</span>, __FUNCTION__, fp);</div>
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>            <span class="keywordflow">return</span> 0;</div>

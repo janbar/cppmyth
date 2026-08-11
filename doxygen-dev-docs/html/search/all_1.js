@@ -5,9 +5,10 @@ var searchData=
   ['adopt_5flock_5ft_2',['adopt_lock_t',['../structNSROOT_1_1OS_1_1ReadLock_1_1adopt__lock__t.html',1,'NSROOT::OS::ReadLock']]],
   ['allowshutdown_3',['AllowShutdown',['../classMyth_1_1Control.html#a444e5c12f95c292c8617e5a58a25d76b',1,'Myth::Control']]],
   ['artwork_4',['Artwork',['../structMyth_1_1Artwork.html',1,'Myth']]],
-  ['attr_5fbind_5',['attr_bind',['../structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663',1,'bindings_t']]],
-  ['attr_5fbind_5ft_6',['attr_bind_t',['../structattr__bind__t.html',1,'']]],
-  ['attr_5fcount_7',['attr_count',['../structbindings__t.html#ab1c1914686a62d77785595a23401c045',1,'bindings_t']]],
-  ['autoptr_8',['autoptr',['../classautoptr.html',1,'']]],
-  ['awaitincoming_9',['AwaitIncoming',['../classNSROOT_1_1UdpServerSocket.html#a9c4a2f505783017d1ae07cce96d5fe32',1,'NSROOT::UdpServerSocket']]]
+  ['atomic_5',['Atomic',['../classNSROOT_1_1OS_1_1Atomic.html',1,'NSROOT::OS']]],
+  ['attr_5fbind_6',['attr_bind',['../structbindings__t.html#a7bf59b4a658ee19dadc90a5d0025f663',1,'bindings_t']]],
+  ['attr_5fbind_5ft_7',['attr_bind_t',['../structattr__bind__t.html',1,'']]],
+  ['attr_5fcount_8',['attr_count',['../structbindings__t.html#ab1c1914686a62d77785595a23401c045',1,'bindings_t']]],
+  ['autoptr_9',['autoptr',['../classautoptr.html',1,'']]],
+  ['awaitincoming_10',['AwaitIncoming',['../classNSROOT_1_1UdpServerSocket.html#a9c4a2f505783017d1ae07cce96d5fe32',1,'NSROOT::UdpServerSocket']]]
 ];

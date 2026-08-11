@@ -30,6 +30,7 @@ var namespaces_dup =
       [ "UdpServerSocket", "classNSROOT_1_1UdpServerSocket.html", "classNSROOT_1_1UdpServerSocket" ],
       [ "URIParser", "classNSROOT_1_1URIParser.html", "classNSROOT_1_1URIParser" ],
       [ "WSHeader", "classNSROOT_1_1WSHeader.html", null ],
+      [ "WSRequestStreamSink", "classNSROOT_1_1WSRequestStreamSink.html", null ],
       [ "WSRequest", "classNSROOT_1_1WSRequest.html", null ],
       [ "WSResponse", "classNSROOT_1_1WSResponse.html", "classNSROOT_1_1WSResponse" ]
     ] ]

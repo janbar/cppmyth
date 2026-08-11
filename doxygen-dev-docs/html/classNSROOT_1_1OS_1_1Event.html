@@ -112,19 +112,19 @@ Collaboration diagram for NSROOT::OS::Event:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e46f56df35711319930c8147bdae867" id="r_a9e46f56df35711319930c8147bdae867"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e46f56df35711319930c8147bdae867">Event</a> (bool autoReset=true)</td></tr>
-<tr class="memitem:aebd4ca924fe4a5d68eb512361c5bbbf2" id="r_aebd4ca924fe4a5d68eb512361c5bbbf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebd4ca924fe4a5d68eb512361c5bbbf2">Broadcast</a> ()</td></tr>
-<tr class="memitem:afe347af53a4b3954311e2a812b3bdf2f" id="r_afe347af53a4b3954311e2a812b3bdf2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe347af53a4b3954311e2a812b3bdf2f">Signal</a> ()</td></tr>
-<tr class="memitem:ae763dc0a3051300575d326adeae8e06f" id="r_ae763dc0a3051300575d326adeae8e06f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae763dc0a3051300575d326adeae8e06f">Wait</a> ()</td></tr>
-<tr class="memitem:aa381030e1adc4e037e0c98737704bcd6" id="r_aa381030e1adc4e037e0c98737704bcd6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa381030e1adc4e037e0c98737704bcd6">Wait</a> (unsigned timeout)</td></tr>
-<tr class="memitem:a923bfab84fee3f138e8042307ba50990" id="r_a923bfab84fee3f138e8042307ba50990"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a923bfab84fee3f138e8042307ba50990">Reset</a> ()</td></tr>
+<tr class="memitem:aea3353b5de2704c84ce26d90a98af04a" id="r_aea3353b5de2704c84ce26d90a98af04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea3353b5de2704c84ce26d90a98af04a">notify_all</a> ()</td></tr>
+<tr class="memitem:ab807b2fededd5808f12051d3d6cf9e61" id="r_ab807b2fededd5808f12051d3d6cf9e61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab807b2fededd5808f12051d3d6cf9e61">notify_one</a> ()</td></tr>
+<tr class="memitem:a71d9b3ce5344d8dfc63f9aef7d939170" id="r_a71d9b3ce5344d8dfc63f9aef7d939170"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71d9b3ce5344d8dfc63f9aef7d939170">wait</a> ()</td></tr>
+<tr class="memitem:a6fa899505ab939a206dc47645e8c8f15" id="r_a6fa899505ab939a206dc47645e8c8f15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fa899505ab939a206dc47645e8c8f15">wait_for</a> (unsigned millisec)</td></tr>
+<tr class="memitem:a476bcc54e2ad95bc0a246c1533431f2e" id="r_a476bcc54e2ad95bc0a246c1533431f2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a476bcc54e2ad95bc0a246c1533431f2e">reset</a> ()</td></tr>
+<tr class="memitem:a05279d0c6a699f5491158cd238e5e13a" id="r_a05279d0c6a699f5491158cd238e5e13a"><td class="memItemLeft" align="right" valign="top"><a id="a05279d0c6a699f5491158cd238e5e13a" name="a05279d0c6a699f5491158cd238e5e13a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Event</b> (const Event &amp;other)=delete</td></tr>
+<tr class="memitem:a0bfdeced4332f797a9320d1c374d1635" id="r_a0bfdeced4332f797a9320d1c374d1635"><td class="memItemLeft" align="right" valign="top"><a id="a0bfdeced4332f797a9320d1c374d1635" name="a0bfdeced4332f797a9320d1c374d1635"></a>
+Event &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const Event &amp;other)=delete</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a0af790ad75f6ac552c85bfeda9a20da1" id="r_a0af790ad75f6ac552c85bfeda9a20da1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af790ad75f6ac552c85bfeda9a20da1">__reset</a> (bool force)</td></tr>
-<tr class="memitem:a6088d04f6f83d74d8d90d8834ce746cc" id="r_a6088d04f6f83d74d8d90d8834ce746cc"><td class="memItemLeft" align="right" valign="top"><a id="a6088d04f6f83d74d8d90d8834ce746cc" name="a6088d04f6f83d74d8d90d8834ce746cc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Event</b> (const Event &amp;other)</td></tr>
-<tr class="memitem:a0ddb4341b692659937a72702ef70deb1" id="r_a0ddb4341b692659937a72702ef70deb1"><td class="memItemLeft" align="right" valign="top"><a id="a0ddb4341b692659937a72702ef70deb1" name="a0ddb4341b692659937a72702ef70deb1"></a>
-Event &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const Event &amp;other)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -137,7 +137,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00033">33</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00031">31</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9e46f56df35711319930c8147bdae867" name="a9e46f56df35711319930c8147bdae867"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e46f56df35711319930c8147bdae867">&#9670;&#160;</a></span>Event()</h2>
@@ -162,7 +162,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00036">36</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00034">34</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -189,7 +189,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00042">42</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00040">40</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -217,12 +217,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00102">102</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00098">98</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
-<a id="aebd4ca924fe4a5d68eb512361c5bbbf2" name="aebd4ca924fe4a5d68eb512361c5bbbf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebd4ca924fe4a5d68eb512361c5bbbf2">&#9670;&#160;</a></span>Broadcast()</h2>
+<a id="aea3353b5de2704c84ce26d90a98af04a" name="aea3353b5de2704c84ce26d90a98af04a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3353b5de2704c84ce26d90a98af04a">&#9670;&#160;</a></span>notify_all()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +231,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NSROOT::OS::Event::Broadcast </td>
+          <td class="memname">void NSROOT::OS::Event::notify_all </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -244,12 +244,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00044">44</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00042">42</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
-<a id="a923bfab84fee3f138e8042307ba50990" name="a923bfab84fee3f138e8042307ba50990"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a923bfab84fee3f138e8042307ba50990">&#9670;&#160;</a></span>Reset()</h2>
+<a id="ab807b2fededd5808f12051d3d6cf9e61" name="ab807b2fededd5808f12051d3d6cf9e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab807b2fededd5808f12051d3d6cf9e61">&#9670;&#160;</a></span>notify_one()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,7 +258,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NSROOT::OS::Event::Reset </td>
+          <td class="memname">void NSROOT::OS::Event::notify_one </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -271,12 +271,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00082">82</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00050">50</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
-<a id="afe347af53a4b3954311e2a812b3bdf2f" name="afe347af53a4b3954311e2a812b3bdf2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe347af53a4b3954311e2a812b3bdf2f">&#9670;&#160;</a></span>Signal()</h2>
+<a id="a476bcc54e2ad95bc0a246c1533431f2e" name="a476bcc54e2ad95bc0a246c1533431f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a476bcc54e2ad95bc0a246c1533431f2e">&#9670;&#160;</a></span>reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,7 +285,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NSROOT::OS::Event::Signal </td>
+          <td class="memname">void NSROOT::OS::Event::reset </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -298,12 +298,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00052">52</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00080">80</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
-<a id="ae763dc0a3051300575d326adeae8e06f" name="ae763dc0a3051300575d326adeae8e06f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae763dc0a3051300575d326adeae8e06f">&#9670;&#160;</a></span>Wait() <span class="overload">[1/2]</span></h2>
+<a id="a71d9b3ce5344d8dfc63f9aef7d939170" name="a71d9b3ce5344d8dfc63f9aef7d939170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71d9b3ce5344d8dfc63f9aef7d939170">&#9670;&#160;</a></span>wait()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +312,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool NSROOT::OS::Event::Wait </td>
+          <td class="memname">bool NSROOT::OS::Event::wait </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -325,12 +325,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00060">60</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00058">58</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
-<a id="aa381030e1adc4e037e0c98737704bcd6" name="aa381030e1adc4e037e0c98737704bcd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa381030e1adc4e037e0c98737704bcd6">&#9670;&#160;</a></span>Wait() <span class="overload">[2/2]</span></h2>
+<a id="a6fa899505ab939a206dc47645e8c8f15" name="a6fa899505ab939a206dc47645e8c8f15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa899505ab939a206dc47645e8c8f15">&#9670;&#160;</a></span>wait_for()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,9 +339,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool NSROOT::OS::Event::Wait </td>
+          <td class="memname">bool NSROOT::OS::Event::wait_for </td>
           <td>(</td>
-          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span></td><td>)</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>millisec</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -352,7 +352,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00071">71</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00069">69</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00098">98</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00094">94</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -401,7 +401,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00099">99</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00095">95</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -425,7 +425,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00100">100</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00096">96</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -449,7 +449,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00095">95</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00091">91</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -473,7 +473,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00096">96</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00092">92</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -497,7 +497,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00097">97</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00093">93</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>

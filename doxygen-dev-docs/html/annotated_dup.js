@@ -45,6 +45,7 @@ var annotated_dup =
         [ "Document", "classNSROOT_1_1JSON_1_1Document.html", null ]
       ] ],
       [ "OS", null, [
+        [ "Atomic", "classNSROOT_1_1OS_1_1Atomic.html", null ],
         [ "Condition", "classNSROOT_1_1OS_1_1Condition.html", null ],
         [ "Event", "classNSROOT_1_1OS_1_1Event.html", null ],
         [ "Latch", "classNSROOT_1_1OS_1_1Latch.html", "classNSROOT_1_1OS_1_1Latch" ],
@@ -73,6 +74,7 @@ var annotated_dup =
       [ "UdpServerSocket", "classNSROOT_1_1UdpServerSocket.html", "classNSROOT_1_1UdpServerSocket" ],
       [ "URIParser", "classNSROOT_1_1URIParser.html", "classNSROOT_1_1URIParser" ],
       [ "WSHeader", "classNSROOT_1_1WSHeader.html", null ],
+      [ "WSRequestStreamSink", "classNSROOT_1_1WSRequestStreamSink.html", null ],
       [ "WSRequest", "classNSROOT_1_1WSRequest.html", null ],
       [ "WSResponse", "classNSROOT_1_1WSResponse.html", "classNSROOT_1_1WSResponse" ]
     ] ],
@@ -102,6 +104,7 @@ var annotated_dup =
     [ "pthread_attr_t", "structpthread__attr__t.html", null ],
     [ "pthread_barrier_t", "structpthread__barrier__t.html", null ],
     [ "timespec", "structtimespec.html", null ],
+    [ "timezone", "structtimezone.html", null ],
     [ "tz_t", "structtz__t.html", null ],
     [ "WS_CENCODING_TABLE", "structWS__CENCODING__TABLE.html", null ],
     [ "WS_CTYPE_TABLE", "structWS__CTYPE__TABLE.html", null ],

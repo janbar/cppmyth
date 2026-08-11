@@ -2,9 +2,9 @@ var hierarchy =
 [
     [ "_pthread_cleanup", "struct__pthread__cleanup.html", null ],
     [ "_pthread_v", "struct__pthread__v.html", null ],
-    [ "NSROOT::WSResponse::_response", "classNSROOT_1_1WSResponse_1_1__response.html", null ],
     [ "NSROOT::OS::ReadLock::adopt_lock_t", "structNSROOT_1_1OS_1_1ReadLock_1_1adopt__lock__t.html", null ],
     [ "Myth::Artwork", "structMyth_1_1Artwork.html", null ],
+    [ "NSROOT::OS::Atomic", "classNSROOT_1_1OS_1_1Atomic.html", null ],
     [ "attr_bind_t", "structattr__bind__t.html", null ],
     [ "autoptr&lt; T &gt;", "classautoptr.html", null ],
     [ "bindings_t", "structbindings__t.html", null ],
@@ -112,6 +112,7 @@ var hierarchy =
     [ "NSROOT::OS::ThreadPool", "classNSROOT_1_1OS_1_1ThreadPool.html", null ],
     [ "NSROOT::OS::Timeout", "classNSROOT_1_1OS_1_1Timeout.html", null ],
     [ "timespec", "structtimespec.html", null ],
+    [ "timezone", "structtimezone.html", null ],
     [ "NSROOT::OS::Latch::TNode", "structNSROOT_1_1OS_1_1Latch_1_1TNode.html", null ],
     [ "tz_t", "structtz__t.html", null ],
     [ "NSROOT::URIParser::URI_t", "structNSROOT_1_1URIParser_1_1URI__t.html", null ],
@@ -129,6 +130,9 @@ var hierarchy =
     [ "Myth::WSAPI", "classMyth_1_1WSAPI.html", null ],
     [ "NSROOT::WSHeader", "classNSROOT_1_1WSHeader.html", null ],
     [ "NSROOT::WSRequest", "classNSROOT_1_1WSRequest.html", null ],
+    [ "NSROOT::WSRequestStreamSink", "classNSROOT_1_1WSRequestStreamSink.html", [
+      [ "NSROOT::WSResponse::_response", "classNSROOT_1_1WSResponse_1_1__response.html", null ]
+    ] ],
     [ "NSROOT::WSResponse", "classNSROOT_1_1WSResponse.html", null ],
     [ "Myth::WSServiceVersion_t", "structMyth_1_1WSServiceVersion__t.html", null ]
 ];

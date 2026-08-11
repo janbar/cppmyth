@@ -98,10 +98,10 @@ $(function(){initNavTree('classNSROOT_1_1OS_1_1Timeout.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5dcf1813bd7701932e7d678c0ee44d5" id="r_ac5dcf1813bd7701932e7d678c0ee44d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5dcf1813bd7701932e7d678c0ee44d5">Timeout</a> (unsigned millisec)</td></tr>
-<tr class="memitem:a5bce0cc985fe0d5f4dc987a81a319e30" id="r_a5bce0cc985fe0d5f4dc987a81a319e30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bce0cc985fe0d5f4dc987a81a319e30">Set</a> (unsigned millisec)</td></tr>
-<tr class="memitem:afec0209527a8c551f778c0c25cb105fd" id="r_afec0209527a8c551f778c0c25cb105fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afec0209527a8c551f778c0c25cb105fd">IsSet</a> () const</td></tr>
-<tr class="memitem:a9b88128ac977697cb1c8536af98a7fc1" id="r_a9b88128ac977697cb1c8536af98a7fc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b88128ac977697cb1c8536af98a7fc1">Clear</a> ()</td></tr>
-<tr class="memitem:a562780e28745305e681e7a8c6c2229aa" id="r_a562780e28745305e681e7a8c6c2229aa"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a562780e28745305e681e7a8c6c2229aa">TimeLeft</a> () const</td></tr>
+<tr class="memitem:a4330493a3cf18988aa13cd3ca4f09250" id="r_a4330493a3cf18988aa13cd3ca4f09250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4330493a3cf18988aa13cd3ca4f09250">set</a> (unsigned millisec)</td></tr>
+<tr class="memitem:acde3fdc0b1c4e5a977206f054bacffbf" id="r_acde3fdc0b1c4e5a977206f054bacffbf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acde3fdc0b1c4e5a977206f054bacffbf">is_set</a> () const</td></tr>
+<tr class="memitem:a300ada4485d206ca91697b50ffff83a3" id="r_a300ada4485d206ca91697b50ffff83a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a300ada4485d206ca91697b50ffff83a3">clear</a> ()</td></tr>
+<tr class="memitem:ad9e545b6434e2d4f6c3e8e5d377a3e5e" id="r_ad9e545b6434e2d4f6c3e8e5d377a3e5e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9e545b6434e2d4f6c3e8e5d377a3e5e">time_left</a> () const</td></tr>
 <tr class="memitem:af62459cf72fdc70ce607ccb2abe434d7" id="r_af62459cf72fdc70ce607ccb2abe434d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62459cf72fdc70ce607ccb2abe434d7">operator==</a> (const Timeout &amp;other) const</td></tr>
 <tr class="memitem:ada5e9f528d2415aa4115815913a5a912" id="r_ada5e9f528d2415aa4115815913a5a912"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada5e9f528d2415aa4115815913a5a912">operator!=</a> (const Timeout &amp;other) const</td></tr>
 <tr class="memitem:a74e62f85acba81c4543b3c17cb309e66" id="r_a74e62f85acba81c4543b3c17cb309e66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74e62f85acba81c4543b3c17cb309e66">operator&lt;</a> (const Timeout &amp;other) const</td></tr>
@@ -172,8 +172,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a9b88128ac977697cb1c8536af98a7fc1" name="a9b88128ac977697cb1c8536af98a7fc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b88128ac977697cb1c8536af98a7fc1">&#9670;&#160;</a></span>Clear()</h2>
+<a id="a300ada4485d206ca91697b50ffff83a3" name="a300ada4485d206ca91697b50ffff83a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300ada4485d206ca91697b50ffff83a3">&#9670;&#160;</a></span>clear()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +182,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NSROOT::OS::Timeout::Clear </td>
+          <td class="memname">void NSROOT::OS::Timeout::clear </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -199,8 +199,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afec0209527a8c551f778c0c25cb105fd" name="afec0209527a8c551f778c0c25cb105fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afec0209527a8c551f778c0c25cb105fd">&#9670;&#160;</a></span>IsSet()</h2>
+<a id="acde3fdc0b1c4e5a977206f054bacffbf" name="acde3fdc0b1c4e5a977206f054bacffbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde3fdc0b1c4e5a977206f054bacffbf">&#9670;&#160;</a></span>is_set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,7 +209,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool NSROOT::OS::Timeout::IsSet </td>
+          <td class="memname">bool NSROOT::OS::Timeout::is_set </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -388,8 +388,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5bce0cc985fe0d5f4dc987a81a319e30" name="a5bce0cc985fe0d5f4dc987a81a319e30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bce0cc985fe0d5f4dc987a81a319e30">&#9670;&#160;</a></span>Set()</h2>
+<a id="a4330493a3cf18988aa13cd3ca4f09250" name="a4330493a3cf18988aa13cd3ca4f09250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4330493a3cf18988aa13cd3ca4f09250">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,7 +398,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NSROOT::OS::Timeout::Set </td>
+          <td class="memname">void NSROOT::OS::Timeout::set </td>
           <td>(</td>
           <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>millisec</em></span></td><td>)</td>
           <td></td>
@@ -415,8 +415,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a562780e28745305e681e7a8c6c2229aa" name="a562780e28745305e681e7a8c6c2229aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a562780e28745305e681e7a8c6c2229aa">&#9670;&#160;</a></span>TimeLeft()</h2>
+<a id="ad9e545b6434e2d4f6c3e8e5d377a3e5e" name="ad9e545b6434e2d4f6c3e8e5d377a3e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e545b6434e2d4f6c3e8e5d377a3e5e">&#9670;&#160;</a></span>time_left()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -425,7 +425,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned NSROOT::OS::Timeout::TimeLeft </td>
+          <td class="memname">unsigned NSROOT::OS::Timeout::time_left </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>

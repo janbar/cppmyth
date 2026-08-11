@@ -1,0 +1,9 @@
+<map id="NSROOT::OS::Atomic" name="NSROOT::OS::Atomic">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,301,131,328"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,203,123,229"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,244,71,302,65,301,66,247"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="17,104,119,131"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,144,71,203,65,202,67,149"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="49,5,87,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="68,45,71,104,65,104,68,50"/>
+</map>

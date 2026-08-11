@@ -107,18 +107,15 @@ Inheritance diagram for NSROOT::OS::Condition&lt; P &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa9ea57403008399e7a4c0af3934c02ef" id="r_aa9ea57403008399e7a4c0af3934c02ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9ea57403008399e7a4c0af3934c02ef">Broadcast</a> ()</td></tr>
-<tr class="memitem:adb9e84f782895d27c8b6502f83bdc3b8" id="r_adb9e84f782895d27c8b6502f83bdc3b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb9e84f782895d27c8b6502f83bdc3b8">Signal</a> ()</td></tr>
-<tr class="memitem:a80e48978a7a57002b920d8bce5ee386c" id="r_a80e48978a7a57002b920d8bce5ee386c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80e48978a7a57002b920d8bce5ee386c">Wait</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;mutex, P &amp;predicate)</td></tr>
-<tr class="memitem:aa11c3c30fdead82e6ff72e490bf53f2b" id="r_aa11c3c30fdead82e6ff72e490bf53f2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa11c3c30fdead82e6ff72e490bf53f2b">Wait</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;mutex, P &amp;predicate, unsigned timeout)</td></tr>
-<tr class="memitem:a3a89f235f83ec7059eddf1c5e22d2585" id="r_a3a89f235f83ec7059eddf1c5e22d2585"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a89f235f83ec7059eddf1c5e22d2585">Wait</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;mutex, <a class="el" href="classNSROOT_1_1OS_1_1Timeout.html">Timeout</a> &amp;timeout)</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ade416c602ef781007d3ea69da42785c4" id="r_ade416c602ef781007d3ea69da42785c4"><td class="memItemLeft" align="right" valign="top"><a id="ade416c602ef781007d3ea69da42785c4" name="ade416c602ef781007d3ea69da42785c4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Condition</b> (const Condition&lt; P &gt; &amp;other)</td></tr>
-<tr class="memitem:a6049ffe4d15acbafeaf3388b65240ad9" id="r_a6049ffe4d15acbafeaf3388b65240ad9"><td class="memItemLeft" align="right" valign="top"><a id="a6049ffe4d15acbafeaf3388b65240ad9" name="a6049ffe4d15acbafeaf3388b65240ad9"></a>
-Condition&lt; P &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const Condition&lt; P &gt; &amp;other)</td></tr>
+<tr class="memitem:a70e8d75ea623809415eac70a5a579bdd" id="r_a70e8d75ea623809415eac70a5a579bdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70e8d75ea623809415eac70a5a579bdd">notify_all</a> ()</td></tr>
+<tr class="memitem:a890a12107c8c4127d4af2e36d8e82395" id="r_a890a12107c8c4127d4af2e36d8e82395"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a890a12107c8c4127d4af2e36d8e82395">notify_one</a> ()</td></tr>
+<tr class="memitem:aeb6a9cec2d5e6545a1bbcbeb5a144863" id="r_aeb6a9cec2d5e6545a1bbcbeb5a144863"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb6a9cec2d5e6545a1bbcbeb5a144863">wait</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;lock, P &amp;predicate)</td></tr>
+<tr class="memitem:a9ccecce34af3dc0f05100abe79fa0326" id="r_a9ccecce34af3dc0f05100abe79fa0326"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ccecce34af3dc0f05100abe79fa0326">wait_for</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;lock, unsigned millisec, P &amp;predicate)</td></tr>
+<tr class="memitem:ab742f67a2d192d857deebf1c1edf9d68" id="r_ab742f67a2d192d857deebf1c1edf9d68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab742f67a2d192d857deebf1c1edf9d68">wait_for</a> (<a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;lock, <a class="el" href="classNSROOT_1_1OS_1_1Timeout.html">Timeout</a> &amp;timeout)</td></tr>
+<tr class="memitem:ac2c29c78e3449ca8848ce2fa8b4b325e" id="r_ac2c29c78e3449ca8848ce2fa8b4b325e"><td class="memItemLeft" align="right" valign="top"><a id="ac2c29c78e3449ca8848ce2fa8b4b325e" name="ac2c29c78e3449ca8848ce2fa8b4b325e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Condition</b> (const Condition&lt; P &gt; &amp;other)=delete</td></tr>
+<tr class="memitem:ad3d5bc4bdc932679339d09362434a9f5" id="r_ad3d5bc4bdc932679339d09362434a9f5"><td class="memItemLeft" align="right" valign="top"><a id="ad3d5bc4bdc932679339d09362434a9f5" name="ad3d5bc4bdc932679339d09362434a9f5"></a>
+Condition&lt; P &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const Condition&lt; P &gt; &amp;other)=delete</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -188,8 +185,8 @@ template&lt;typename P&gt; </div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="aa9ea57403008399e7a4c0af3934c02ef" name="aa9ea57403008399e7a4c0af3934c02ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9ea57403008399e7a4c0af3934c02ef">&#9670;&#160;</a></span>Broadcast()</h2>
+<a id="a70e8d75ea623809415eac70a5a579bdd" name="a70e8d75ea623809415eac70a5a579bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e8d75ea623809415eac70a5a579bdd">&#9670;&#160;</a></span>notify_all()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +197,7 @@ template&lt;typename P&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::Broadcast </td>
+          <td class="memname">void <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::notify_all </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -217,8 +214,8 @@ template&lt;typename P&gt; </div>
 
 </div>
 </div>
-<a id="adb9e84f782895d27c8b6502f83bdc3b8" name="adb9e84f782895d27c8b6502f83bdc3b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb9e84f782895d27c8b6502f83bdc3b8">&#9670;&#160;</a></span>Signal()</h2>
+<a id="a890a12107c8c4127d4af2e36d8e82395" name="a890a12107c8c4127d4af2e36d8e82395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890a12107c8c4127d4af2e36d8e82395">&#9670;&#160;</a></span>notify_one()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +226,7 @@ template&lt;typename P&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::Signal </td>
+          <td class="memname">void <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::notify_one </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -246,8 +243,8 @@ template&lt;typename P&gt; </div>
 
 </div>
 </div>
-<a id="a80e48978a7a57002b920d8bce5ee386c" name="a80e48978a7a57002b920d8bce5ee386c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80e48978a7a57002b920d8bce5ee386c">&#9670;&#160;</a></span>Wait() <span class="overload">[1/3]</span></h2>
+<a id="aeb6a9cec2d5e6545a1bbcbeb5a144863" name="aeb6a9cec2d5e6545a1bbcbeb5a144863"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb6a9cec2d5e6545a1bbcbeb5a144863">&#9670;&#160;</a></span>wait()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,9 +255,9 @@ template&lt;typename P&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::Wait </td>
+          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::wait </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mutex</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lock</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -279,8 +276,8 @@ template&lt;typename P&gt; </div>
 
 </div>
 </div>
-<a id="aa11c3c30fdead82e6ff72e490bf53f2b" name="aa11c3c30fdead82e6ff72e490bf53f2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa11c3c30fdead82e6ff72e490bf53f2b">&#9670;&#160;</a></span>Wait() <span class="overload">[2/3]</span></h2>
+<a id="ab742f67a2d192d857deebf1c1edf9d68" name="ab742f67a2d192d857deebf1c1edf9d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab742f67a2d192d857deebf1c1edf9d68">&#9670;&#160;</a></span>wait_for() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,47 +288,9 @@ template&lt;typename P&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::Wait </td>
+          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::wait_for </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mutex</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">P &amp;</td>          <td class="paramname"><span class="paramname"><em>predicate</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="condition_8h_source.html#l00063">63</a> of file <a class="el" href="condition_8h_source.html">condition.h</a>.</p>
-
-</div>
-</div>
-<a id="a3a89f235f83ec7059eddf1c5e22d2585" name="a3a89f235f83ec7059eddf1c5e22d2585"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a89f235f83ec7059eddf1c5e22d2585">&#9670;&#160;</a></span>Wait() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename P&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::Wait </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mutex</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lock</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -347,6 +306,44 @@ template&lt;typename P&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="condition_8h_source.html#l00077">77</a> of file <a class="el" href="condition_8h_source.html">condition.h</a>.</p>
+
+</div>
+</div>
+<a id="a9ccecce34af3dc0f05100abe79fa0326" name="a9ccecce34af3dc0f05100abe79fa0326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ccecce34af3dc0f05100abe79fa0326">&#9670;&#160;</a></span>wait_for() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename P&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classNSROOT_1_1OS_1_1Condition.html">NSROOT::OS::Condition</a>&lt; P &gt;::wait_for </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNSROOT_1_1OS_1_1Mutex.html">Mutex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lock</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>millisec</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">P &amp;</td>          <td class="paramname"><span class="paramname"><em>predicate</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="condition_8h_source.html#l00063">63</a> of file <a class="el" href="condition_8h_source.html">condition.h</a>.</p>
 
 </div>
 </div>
@@ -373,7 +370,7 @@ template&lt;typename P&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="condition_8h_source.html#l00090">90</a> of file <a class="el" href="condition_8h_source.html">condition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="condition_8h_source.html#l00088">88</a> of file <a class="el" href="condition_8h_source.html">condition.h</a>.</p>
 
 </div>
 </div>
