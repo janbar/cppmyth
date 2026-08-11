@@ -1,19 +1,19 @@
+
+#include <private/os/threads/threadpool.h>
+#include <private/os/threads/atomic.h>
+#include <private/os/threads/latch.h>
+#include <mythsharedptr.h>
+#include <mythlocked.h>
+
 #include <iostream>
 
-#include "include/testmain.h"
-
-#include "local_config.h"
-#include "private/os/threads/threadpool.h"
-#include "private/os/threads/atomic.h"
-#include "private/os/threads/latch.h"
-#include "mythsharedptr.h"
-#include "mythlocked.h"
+#include <test.h>
 
 Myth::OS::Atomic* g_counter = nullptr;
 
 class WorkerInc : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 5000100; i++)
     {
@@ -24,7 +24,7 @@ class WorkerInc : public Myth::OS::Worker
 
 class WorkerDec : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 5000000; i++)
     {
@@ -38,13 +38,13 @@ TEST_CASE("Stress atomic counter")
   int val = 0;
   g_counter = new Myth::OS::Atomic(val);
   Myth::OS::ThreadPool pool(4);
-  pool.Suspend();
-  pool.Enqueue(new WorkerInc());
-  pool.Enqueue(new WorkerDec());
-  pool.SetKeepAlive(100);
-  pool.Resume();
+  pool.suspend();
+  pool.enqueue(new WorkerInc());
+  pool.enqueue(new WorkerDec());
+  pool.set_keep_alive(100);
+  pool.resume();
   unsigned ps;
-  while ((ps = pool.Size()) > 0)
+  while ((ps = pool.size()) > 0)
     usleep(100000);
   REQUIRE(g_counter->load() == (val+100));
   delete g_counter;
@@ -54,7 +54,7 @@ Myth::Locked<int>* g_locked;
 
 class WorkerLockInc : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 500100; i++)
     {
@@ -66,7 +66,7 @@ class WorkerLockInc : public Myth::OS::Worker
 
 class WorkerLockDec : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 500000; i++)
     {
@@ -81,13 +81,13 @@ TEST_CASE("Stress locked object")
   int val = 0;
   g_locked = new Myth::Locked<int>(val);
   Myth::OS::ThreadPool pool(4);
-  pool.Suspend();
-  pool.Enqueue(new WorkerLockInc());
-  pool.Enqueue(new WorkerLockDec());
-  pool.SetKeepAlive(100);
-  pool.Resume();
+  pool.suspend();
+  pool.enqueue(new WorkerLockInc());
+  pool.enqueue(new WorkerLockDec());
+  pool.set_keep_alive(100);
+  pool.resume();
   unsigned ps;
-  while ((ps = pool.Size()) > 0)
+  while ((ps = pool.size()) > 0)
     usleep(100000);
   REQUIRE(g_locked->Load() == (val+100));
   delete g_locked;
@@ -98,7 +98,7 @@ Myth::shared_ptr<size_t> g_pointer;
 
 class WorkerPtrClear : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 10000; i++)
     {
@@ -112,7 +112,7 @@ class WorkerPtrClear : public Myth::OS::Worker
 
 class WorkerPtrCopy : public Myth::OS::Worker
 {
-  virtual void Process()
+  virtual void process()
   {
     for (int i = 0; i < 10000; i++)
     {
@@ -128,27 +128,28 @@ class WorkerPtrCopy : public Myth::OS::Worker
 
 TEST_CASE("Stress shared pointer")
 {
-  int val = 0;
+  int target = 30000;
   g_counter = new Myth::OS::Atomic(0);
   g_pointer.reset(new size_t(0));
   Myth::OS::ThreadPool pool(4);
-  pool.Suspend();
-  pool.Enqueue(new WorkerPtrCopy());
-  pool.Enqueue(new WorkerPtrClear());
-  pool.Enqueue(new WorkerPtrCopy());
-  pool.Enqueue(new WorkerPtrCopy());
-  pool.SetKeepAlive(100);
-  pool.Resume();
+  pool.suspend();
+  pool.enqueue(new WorkerPtrCopy());
+  pool.enqueue(new WorkerPtrClear());
+  pool.enqueue(new WorkerPtrCopy());
+  pool.enqueue(new WorkerPtrCopy());
+  pool.set_keep_alive(100);
+  pool.resume();
   unsigned ps;
-  while ((ps = pool.Size()) > 0)
+  while ((ps = pool.size()) > 0)
   {
-    std::cout << "Running: " << ps
-              << " , copy count: " << g_counter->load()
+    std::cout << "... Running: " << ps
+              << " , " << ((100*g_counter->load())/target) << "%"
               << std::endl;
-    usleep(10000);
+    usleep(250000);
   }
-  std::cout << "total copy count: " << g_counter->load()
-            << std::endl;
-  REQUIRE(g_counter->load() == 30000);
+  std::cout << "Count   = " << g_counter->load() << std::endl;
+  std::cout << "Payload = " << *g_pointer << std::endl;
+  REQUIRE(g_counter->load() == target);
+  REQUIRE((*g_pointer) == 9999);
   delete g_counter;
 }

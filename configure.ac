@@ -34,7 +34,16 @@ else
 fi
 AC_SUBST([HAVE_ZLIB])
 
-HAVE_OPENSSL=0
+AC_CHECK_HEADERS(openssl/ssl.h, [], [no=1])
+AC_CHECK_HEADERS(openssl/x509.h, [], [no=1])
+AC_SEARCH_LIBS(SSL_new, ssl, [], [no=1])
+AC_SEARCH_LIBS(X509_get_subject_name, crypto, [], [no=1])
+if test $no == 0
+then
+   HAVE_OPENSSL=1
+else
+   HAVE_OPENSSL=0
+fi
 AC_SUBST([HAVE_OPENSSL])
 
 # Check for inttypes.
@@ -69,27 +78,6 @@ case "$ac_cv_func_gmtime_r" in
      *) HAVE_GMTIME_R=0;;
 esac
 AC_SUBST([HAVE_GMTIME_R])
-
-# Check for intrinsics
-AC_MSG_CHECKING([for __sync_add_and_fetch(temp, 1)])
-AC_TRY_COMPILE([],[long* temp=0; __sync_add_and_fetch(temp, 1);],
-    [have_builtin_sync_add_and_fetch=yes],
-    [have_builtin_sync_add_and_fetch=no])
-AC_MSG_RESULT($have_builtin_sync_add_and_fetch)
-if test "x$have_builtin_sync_add_and_fetch" = "xyes"; then
-    AC_DEFINE(HAS_BUILTIN_SYNC_ADD_AND_FETCH, 1,
-        [Define to 1 if your compiler supports the __sync_add_and_fetch() intrinsic.])
-fi
-
-AC_MSG_CHECKING([for __sync_sub_and_fetch(temp, 1)])
-AC_TRY_COMPILE([],[long* temp=0; __sync_sub_and_fetch(temp, 1);],
-    [have_builtin_sync_sub_and_fetch=yes],
-    [have_builtin_sync_sub_and_fetch=no])
-AC_MSG_RESULT($have_builtin_sync_sub_and_fetch)
-if test "x$have_builtin_sync_sub_and_fetch" = "xyes"; then
-    AC_DEFINE(HAS_BUILTIN_SYNC_SUB_AND_FETCH, 1,
-        [Define to 1 if your compiler supports the __sync_sub_and_fetch() intrinsic.])
-fi
 
 ### Require c++ standard
 m4_include([m4/ax_check_compile_flag.m4])

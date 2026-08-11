@@ -6,17 +6,15 @@
 #include <WinSock2.h>
 #include <Windows.h>
 #include <time.h>
-//#define usleep(t) Sleep((DWORD)(t)/1000)
-//#define sleep(t)  Sleep((DWORD)(t)*1000)
 #else
 #include <unistd.h>
 #include <sys/time.h>
 #include <signal.h>
 #endif
 
-#include "private/wsresponse.h"
-#include "private/debug.h"
-#include "private/socket.h"
+#include <private/wsresponse.h>
+#include <private/socket.h>
+#include <mythdebug.h>
 
 #include <string.h>
 #include <cstdio>
@@ -24,7 +22,7 @@
 #ifndef __WINDOWS__
 static void signalHandler(int signal, siginfo_t * info, void * data)
 {
-  Myth::DBG(DBG_DEBUG, "signal %d catched\n", signal);
+  (void)signal;
   (void)info;
   (void)data;
 }
@@ -54,7 +52,7 @@ int main() {
 
   const char* dest_url = "www.google.fr";
 
-  Myth::DBGLevel(4);
+  Myth::DBGLevel(MYTH_DBG_PROTO);
 
   Myth::WSRequest req(dest_url, 80);
   req.RequestAcceptEncoding(true);

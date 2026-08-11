@@ -111,7 +111,7 @@ void liveTVSpawn()
     {
       usleep(waitus);
       r = lp.Read(buf, BUFSZ);
-      if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != r))
+      if (r < 0 || (r > 0 && fwrite(buf, 1, r, file) != (unsigned)r))
         break;
       // adjust the wait time
       if (r < BUFSZ)
@@ -136,7 +136,7 @@ void mySigHandler(int sig)
 
 void usage(const char * cmd)
 {
-  fprintf(stderr,"Usage:\n"
+  fprintf(stderr,"Usage: %s\n"
           "  --host=<IP>              The backend IP\n"
           "  --channum=<1>            The channel number to stream\n"
           "  --proto=<6543>           The protocol port     (6543)\n"
@@ -145,7 +145,7 @@ void usage(const char * cmd)
           "  --pin=<0000>             The security PIN      ('0000')\n"
           "  --username=<admin>       The user name         ('admin')\n"
           "  --password=<mythtv>      The user password     ('myhtv')"
-          "\n");
+          "\n", cmd);
   exit(EXIT_SUCCESS);
 }
 

@@ -59,15 +59,6 @@ if (NOT MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
     message(STATUS "Using standard c++11")
   endif()
-
-  include (CheckLibraryExists)
-  include (CheckAtomic)
-  if (HAS_BUILTIN_SYNC_ADD_AND_FETCH)
-    add_definitions ("-DHAS_BUILTIN_SYNC_ADD_AND_FETCH")
-  endif ()
-  if (HAS_BUILTIN_SYNC_SUB_AND_FETCH)
-    add_definitions ("-DHAS_BUILTIN_SYNC_SUB_AND_FETCH")
-  endif ()
 endif ()
 
 ###############################################################################
@@ -135,49 +126,35 @@ else ()
    set (CC_INLINE)
 endif ()
 
-# configure the public config file
+# configure local config file
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/local_config.h.in
   ${CMAKE_CURRENT_BINARY_DIR}/include/local_config.h)
 
-# Copy the header files to the public include folder
+# Support building as a subproject of a larger cmake project
+file(GLOB PUBLIC_HDR_FILES
+  src/mythlocked.h
+  src/mythsharedptr.h
+  src/mythtypes.h
+  src/mythcontrol.h
+  src/mytheventhandler.h
+  src/mythfileplayback.h
+  src/mythlivetvplayback.h
+  src/mythrecordingplayback.h
+  src/mythwsapi.h
+  src/mythdebug.h
+  src/mythstream.h
+  src/mythwsstream.h
+  src/proto/mythprotobase.h
+  src/proto/mythprotomonitor.h
+  src/proto/mythprotorecorder.h
+  src/proto/mythprotoevent.h
+  src/proto/mythprotoplayback.h
+  src/proto/mythprototransfer.h)
 
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythlocked.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythsharedptr.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythtypes.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythcontrol.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mytheventhandler.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythfileplayback.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythlivetvplayback.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythrecordingplayback.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythwsapi.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythdebug.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythstream.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/mythwsstream.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/)
-
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotobase.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotomonitor.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotorecorder.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotoevent.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprotoplayback.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
-file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/proto/mythprototransfer.h
-           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/proto/)
+foreach(file ${PUBLIC_HDR_FILES})
+  string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}/src" "" RPATH "${file}")
+  configure_file(${file} ./include/${RPATH} COPYONLY)
+endforeach()
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR}/include/.)
 

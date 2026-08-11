@@ -19,10 +19,11 @@ libcppmyth_la_SOURCES = \
 	src/private/ringbuffer.cpp \
 	src/private/securesocket.cpp \
 	src/private/socket.cpp \
+	src/private/uriencoder.cpp \
 	src/private/uriparser.cpp \
-	src/private/wscontent.cpp \
 	src/private/wsrequest.cpp \
 	src/private/wsresponse.cpp \
+	src/private/wsstatic.c \
 	src/proto/mythprotobase.cpp \
 	src/proto/mythprotoevent.cpp \
 	src/proto/mythprotomonitor.cpp \
@@ -30,6 +31,7 @@ libcppmyth_la_SOURCES = \
 	src/proto/mythprotorecorder.cpp \
 	src/proto/mythprototransfer.cpp \
 	src/mythcontrol.cpp \
+	src/mythdebug.cpp \
 	src/mytheventhandler.cpp \
 	src/mythfileplayback.cpp \
 	src/mythsharedptr.cpp \

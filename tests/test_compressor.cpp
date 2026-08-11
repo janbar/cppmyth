@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "include/testmain.h"
-#include "include/hashvalue.c"
-#include "include/sample_stream.c"
+#include <test.h>
+#include "hashvalue.c"
+#include "sample_stream.c"
 
 #include <private/compressor.h>
 
