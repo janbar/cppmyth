@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8.12...3.20)
+cmake_minimum_required (VERSION 3.8.2...3.20)
 
 project (cppmythroot)
 
@@ -16,6 +16,7 @@ if(NOT ZLIB_FOUND)
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}
         UPDATE_DISCONNECTED ON)
     set(BUILD_SHARED_LIBS OFF)
+    set(ZLIB_BUILD_EXAMPLES OFF)
     set(SKIP_INSTALL_ALL ON)
     add_subdirectory(
         ${CMAKE_CURRENT_BINARY_DIR}/zlib-src
