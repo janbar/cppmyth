@@ -1,9 +1,23 @@
-cmake_minimum_required (VERSION 2.8.12...3.20)
+cmake_minimum_required (VERSION 3.8.2...3.20)
 
 project (cppmythroot)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_IGNORE_PATH "/opt/local/bin;/opt/local/lib;/opt/local/include")
+
+if(MSVC)
+  # This option must match the settings used in your program, in particular if you
+  # are linking statically
+  option(MSVC_DYNAMIC_RUNTIME "MSVC: using dynamic runtime." ON)
+  include (MSVCRuntime)
+  configure_msvc_runtime()
+  add_definitions ("/D_CRT_SECURE_NO_WARNINGS")
+  set (CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /Od /RTC1")
+  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /EHsc /nologo")
+  set (CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /O2 /EHsc /nologo")
+  set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /O2 /EHsc /nologo")
+  set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Od /RTC1 /EHsc /nologo")
+endif ()
 
 include(DownloadProject)
 
@@ -16,6 +30,7 @@ if(NOT ZLIB_FOUND)
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}
         UPDATE_DISCONNECTED ON)
     set(BUILD_SHARED_LIBS OFF)
+    set(ZLIB_BUILD_EXAMPLES OFF)
     set(SKIP_INSTALL_ALL ON)
     add_subdirectory(
         ${CMAKE_CURRENT_BINARY_DIR}/zlib-src

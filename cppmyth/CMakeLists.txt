@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8.12...3.20)
+cmake_minimum_required (VERSION 3.8.2...3.20)
 
 project (cppmyth)
 
@@ -9,11 +9,6 @@ enable_language(C)
 
 # Options
 OPTION (BUILD_SHARED_LIBS "Build shared libraries." OFF)
-if (MSVC)
-  # This option must match the settings used in your program, in particular if you
-  # are linking statically
-  OPTION (STATIC_CRT "Link the static CRT libraries" OFF)
-endif ()
 
 ###############################################################################
 # set lib version here
@@ -23,43 +18,13 @@ set (PACKAGE_VERSION_PATCH 0)
 
 set (PACKAGE_VERSION ${PACKAGE_VERSION_MAJOR}.${PACKAGE_VERSION_MINOR}.${PACKAGE_VERSION_PATCH})
 set (PACKAGE_LIB_SOVERSION ${PACKAGE_VERSION_MAJOR})
+
 ###############################################################################
-# add definitions
-if (MSVC)
-  add_definitions ("/D_CRT_SECURE_NO_WARNINGS")
-  if (STATIC_CRT)
-    set (CMAKE_C_FLAGS_RELEASE "/MT")
-    set (CMAKE_C_FLAGS_DEBUG "/MTd")
-    set (CMAKE_CXX_FLAGS_RELEASE "/MT")
-    set (CMAKE_CXX_FLAGS_DEBUG "/MTd")
-  endif ()
-  set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /W3")
-  set (CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /W3")
-  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /W3 /EHsc /nologo")
-  set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /W3 /EHsc /nologo")
-  if(CMAKE_SYSTEM_NAME STREQUAL WindowsStore)
-    set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
-    set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /O2")
-  else()
-    set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Od /RTC1")
-    set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Od /RTC1")
-  endif()
-endif ()
-
-if (NOT MSVC)
-  if (NOT CYGWIN)
-    add_definitions ("-fPIC")
-  endif ()
-
-  add_definitions ("-Wall")
-
-  include(CheckCXXCompilerFlag)
-  CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-  if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-    message(STATUS "Using standard c++11")
-  endif()
-endif ()
+# setup
+set (CMAKE_POSITION_INDEPENDENT_CODE ON)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set (CMAKE_CXX_EXTENSIONS OFF)
+set (CMAKE_CXX_STANDARD 11)
 
 ###############################################################################
 # configure
