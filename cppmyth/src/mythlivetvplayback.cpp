@@ -405,6 +405,8 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
         {
           // Recorder is not subscriber. So callback event to it
           recorder->DoneRecordingCallback();
+          if (m_chain.watch /* volatile */)
+            DBG(DBG_WARN, "%s: recording finished, but WATCH is ON\n", __FUNCTION__);
         }
       }
       break;
