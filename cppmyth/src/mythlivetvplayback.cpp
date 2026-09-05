@@ -408,23 +408,6 @@ void LiveTVPlayback::HandleBackendMessage(EventMessagePtr msg)
         {
           // Recorder is not subscriber. So callback event to it
           recorder->DoneRecordingCallback();
-          // Manage program break without locking
-          if (m_chain.watch /* volatile */)
-          {
-            /*
-             * Last recording is now completed but watch signal is ON.
-             * Then force live tv chain update for the new current
-             * program. We will retry for a short period before returning.
-             */
-            OS::Timeout timeout(BREAK_TIMEOUT);
-            do
-            {
-              usleep(500000); // wait for 500 ms
-              HandleChainUpdate();
-            }
-            while (m_chain.watch /* volatile */ &&
-                    timeout.time_left() > 0);
-          }
         }
       }
       break;
