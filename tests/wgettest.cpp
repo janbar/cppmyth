@@ -13,6 +13,7 @@
 #endif
 
 #include <private/wsresponse.h>
+#include <private/uriparser.h>
 #include <private/socket.h>
 #include <mythdebug.h>
 
@@ -38,7 +39,7 @@ static bool catchSignal(int signal)
 }
 #endif
 
-int main() {
+int main(int argc, char** argv) {
 
   int ret = 0;
 #ifdef __WINDOWS__
@@ -50,14 +51,16 @@ int main() {
   catchSignal(SIGPIPE);
 #endif /* __WINDOWS__ */
 
-  const char* dest_url = "www.google.fr";
+  std::string location = "http://www.google.com/";
+  if (argc > 1)
+    location.assign(argv[1]);
 
   Myth::DBGLevel(MYTH_DBG_PROTO);
 
-  Myth::WSRequest req(dest_url, 80);
+  Myth::URIParser url(location);
+  Myth::WSRequest req(url, WS_METHOD_Get);
   req.RequestAcceptEncoding(true);
   req.RequestAccept(ws_ctype_to_str(WS_CTYPE_Any));
-  req.RequestService("/", WS_METHOD_Get);
   Myth::WSResponse resp(req);
   if (resp.IsSuccessful())
   {
