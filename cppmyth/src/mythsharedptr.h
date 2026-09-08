@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2015 Jean-Luc Barriere
+ *      Copyright (C) 2014-2026 Jean-Luc Barriere
  *
  *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,9 +22,6 @@
 #ifndef MYTHSHAREDPTR_H
 #define	MYTHSHAREDPTR_H
 
-// Compatibility with C++98 remains
-#include <cstddef> // for NULL
-
 namespace Myth
 {
   namespace OS {
@@ -45,7 +42,7 @@ namespace Myth
     void reset_counter(); /* initialize a new count */
     void swap_counter(shared_ptr_base& s);
     int get_count() const;
-    bool is_null() const { return (pc == NULL); }
+    bool is_null() const { return (pc == nullptr); }
   };
 
 
@@ -58,13 +55,13 @@ namespace Myth
 
     shared_ptr()
     : shared_ptr_base()
-    , p(NULL) { }
+    , p(nullptr) { }
 
     explicit shared_ptr(T* s)
     : shared_ptr_base()
     , p(s)
     {
-      if (s != NULL)
+      if (s != nullptr)
         shared_ptr_base::reset_counter();
     }
 
@@ -73,7 +70,7 @@ namespace Myth
     , p(s.p)
     {
       if (shared_ptr_base::is_null())
-        p = NULL;
+        p = nullptr;
     }
 
     shared_ptr& operator=(const shared_ptr& s)
@@ -84,19 +81,17 @@ namespace Myth
         p = s.p;
         shared_ptr_base::operator = (s);
         if (shared_ptr_base::is_null())
-          p = NULL;
+          p = nullptr;
       }
       return *this;
     }
 
-#if __cplusplus >= 201103L
     shared_ptr& operator=(shared_ptr&& s) noexcept
     {
       if (this != &s)
         swap(s);
       return *this;
     }
-#endif
 
     ~shared_ptr()
     {
@@ -107,7 +102,7 @@ namespace Myth
     {
       if (shared_ptr_base::clear_counter())
         delete p;
-      p = NULL;
+      p = nullptr;
     }
 
     void reset(T* s)
@@ -116,7 +111,7 @@ namespace Myth
       {
         reset();
         p = s;
-        if (s != NULL)
+        if (s != nullptr)
           shared_ptr_base::reset_counter();
       }
     }
@@ -133,7 +128,7 @@ namespace Myth
       s.p = _p;
       shared_ptr_base::swap_counter(s);
       if (shared_ptr_base::is_null())
-        p = NULL;
+        p = nullptr;
     }
 
     int use_count() const
@@ -153,12 +148,12 @@ namespace Myth
 
     operator bool() const
     {
-      return p != NULL;
+      return p != nullptr;
     }
 
     bool operator!() const
     {
-      return p == NULL;
+      return p == nullptr;
     }
   };
 

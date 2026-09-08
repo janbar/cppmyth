@@ -10,6 +10,7 @@
 #include <test.h>
 
 Myth::OS::Atomic* g_counter = nullptr;
+Myth::OS::Atomic* g_failure = nullptr;
 
 class WorkerInc : public Myth::OS::Worker
 {
@@ -121,6 +122,8 @@ class WorkerPtrCopy : public Myth::OS::Worker
       g_latch.unlock_shared();
       if (ptr)
         g_counter->increment();
+      else
+        g_failure->increment();
       usleep(1);
     }
   }
@@ -130,6 +133,7 @@ TEST_CASE("Stress shared pointer")
 {
   int target = 30000;
   g_counter = new Myth::OS::Atomic(0);
+  g_failure = new Myth::OS::Atomic(0);
   g_pointer.reset(new size_t(0));
   Myth::OS::ThreadPool pool(4);
   pool.suspend();
@@ -147,9 +151,11 @@ TEST_CASE("Stress shared pointer")
               << std::endl;
     usleep(250000);
   }
-  std::cout << "Count   = " << g_counter->load() << std::endl;
+  std::cout << "Copy OK = " << g_counter->load() << std::endl;
+  std::cout << "Copy KO = " << g_failure->load() << std::endl;
   std::cout << "Payload = " << *g_pointer << std::endl;
   REQUIRE(g_counter->load() == target);
   REQUIRE((*g_pointer) == 9999);
+  delete g_failure;
   delete g_counter;
 }
