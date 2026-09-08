@@ -154,7 +154,7 @@ int main(int argc, char** argv)
       fprintf(stderr, "\n***\n*** Testing web service SetSavedBookmark\n***\n");
 
       int64_t svp = prog->fileSize / 3;
-      fprintf(stderr,"Save bookmark at byte %ld returns %s\n", svp, (control.SetSavedBookmark(*prog, 1, svp) ? "true": "false"));
+      fprintf(stderr,"Save bookmark at byte %lld returns %s\n", (long long)svp, (control.SetSavedBookmark(*prog, 1, svp) ? "true": "false"));
 
       fprintf(stderr, "\n***\n*** Testing web service GetSavedBookmark\n***\n");
 
