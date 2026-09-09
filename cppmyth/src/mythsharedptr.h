@@ -38,8 +38,8 @@ namespace Myth
     shared_ptr_base();
     shared_ptr_base(const shared_ptr_base& s);
     shared_ptr_base& operator=(const shared_ptr_base& s);
-    bool clear_counter(); /* returns true if destroyed */
-    void reset_counter(); /* initialize a new count */
+    bool reset_counter(); /* returns true if pc is destroyed */
+    void renew_counter(); /* initialize a new pc */
     void swap_counter(shared_ptr_base& s);
     int get_count() const;
     bool is_null() const { return (pc == nullptr); }
@@ -62,7 +62,7 @@ namespace Myth
     , p(s)
     {
       if (s != nullptr)
-        shared_ptr_base::reset_counter();
+        shared_ptr_base::renew_counter();
     }
 
     shared_ptr(const shared_ptr& s)
@@ -100,7 +100,7 @@ namespace Myth
 
     void reset()
     {
-      if (shared_ptr_base::clear_counter())
+      if (shared_ptr_base::reset_counter())
         delete p;
       p = nullptr;
     }
@@ -112,7 +112,7 @@ namespace Myth
         reset();
         p = s;
         if (s != nullptr)
-          shared_ptr_base::reset_counter();
+          shared_ptr_base::renew_counter();
       }
     }
 
@@ -160,3 +160,4 @@ namespace Myth
 }
 
 #endif	/* MYTHSHAREDPTR_H */
+

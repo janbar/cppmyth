@@ -30,7 +30,7 @@ shared_ptr_base::shared_ptr_base()
 
 shared_ptr_base::~shared_ptr_base()
 {
-  clear_counter();
+  reset_counter();
   if (spare != nullptr)
     delete spare;
 }
@@ -47,7 +47,6 @@ shared_ptr_base& shared_ptr_base::operator=(const shared_ptr_base& s)
 {
   if (this != &s)
   {
-    clear_counter();
     pc = s.pc;
     if (pc != nullptr && pc->fetch_add(1) < 1)
       pc = nullptr;
@@ -55,7 +54,7 @@ shared_ptr_base& shared_ptr_base::operator=(const shared_ptr_base& s)
   return *this;
 }
 
-bool shared_ptr_base::clear_counter()
+bool shared_ptr_base::reset_counter()
 {
   if (pc != nullptr && pc->fetch_sub(1) == 1)
   {
@@ -70,9 +69,8 @@ bool shared_ptr_base::clear_counter()
   return false;
 }
 
-void shared_ptr_base::reset_counter()
+void shared_ptr_base::renew_counter()
 {
-  clear_counter();
   if (spare != nullptr)
   {
     /* reuse the spare */
