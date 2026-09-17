@@ -21,7 +21,7 @@ set (PACKAGE_LIB_SOVERSION ${PACKAGE_VERSION_MAJOR})
 
 ###############################################################################
 # setup
-if(MSVC)
+if (MSVC)
   # This option must match the settings used in your program, in particular
   # if you are linking statically
   option(MSVC_DYNAMIC_RUNTIME "MSVC: using dynamic runtime." OFF)
@@ -33,6 +33,8 @@ if(MSVC)
   set (CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /O2 /EHsc /nologo")
   set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /O2 /EHsc /nologo")
   set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Od /RTC1 /EHsc /nologo")
+elseif (CMAKE_SYSTEM_NAME STREQUAL "CYGWIN")
+  add_definitions ("-D_GNU_SOURCE")
 endif ()
 
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
