@@ -291,6 +291,9 @@ void LiveTVPlayback::HandleChainUpdate()
     // Add the new file into the chain
     m_chain.chained.push_back(std::make_pair(transfer, prog));
     m_chain.lastSequence = m_chain.chained.size();
+    // close previous dummy file
+    if (m_chain.lastSequence > 1 && m_chain.chained[m_chain.lastSequence - 2].first->GetSize() == 0)
+      m_chain.chained[m_chain.lastSequence - 2].first->Close();
     /*
      * If switchOnCreate flag and file is filled then switch immediatly.
      * Else we will switch later on the next event 'UPDATE_FILE_SIZE'
